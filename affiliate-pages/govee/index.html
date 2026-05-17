@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Govee Smart Lights for 3D Printing Setups — Honest Review & Deals</title>
+    <meta name="description" content="The best Govee smart lights for 3D printer desk setups, workshops, and monitoring stations. Real reviews from a 3D printing creator.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://galeops.xyz/govee">
+    <meta property="og:title" content="Govee Smart Lights for 3D Printing Setups">
+    <meta property="og:description" content="Honest reviews of Govee lights for 3D printer desk setups. Smart lighting that actually helps you monitor prints.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --surface: #141414;
+            --surface2: #1e1e1e;
+            --accent: #6c5ce7;
+            --accent2: #a29bfe;
+            --govee-blue: #00d2ff;
+            --govee-purple: #7c3aed;
+            --text: #e4e4e7;
+            --text-dim: #9ca3af;
+            --border: #27272a;
+            --success: #22c55e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+            background: radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.15) 0%, transparent 60%);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0,210,255,0.1);
+            border: 1px solid rgba(0,210,255,0.3);
+            color: var(--govee-blue);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #fff 0%, var(--govee-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            max-width: 540px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-main {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--govee-purple), var(--govee-blue));
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+        }
+
+        .cta-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(124,58,237,0.4);
+        }
+
+        .cta-main svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Stats Bar */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 30px 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--govee-blue);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Product Cards */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .section-sub {
+            color: var(--text-dim);
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .products {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            transition: border-color 0.2s;
+        }
+
+        .product-card:hover {
+            border-color: rgba(0,210,255,0.3);
+        }
+
+        .product-card.featured {
+            border-color: rgba(0,210,255,0.4);
+            box-shadow: 0 0 30px rgba(0,210,255,0.05);
+        }
+
+        .product-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 3px 8px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        .tag-best {
+            background: rgba(0,210,255,0.15);
+            color: var(--govee-blue);
+        }
+
+        .tag-value {
+            background: rgba(34,197,94,0.15);
+            color: var(--success);
+        }
+
+        .tag-compact {
+            background: rgba(162,155,254,0.15);
+            color: var(--accent2);
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .product-desc {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .product-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .spec {
+            background: var(--surface2);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+        }
+
+        .spec-label {
+            color: var(--text-dim);
+        }
+
+        .spec-value {
+            font-weight: 600;
+            display: block;
+            margin-top: 2px;
+        }
+
+        .product-why {
+            background: var(--surface2);
+            border-left: 3px solid var(--govee-blue);
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 16px;
+        }
+
+        .product-why strong {
+            color: var(--text);
+        }
+
+        .product-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, var(--govee-purple), var(--govee-blue));
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .product-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(124,58,237,0.3);
+        }
+
+        .product-cta svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Use Cases */
+        .use-cases {
+            margin-bottom: 50px;
+        }
+
+        .use-case-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .use-case {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .use-case-icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .use-case h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .use-case p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        /* Why Section */
+        .why-section {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 50px;
+        }
+
+        .why-section h2 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .why-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .why-icon {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: rgba(0,210,255,0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .why-text h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .why-text p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        /* CTA Bottom */
+        .cta-bottom {
+            text-align: center;
+            padding: 50px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .cta-bottom h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .cta-bottom p {
+            color: var(--text-dim);
+            margin-bottom: 24px;
+        }
+
+        /* Disclosure */
+        .disclosure {
+            text-align: center;
+            padding: 20px 0 40px;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            opacity: 0.7;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Responsive */
+        @media (min-width: 640px) {
+            .hero h1 { font-size: 2.8rem; }
+            .use-case-grid { grid-template-columns: 1fr 1fr; }
+            .why-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-badge">3D Printer Desk Setup Essential</div>
+        <h1>Smart Lighting That Actually Helps You Print Better</h1>
+        <p>I've tested Govee lights on my 3D printer desk for months. Here's what actually works — and what's just RGB hype.</p>
+        <a href="https://govee.sjv.io/2RdmXQ" class="cta-main" rel="nofollow sponsored">
+            Shop Govee
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+</section>
+
+<!-- Stats -->
+<div class="container">
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-num">5,800+</div>
+            <div class="stat-label">TikTok Followers</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">900+</div>
+            <div class="stat-label">Views per Short</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">30-Day</div>
+            <div class="stat-label">Cookie Window</div>
+        </div>
+    </div>
+
+    <!-- Product Picks -->
+    <h2 class="section-title">My Top Govee Picks for 3D Printing</h2>
+    <p class="section-sub">Tested on my desk, not in a marketing meeting. Every pick here solves a real problem.</p>
+
+    <div class="products">
+        <!-- Product 1: RGBIC Light Bars -->
+        <div class="product-card featured">
+            <span class="product-tag tag-best">🔥 Best Overall</span>
+            <h3 class="product-name">Govee RGBIC Light Bars</h3>
+            <p class="product-desc">The single best upgrade for your 3D printer desk. RGBIC means each bar can show multiple colors at once — set warm white for working, cool white for inspecting prints, and ambient color for the vibes. Music sync is surprisingly useful for monitoring prints from across the room.</p>
+            <div class="product-specs">
+                <div class="spec">
+                    <span class="spec-label">Length</span>
+                    <span class="spec-value">2 x 14.8"</span>
+                </div>
+                <div class="spec">
+                    <span class="spec-label">Colors</span>
+                    <span class="spec-value">16M+ RGBIC</span>
+                </div>
+                <div class="spec">
+                    <span class="spec-label">Control</span>
+                    <span class="spec-value">App + Voice</span>
+                </div>
+                <div class="spec">
+                    <span class="spec-label">Mount</span>
+                    <span class="spec-value">Magnetic + Adhesive</span>
+                </div>
+            </div>
+            <div class="product-why">
+                <strong>Why I picked this:</strong> Magnetic mount means you can stick them to the side of your printer frame and reposition them anytime. The app lets you set schedules — lights turn on when a print starts, dim when you go to bed. Way better than a desk lamp for checking layer adhesion.
+            </div>
+            <a href="https://govee.sjv.io/2RdmXQ" class="product-cta" rel="nofollow sponsored">
+                Check Price on Govee
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+
+        <!-- Product 2: LED Strip Light -->
+        <div class="product-card">
+            <span class="product-tag tag-value">💰 Best Value</span>
+            <h3 class="product-name">Govee LED Strip Light (32.8ft)</h3>
+            <p class="product-desc">The classic. Run this under your desk, behind your printer, or along the wall for even wash lighting. At $15-20 for 32 feet, it's the cheapest way to dramatically improve your workspace lighting. Bonus: the app-controlled white temperature is perfect for matching filament colors accurately.</p>
+            <div class="product-specs">
+                <div class="spec">
+                    <span class="spec-label">Length</span>
+                    <span class="spec-value">32.8 ft</span>
+                </div>
+                <div class="spec">
+                    <span class="spec-label">Colors</span>
+                    <span class="spec-value">16M RGB</span>
+                </div>
+                <div class="spec">
+                    <span class="spec-label">Control</span>
+                    <span class="spec-value">App + Remote</span>
+                </div>
+                <div class="spec">
+                    <span class="spec-label">Price</span>
+                    <span class="spec-value">~$15-20</span>
+                </div>
+            </div>
+            <div class="product-why">
+                <strong>Why I picked this:</strong> You can't beat the price-per-foot. I ran mine along the underside of my shelf right above the printer — it eliminates shadows on the build plate and makes timelapses look 10x better. Warm white for working, dim blue for overnight monitoring.
+            </div>
+            <a href="https://govee.sjv.io/2RdmXQ" class="product-cta" rel="nofollow sponsored">
+                Check Price on Govee
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+
+        <!-- Product 3: Thermo-Hygrometer -->
+        <div class="product-card">
+            <span class="product-tag tag-compact">🎯 Printer Must-Have</span>
+            <h3 class="product-name">Govee Thermo-Hygrometer (WiFi)</h3>
+            <p class="product-desc">This isn't a light — it's the accessory most 3D printing setups are missing. ABS, ASA, and PETG are all humidity-sensitive. This WiFi thermo-hygrometer sends alerts to your phone when humidity spikes, so you know when your filament is absorbing moisture. Game changer for print quality.</p>
+            <div class="product-specs">
+                <div class="spec">
+                    <span class="spec-label">Range</span>
+                    <span class="spec-value">-4°F to 140°F</span>
+                </div>
+                <div class="spec">
+                    <span class="spec-label">Accuracy</span>
+                    <span class="spec-value">±0.54°F / ±2% RH</span>
+                </div>
+                <div class="spec">
+                    <span class="spec-label">Connectivity</span>
+                    <span class="spec-value">WiFi + BT</span>
+                </div>
+                <div class="spec">
+                    <span class="spec-label">Price</span>
+                    <span class="spec-value">~$15-20</span>
+                </div>
+            </div>
+            <div class="product-why">
+                <strong>Why I picked this:</strong> I started tracking humidity near my printers and found my basement workspace was at 65% RH — way too high for nylon and PETG. This $15 sensor told me what my failing prints couldn't. App alerts when humidity crosses your threshold. Govee makes the cheapest accurate WiFi monitor out there.
+            </div>
+            <a href="https://govee.sjv.io/2RdmXQ" class="product-cta" rel="nofollow sponsored">
+                Check Price on Govee
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+
+        <!-- Product 4: Desk Lamp -->
+        <div class="product-card">
+            <span class="product-tag tag-compact">💡 Precision Lighting</span>
+            <h3 class="product-name">Govee Smart Desk Lamp</h3>
+            <p class="product-desc">When you need to inspect layer lines, stringing, or first-layer adhesion up close, a light strip won't cut it. This desk lamp gives you adjustable color temperature (2700K-6500K) and brightness — daylight for detail inspection, warm for long work sessions without eye strain.</p>
+            <div class="product-specs">
+                <div class="spec">
+                    <span class="spec-label">Color Temp</span>
+                    <span class="spec-value">2700K-6500K</span>
+                </div>
+                <div class="spec">
+                    <span class="spec-label">Brightness</span>
+                    <span class="spec-value">Dimmable</span>
+                </div>
+                <div class="spec">
+                    <span class="spec-label">Control</span>
+                    <span class="spec-value">App + Touch</span>
+                </div>
+                <div class="spec">
+                    <span class="spec-label">CRI</span>
+                    <span class="spec-value">80+</span>
+                </div>
+            </div>
+            <div class="product-why">
+                <strong>Why I picked this:</strong> I use the daylight mode (6500K) specifically for checking first layers. Warm light hides imperfections; daylight shows you every string and gap. Being able to switch from the app while my hands are full is underrated.
+            </div>
+            <a href="https://govee.sjv.io/2Rdm.io/2RdmXQ" class="product-cta" rel="nofollow sponsored">
+                Check Price on Govee
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Use Cases -->
+    <div class="use-cases">
+        <h2 class="section-title">How I Use Govee Lights With My Printers</h2>
+        <p class="section-sub">Real setups, not staged photoshoots.</p>
+        <div class="use-case-grid">
+            <div class="use-case">
+                <div class="use-case-icon">🖨️</div>
+                <h3>Print Monitoring Station</h3>
+                <p>Warm white LED strip under the shelf, thermo-hygrometer next to the printer. Lights auto-on at print start. If humidity spikes above 50%, I get a phone alert. No more failed prints from damp filament.</p>
+            </div>
+            <div class="use-case">
+                <div class="use-case-icon">🎬</div>
+                <h3>Timelapse Lighting</h3>
+                <p>Consistent, diffused lighting from light bars makes timelapses pop. Set them to 4000K neutral white, crank the brightness, and your TikTok/YouTube timelapses go from shaky phone footage to clean, professional content.</p>
+            </div>
+            <div class="use-case">
+                <div class="use-case-icon">🌙</div>
+                <h3>Overnight Print Alerts</h3>
+                <p>Light bars set to dim blue during overnight prints — visible from across the room so you can check on a print without turning on the main lights. Thermo-hygrometer alerts you if conditions change.</p>
+            </div>
+            <div class="use-case">
+                <div class="use-case-icon">🎨</div>
+                <h3>Filament Color Matching</h3>
+                <p>Daylight mode on the desk lamp (6500K) for accurate color rendering when you're matching filament colors or photographing finished prints. No more guessing if that "red" filament is actually more orange.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Govee -->
+    <div class="why-section">
+        <h2>Why Govee Over Other Smart Lights?</h2>
+        <div class="why-grid">
+            <div class="why-item">
+                <div class="why-icon">💰</div>
+                <div class="why-text">
+                    <h4>Half the Price of Philips Hue</h4>
+                    <p>Govee gives you RGBIC (multi-color per device) for less than Hue charges for single-color strips. More features, less money.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-icon">📱</div>
+                <div class="why-text">
+                    <h4>Best App in the Category</h4>
+                    <p>Scheduling, scenes, music sync, group control — the Govee app does things Hue and Nanoleaf charge extra for.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-icon">🔧</div>
+                <div class="why-text">
+                    <h4>Magnetic Mounts = Perfect for 3D Printers</h4>
+                    <p>Light bars stick to your printer frame and reposition in seconds. No drilling, no permanent mounting, no damage.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-icon">🌡️</div>
+                <div class="why-text">
+                    <h4>Only Brand That Does Both Lights + Sensors</h4>
+                    <p>One app controls your lighting AND monitors your print environment. No other brand does both this well at this price.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="cta-bottom">
+        <h2>Ready to Upgrade Your Setup?</h2>
+        <p>Every product on this page is something I use or would use. Click through to check current pricing on Govee.</p>
+        <a href="https://govee.sjv.io/2RdmXQ" class="cta-main" rel="nofollow sponsored">
+            Shop All Govee Products
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+
+    <!-- Disclosure -->
+    <div class="disclosure">
+        <p>Affiliate Disclosure: Some links on this page are affiliate links. If you purchase through them, I may earn a commission at no extra cost to you. I only recommend products I've tested or would use myself. All opinions are honest and unbiased.</p>
+        <p style="margin-top: 8px;">© 2025 Matt Gale · galeops.xyz · Follow me on <a href="https://tiktok.com/@topgmatt" style="color: var(--govee-blue);">TikTok</a> · <a href="https://x.com/Mattjgale87" style="color: var(--govee-blue);">X</a> · <a href="https://youtube.com/@3dprintermatt" style="color: var(--govee-blue);">YouTube</a></p>
+    </div>
+</div>
+
+</body>
+</html>
