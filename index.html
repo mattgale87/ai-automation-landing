@@ -23,6 +23,9 @@
     nav .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; }
     nav .cta-btn { background: var(--primary); color: #fff; padding: 10px 24px; border-radius: var(--radius); text-decoration: none; font-weight: 600; transition: opacity .2s; }
     nav .cta-btn:hover { opacity: .85; }
+    nav .nav-links { display: flex; align-items: center; gap: 20px; }
+    nav .nav-link { color: var(--text); text-decoration: none; font-weight: 500; opacity: .8; transition: opacity .2s; }
+    nav .nav-link:hover { opacity: 1; }
 
     /* HERO */
     .hero { padding: 80px 0 60px; text-align: center; }
@@ -81,7 +84,10 @@
   <div class="container">
     <nav>
       <a href="#" class="logo">Matt Gale | AI Automation</a>
-      <a href="https://calendly.com/matt-galeops/15min" class="cta-btn" target="_blank" rel="noopener">Book Free Consultation</a>
+      <div class="nav-links">
+        <a class="nav-link" href="/govee/">🔋 Govee Deals</a>
+        <a href="https://calendly.com/matt-galeops/15min" class="cta-btn" target="_blank" rel="noopener">Book Free Consultation</a>
+      </div>
     </nav>
   </div>
 
@@ -195,6 +201,7 @@
     <footer>
       <p>© 2026 Matt Gale - AI Automation Consulting. All rights reserved.</p>
       <p style="margin-top: 8px;">Based in Minnesota | Remote Worldwide</p>
+      <p style="margin-top: 8px;"><a href="/govee/" style="color: var(--primary); text-decoration: none;">🔋 Govee Smart Lights for 3D Printing</a></p>
     </footer>
   </div>
 </body>
