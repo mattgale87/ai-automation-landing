@@ -1,6 +1,20 @@
 [build]
   publish = "."
 
+# Host-based redirects for subdomain landing pages
+[[redirects]]
+  from = "https://govee.galeops.xyz/*"
+  to = "/govee/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://setup.galeops.xyz/*"
+  to = "/setup/:splat"
+  status = 200
+  force = true
+
+# Path-based redirects for clean URLs
 [[redirects]]
   from = "/govee"
   to = "/govee/"

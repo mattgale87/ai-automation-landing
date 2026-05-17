@@ -1,2 +1,3 @@
-/govee/* /govee/index.html 200
-/setup/* /setup/index.html 200
+# Host-based routing: subdomains to their respective pages
+https://govee.galeops.xyz/* /govee/:splat 200!
+https://setup.galeops.xyz/* /setup/:splat 200!
