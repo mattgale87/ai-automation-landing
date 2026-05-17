@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recommended Tools & Deals | Matt Gale - AI Automation</title>
+  <meta name="description" content="The tools I use and recommend for AI automation, productivity, and 3D printing. Exclusive deals and affiliate offers.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #6366f1;
+      --bg: #f8fafc;
+      --text: #1e293b;
+      --accent: #8b5cf6;
+      --radius: 12px;
+      --max-w: 1100px;
+    }
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    /* NAV */
+    nav { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; }
+    nav .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+    nav .nav-links { display: flex; gap: 24px; align-items: center; }
+    nav .nav-links a { color: var(--text); text-decoration: none; font-weight: 600; font-size: .95rem; }
+    nav .nav-links a:hover { color: var(--primary); }
+    nav .cta-btn { background: var(--primary); color: #fff; padding: 10px 24px; border-radius: var(--radius); text-decoration: none; font-weight: 600; transition: opacity .2s; }
+    nav .cta-btn:hover { opacity: .85; }
+
+    /* HERO */
+    .hero { padding: 60px 0 40px; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.15; margin-bottom: 16px; }
+    .hero p { font-size: 1.15rem; max-width: 650px; margin: 0 auto; opacity: .8; }
+
+    /* CATEGORY NAV */
+    .cat-nav { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; padding: 32px 0; }
+    .cat-nav a { padding: 8px 20px; border-radius: 999px; background: #fff; border: 2px solid #e2e8f0; color: var(--text); text-decoration: none; font-weight: 600; font-size: .9rem; transition: all .2s; }
+    .cat-nav a:hover, .cat-nav a.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* DEALS GRID */
+    .deals-section { padding: 20px 0 60px; }
+    .deals-section h2 { font-size: 1.6rem; margin-bottom: 24px; }
+    .deals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+
+    .deal-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.06);
+      transition: transform .2s, box-shadow .2s;
+      position: relative;
+    }
+    .deal-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.1); }
+    .deal-card .badge { position: absolute; top: 16px; right: 16px; background: #10b981; color: #fff; font-size: .75rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+    .deal-card .badge.hot { background: #ef4444; }
+    .deal-card .badge.new { background: #3b82f6; }
+    .deal-card .icon { font-size: 2.2rem; margin-bottom: 12px; }
+    .deal-card h3 { font-size: 1.15rem; margin-bottom: 6px; }
+    .deal-card .subtitle { font-size: .9rem; color: #64748b; margin-bottom: 12px; }
+    .deal-card .price { font-size: 1.3rem; font-weight: 800; color: var(--primary); margin-bottom: 12px; }
+    .deal-card .price .old { text-decoration: line-through; color: #94a3b8; font-weight: 400; font-size: .9rem; margin-left: 8px; }
+    .deal-card p { font-size: .92rem; opacity: .85; margin-bottom: 16px; }
+    .deal-card .features { list-style: none; margin-bottom: 16px; }
+    .deal-card .features li { padding: 4px 0; font-size: .88rem; }
+    .deal-card .features li::before { content: "✓ "; color: var(--primary); font-weight: 700; }
+    .deal-btn { display: block; background: var(--primary); color: #fff; padding: 12px; border-radius: var(--radius); text-decoration: none; font-weight: 700; text-align: center; transition: opacity .2s; }
+    .deal-btn:hover { opacity: .85; }
+
+    /* CATEGORY */
+    .category-divider { padding: 48px 0 8px; border-bottom: 3px solid var(--primary); margin-bottom: 32px; }
+    .category-divider h2 { font-size: 1.8rem; }
+    .category-divider p { opacity: .7; margin-top: 4px; }
+
+    /* CTA */
+    .cta-section { padding: 60px 0; text-align: center; background: var(--primary); color: #fff; border-radius: var(--radius); margin: 40px auto; max-width: var(--max-w); }
+    .cta-section h2 { font-size: 2rem; margin-bottom: 12px; }
+    .cta-section p { margin-bottom: 24px; opacity: .9; }
+    .cta-section a { background: #fff; color: var(--primary); padding: 14px 36px; border-radius: var(--radius); text-decoration: none; font-weight: 700; font-size: 1.05rem; }
+
+    /* DISCLOSURE */
+    .disclosure { background: #f1f5f9; border-radius: var(--radius); padding: 20px 24px; margin: 32px 0; font-size: .85rem; color: #64748b; line-height: 1.7; }
+    .disclosure strong { color: var(--text); }
+
+    /* FOOTER */
+    footer { padding: 40px 0; text-align: center; opacity: .6; font-size: .9rem; }
+    footer a { color: var(--primary); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      nav { flex-direction: column; gap: 12px; }
+      .deals-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="/" class="logo">Matt Gale | AI Automation</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/recommended-tools">Recommended Tools</a>
+        <a href="https://calendly.com/matt-galeops/15min" class="cta-btn" target="_blank" rel="noopener">Book Free Consultation</a>
+      </div>
+    </nav>
+  </>
+
+  <div class="container">
+    <section class="hero">
+      <h1>Tools I Use & Recommend</h1>
+      <p>Every tool here is something I've personally tested and trust. These are the same platforms I use to automate businesses. Some links earn me a small commission at no extra cost to you.</p>
+    </section>
+  </div>
+
+  <div class="container">
+    <div class="cat-nav">
+      <a href="#automation" class="active">🤖 Automation</a>
+      <a href="#ai-tools">🧠 AI Tools</a>
+      <a href="#3d-printing">🖨️ 3D Printing</a>
+      <a href="#productivity">⚡ Productivity</a>
+      <a href="#deals">🔥 Hot Deals</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- AUTOMATION CATEGORY -->
+    <div class="category-divider" id="automation">
+      <h2>🤖 Automation Platforms</h2>
+      <p>The backbone of every workflow I build</p>
+    </div>
+
+    <div class="deals-grid">
+      <div class="deal-card">
+        <span class="badge hot">Most Used</span>
+        <div class="icon">🔗</div>
+        <h3>Make.com</h3>
+        <div class="subtitle">Visual automation platform</div>
+        <div class="price">Free plan available</div>
+        <p>The tool I use most for client automations. More powerful branching, error handling, and data manipulation than Zapier — at a fraction of the cost.</p>
+        <ul class="features">
+          <li>Unlimited scenarios on free plan</li>
+          <li>1,000+ integrations</li>
+          <li>Visual scenario builder</li>
+          <li>Better error handling than Zapier</li>
+        </ul>
+        <a href="https://www.make.com/en/register?bonus=matthewgale4750" class="deal-btn" target="_blank" rel="noopener">Try Make.com Free →</a>
+      </div>
+
+      <div class="deal-card">
+        <span class="badge">Popular</span>
+        <div class="icon">⚡</div>
+        <h3>Zapier</h3>
+        <div class="subtitle">The original no-code automation</div>
+        <div class="price">Free plan available</div>
+        <p>Simpler than Make.com but incredibly reliable. Best for straightforward automations. 7,000+ app connections.</p>
+        <ul class="features">
+          <li>7,000+ integrations</li>
+          <li>Super simple setup</li>
+          <li>Great for beginners</li>
+          <li>Reliable execution</li>
+        </ul>
+        <a href="https://zapier.com/" class="deal-btn" target="_blank" rel="noopener">Try Zapier Free →</a>
+      </div>
+
+      <div class="deal-card">
+        <span class="badge new">New</span>
+        <div class="icon">🤖</div>
+        <h3>n8n</h3>
+        <div class="subtitle">Open-source workflow automation</div>
+        <div class="price">Self-hosted free / $20/mo cloud</div>
+        <p>My go-to for advanced AI agent workflows. Self-host for full control, or use their cloud. Best for AI integrations and custom logic.</p>
+        <ul class="features">
+          <li>Self-hosted option (free)</li>
+          <li>Built-in AI agent nodes</li>
+          <li>Code nodes for custom logic</li>
+          <li>Active community & templates</li>
+        </ul>
+        <a href="https://n8n.io/" class="deal-btn" target="_blank" rel="noopener">Try n8n →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- AI TOOLS CATEGORY -->
+    <div class="category-divider" id="ai-tools">
+      <h2>🧠 AI Tools</h2>
+      <p>AI platforms I use daily for automation and content</p>
+    </div>
+
+    <div class="deals-grid">
+      <div class="deal-card">
+        <span class="badge hot">Essential</span>
+        <div class="icon">💬</div>
+        <h3>ChatGPT Plus</h3>
+        <div class="subtitle">AI assistant by OpenAI</div>
+        <div class="price">$20/mo</div>
+        <p>GPT-4o for research, writing, coding, and analysis. The most versatile AI tool I use daily.</p>
+        <ul class="features">
+          <li>GPT-4o & GPT-4o-mini</li>
+          <li>DALL-E image generation</li>
+          <li>Custom GPTs</li>
+          <li>Advanced data analysis</li>
+        </ul>
+        <a href="https://chat.openai.com/" class="deal-btn" target="_blank" rel="noopener">Try ChatGPT →</a>
+      </div>
+
+      <div class="deal-card">
+        <div class="icon">🎯</div>
+        <h3>Cursor IDE</h3>
+        <div class="subtitle">AI-powered code editor</div>
+        <div class="price">Free plan / $20/mo Pro</div>
+        <p>VS Code with built-in AI. I use this for all automation coding. Fast, smart, and saves hours every week.</p>
+        <ul class="features">
+          <li>AI code completion</li>
+          <li>Natural language edits</li>
+          <li>Built-in terminal AI</li>
+          <li>Works with any language</li>
+        </ul>
+        <a href="https://cursor.sh/" class="deal-btn" target="_blank" rel="noopener">Try Cursor →</a>
+      </div>
+
+      <div class="deal-card">
+        <div class="icon">🎙️</div>
+        <h3>ElevenLabs</h3>
+        <div class="subtitle">AI voice generation</div>
+        <div class="price">Free tier / $5/mo Starter</div>
+        <p>Best-in-class AI voice synthesis. Use it for voiceovers, podcast intros, and automated call systems.</p>
+        <ul class="features">
+          <li>29+ languages</li>
+          <li>Voice cloning</li>
+          <li>API for automation</li>
+          <li>Free tier available</li>
+        </ul>
+        <a href="https://elevenlabs.io/" class="deal-btn" target="_blank" rel="noopener">Try ElevenLabs →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- 3D PRINTING CATEGORY -->
+    <div class="category-divider" id="3d-printing">
+      <h2>🖨️ 3D Printing Deals</h2>
+      <p>Tested and reviewed on my channels</p>
+    </div>
+
+    <div class="deals-grid">
+      <div class="deal-card">
+        <span class="badge hot">Best Seller</span>
+        <div class="icon">🖨️</div>
+        <h3>Govee Smart LED Lights</h3>
+        <div class="subtitle">RGBIC lighting for your workspace</div>
+        <div class="price">From $19.99</div>
+        <p>Smart lighting that syncs with your setup. I use Govee lights in my workshop — great quality at a fraction of the cost of competitors.</p>
+        <ul class="features">
+          <li>RGBIC technology (multiple colors)</li>
+          <li>App & voice control</li>
+          <li>Music sync mode</li>
+          <li>Works with Alexa & Google</li>
+        </ul>
+        <a href="https://govee.sjv.io/2RdmXQ" class="deal-btn" target="_blank" rel="noopener">Shop Govee Deals →</a>
+      </div>
+
+      <div class="deal-card">
+        <div class="icon">🔨</div>
+        <h3>Biqu Glacier Build Plate</h3>
+        <div class="subtitle">The best PEI plate for Bambu printers</div>
+        <div class="price">~$25</div>
+        <p>My go-to build plate for the P2S. Great adhesion, easy release, and the texture leaves a beautiful finish. See my video with 970+ views.</p>
+        <ul class="features">
+          <li>PEI double-sided</li>
+          <li>Textured + smooth surfaces</li>
+          <li>Perfect for Bambu P2S/X1C</li>
+          <li>No glue needed</li>
+        </ul>
+        <a href="https://www.amazon.com/s?k=biqu+glacier+build+plate" class="deal-btn" target="_blank" rel="noopener">Find on Amazon →</a>
+      </div>
+
+      <div class="deal-card">
+        <div class="icon">🎬</div>
+        <h3>3D Printing Content on TikTok</h3>
+        <div class="subtitle">@topgmatt — reviews, tips, deals</div>
+        <div class="price">Free</div>
+        <p>Follow me on TikTok for 3D printing reviews, mod guides, and the best deals I find. Over 5,800 followers and growing.</p>
+        <ul class="features">
+          <li>Printer reviews & mods</li>
+          <li>Deal alerts</li>
+          <li>Print settings tips</li>
+          <li>Behind-the-scenes builds</li>
+        </ul>
+        <a href="https://www.tiktok.com/@topgmatt" class="deal-btn" target="_blank" rel="noopener">Follow @topgmatt →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- PRODUCTIVITY CATEGORY -->
+    <div class="category-divider" id="productivity">
+      <h2>⚡ Productivity & Business</h2>
+      <p>Tools that keep my business running smoothly</p>
+    </div>
+
+    <div class="deals-grid">
+      <div class="deal-card">
+        <span class="badge">Booking</span>
+        <div class="icon">📅</div>
+        <h3>Calendly</h3>
+        <div class="subtitle">Scheduling automation</div>
+        <div class="price">Free plan available</div>
+        <p>What I use for all client bookings. Eliminates the back-and-forth. Integrates with everything.</p>
+        <ul class="features">
+          <li>Free plan for individuals</li>
+          <li>Calendar sync</li>
+          <li>Automated reminders</li>
+          <li>Zapier/Make integration</li>
+        </ul>
+        <a href="https://calendly.com/" class="deal-btn" target="_blank" rel="noopener">Try Calendly Free →</a>
+      </div>
+
+      <div class="deal-card">
+        <div class="icon">📊</div>
+        <h3>Notion</h3>
+        <div class="subtitle">All-in-one workspace</div>
+        <div class="price">Free for individuals</div>
+        <p>My CRM, project tracker, wiki, and client portal — all in Notion. The database views alone are worth it.</p>
+        <ul class="features">
+          <li>Databases & views</li>
+          <li>Team collaboration</li>
+          <li>Templates marketplace</li>
+          <li>API for automation</li>
+        </ul>
+        <a href="https://www.notion.so/" class="deal-btn" target="_blank" rel="noopener">Try Notion Free →</a>
+      </div>
+
+      <div class="deal-card">
+        <div class="icon">📧</div>
+        <h3>Resend</h3>
+        <div class="subtitle">Developer-first email API</div>
+        <div class="price">Free tier / pay-as-you-go</div>
+        <p>What I use for all transactional emails. Way easier than SendGrid. 3,000 free emails/month.</p>
+        <ul class="features">
+          <li>3,000 free emails/mo</li>
+          <li>Beautiful email templates</li>
+          <li>React Email support</li>
+          <li>Simple API</li>
+        </ul>
+        <a href="https://resend.com/" class="deal-btn" target="_blank" rel="noopener">Try Resend →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- HOT DEALS -->
+    <div class="category-divider" id="deals">
+      <h2>🔥 Current Deals & Promos</h2>
+      <p>Limited-time offers I've verified</p>
+    </div>
+
+    <div class="deals-grid">
+      <div class="deal-card">
+        <span class="badge hot">Deal</span>
+        <div class="icon">💡</div>
+        <h3>Govee Smart Lights</h3>
+        <div class="subtitle">Up to 40% off select items</div>
+        <div class="price">From $13.99 <span class="old">$22.99</span></div>
+        <p>Seasonal deals on the best budget smart lighting. Perfect for workshop, gaming setup, or home office.</p>
+        <a href="https://govee.sjv.io/2RdmXQ" class="deal-btn" target="_blank" rel="noopener">Shop Govee Sale →</a>
+      </div>
+
+      <div class="deal-card">
+        <span class="badge new">New</span>
+        <div class="icon">🏪</div>
+        <h3>TikTok Shop Deals</h3>
+        <div class="subtitle">3D printing & tech deals</div>
+        <div class="price">Varies</div>
+        <p>Curated deals on my TikTok Shop — filament, accessories, and tools I actually use and recommend.</p>
+        <a href="https://www.tiktok.com/@topgmatt" class="deal-btn" target="_blank" rel="noopener">Visit TikTok Shop →</a>
+      </div>
+
+      <div class="deal-card">
+        <span class="badge">Free</span>
+        <div class="icon">📋</div>
+        <h3>Free Automation Audit</h3>
+        <div class="subtitle">15-min consultation with Matt</div>
+        <div class="price">$0 <span class="old">$99 value</span></div>
+        <p>Book a free call and I'll show you exactly what can be automated in your business. No pressure, no pitch — just actionable insights.</p>
+        <ul class="features">
+          <li>15-minute video call</li>
+          <li>Workflow analysis</li>
+          <li>ROI estimate</li>
+          <li>No obligation</li>
+        </ul>
+        <a href="https://calendly.com/matt-galeops/15min" class="deal-btn" target="_blank" rel="noopener">Book Free Audit →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="disclosure">
+      <strong>Affiliate Disclosure:</strong> Some links on this page are affiliate links, which means I may earn a small commission if you make a purchase — at no extra cost to you. I only recommend tools I've personally used and trust. Your support helps me keep creating content and building free resources. Thank you!
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="cta-section">
+      <h2>Want a Custom Automation System?</h2>
+      <p>I'll build it for you. Book a free 15-minute consultation and let's talk about what's possible.</p>
+      <a href="https://calendly.com/matt-galeops/15min" target="_blank" rel="noopener">Schedule Your Free Audit</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <footer>
+      <p>© 2026 Matt Gale - AI Automation Consulting. All rights reserved.</p>
+      <p style="margin-top: 8px;"><a href="/">Home</a> · <a href="/recommended-tools">Recommended Tools</a> · Based in Minnesota | Remote Worldwide</p>
+    </footer>
+  </div>
+</body>
+</html>
