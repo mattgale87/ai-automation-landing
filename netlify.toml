@@ -14,6 +14,12 @@
   status = 200
   force = true
 
+[[redirects]]
+  from = "https://snapmaker.galeops.xyz/*"
+  to = "/snapmaker/:splat"
+  status = 200
+  force = true
+
 # Path-based redirects for clean URLs
 [[redirects]]
   from = "/govee"
@@ -23,4 +29,9 @@
 [[redirects]]
   from = "/setup"
   to = "/setup/"
+  status = 301
+
+[[redirects]]
+  from = "/snapmaker"
+  to = "/snapmaker/"
   status = 301
