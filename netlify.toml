@@ -22,6 +22,17 @@
 
 # Path-based redirects for clean URLs
 [[redirects]]
+  from = "https://ghostwriting.galeops.xyz/*"
+  to = "/ghostwriting/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ghostwriting"
+  to = "/ghostwriting/"
+  status = 301
+
+[[redirects]]
   from = "/govee"
   to = "/govee/"
   status = 301

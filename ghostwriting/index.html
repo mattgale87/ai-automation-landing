@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Ghostwriting for Tech Founders | GaleOps</title>
+<meta name="description" content="AI-powered ghostwriting for tech founders, 3D printing creators, and AI consultants. Get 30 days of content in your voice — reviewed in 15 min/week.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --border: #1e1e2a;
+    --text: #e4e4e9;
+    --muted: #8b8b9e;
+    --accent: #6c5ce7;
+    --accent-glow: rgba(108, 92, 231, 0.15);
+    --green: #00b894;
+    --orange: #fdcb6e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  nav {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 60px;
+  }
+  nav .container { display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-weight: 800; font-size: 18px; color: var(--text); text-decoration: none; }
+  .logo span { color: var(--accent); }
+  .nav-cta {
+    background: var(--accent);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* Hero */
+  .hero { text-align: center; padding: 40px 0 80px; }
+  .hero-badge {
+    display: inline-block;
+    background: var(--accent-glow);
+    color: var(--accent);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    border: 1px solid rgba(108, 92, 231, 0.3);
+  }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 .highlight { color: var(--accent); }
+  .hero p {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 36px;
+  }
+  .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-secondary {
+    background: var(--surface);
+    color: var(--text);
+    padding: 14px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    border: 1px solid var(--border);
+  }
+
+  /* Social proof */
+  .social-proof {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 80px;
+    flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-number { font-size: 28px; font-weight: 800; color: var(--text); }
+  .stat-label { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+  /* How it works */
+  .section { margin-bottom: 80px; }
+  .section-label {
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+  .section h2 {
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 800;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .section-subtitle {
+    color: var(--muted);
+    font-size: 17px;
+    max-width: 520px;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .step {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .step-number {
+    width: 32px;
+    height: 32px;
+    background: var(--accent-glow);
+    color: var(--accent);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .step p { font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+  /* Pricing */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .pricing-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+    position: relative;
+  }
+  .pricing-card.featured {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent), 0 20px 60px -20px rgba(108, 92, 231, 0.3);
+  }
+  .pricing-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: #fff;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .pricing-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .pricing-card .price { font-size: 36px; font-weight: 800; margin: 12px 0; }
+  .pricing-card .price span { font-size: 14px; color: var(--muted); font-weight: 500; }
+  .pricing-features { list-style: none; margin: 20px 0 28px; }
+  .pricing-features li {
+    padding: 8px 0;
+    font-size: 14px;
+    color: var(--muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .pricing-features li::before {
+    content: "✓";
+    color: var(--green);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .pricing-card .btn-primary { display: block; text-align: center; }
+
+  /* FAQ */
+  .faq-list { margin-top: 32px; }
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .faq-q {
+    padding: 20px 24px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--surface);
+  }
+  .faq-q::after { content: "+"; color: var(--muted); font-size: 18px; }
+  .faq-a {
+    padding: 0 24px 20px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    display: none;
+  }
+  .faq-item.open .faq-a { display: block; }
+  .faq-item.open .faq-q::after { content: "−"; }
+
+  /* CTA */
+  .cta-section {
+    text-align: center;
+    padding: 80px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 80px;
+  }
+  .cta-section h2 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; margin-bottom: 16px; }
+  .cta-section p { color: var(--muted); margin-bottom: 32px; font-size: 17px; }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 30px 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  footer a { color: var(--text); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .social-proof { gap: 24px; }
+    .hero-buttons { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="https://galeops.xyz" class="logo">Gale<span>Ops</span></a>
+    <a href="#pricing" class="nav-cta">Get Started</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">AI-Powered Ghostwriting</div>
+    <h1>Your voice. <span class="highlight">30 days of content.</span> 15 min/week.</h1>
+    <p>We build an AI clone of your writing style and generate a month of tweets, threads, and posts. You review. We publish. You look like a content machine.</p>
+    <div class="hero-buttons">
+      <a href="#pricing" class="btn-primary">See Pricing</a>
+      <a href="#how-it-works" class="btn-secondary">How It Works</a>
+    </div>
+  </div>
+</section>
+
+<!-- Social Proof -->
+<div class="container">
+  <div class="social-proof">
+    <div class="stat">
+      <div class="stat-number">17+</div>
+      <div class="stat-label">Drafts Generated</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Posts Published</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">48h</div>
+      <div class="stat-label">Setup Time</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">15min</div>
+      <div class="stat-label">Weekly Review</div>
+    </div>
+  </div>
+</div>
+
+<!-- How It Works -->
+<section class="section" id="how-it-works">
+  <div class="container">
+    <div class="section-label">How It Works</div>
+    <h2>From zero to content machine in 3 steps</h2>
+    <p class="section-subtitle">No writers' block. No scheduling stress. No "what do I post today?"</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>We learn your voice</h3>
+        <p>Send us 5-10 of your best posts. Our AI builds a voice profile — tone, patterns, emoji use, the works.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>We generate 30 days of content</h3>
+        <p>Tweets, threads, hot takes, tips — all in your voice. Delivered in a simple dashboard for review.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>You approve. We publish.</h3>
+        <p>15 min/week reviewing drafts. Approve with one click. We auto-post at optimal times.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Who It's For -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Who It's For</div>
+    <h2>Built for people who hate content creation</h2>
+    <p class="section-subtitle">You have the expertise. We handle the posting.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">🎯</div>
+        <h3>Tech Founders</h3>
+        <p>Build your personal brand while building your product. Thought leadership without the time sink.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">🖨️</div>
+        <h3>3D Printing Creators</h3>
+        <p>Reviews, tips, hot takes — consistently posted. Grow your audience while you're at the printer.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">🤖</div>
+        <h3>AI Consultants</h3>
+        <p>Showcase expertise daily. Case studies, insights, takes — all generated from your real experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-label">Pricing</div>
+    <h2>Simple. No hourly billing.</h2>
+    <p class="section-subtitle">One flat fee. 30 days of content. Cancel anytime.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Starter</h3>
+        <div class="price">$797 <span>/mo</span></div>
+        <ul class="pricing-features">
+          <li>15 tweets/month</li>
+          <li>2 threads/month</li>
+          <li>Voice profile setup</li>
+          <li>Weekly review dashboard</li>
+          <li>Auto-posting to X/Twitter</li>
+          <li>Content calendar</li>
+        </ul>
+        <a href="mailto:matt@galeops.xyz?subject=Starter%20Plan%20-%20AI%20Ghostwriting" class="btn-primary">Get Started</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Popular</div>
+        <h3>Growth</h3>
+        <div class="price">$1,497 <span>/mo</span></div>
+        <ul class="pricing-features">
+          <li>30 tweets/month</li>
+          <li>4 threads/month</li>
+          <li>Voice profile + monthly refresh</li>
+          <li>Priority review dashboard</li>
+          <li>Auto-posting to X + LinkedIn</li>
+          <li>Trending topic injection</li>
+          <li>Monthly performance report</li>
+        </ul>
+        <a href="mailto:matt@galeops.xyz?subject=Growth%20Plan%20-%20AI%20Ghostwriting" class="btn-primary">Get Started</a>
+      </div>
+      <div class="pricing-card">
+        <h3>Scale</h3>
+        <div class="price">$2,497 <span>/mo</span></div>
+        <ul class="pricing-features">
+          <li>60 tweets/month</li>
+          <li>8 threads/month</li>
+          <li>Multi-platform (X, LinkedIn, Threads)</li>
+          <li>Dedicated account manager</li>
+          <li>Custom content pillars</li>
+          <li>Engagement hooks + CTAs</li>
+          <li>Bi-weekly strategy calls</li>
+        </ul>
+        <a href="mailto:matt@galeops.xyz?subject=Scale%20Plan%20-%20AI%20Ghostwriting" class="btn-primary">Get Started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2>Questions? Answered.</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">How do you capture my voice accurately?</div>
+        <div class="faq-a">We analyze your best-performing posts — tone, sentence structure, emoji patterns, hooks, CTAs. The AI builds a voice profile that matches your style, not a generic "professional" tone. Most clients say the drafts sound like them on a good day.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I don't like a draft?</div>
+        <div class="faq-a">Edit it directly in the dashboard or reject it with a note. The AI learns from your edits. After the first week, draft approval rates are typically 80%+.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I have to post everything you generate?</div>
+        <div class="faq-a">No. You approve every single post. Nothing goes live without your green light. 15 min/week is all it takes to review a month's content.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What platforms do you support?</div>
+        <div class="faq-a">X/Twitter is fully supported. LinkedIn and Threads are available on Growth and Scale plans. We're adding more platforms based on client demand.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is this just ChatGPT with a prompt?</div>
+        <div class="faq-a">No. We use a custom pipeline: voice profiling → topic engine → trending injection → draft generation → human review → auto-posting. The voice model is trained on YOUR content, not a generic template.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What's the commitment?</div>
+        <div class="faq-a">Month-to-month. Cancel anytime. Most clients stay because the ROI is obvious — consistent content drives followers, leads, and deals.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to become a content machine?</h2>
+    <p>Get your first 30 days of AI-generated content in your voice. Setup takes 48 hours.</p>
+    <a href="mailto:matt@galeops.xyz?subject=AI%20Ghostwriting%20-%20Let's%20Talk" class="btn-primary">Start Now — $797/mo</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2026 <a href="https://galeops.xyz">GaleOps</a> · AI Ghostwriting for Tech Creators · <a href="mailto:matt@galeops.xyz">matt@galeops.xyz</a></p>
+    <p style="margin-top:8px;font-size:12px;">Also check out our <a href="https://govee.galeops.xyz">Govee deals</a> and <a href="https://snapmaker.galeops.xyz">Snapmaker landing page</a>.</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      q.parentElement.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>
