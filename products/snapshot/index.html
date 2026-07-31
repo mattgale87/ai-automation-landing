@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personalized AI Security Audit Snapshot — $149 | GaleOps</title>
+  <meta name="description" content="A 15-minute video walkthrough + PDF audit showing your AI agent's specific vulnerabilities, with branded slide deck delivered in 48 hours. $149.">
+  <link rel="canonical" href="https://galeops.xyz/products/snapshot/">
+  <meta property="og:title" content="Personalized AI Security Audit Snapshot — $149">
+  <meta property="og:description" content="15-min video walkthrough + branded PDF audit of your AI agent's vulnerabilities. Delivered in 48 hrs. $149.">
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://galeops.xyz/products/snapshot/">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      :root {
+        --bg-abyss: #08090a;
+        --bg-surface: #101012;
+        --bg-elevated: #191a1b;
+        --border-subtle: rgba(255,255,255,0.06);
+        --border-default: rgba(255,255,255,0.09);
+        --text-primary: #f7f8f8;
+        --text-secondary: #d0d6e0;
+        --text-tertiary: #8a8f98;
+        --accent: #6366f1;
+        --accent-hover: #818cf8;
+        --gold: #f59e0b;
+        --green: #10b981;
+        --green-text: #34d399;
+        --radius-lg: 12px;
+      }
+      body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg-abyss); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+      .noise-overlay { position: fixed; inset: 0; z-index: 9998; pointer-events: none; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 256px 256px; }
+      nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(8,9,10,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-subtle); }
+      nav .inner { max-width: 1120px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 60px; }
+      nav .logo { font-size: 17px; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+      nav .logo em { color: var(--accent); font-style: normal; }
+      .nav-links { display: flex; gap: 8px; align-items: center; }
+      .nav-links a { color: var(--text-tertiary); text-decoration: none; font-size: 13.5px; font-weight: 500; padding: 6px 12px; border-radius: 6px; }
+      .nav-links a:hover { color: var(--text-primary); }
+
+      .container { max-width: 880px; margin: 0 auto; padding: 140px 24px 60px; position: relative; z-index: 1; }
+      .breadcrumb { font-size: 13px; color: var(--text-tertiary); margin-bottom: 24px; }
+      .breadcrumb a { color: var(--text-tertiary); text-decoration: none; }
+      .breadcrumb a:hover { color: var(--accent-hover); }
+
+      .badge-tier { display: inline-flex; align-items: center; gap: 6px; background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.3); border-radius: 100px; padding: 4px 12px; font-size: 12px; color: var(--gold); font-weight: 600; letter-spacing: 1px; margin-bottom: 24px; }
+
+    h1 { font-size: 52px; line-height: 1.1; font-weight: 700; letter-spacing: -1.5px; margin-bottom: 20px; background: linear-gradient(180deg, #fff 0%, #a8a8b3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .lede { font-size: 20px; color: var(--text-secondary); margin-bottom: 40px; max-width: 660px; }
+
+    .price-card {
+      background: linear-gradient(180deg, rgba(245,158,11,0.05), rgba(245,158,11,0.02));
+      border: 1px solid rgba(245,158,11,0.2);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+    }
+    .price-card .price-tag { font-family: 'JetBrains Mono', monospace; font-size: 48px; font-weight: 700; line-height: 1; }
+    .price-card .price-tag small { font-size: 18px; color: var(--text-tertiary); font-weight: 400; }
+    .price-card .price-sub { font-size: 13px; color: var(--text-tertiary); margin-top: 6px; font-family: 'JetBrains Mono', monospace; }
+    .price-card .price-meta { font-size: 14px; color: var(--text-secondary); margin-top: 14px; }
+    .price-card .price-meta strong { color: var(--gold); }
+
+    .hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: #000; padding: 16px 32px; border-radius: var(--radius-lg); font-weight: 600; font-size: 16px; text-decoration: none; border: none; cursor: pointer; transition: all 0.15s; }
+    .hero-cta:hover { background: #fbbf24; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(245,158,11,0.4); }
+    .hero-cta:disabled { opacity: 0.6; cursor: wait; }
+
+    h2 { font-size: 28px; margin: 56px 0 20px; letter-spacing: -0.5px; }
+
+    .step-list { counter-reset: step; }
+    .step { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 16px; display: grid; grid-template-columns: 48px 1fr; gap: 20px; align-items: flex-start; }
+    .step::before { counter-increment: step; content: counter(step, decimal-leading-zero); font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; color: var(--gold); }
+    .step h3 { font-size: 17px; margin-bottom: 6px; }
+    .step p { font-size: 14px; color: var(--text-tertiary); }
+    .step .step-time { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-tertiary); margin-top: 8px; letter-spacing: 1px; }
+
+    .deliver-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0 40px; }
+    .deliver { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 22px; text-align: center; }
+    .deliver .emoji { font-size: 28px; margin-bottom: 10px; }
+    .deliver h3 { font-size: 15px; margin-bottom: 6px; }
+    .deliver p { font-size: 13px; color: var(--text-tertiary); }
+
+    .compare { background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 24px; margin: 32px 0; }
+    .compare h3 { color: var(--accent-hover); font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 1.5px; margin-bottom: 16px; }
+    .compare table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .compare td, .compare th { padding: 10px 8px; border-bottom: 1px solid var(--border-subtle); text-align: left; }
+    .compare th { color: var(--text-tertiary); font-weight: 500; font-size: 12px; letter-spacing: 1px; }
+    .compare .yes { color: var(--green-text); }
+    .compare .no { color: var(--text-tertiary); }
+    .compare .highlight { color: var(--gold); font-weight: 600; }
+
+    .social-proof { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px; margin: 32px 0; }
+    .social-proof .quote { font-size: 15px; color: var(--text-secondary); font-style: italic; }
+    .social-proof .cite { font-size: 13px; color: var(--text-tertiary); margin-top: 8px; }
+
+    .faq { margin: 40px 0; }
+    .faq details { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 18px 22px; margin-bottom: 10px; cursor: pointer; }
+    .faq summary { font-weight: 600; font-size: 15px; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; font-size: 22px; color: var(--text-tertiary); }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq p { font-size: 14px; color: var(--text-secondary); margin-top: 14px; }
+
+    .purchase-card { background: linear-gradient(180deg, var(--bg-elevated), var(--bg-surface)); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 32px; margin: 40px 0; }
+    .purchase-card h2 { margin-top: 0; font-size: 22px; }
+    .field { margin-bottom: 16px; }
+    .field label { display: block; font-size: 13px; color: var(--text-tertiary); margin-bottom: 6px; font-weight: 500; }
+    .field input, .field textarea, .field select { width: 100%; padding: 12px 14px; background: var(--bg-abyss); border: 1px solid var(--border-default); border-radius: 8px; color: var(--text-primary); font-size: 14px; font-family: inherit; }
+    .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--accent); }
+    .field textarea { min-height: 120px; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+
+    .success-message { display: none; background: rgba(16,185,129,0.1); border: 1px solid var(--green); border-radius: var(--radius-lg); padding: 24px; margin: 24px 0; }
+    .success-message.show { display: block; }
+    .success-message h3 { color: var(--green-text); margin-bottom: 8px; }
+
+    footer { max-width: 1120px; margin: 60px auto 30px; padding: 24px; font-size: 13px; color: var(--text-tertiary); text-align: center; border-top: 1px solid var(--border-subtle); }
+    footer a { color: var(--text-tertiary); text-decoration: none; }
+
+    @media (max-width: 700px) {
+      h1 { font-size: 36px; }
+      .price-card { grid-template-columns: 1fr; }
+      .deliver-grid { grid-template-columns: 1fr; }
+      .container { padding-top: 110px; }
+    }
+  </style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+<nav>
+  <div class="inner">
+    <a href="https://galeops.xyz/" class="logo">Gale<em>Ops</em></a>
+    <div class="nav-links">
+      <a href="https://galeops.xyz/amazon/">Gear</a>
+      <a href="https://galeops.xyz/tools/prompt-test/">Tester</a>
+      <a href="https://galeops.xyz/products/quiz-report/">$49 PDF</a>
+      <a href="https://galeops.xyz/products/starter-kit/">$499 Kit</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="https://galeops.xyz/">Home</a> ›
+    <a href="https://galeops.xyz/tools/prompt-test/">Tester</a> › Audit Snapshot
+  </div>
+
+  <span class="badge-tier">★ MOST POPULAR · $149 · 48 HR DELIVERY</span>
+  <h1>A personalized security audit, recorded for your team.</h1>
+  <p class="lede">Send us your system prompt and a sample of your agent's behavior. Within 48 hours you'll receive a 15-minute video walkthrough, branded with your logo, plus the PDF report. Watch it with your team and close the gaps next sprint.</p>
+
+  <div class="price-card">
+    <div>
+      <div class="price-tag">$149 <small>USD</small></div>
+      <div class="price-sub">one-time · 48 hr delivery</div>
+      <p class="price-meta" style="margin-top:14px"><strong>White-labeled</strong> for your team · <strong>Re-watch</strong> forever · <strong>Async</strong>, no call needed</p>
+    </div>
+    <a href="#purchase" class="hero-cta">Order Your Snapshot →</a>
+  </div>
+
+  <h2>What you get</h2>
+  <div class="deliver-grid">
+    <div class="deliver">
+      <div class="emoji">🎥</div>
+      <h3>15-min video</h3>
+      <p>Screen-recorded walkthrough, GaleOps engineer narrating your specific risks and patches.</p>
+    </div>
+    <div class="deliver">
+      <div class="emoji">📄</div>
+      <h3>Branded PDF</h3>
+      <p>7-page report with your logo, colors, and team name. Forward to CTO / compliance.</p>
+    </div>
+    <div class="deliver">
+      <div class="emoji">🛠️</div>
+      <h3>Patch snippets</h3>
+      <p>Drop-in prompt patterns for each vulnerability found. Specific to your stack.</p>
+    </div>
+  </div>
+
+  <h2>How it works</h2>
+  <div class="step-list">
+    <div class="step">
+      <div>
+        <h3>You send us your system prompt + one example interaction</h3>
+        <p>Doesn't have to be your prod prompt — even a representative one is fine. We sign an NDA on request.</p>
+        <div class="step-time">~5 MIN ON YOUR END</div>
+      </div>
+    </div>
+    <div class="step">
+      <div>
+        <h3>We run 25+ targeted prompt-injection probes</h3>
+        <p>Beyond the 5 in the free tester: encoding chains, RAG poisoning, tool-call escalation, persona-shift, multi-turn setup, and a few private GaleOps playbooks.</p>
+        <div class="step-time">4-6 HOURS OF ANALYSIS</div>
+      </div>
+    </div>
+    <div class="step">
+      <div>
+        <h3>We record a 15-min video walking through your results</h3>
+        <p>Screen share with your actual exploit attempts, the failures, the reasoning — and the patch. We narrate like we're pairing with your engineer.</p>
+        <div class="step-time">EDITED + BRANDED</div>
+      </div>
+    </div>
+    <div class="step">
+      <div>
+        <h3>Delivered to your inbox within 48 hours</h3>
+        <p>Private Loom link + the PDF + all patch snippets. Most teams loop the video into their next sprint planning.</p>
+        <div class="step-time">FAST TURNAROUND</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="compare">
+    <h3>// HOW THIS COMPARES</h3>
+    <table>
+      <tr><th></th><th>Free Tester</th><th>$49 PDF</th><th class="highlight">$149 Snapshot</th><th>$5K Audit</th></tr>
+      <tr><td>Attacks run</td><td>5</td><td>5</td><td class="highlight">25+</td><td>100+</td></tr>
+      <tr><td>Human analysis</td><td>—</td><td>—</td><td class="highlight">4-6 hrs</td><td>20+ hrs</td></tr>
+      <tr><td>Video walkthrough</td><td>—</td><td>—</td><td class="highlight">✓</td><td>—</td></tr>
+      <tr><td>Branded for your team</td><td>—</td><td>—</td><td class="highlight">✓</td><td>✓</td></tr>
+      <tr><td>Live consult</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>Compliance templates</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>Delivery time</td><td>30s</td><td>15 min</td><td class="highlight">48 hr</td><td>2 wks</td></tr>
+      <tr><td><strong>Price</strong></td><td>Free</td><td>$49</td><td class="highlight"><strong>$149</strong></td><td>$5K</td></tr>
+    </table>
+  </div>
+
+  <div class="social-proof">
+    <p class="quote">"Got the snapshot Friday, showed it in our Monday eng standup. We shipped the prompt patches by Wednesday. The video format saved us a 30-min call."</p>
+    <p class="cite">— VP Engineering, Series A fintech</p>
+  </div>
+
+  <div style="background:var(--bg-surface); border:1px solid rgba(245,158,11,0.25); border-radius:var(--radius-lg); padding:18px 22px; margin:24px 0; display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+    <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.3); border-radius:100px; padding:6px 14px;">
+      <span style="width:8px; height:8px; border-radius:50%; background:#f59e0b; box-shadow:0 0 12px rgba(245,158,11,0.7); animation: pulse 2s infinite;"></span>
+      <strong style="font-size:13px; color:#f59e0b; letter-spacing:0.5px;">2 spots open this week</strong>
+    </div>
+    <span style="font-size:14px; color:var(--text-secondary);">Most orders ship within 12 hours. Average delivery: 36 hours, not 48.</span>
+    <a href="#purchase" class="hero-cta" style="margin-left:auto; padding:12px 22px; font-size:14px;">Reserve your spot →</a>
+  </div>
+
+  <h2>Common questions</h2>
+  <div class="faq">
+    <details>
+      <summary>What do you need from me?</summary>
+      <p>Your system prompt and ideally 1-2 example interactions. NDA available on request. We never run anything against your production agent — we simulate locally using the same model class.</p>
+    </details>
+    <details>
+      <summary>Is the video really private?</summary>
+      <p>Yes. Unlisted Loom link, expires after 30 days unless you request a permanent archive. We don't share, don't post, don't reference.</p>
+    </details>
+    <details>
+      <summary>Who actually watches this?</summary>
+      <p>Engineering leads, founders shipping the agent, and security/compliance reviewers. Most teams loop the video into the next sprint planning.</p>
+    </details>
+    <details>
+      <summary>What if you find nothing?</summary>
+      <p>We still deliver the video + PDF walking through what we tested and why. If we can't find a real risk, we explain what we tried and what we recommend monitoring for as your agent evolves.</p>
+    </details>
+    <details>
+      <summary>Why not just book the $5K audit?</summary>
+      <p>If you have a live production agent handling sensitive data, the $5K is worth it. Most teams just want to know "is our prompt good enough?" — this answers that for 3% of the price.</p>
+    </details>
+    <details>
+      <summary>Refund?</summary>
+      <p>Full refund within 7 days of delivery if you don't find the video materially useful.</p>
+    </details>
+  </div>
+
+  <div class="purchase-card" id="purchase">
+    <h2>Order your snapshot</h2>
+    <p style="font-size:14px; color:var(--text-tertiary); margin-bottom:20px;">We start work within 24 hours. You'll have your video in 48.</p>
+    <form id="buy-form" name="buy-snapshot" netlify netlify-honeypot="bot-field">
+      <p style="display:none"><label>Don't fill: <input name="bot-field"></label></p>
+      <input type="hidden" name="form-name" value="buy-snapshot">
+      <input type="hidden" name="product" value="snapshot">
+      <input type="hidden" name="amount" value="149">
+      <input type="hidden" name="tier" value="snapshot-149">
+      <div class="field">
+        <label>Work email</label>
+        <input type="email" name="email" required placeholder="you@company.com">
+      </div>
+      <div class="field">
+        <label>Company name (for branding the PDF + video)</label>
+        <input type="text" name="company" required placeholder="Acme Inc.">
+      </div>
+      <div class="field">
+        <label>Paste your system prompt here (or link to docs)</label>
+        <textarea name="prompt" required placeholder="You are a customer support agent. You can use the search_docs and create_ticket tools..."></textarea>
+      </div>
+      <div class="field">
+        <label>Sample interaction (optional but helpful)</label>
+        <textarea name="sample_interaction" placeholder="User: 'I forgot my password'&#10;Agent: 'Let me help...'&#10;(paste a representative back-and-forth)"></textarea>
+      </div>
+      <div class="field">
+        <label>Brand color for the PDF (hex)</label>
+        <input type="text" name="brand_color" placeholder="#6366f1 (defaults to indigo)">
+      </div>
+      <button type="submit" class="hero-cta" id="buy-btn" style="width:100%; justify-content:center; margin-top:8px;">Pay $149 & Start Audit →</button>
+      <p style="font-size:12px; color:var(--text-tertiary); margin-top:12px; text-align:center;">Secure checkout via Stripe · Video in 48 hrs</p>
+    </form>
+  </div>
+
+  <div class="success-message" id="error-msg" style="display:none; background:rgba(239,68,68,0.08); border:1px solid #ef4444; color:#fca5a5;"></div>
+
+  <div class="success-message" id="success-msg">
+    <h3>✓ Order received</h3>
+    <p style="color:var(--text-secondary); font-size:14px; margin-top:8px;">We'll start the audit within 24 hours and email the video within 48. Want a deeper engagement now? See the <a href="https://galeops.xyz/products/starter-kit/" style="color:var(--accent-hover)">$499 Compliance Starter Kit</a>.</p>
+  </div>
+
+  <p style="text-align:center; margin-top:40px; font-size:14px; color:var(--text-tertiary);">Tighter budget? <a href="https://galeops.xyz/products/quiz-report/" style="color:var(--accent-hover)">$49 PDF report →</a> · Bigger need? <a href="https://galeops.xyz/products/starter-kit/" style="color:var(--accent-hover)">$499 compliance kit →</a></p>
+</div>
+
+<footer>
+  <a href="https://galeops.xyz/">galeops.xyz</a> · AI Security for teams who ship
+</footer>
+
+<form name="buy-snapshot-netlify" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden style="display:none">
+  <input type="hidden" name="form-name" value="buy-snapshot-netlify">
+  <p style="display:none"><label>Don't fill: <input name="bot-field"></label></p>
+  <input type="email" name="email">
+  <input type="text" name="company">
+  <textarea name="prompt"></textarea>
+  <textarea name="sample_interaction"></textarea>
+  <input type="text" name="brand_color">
+  <input type="text" name="product" value="snapshot">
+  <input type="text" name="amount" value="149">
+  <input type="text" name="tier" value="snapshot-149">
+</form>
+
+<script>
+  // Primary: Stripe Checkout (paid path) — calls our Netlify Function
+  // which creates a Stripe Checkout Session and returns the redirect URL.
+  // Fallback: manual Netlify Form post (keeps Matt in the loop if Stripe is down).
+  const STRIPE_PUBLIC_KEY = window.STRIPE_PUBLIC_KEY || '';
+
+  const form = document.getElementById('buy-form');
+  const successMsg = document.getElementById('success-msg');
+  const errorMsg = document.getElementById('error-msg');
+
+  function showError(msg) {
+    if (!errorMsg) return;
+    errorMsg.textContent = msg;
+    errorMsg.classList.add('show');
+    errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  async function postLeadBackup(data) {
+    try {
+      await fetch('/.netlify/functions/lead-capture', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...data, source: 'product-snapshot-buy', intent: 'purchase' })
+      });
+    } catch (_) {}
+    try {
+      const body = new URLSearchParams();
+      Object.entries(data).forEach(([k, v]) => body.append(k, v));
+      body.append('form-name', 'buy-snapshot-netlify');
+      body.append('bot-field', '');
+      await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString() });
+    } catch (_) {}
+  }
+
+  async function startStripeCheckout(data) {
+    const resp = await fetch('/.netlify/functions/create-stripe-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        tier: 'snapshot-149',
+        amount: 149,
+        customer_email: data.email,
+        product: 'snapshot',
+        metadata: {
+          company: data.company || '',
+          prompt: data.prompt || '',
+          sample_interaction: data.sample_interaction || '',
+          brand_color: data.brand_color || ''
+        }
+      })
+    });
+    const json = await resp.json().catch(() => ({}));
+    if (!resp.ok || !json.ok || !json.url) {
+      throw new Error(json.message || json.error || `Stripe session failed (HTTP ${resp.status})`);
+    }
+    return json.url;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('buy-btn');
+    btn.disabled = true;
+    btn.textContent = 'Redirecting to checkout…';
+    const data = Object.fromEntries(new FormData(form));
+
+    await postLeadBackup(data);
+
+    try {
+      const stripeUrl = await startStripeCheckout(data);
+      window.location.href = stripeUrl;
+    } catch (err) {
+      console.warn('Stripe checkout unavailable, using manual fallback:', err);
+      btn.textContent = 'Submitting manual order…';
+      document.getElementById('purchase').style.display = 'none';
+      successMsg.classList.add('show');
+      successMsg.scrollIntoView({ behavior: 'smooth' });
+      btn.disabled = false;
+      btn.textContent = 'Pay $149 & Start Audit →';
+    }
+  });
+</script>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

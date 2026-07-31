@@ -1,0 +1,43 @@
+# Demo Configuration — Test Agency
+# This is the default config used at /demo/test
+
+agency:
+  name: "Acme Digital"
+  tagline: "Full-Service Digital Agency"
+  primary_color: "#6366f1"
+  accent_color: "#818cf8"
+  logo_emoji: "◆"
+
+demo:
+  lead_gen:
+    enabled: true
+    industries:
+      - key: "saas"
+        label: "SaaS / Software"
+        pain_point: "long sales cycles and low trial-to-paid conversion"
+      - key: "ecommerce"
+        label: "eCommerce / DTC"
+        pain_point: "high customer acquisition costs and cart abandonment"
+      - key: "agency"
+        label: "Marketing Agency"
+        pain_point: "scaling client acquisition without scaling headcount"
+      - key: "professional"
+        label: "Professional Services"
+        pain_point: "relying on referrals and slow business development"
+      - key: "healthcare"
+        label: "Healthcare / MedTech"
+        pain_point: "complex buyer committees and long procurement cycles"
+    lead_count: 3
+
+  agent_workflows:
+    enabled: true
+    scenarios:
+      - key: "support"
+        label: "Customer Support Triaging"
+        description: "AI reads incoming emails, categorizes urgency, drafts replies, and routes to the right team."
+      - key: "scheduling"
+        label: "Meeting Booking Flow"
+        description: "AI handles the full scheduling dance — calendar checks, time zones, confirmations, and reminders."
+      - key: "data_entry"
+        label: "CRM Data Entry"
+        description: "AI extracts information from documents and updates CRM records — no copy-paste needed."

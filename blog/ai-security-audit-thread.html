@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Security Audit Thread — X Post Series | GaleOps</title>
+  <meta name="description" content="5-post X thread breaking down AI security audits: what they cover, real findings, pricing, and who needs one.">
+  <link rel="canonical" href="https://galeops.xyz/blog/ai-security-audit-thread.html">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #08090a; --surface: #101012; --text: #f7f8f8; --muted: #8a8f98; --accent: #6366f1; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+    .thread { max-width: 640px; margin: 0 auto; padding: 60px 24px; }
+    .post { background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 28px; margin-bottom: 24px; }
+    .post-num { font-size: 12px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 10px; }
+    .post p { color: #d0d6e0; line-height: 1.6; margin-bottom: 14px; font-size: 16px; }
+    .post ul { margin: 14px 0 14px 20px; color: #d0d6e0; }
+    .post li { margin-bottom: 8px; font-size: 16px; }
+    .post .emoji { font-size: 20px; margin-right: 4px; }
+    .handle { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+    .handle a { color: var(--accent); text-decoration: none; }
+    .copy-btn { display: inline-block; margin-top: 10px; padding: 8px 18px; background: rgba(99,102,241,0.15); color: var(--accent); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; font-size: 12px; font-weight: 500; cursor: pointer; background: none; }
+    .copy-btn:hover { background: rgba(99,102,241,0.25); }
+    h1 { font-size: 28px; font-weight: 600; margin-bottom: 8px; }
+    .subtitle { color: var(--muted); font-size: 15px; margin-bottom: 40px; }
+    @media (max-width: 500px) { .post { padding: 20px; } }
+  </style>
+  <!-- blog-person-schema-v1: Article + Person (Mathew Gale) for GEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Security Audit Thread — X Post Series",
+    "description": "",
+    "url": "https://galeops.xyz/blog/ai-security-audit-thread.html",
+    "image": "https://galeops.xyz/og-image.svg",
+    "datePublished": "2026-07-22",
+    "dateModified": "2026-07-22",
+    "author": {
+      "@type": "Person",
+      "name": "Mathew Gale",
+      "jobTitle": "AI Security Consultant",
+      "url": "https://galeops.xyz",
+      "sameAs": [
+        "https://www.youtube.com/@GaleTech",
+        "https://www.linkedin.com/in/mattgale",
+        "https://x.com/Mattjgale87"
+      ]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "GaleOps",
+      "url": "https://galeops.xyz",
+      "sameAs": [
+        "https://www.youtube.com/@GaleTech",
+        "https://www.linkedin.com/in/mattgale",
+        "https://x.com/Mattjgale87"
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+<div class="thread">
+  <h1>X Thread: AI Security Audit</h1>
+  <p class="subtitle">5 posts ready to publish as a thread on X/Twitter. Click "Copy" on each post.</p>
+  <p class="handle">Post from: <a href="https://x.com/Mattjgale87">@Mattjgale87</a></p>
+
+  <div class="post">
+    <div class="post-num">1/5 — Hook</div>
+    <p><span class="emoji">🔐</span> Your AI agent can delete your entire CRM with one prompt.</p>
+    <p>We tested a customer service bot last month. A simple injected instruction convinced it to wipe contact records — then summarize what it did.</p>
+    <p>This is what an AI security audit catches. Here's what you need to know 🧵</p>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(this.parentElement.innerText)">Copy</button>
+  </div>
+
+  <div class="post">
+    <div class="post-num">2/5 — What is it?</div>
+    <p><span class="emoji">📋</span> An AI security audit is a structured review of your deployed AI systems.</p>
+    <p>It covers 7 areas:</p>
+    <ul>
+      <li>Prompt injection (direct + indirect)</li>
+      <li>Data leakage</li>
+      <li>Tool & agent permissions</li>
+      <li>Output safety</li>
+      <li>Model extraction</li>
+      <li>Compliance gaps (EU AI Act, NIST)</li>
+    </ul>
+    <p>Think of it as a pen test — but for model-specific risks.</p>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(this.parentElement.innerText)">Copy</button>
+  </div>
+
+  <div class="post">
+    <div class="post-num">3/5 — Real findings</div>
+    <p><span class="emoji">⚠️</span> Most common vulnerabilities we find:</p>
+    <ul>
+      <li>Prompt injection → model ignores safety rules</li>
+      <li>Tool access misconfig → agent can delete/modify data</li>
+      <li>System prompt leakage → internal secrets exposed</li>
+      <li>No output filtering → PII in responses</li>
+    </ul>
+    <p>The average audit finds <strong>12-15 actionable issues</strong>.</p>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(this.parentElement.innerText)">Copy</button>
+  </div>
+
+  <div class="post">
+    <div class="post-num">4/5 — Process & pricing</div>
+    <p><span class="emoji">⏱️</span> Timeline & cost:</p>
+    <ul>
+      <li>Standard audit: 3-5 business days</li>
+      <li>Expedited (48hr): available with Red Team tier</li>
+      <li>AI Security Audit: from <strong>$5,000</strong></li>
+      <li>Guardrail Setup: from <strong>$8,000</strong></li>
+      <li>Red Team + Compliance: from <strong>$12,000</strong></li>
+    </ul>
+    <p>Deliverable: board-ready report with findings matrix + remediation roadmap.</p>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(this.parentElement.innerText)">Copy</button>
+  </div>
+
+  <div class="post">
+    <div class="post-num">5/5 — CTA</div>
+    <p><span class="emoji">🎯</span> Who needs this?</p>
+    <ul>
+      <li>Customer-facing chatbots</li>
+      <li>AI agents with API/database access</li>
+      <li>Startups prepping for SOC 2 or enterprise reviews</li>
+      <li>LLMs in HR, legal, finance, healthcare</li>
+    </ul>
+    <p>Not sure if you're exposed? Book a free 15-min consultation → <a href="https://calendly.com/galeops/15min" style="color:#6366f1">calendly.com/galeops/15min</a></p>
+    <p>Or DM me. I'll tell you straight if an audit is worth it.</p>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(this.parentElement.innerText)">Copy</button>
+  </div>
+
+</div>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

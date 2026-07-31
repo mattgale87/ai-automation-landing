@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GaleOps — Redesign Sample (Hero + 3D Showcase)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Bitcount+Grid+Single:wght@100..900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg-abyss: #08090a;
+    --bg-surface: #101012;
+    --bg-elevated: #191a1b;
+    --bg-hover: #222324;
+    --border-subtle: rgba(255,255,255,0.06);
+    --border-default: rgba(255,255,255,0.09);
+    --border-active: rgba(99,102,241,0.5);
+    --text-primary: #f7f8f8;
+    --text-secondary: #d0d6e0;
+    --text-tertiary: #8a8f98;
+    --text-muted: #5a5f66;
+    --accent: #6366f1;
+    --accent-hover: #818cf8;
+    --accent-glow: rgba(99,102,241,0.15);
+    --green: #10b981;
+    --green-text: #34d399;
+    --gold-accent: #c89a45;
+    --gold-glow: rgba(200,154,69,0.18);
+    --font-display: 'DM Sans', 'Inter', system-ui, sans-serif;
+    --font-numeral: 'Bitcount Grid Single', 'DM Sans', system-ui, sans-serif;
+    --radius-sm: 6px; --radius-lg: 12px;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg-abyss); color: var(--text-primary);
+    line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NOTE BANNER (sample only, delete on real page) ── */
+  .sample-banner {
+    position: fixed; bottom: 16px; right: 16px; z-index: 200;
+    background: var(--bg-elevated); border: 1px solid var(--border-active);
+    padding: 10px 16px; border-radius: 8px; font-size: 12px; color: var(--text-tertiary);
+    max-width: 260px;
+  }
+
+  /* ══════════════════ NEW: FULL-SCREEN INTRO SHIMMER ══════════════════
+     Loads on top of everything, crossfades image A → B with a light
+     sweep, then lifts to reveal the page. Runs once per load. ═════════ */
+  .intro-loader {
+    position: fixed; inset: 0; z-index: 500; background: #000; overflow: hidden;
+  }
+  .intro-img {
+    position: absolute; inset: -2%; background-size: cover; background-position: center;
+  }
+  .intro-img--a { background-image: url('stock-tech-abstract.jpg'); opacity: 1; }
+  .intro-img--b { background-image: url('stock-server-room.jpg'); opacity: 0; }
+  .intro-shimmer {
+    position: absolute; top: 0; left: -60%; width: 60%; height: 100%;
+    background: linear-gradient(100deg, transparent 20%, rgba(255,255,255,0.35) 50%, transparent 80%);
+    mix-blend-mode: overlay; pointer-events: none;
+  }
+
+  /* ── NAV (unchanged from live site) ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(8,9,10,0.85); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  nav .inner {
+    max-width: 1120px; margin: 0 auto; padding: 0 32px;
+    display: flex; justify-content: space-between; align-items: center; height: 64px;
+  }
+  nav .logo { font-size: 19px; font-weight: 700; color: var(--text-primary); text-decoration: none; letter-spacing: -0.3px; }
+  nav .logo em { color: var(--accent); font-style: normal; font-weight: 500; }
+  .btn-cta {
+    background: var(--accent); color: #fff !important;
+    padding: 7px 16px; border-radius: var(--radius-sm); font-weight: 600; font-size: 13px;
+    box-shadow: 0 0 0 1px rgba(200,154,69,0.4), 0 0 18px var(--gold-glow);
+    text-decoration: none;
+  }
+
+  /* ── HERO (unchanged copy/layout from live site) ── */
+  .hero {
+    padding: 160px 24px 80px; text-align: center;
+    position: relative; overflow: hidden; background: var(--bg-abyss);
+  }
+  .hero .hero-grid-bg {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero .hero-glow {
+    position: absolute; top: -180px; left: 50%; transform: translateX(-50%);
+    width: 1000px; height: 750px; pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(99,102,241,0.25) 0%, rgba(99,102,241,0.07) 45%, transparent 70%);
+  }
+  .hero > * { position: relative; z-index: 1; }
+  .hero .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent-glow); border: 1px solid var(--border-active);
+    border-radius: 100px; padding: 5px 14px; font-size: 12.5px;
+    color: var(--accent-hover); font-weight: 500; margin-bottom: 28px;
+  }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 8vw, 80px); font-weight: 700;
+    line-height: 1.0; letter-spacing: -2.8px; margin-bottom: 28px;
+    max-width: 880px; margin-left: auto; margin-right: auto;
+  }
+  .hero h1 .highlight {
+    background: linear-gradient(135deg, var(--gold-accent) 0%, var(--accent-hover) 55%, var(--green-text) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero p {
+    font-size: clamp(16px, 2vw, 19px); color: var(--text-tertiary);
+    max-width: 560px; margin: 0 auto 40px; line-height: 1.55;
+  }
+  .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .hero-microcopy { font-size: 12.5px; color: var(--text-muted); margin-top: 10px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 28px; border-radius: var(--radius-sm); font-weight: 600;
+    font-size: 15px; text-decoration: none; transition: all 0.15s; border: none; cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+    box-shadow: 0 0 0 1px rgba(200,154,69,0.4), 0 0 20px var(--gold-glow);
+  }
+  .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--border-default); }
+  .btn-ghost:hover { background: var(--bg-hover); color: var(--text-primary); }
+
+  /* ══════════════════ NEW: 3D FLY-IN SHOWCASE ══════════════════
+     nudot.com.tw's trick: real screenshots mounted in tilted 3D
+     space with soft drop shadows, staggered fly-in, mouse parallax.
+     Built with plain CSS 3D transforms + the GSAP already loaded
+     on the live site (no new dependency). ═══════════════════════ */
+  .fly-showcase {
+    position: relative;
+    padding: 20px 24px 120px;
+    perspective: 1600px;
+    display: flex; justify-content: center;
+  }
+  .fly-stage {
+    position: relative;
+    width: 100%; max-width: 1200px; height: 480px;
+    transform-style: preserve-3d;
+  }
+  .fly-card {
+    position: absolute;
+    border-radius: 16px;
+    opacity: 0;
+  }
+  .fly-card-inner {
+    width: 100%; height: 100%;
+    border-radius: 16px; overflow: hidden;
+    box-shadow: 0 30px 70px -20px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.08);
+    transition: transform 0.4s ease-out;
+    transform-style: preserve-3d;
+  }
+  .fly-card-bg { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .fly-card-label {
+    position: absolute; left: 14px; top: 12px; z-index: 3;
+    font-size: 12px; font-weight: 600; color: #fff;
+    background: rgba(0,0,0,0.55); backdrop-filter: blur(6px);
+    padding: 4px 10px; border-radius: 100px; letter-spacing: 0.2px;
+  }
+  /* the floating "device" mockup composited on top of the stock photo — nudot's laptop-on-marble trick, without needing an actual laptop asset */
+  .fly-card-mock {
+    position: absolute; left: 10%; bottom: 8%; width: 78%; height: 58%;
+    background: #0b0c0d; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 24px 50px -12px rgba(0,0,0,0.75), 0 0 0 1px rgba(255,255,255,0.1);
+    z-index: 2;
+  }
+  .mock-bar {
+    height: 18px; background: #17181a; display: flex; align-items: center; gap: 4px; padding: 0 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .mock-bar span { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.22); }
+  .mock-shot { width: 100%; height: calc(100% - 18px); object-fit: cover; display: block; }
+
+  .fly-card--1 { width: 350px; height: 410px; left: 2%;  top: 40px; }
+  .fly-card--2 { width: 410px; height: 460px; left: 50%; top: 0;     margin-left: -205px; z-index: 3; }
+  .fly-card--3 { width: 350px; height: 410px; right: 2%; top: 40px; }
+
+  @media (max-width: 860px) {
+    .fly-stage { height: 300px; }
+    .fly-card--1, .fly-card--3 { width: 200px; height: 250px; }
+    .fly-card--2 { width: 230px; height: 280px; margin-left: -115px; }
+    .fly-card-label { font-size: 10px; padding: 3px 8px; }
+  }
+
+  /* ── filler so there's room to scroll and watch the 3D motion continue (stand-in for the rest of the real page) ── */
+  .scroll-filler {
+    max-width: 640px; margin: 0 auto; padding: 40px 24px 260px;
+    text-align: center; color: var(--text-muted); font-size: 14px;
+  }
+</style>
+</head>
+<body>
+
+<div class="intro-loader" id="introLoader" aria-hidden="true">
+  <div class="intro-img intro-img--a"></div>
+  <div class="intro-img intro-img--b"></div>
+  <div class="intro-shimmer" id="introShimmer"></div>
+</div>
+
+<nav>
+  <div class="inner">
+    <a href="/" class="logo">Gale<em>Ops</em></a>
+    <a href="#" class="btn-cta">Book Free Audit →</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="badge"><span class="badge-dot"></span> Now accepting new clients — June 2026</div>
+  <h1>Secure AI. <span class="highlight">Automated Business.</span></h1>
+  <p>I break AI systems before attackers do — then build the agents that run your business on autopilot. Security and automation, from the same person who ships both.</p>
+  <div class="hero-buttons">
+    <a href="#" class="btn btn-primary">Book a Free 15-Min Audit →</a>
+    <a href="#" class="btn btn-ghost">See the Case Study</a>
+  </div>
+  <p class="hero-microcopy">Free 15-min consultation · No commitment · Results within days</p>
+</section>
+
+<!-- ══ NEW SECTION ══ -->
+<section class="fly-showcase">
+  <div class="fly-stage" id="flyStage">
+    <div class="fly-card fly-card--1" id="card1">
+      <div class="fly-card-inner">
+        <img class="fly-card-bg" src="stock-security-lock.jpg" alt="">
+        <div class="fly-card-label">AI Security Audit</div>
+        <div class="fly-card-mock">
+          <div class="mock-bar"><span></span><span></span><span></span></div>
+          <img class="mock-shot" src="thumbnail-ai-security.jpg" alt="AI security audit report">
+        </div>
+      </div>
+    </div>
+    <div class="fly-card fly-card--2" id="card2">
+      <div class="fly-card-inner">
+        <img class="fly-card-bg" src="stock-datacenter.jpg" alt="">
+        <div class="fly-card-label">Live VDP Report</div>
+        <div class="fly-card-mock">
+          <div class="mock-bar"><span></span><span></span><span></span></div>
+          <img class="mock-shot" src="thumbnail-khan-vdp.png" alt="Vulnerability disclosure report">
+        </div>
+      </div>
+    </div>
+    <div class="fly-card fly-card--3" id="card3">
+      <div class="fly-card-inner">
+        <img class="fly-card-bg" src="stock-circuit-board.jpg" alt="">
+        <div class="fly-card-label">8-Model Red Team</div>
+        <div class="fly-card-mock">
+          <div class="mock-bar"><span></span><span></span><span></span></div>
+          <img class="mock-shot" src="thumbnail-8-models.png" alt="8 model red-team comparison">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="scroll-filler">↓ scroll — the cards keep tilting through here, standing in for the rest of the real page ↓</div>
+
+<div class="sample-banner">Sample: full-screen shimmer intro on load, then the 3D cards fly in AND keep rotating as you scroll. Move mouse over them too.</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ── Intro shimmer: image A holds, light sweeps across, crossfades to image B, then lifts ──
+  document.body.style.overflow = 'hidden';
+  var introTl = gsap.timeline({
+    onComplete: function () {
+      document.body.style.overflow = '';
+      document.getElementById('introLoader').style.display = 'none';
+    }
+  });
+  introTl
+    .to({}, { duration: 2.6 }) // hold on image A
+    .to('#introShimmer', { left: '120%', duration: 0.9, ease: 'power2.inOut' }, '<')
+    .to('.intro-img--a', { opacity: 0, duration: 0.7, ease: 'power1.inOut' }, '-=0.6')
+    .to('.intro-img--b', { opacity: 1, duration: 0.7, ease: 'power1.inOut' }, '<')
+    .to({}, { duration: 0.25 })
+    .to('#introLoader', { opacity: 0, duration: 0.6, ease: 'power1.out' });
+
+  // ── Fly-cards: entrance + continued 3D rotation, both driven by scroll position (scrubbed) ──
+  gsap.set('#card1', { opacity: 0, x: -340, y: 90, z: -300, rotationY: 45, rotationX: 10, scale: 0.6 });
+  gsap.set('#card2', { opacity: 0, x: 0, y: 220, z: -300, rotationX: 30, scale: 0.6 });
+  gsap.set('#card3', { opacity: 0, x: 340, y: 90, z: -300, rotationY: -45, rotationX: 10, scale: 0.6 });
+
+  var flyTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.fly-showcase',
+      start: 'top 90%',
+      end: '+=1400',   // fly in over the first stretch, then keep tilting as you scroll past
+      scrub: 0.6
+    }
+  });
+  flyTl
+    .to('#card1', { opacity: 1, x: 0, y: 0, z: -40, rotationY: 14, rotationX: 4, scale: 1, duration: 1 }, 0)
+    .to('#card2', { opacity: 1, x: 0, y: -10, z: 40, rotationX: 2, scale: 1, duration: 1 }, 0)
+    .to('#card3', { opacity: 1, x: 0, y: 0, z: -40, rotationY: -14, rotationX: 4, scale: 1, duration: 1 }, 0)
+    .to('#card1', { rotationY: 34, rotationZ: -6, duration: 1 }, 1)
+    .to('#card2', { y: -40, z: 90, duration: 1 }, 1)
+    .to('#card3', { rotationY: -34, rotationZ: 6, duration: 1 }, 1);
+
+  // ── Mouse-parallax tilt on the inner layer, independent of the scroll-driven outer transform ──
+  var stage = document.getElementById('flyStage');
+  var cards = [
+    { el: document.querySelector('#card1 .fly-card-inner'), rx: 4, ry: 14, factor: 10 },
+    { el: document.querySelector('#card2 .fly-card-inner'), rx: 2, ry: 0, factor: 14 },
+    { el: document.querySelector('#card3 .fly-card-inner'), rx: 4, ry: -14, factor: 10 }
+  ];
+  stage.addEventListener('mousemove', function (e) {
+    var rect = stage.getBoundingClientRect();
+    var mx = (e.clientX - rect.left) / rect.width - 0.5;
+    var my = (e.clientY - rect.top) / rect.height - 0.5;
+    cards.forEach(function (c) {
+      var rY = c.ry + mx * c.factor;
+      var rX = c.rx - my * c.factor;
+      c.el.style.transform = 'rotateY(' + rY + 'deg) rotateX(' + rX + 'deg)';
+    });
+  });
+  stage.addEventListener('mouseleave', function () {
+    cards.forEach(function (c) {
+      c.el.style.transform = 'rotateY(' + c.ry + 'deg) rotateX(' + c.rx + 'deg)';
+    });
+  });
+</script>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

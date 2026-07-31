@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Security Audit ($6,000) — Find Prompt Injection & Data Leakage | GaleOps</title>
+  <meta name="description" content="Comprehensive AI security audit of your AI stack for prompt injection risks, data leakage, and insecure agent configurations. Written findings report + remediation roadmap. $6,000 flat fee.">
+  <link rel="canonical" href="https://galeops.xyz/ai-security-audit/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://galeops.xyz/ai-security-audit/">
+  <meta property="og:title" content="AI Security Audit — Find Prompt Injection & Data Leakage">
+  <meta property="og:description" content="Comprehensive AI security audit for prompt injection, data leakage, and insecure agent configurations. $6,000 flat.">
+  <meta property="og:image" content="https://galeops.xyz/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Security Audit — GaleOps">
+  <meta name="twitter:description" content="Find prompt injection, data leakage, and agent misconfigurations before attackers do. $6,000 flat.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI Security Audit",
+    "description": "Comprehensive review of your AI stack for prompt injection risks, data leakage, and insecure agent configurations. Delivered as a written findings report with prioritised remediation steps.",
+    "url": "https://galeops.xyz/ai-security-audit/",
+    "provider": {
+      "@type": "Organization",
+      "name": "GaleOps",
+      "url": "https://galeops.xyz",
+      "sameAs": ["https://www.youtube.com/@GaleTech", "https://www.linkedin.com/in/mattgale", "https://x.com/Mattjgale87"]
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "6000",
+      "priceCurrency": "USD",
+      "url": "https://buy.stripe.com/8x27sM6T07OCfIBfuFa3u01"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"What does the AI Security Audit include?","acceptedAnswer":{"@type":"Answer","text":"Prompt injection surface mapping, model output & data leakage review, API key & credential exposure scan, agent tool permission review, and a written report with prioritised remediation roadmap."}},
+      {"@type":"Question","name":"How long does the audit take?","acceptedAnswer":{"@type":"Answer","text":"Most audits are completed within 5 business days of kickoff. You receive the written findings report + a 30-minute walkthrough call."}},
+      {"@type":"Question","name":"Do I need to give you access to our systems?","acceptedAnswer":{"@type":"Answer","text":"No direct access required. You share your system prompts, agent configurations, and API setup. The audit is a review of your AI stack's security posture, not a penetration test of your infrastructure."}},
+      {"@type":"Question","name":"What happens after the audit?","acceptedAnswer":{"@type":"Answer","text":"You get the written report with prioritised findings. If you want GaleOps to fix the issues, the AI Guardrail Setup ($8,000) is the natural next step."}}
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-abyss: #08090a; --bg-surface: #101012; --bg-elevated: #191a1b;
+      --border: rgba(255,255,255,0.08); --border-subtle: rgba(255,255,255,0.06);
+      --text-primary: #f7f8f8; --text-secondary: #d0d6e0; --text-tertiary: #8a8f98; --text-muted: #5a5f66;
+      --accent: #6366f1; --accent-hover: #818cf8; --green: #10b981; --gold: #c89a45;
+    }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg-abyss); color: var(--text-primary); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-decoration: none; }
+    .nav { position: sticky; top: 0; z-index: 100; background: rgba(8,9,10,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; max-width: 100%; }
+    .nav-logo { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 20px; color: var(--text-primary); }
+    .nav-logo em { color: var(--gold); font-style: normal; }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { color: var(--text-secondary); font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent-hover); }
+    .btn-primary { display: inline-block; background: var(--accent); color: #fff; padding: 12px 24px; border-radius: 10px; font-weight: 600; font-size: 15px; border: none; cursor: pointer; transition: background 0.15s, transform 0.15s; }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-stripe { display: inline-block; background: var(--green); color: #fff; padding: 14px 28px; border-radius: 10px; font-weight: 700; font-size: 16px; border: none; cursor: pointer; transition: background 0.15s, transform 0.15s; text-decoration: none; }
+    .btn-stripe:hover { transform: translateY(-1px); box-shadow: 0 4px 24px rgba(16,185,129,0.3); }
+    .hero { text-align: center; padding: 80px 24px 60px; max-width: 760px; margin: 0 auto; }
+    .hero-label { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    .hero h1 { font-family: 'DM Sans', sans-serif; font-size: clamp(32px, 5vw, 52px); font-weight: 700; letter-spacing: -2px; line-height: 1.08; margin-bottom: 24px; }
+    .hero h1 span { color: var(--gold); }
+    .hero p { font-size: 18px; color: var(--text-secondary); max-width: 580px; margin: 0 auto 32px; }
+    .price-tag { display: inline-flex; align-items: center; gap: 12px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 16px 28px; margin-bottom: 32px; }
+    .price-tag .amount { font-family: 'DM Sans', sans-serif; font-size: 32px; font-weight: 700; color: var(--green); }
+    .price-tag .label { font-size: 14px; color: var(--text-tertiary); }
+    .container { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+    .section { margin-bottom: 64px; }
+    .section h2 { font-family: 'DM Sans', sans-serif; font-size: clamp(24px, 3.5vw, 36px); font-weight: 600; letter-spacing: -1px; margin-bottom: 24px; }
+    .section p { color: var(--text-secondary); margin-bottom: 16px; font-size: 17px; }
+    .deliverables { list-style: none; }
+    .deliverables li { display: flex; align-items: flex-start; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); font-size: 17px; }
+    .deliverables li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .cta-section { text-align: center; padding: 60px 24px; background: var(--bg-surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 0 -1000px; padding-left: calc(1000px + 24px); padding-right: calc(1000px + 24px); }
+    .cta-section h2 { font-family: 'DM Sans', sans-serif; font-size: clamp(24px, 4vw, 40px); font-weight: 700; margin-bottom: 16px; }
+    .cta-section p { color: var(--text-tertiary); margin-bottom: 32px; }
+    .faq { margin-bottom: 64px; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+    .faq-item h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; cursor: pointer; }
+    .faq-item p { color: var(--text-tertiary); font-size: 16px; }
+    .upsell { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+    .upsell-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 24px; max-width: 280px; text-align: center; }
+    .upsell-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+    .upsell-card .price { color: var(--gold); font-weight: 700; font-size: 18px; margin-bottom: 12px; }
+    .upsell-card a { font-size: 14px; color: var(--accent); }
+    footer { text-align: center; padding: 40px 24px; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border); }
+    footer a { color: var(--accent); }
+    @media (max-width: 640px) { .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="nav-logo">Gale<em>Ops</em></a>
+    <div class="nav-links">
+      <a href="/ai-security.html">All Services</a>
+      <a href="/scan/">Free Scan</a>
+      <a href="/blog/">Blog</a>
+      <a href="https://calendly.com/galeops/15min" class="btn-primary" style="padding:8px 18px;font-size:14px;">Book a Call</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-label">AI Security Audit</div>
+    <h1>Find what your <span>red team missed</span> before attackers do.</h1>
+    <p>A comprehensive review of your AI stack for prompt injection risks, data leakage, and insecure agent configurations. Delivered as a written findings report with prioritised remediation steps.</p>
+    <div class="price-tag">
+      <span class="amount">$6,000</span>
+      <span class="label">flat fee · 5 business days</span>
+    </div>
+    <div>
+      <a href="https://buy.stripe.com/8x27sM6T07OCfIBfuFa3u01" class="btn-stripe">Get Your Audit →</a>
+      <p style="margin-top:12px;font-size:13px;color:var(--text-muted);">or <a href="https://calendly.com/galeops/15min">book a free 15-min call first</a></p>
+    </div>
+  </section>
+
+  <!-- Funnel video -->
+  <section style="max-width:800px;margin:32px auto;padding:0 24px;">
+    <video controls preload="metadata" style="width:100%;border-radius:16px;border:1px solid var(--border);">
+      <source src="/assets/videos/galeops-audit-v2.mp4" type="video/mp4">
+    </video>
+    <p style="text-align:center;margin-top:8px;font-size:13px;color:var(--text-tertiary);">What's included — 60 second walkthrough</p>
+  </section>
+
+  <!-- Which service do I need? -->
+  <section class="container" style="margin-top:40px;">
+    <div class="section">
+      <h2>Which service do I need?</h2>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:20px;">
+        <div style="flex:1;min-width:200px;background:var(--bg-surface);border:1px solid var(--border);border-radius:14px;padding:20px;">
+          <div style="color:var(--green);font-weight:700;font-size:20px;">$6K · Audit</div>
+          <p style="color:var(--text-tertiary);font-size:14px;margin-top:8px;">You want to know what's wrong. A one-time review with a prioritised fix list. <strong>Start here.</strong></p>
+        </div>
+        <div style="flex:1;min-width:200px;background:var(--bg-surface);border:2px solid var(--gold);border-radius:14px;padding:20px;">
+          <div style="color:var(--green);font-weight:700;font-size:20px;">$8K · Guardrails <span style="background:var(--gold);color:#08090a;font-size:11px;padding:2px 8px;border-radius:6px;margin-left:6px;">MOST CHOSEN</span></div>
+          <p style="color:var(--text-tertiary);font-size:14px;margin-top:8px;">You know the gaps and want them closed. I implement + test the guardrails in your stack.</p>
+        </div>
+        <div style="flex:1;min-width:200px;background:var(--bg-surface);border:1px solid var(--border);border-radius:14px;padding:20px;">
+          <div style="color:var(--green);font-weight:700;font-size:20px;">$12K · Red Team</div>
+          <p style="color:var(--text-tertiary);font-size:14px;margin-top:8px;">You need proof. Adversarial testing + a board-ready compliance report (EU AI Act, NIST).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="section">
+      <h2>What's tested</h2>
+      <ul class="deliverables">
+        <li><div><strong>Prompt injection surface mapping</strong> — identify every path an attacker can manipulate your LLM's instructions</div></li>
+        <li><div><strong>Model output & data leakage review</strong> — catch PII, secrets, and internal data bleeding through responses</div></li>
+        <li><div><strong>API key & credential exposure scan</strong> — find keys leaking in prompts, logs, or agent tool access</div></li>
+        <li><div><strong>Agent tool permission review</strong> — verify agents can't access tools or data they shouldn't</div></li>
+        <li><div><strong>Written report + remediation roadmap</strong> — prioritised findings with fix recommendations</div></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Mapped to OWASP LLM Top 10</h2>
+      <p style="margin-bottom:20px;">Every finding is traced to the OWASP Top 10 for LLM Applications (2025) so your team and regulators speak the same language:</p>
+      <ul class="deliverables">
+        <li><div><strong>LLM01 — Prompt Injection</strong> — direct &amp; indirect instruction overrides via retrieved content</div></li>
+        <li><div><strong>LLM02 — Sensitive Information Disclosure</strong> — PII, secrets, and training-data leakage through responses</div></li>
+        <li><div><strong>LLM03 — Supply Chain</strong> — vulnerable plugins, packages, and third-party model dependencies</div></li>
+        <li><div><strong>LLM05 — Improper Output Handling</strong> — XSS / injection via unfiltered model output</div></li>
+        <li><div><strong>LLM06 — Excessive Agency</strong> — dangerous tool/function permissions granted to autonomous agents</div></li>
+        <li><div><strong>LLM08 — Excessive Permission</strong> — over-broad access granted to the model or its tools</div></li>
+      </ul>
+      <p style="margin-top:16px;font-size:15px;color:var(--text-tertiary);">Full coverage matrix (LLM01–LLM10) is in the written report. NIST AI RMF and EU AI Act articles are cross-referenced where relevant.</p>
+    </div>
+
+    <div class="section">
+      <h2>What you get</h2>
+      <p>A written findings report (PDF) with:</p>
+      <ul class="deliverables">
+        <li>Every vulnerability found, ranked by severity</li>
+        <li>Specific remediation steps for each finding</li>
+        <li>A 30-minute walkthrough call with Mathew Gale</li>
+        <li>Clear next steps — fix it yourself or engage GaleOps for Guardrail Setup</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>How it works</h2>
+      <ul class="deliverables">
+        <li><div><strong>Day 1:</strong> You share your system prompts, agent configs, and API setup</div></li>
+        <li><strong>Days 2–4:</strong> I audit your stack against real-world attack patterns</li>
+        <li><strong>Day 5:</strong> Written report delivered + walkthrough call</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Frequently asked</h2>
+      <div class="faq">
+        <div class="faq-item"><h3>What does the audit include?</h3><p>Prompt injection surface mapping, model output & data leakage review, API key & credential exposure scan, agent tool permission review, and a written report with prioritised remediation roadmap.</p></div>
+        <div class="faq-item"><h3>How long does it take?</h3><p>Most audits are completed within 5 business days. You get the written report + a 30-minute walkthrough call.</p></div>
+        <div class="faq-item"><h3>Do I need to give you system access?</h3><p>No direct access required. You share prompts, agent configurations, and API setup. It's a security posture review, not infra pen-testing.</p></div>
+        <div class="faq-item"><h3>What happens after?</h3><p>You get the report with prioritised findings. If you want GaleOps to fix the issues, the AI Guardrail Setup ($8,000) is the natural next step.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="cta-section">
+    <h2>Ready to find your gaps?</h2>
+    <p>$6,000 flat. Written report in 5 days. No retainers, no surprises.</p>
+    <a href="https://buy.stripe.com/8x27sM6T07OCfIBfuFa3u01" class="btn-stripe">Get Your Audit →</a>
+    <p style="margin-top:12px;font-size:13px;color:var(--text-muted);">or <a href="https://calendly.com/galeops/15min">book a free 15-min call first</a></p>
+  </section>
+
+  <div class="container">
+    <div class="section" style="text-align:center;">
+      <h2 style="font-size:22px;">Want the full stack?</h2>
+      <p>After the audit, fix everything with Guardrails, keep watch with a retainer, or go deeper with a Red Team engagement.</p>
+      <div class="upsell">
+        <div class="upsell-card" style="border:2px solid var(--accent-cyan)">
+          <h3>Continuous AI Security</h3>
+          <div class="price">$2,500/mo</div>
+          <p style="font-size:14px;color:var(--text-tertiary);margin-bottom:12px;">Monthly regression testing, guardrail drift checks, updated technical docs</p>
+          <a href="https://calendly.com/galeops/15min">Talk to Mathew →</a>
+        </div>
+        <div class="upsell-card">
+          <h3>AI Guardrail Setup</h3>
+          <div class="price">$8,000</div>
+          <p style="font-size:14px;color:var(--text-tertiary);margin-bottom:12px;">Design + implement production guardrails</p>
+          <a href="/ai-guardrail-setup/">Learn more →</a>
+        </div>
+        <div class="upsell-card">
+          <h3>AI Red Team &amp; Compliance</h3>
+          <div class="price">$12,000</div>
+          <p style="font-size:14px;color:var(--text-tertiary);margin-bottom:12px;">Adversarial testing + EU AI Act / NIST alignment</p>
+          <a href="/ai-red-team/">Learn more →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 GaleOps — AI Security & Automation Consulting · <a href="/">Home</a> · <a href="/blog/">Blog</a> · <a href="/scan/">Free Scan</a></p>
+    <p style="margin-top:8px;">Run by Mathew Gale · <a href="https://www.youtube.com/@GaleTech">YouTube</a> · <a href="https://calendly.com/galeops/15min">Book a call</a></p>
+  </footer>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Guardrail Setup ($8,000) — Production Guardrails for Your AI | GaleOps</title>
+  <meta name="description" content="Design and implement production-grade guardrails across your AI pipelines — input sanitisation, output filtering, agent tool access controls, and monitoring. $8,000 flat.">
+  <link rel="canonical" href="https://galeops.xyz/ai-guardrail-setup/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://galeops.xyz/ai-guardrail-setup/">
+  <meta property="og:title" content="AI Guardrail Setup — Production Guardrails for Your AI">
+  <meta property="og:description" content="Input sanitisation, output filtering, agent tool access controls, monitoring & alerting. $8,000 flat.">
+  <meta property="og:image" content="https://galeops.xyz/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Guardrail Setup — GaleOps">
+  <meta name="twitter:description" content="Production-grade guardrails for your AI pipelines. $8,000 flat.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI Guardrail Setup",
+    "description": "Design and implement production-grade guardrails including output filtering, input sanitisation, and agent tool access controls.",
+    "url": "https://galeops.xyz/ai-guardrail-setup/",
+    "provider": { "@type": "Organization", "name": "GaleOps", "url": "https://galeops.xyz", "sameAs": ["https://www.youtube.com/@GaleTech", "https://www.linkedin.com/in/mattgale", "https://x.com/Mattjgale87"] },
+    "offers": { "@type": "Offer", "price": "8000", "priceCurrency": "USD", "url": "https://buy.stripe.com/28EdRacdk5GueEx82da3u04" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"What guardrails do you implement?","acceptedAnswer":{"@type":"Answer","text":"Input sanitisation & injection defence, model output filtering & classification, agent tool access policy enforcement, API key hardening & rotation strategy, and monitoring & alerting setup."}},
+      {"@type":"Question","name":"How long does setup take?","acceptedAnswer":{"@type":"Answer","text":"Typically 7–10 business days depending on your stack complexity. Includes implementation, testing, and a handoff session."}},
+      {"@type":"Question","name":"Do I need the audit first?","acceptedAnswer":{"@type":"Answer","text":"Not required, but recommended. The audit ($6K) finds the gaps; guardrail setup ($8K) fixes them. If you already know your gaps, we can skip straight to implementation."}},
+      {"@type":"Question","name":"What tools do you work with?","acceptedAnswer":{"@type":"Answer","text":"OpenAI, Anthropic, Ollama, LangChain, custom agents, and most OpenAI-compatible LLM setups. Guardrails are implemented at the API/agent layer, not the model layer."}}
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg-abyss: #08090a; --bg-surface: #101012; --bg-elevated: #191a1b; --border: rgba(255,255,255,0.08); --border-subtle: rgba(255,255,255,0.06); --text-primary: #f7f8f8; --text-secondary: #d0d6e0; --text-tertiary: #8a8f98; --text-muted: #5a5f66; --accent: #6366f1; --accent-hover: #818cf8; --green: #10b981; --gold: #c89a45; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg-abyss); color: var(--text-primary); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-decoration: none; }
+    .nav { position: sticky; top: 0; z-index: 100; background: rgba(8,9,10,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 20px; } .nav-logo em { color: var(--gold); font-style: normal; }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { color: var(--text-secondary); font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent-hover); }
+    .btn-primary { display: inline-block; background: var(--accent); color: #fff; padding: 12px 24px; border-radius: 10px; font-weight: 600; font-size: 15px; }
+    .btn-stripe { display: inline-block; background: var(--green); color: #fff; padding: 14px 28px; border-radius: 10px; font-weight: 700; font-size: 16px; }
+    .btn-stripe:hover { transform: translateY(-1px); box-shadow: 0 4px 24px rgba(16,185,129,0.3); }
+    .hero { text-align: center; padding: 80px 24px 60px; max-width: 760px; margin: 0 auto; }
+    .hero-label { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    .hero h1 { font-family: 'DM Sans', sans-serif; font-size: clamp(32px, 5vw, 52px); font-weight: 700; letter-spacing: -2px; line-height: 1.08; margin-bottom: 24px; }
+    .hero h1 span { color: var(--gold); }
+    .hero p { font-size: 18px; color: var(--text-secondary); max-width: 580px; margin: 0 auto 32px; }
+    .price-tag { display: inline-flex; align-items: center; gap: 12px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 16px 28px; margin-bottom: 32px; }
+    .price-tag .amount { font-family: 'DM Sans', sans-serif; font-size: 32px; font-weight: 700; color: var(--green); }
+    .price-tag .label { font-size: 14px; color: var(--text-tertiary); }
+    .container { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+    .section { margin-bottom: 64px; }
+    .section h2 { font-family: 'DM Sans', sans-serif; font-size: clamp(24px, 3.5vw, 36px); font-weight: 600; letter-spacing: -1px; margin-bottom: 24px; }
+    .section p { color: var(--text-secondary); margin-bottom: 16px; font-size: 17px; }
+    .deliverables { list-style: none; }
+    .deliverables li { display: flex; align-items: flex-start; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); font-size: 17px; }
+    .deliverables li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .cta-section { text-align: center; padding: 60px 24px; background: var(--bg-surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .cta-section h2 { font-family: 'DM Sans', sans-serif; font-size: clamp(24px, 4vw, 40px); font-weight: 700; margin-bottom: 16px; }
+    .cta-section p { color: var(--text-tertiary); margin-bottom: 32px; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+    .faq-item h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .faq-item p { color: var(--text-tertiary); font-size: 16px; }
+    .upsell { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+    .upsell-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 24px; max-width: 280px; text-align: center; }
+    .upsell-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+    .upsell-card .price { color: var(--gold); font-weight: 700; font-size: 18px; margin-bottom: 12px; }
+    .upsell-card a { font-size: 14px; color: var(--accent); }
+    footer { text-align: center; padding: 40px 24px; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border); }
+    footer a { color: var(--accent); }
+    @media (max-width: 640px) { .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="nav-logo">Gale<em>Ops</em></a>
+    <div class="nav-links">
+      <a href="/ai-security.html">All Services</a>
+      <a href="/scan/">Free Scan</a>
+      <a href="/blog/">Blog</a>
+      <a href="https://calendly.com/galeops/15min" class="btn-primary" style="padding:8px 18px;font-size:14px;">Book a Call</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-label">AI Guardrail Setup</div>
+    <h1>Stop attacks <span>at the boundary</span>, not the model.</h1>
+    <p>Design and implement production-grade guardrails across your AI pipelines — from input sanitisation to output filtering and agent tool access controls. Your AI stays useful. Attackers stay out.</p>
+    <div class="price-tag">
+      <span class="amount">$8,000</span>
+      <span class="label">flat fee · 7–10 business days</span>
+    </div>
+    <div>
+      <a href="https://buy.stripe.com/28EdRacdk5GueEx82da3u04" class="btn-stripe">Get Guardrails →</a>
+      <p style="margin-top:12px;font-size:13px;color:var(--text-muted);">or <a href="https://calendly.com/galeops/15min">book a free 15-min call first</a></p>
+    </div>
+  </section>
+
+  <!-- Funnel video -->
+  <section style="max-width:800px;margin:32px auto;padding:0 24px;">
+    <video controls preload="metadata" style="width:100%;border-radius:16px;border:1px solid var(--border);">
+      <source src="/assets/videos/galeops-guardrails-v2.mp4" type="video/mp4">
+    </video>
+    <p style="text-align:center;margin-top:8px;font-size:13px;color:var(--text-tertiary);">What gets implemented — 60 second walkthrough</p>
+  </section>
+
+  <div class="container">
+    <div class="section">
+      <h2>What gets implemented</h2>
+      <ul class="deliverables">
+        <li><div><strong>Input sanitisation & injection defence</strong> — strip, classify, and block adversarial prompts before they reach your LLM</div></li>
+        <li><div><strong>Model output filtering & classification</strong> — catch PII, secrets, and harmful content before it reaches users</div></li>
+        <li><div><strong>Agent tool access policy enforcement</strong> — restrict which tools agents can call and when</div></li>
+        <li><div><strong>API key hardening & rotation strategy</strong> — stop credential leakage through prompts, logs, and agent tools</div></li>
+        <li><div><strong>Monitoring & alerting setup</strong> — know when guardrails trigger, so you can tune before incidents</div></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>What you get</h2>
+      <ul class="deliverables">
+        <li>Working guardrails implemented in your AI pipeline</li>
+        <li>Configuration documentation + policy files</li>
+        <li>Testing against real prompt-injection attack patterns</li>
+        <li>A 60-minute handoff session with your team</li>
+        <li>30 days of Slack/email support for tuning</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>How it works</h2>
+      <ul class="deliverables">
+        <li><strong>Days 1–2:</strong> Audit your current pipeline + design guardrail architecture</li>
+        <li><strong>Days 3–7:</strong> Implement input/output filters, tool policies, monitoring</li>
+        <li><strong>Days 8–10:</strong> Test against attacks, tune, handoff + documentation</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Frequently asked</h2>
+      <div class="faq-item"><h3>What guardrails do you implement?</h3><p>Input sanitisation & injection defence, output filtering & classification, agent tool access policy enforcement, API key hardening, and monitoring & alerting.</p></div>
+      <div class="faq-item"><h3>How long does it take?</h3><p>7–10 business days depending on stack complexity. Includes implementation, testing, and handoff.</p></div>
+      <div class="faq-item"><h3>Do I need the audit first?</h3><p>Not required, but recommended. The audit ($6K) finds the gaps; guardrail setup ($8K) fixes them.</p></div>
+      <div class="faq-item"><h3>What tools do you work with?</h3><p>OpenAI, Anthropic, Ollama, LangChain, custom agents, and most OpenAI-compatible setups. Guardrails go at the API/agent layer.</p></div>
+    </div>
+  </div>
+
+  <section class="cta-section">
+    <h2>Ready to lock it down?</h2>
+    <p>$8,000 flat. Implemented in 10 days. 30 days of tuning support.</p>
+    <a href="https://buy.stripe.com/28EdRacdk5GueEx82da3u04" class="btn-stripe">Get Guardrails →</a>
+    <p style="margin-top:12px;font-size:13px;color:var(--text-muted);">or <a href="https://calendly.com/galeops/15min">book a free 15-min call first</a></p>
+  </section>
+
+  <div class="container">
+    <div class="section" style="text-align:center;">
+      <h2 style="font-size:22px;">Related services</h2>
+      <p>Add a retainer to keep guardrails tuned after the engagement.</p>
+      <div class="upsell">
+        <div class="upsell-card" style="border:2px solid var(--accent-cyan)">
+          <h3>Continuous AI Security</h3>
+          <div class="price">$2,500/mo</div>
+          <p style="font-size:14px;color:var(--text-tertiary);margin-bottom:12px;">Monthly regression testing, guardrail drift checks, updated technical docs</p>
+          <a href="https://calendly.com/galeops/15min">Talk to Mathew →</a>
+        </div>
+        <div class="upsell-card">
+          <h3>AI Security Audit</h3>
+          <div class="price">$6,000</div>
+          <p style="font-size:14px;color:var(--text-tertiary);margin-bottom:12px;">Find the gaps first</p>
+          <a href="/ai-security-audit/">Learn more →</a>
+        </div>
+        <div class="upsell-card">
+          <h3>AI Red Team &amp; Compliance</h3>
+          <div class="price">$12,000</div>
+          <p style="font-size:14px;color:var(--text-tertiary);margin-bottom:12px;">Full adversarial test + compliance</p>
+          <a href="/ai-red-team/">Learn more →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 GaleOps — AI Security & Automation Consulting · <a href="/">Home</a> · <a href="/blog/">Blog</a> · <a href="/scan/">Free Scan</a></p>
+    <p style="margin-top:8px;">Run by Mathew Gale · <a href="https://www.youtube.com/@GaleTech">YouTube</a> · <a href="https://calendly.com/galeops/15min">Book a call</a></p>
+  </footer>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

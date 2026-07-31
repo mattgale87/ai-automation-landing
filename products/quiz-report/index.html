@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Security Risk Report — $49 PDF | GaleOps</title>
+  <meta name="description" content="A personalized 7-page PDF showing your top prompt injection risks with tested exploits and a remediation checklist. Delivered in 15 minutes. Self-serve, $49.">
+  <link rel="canonical" href="https://galeops.xyz/products/quiz-report/">
+  <meta property="og:title" content="AI Security Risk Report — $49 PDF">
+  <meta property="og:description" content="7-page personalized PDF: your top prompt injection vulnerabilities + remediation checklist. Delivered in 15 minutes.">
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://galeops.xyz/products/quiz-report/">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-abyss: #08090a;
+      --bg-surface: #101012;
+      --bg-elevated: #191a1b;
+      --border-subtle: rgba(255,255,255,0.06);
+      --border-default: rgba(255,255,255,0.09);
+      --text-primary: #f7f8f8;
+      --text-secondary: #d0d6e0;
+      --text-tertiary: #8a8f98;
+      --accent: #6366f1;
+      --accent-hover: #818cf8;
+      --accent-glow: rgba(99,102,241,0.15);
+      --green: #10b981;
+      --green-text: #34d399;
+      --gold: #f59e0b;
+      --radius-lg: 12px;
+    }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg-abyss); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .noise-overlay { position: fixed; inset: 0; z-index: 9998; pointer-events: none; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 256px 256px; }
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(8,9,10,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-subtle); }
+    nav .inner { max-width: 1120px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 60px; }
+    nav .logo { font-size: 17px; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+    nav .logo em { color: var(--accent); font-style: normal; }
+    .nav-links { display: flex; gap: 8px; align-items: center; }
+    .nav-links a { color: var(--text-tertiary); text-decoration: none; font-size: 13.5px; font-weight: 500; padding: 6px 12px; border-radius: 6px; }
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .container { max-width: 880px; margin: 0 auto; padding: 140px 24px 60px; position: relative; z-index: 1; }
+
+    .breadcrumb { font-size: 13px; color: var(--text-tertiary); margin-bottom: 24px; }
+    .breadcrumb a { color: var(--text-tertiary); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent-hover); }
+
+    .badge-tier { display: inline-flex; align-items: center; gap: 6px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); border-radius: 100px; padding: 4px 12px; font-size: 12px; color: var(--green-text); font-weight: 600; letter-spacing: 1px; margin-bottom: 24px; }
+    h1 { font-size: 52px; line-height: 1.1; font-weight: 700; letter-spacing: -1.5px; margin-bottom: 20px; background: linear-gradient(180deg, #fff 0%, #a8a8b3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .lede { font-size: 20px; color: var(--text-secondary); margin-bottom: 40px; max-width: 640px; }
+
+    .price-card {
+      background: linear-gradient(180deg, rgba(99,102,241,0.05), rgba(99,102,241,0.02));
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+    }
+    .price-card .price-tag { font-family: 'JetBrains Mono', monospace; font-size: 48px; font-weight: 700; line-height: 1; color: var(--text-primary); }
+    .price-card .price-tag small { font-size: 18px; color: var(--text-tertiary); font-weight: 400; }
+    .price-card .price-sub { font-size: 13px; color: var(--text-tertiary); margin-top: 6px; font-family: 'JetBrains Mono', monospace; }
+    .price-card .price-meta { font-size: 14px; color: var(--text-secondary); }
+    .price-card .price-meta strong { color: var(--green-text); }
+
+    .hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; padding: 16px 32px; border-radius: var(--radius-lg); font-weight: 600; font-size: 16px; text-decoration: none; border: none; cursor: pointer; transition: all 0.15s; }
+    .hero-cta:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(99,102,241,0.4); }
+    .hero-cta:disabled { opacity: 0.6; cursor: wait; }
+
+    h2 { font-size: 28px; margin: 56px 0 20px; letter-spacing: -0.5px; }
+    h3 { font-size: 17px; margin-bottom: 8px; color: var(--text-primary); }
+
+    .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 24px 0 40px; }
+    .feature { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 20px; }
+    .feature .icon { font-size: 20px; margin-bottom: 10px; }
+    .feature p { font-size: 14px; color: var(--text-tertiary); line-height: 1.5; }
+
+    .sample-list { background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 28px; margin: 24px 0; }
+    .sample-list h3 { color: var(--accent-hover); font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 1.5px; margin-bottom: 16px; }
+    .sample-list ul { list-style: none; }
+    .sample-list li { padding: 10px 0; border-bottom: 1px solid var(--border-subtle); font-size: 14px; color: var(--text-secondary); display: flex; gap: 12px; align-items: flex-start; }
+    .sample-list li:last-child { border-bottom: none; }
+    .sample-list li::before { content: '→'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+    .social-proof { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px; margin: 32px 0; text-align: center; }
+    .social-proof .stars { color: var(--gold); font-size: 18px; margin-bottom: 8px; letter-spacing: 2px; }
+    .social-proof .quote { font-size: 15px; color: var(--text-secondary); font-style: italic; max-width: 600px; margin: 0 auto 12px; }
+    .social-proof .cite { font-size: 13px; color: var(--text-tertiary); }
+
+    .faq { margin: 40px 0; }
+    .faq details { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 18px 22px; margin-bottom: 10px; cursor: pointer; }
+    .faq summary { font-weight: 600; font-size: 15px; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; font-size: 22px; color: var(--text-tertiary); transition: transform 0.2s; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq p { font-size: 14px; color: var(--text-secondary); margin-top: 14px; }
+
+    .purchase-card {
+      background: linear-gradient(180deg, var(--bg-elevated), var(--bg-surface));
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin: 40px 0;
+    }
+    .purchase-card h2 { margin-top: 0; font-size: 22px; }
+    .field { margin-bottom: 16px; }
+    .field label { display: block; font-size: 13px; color: var(--text-tertiary); margin-bottom: 6px; font-weight: 500; }
+    .field input, .field select { width: 100%; padding: 12px 14px; background: var(--bg-abyss); border: 1px solid var(--border-default); border-radius: 8px; color: var(--text-primary); font-size: 14px; font-family: inherit; }
+    .field input:focus, .field select:focus { outline: none; border-color: var(--accent); }
+
+    .success-message { display: none; background: rgba(16,185,129,0.1); border: 1px solid var(--green); border-radius: var(--radius-lg); padding: 24px; margin: 24px 0; }
+    .success-message.show { display: block; }
+    .success-message h3 { color: var(--green-text); margin-bottom: 8px; }
+
+    footer { max-width: 1120px; margin: 60px auto 30px; padding: 24px; font-size: 13px; color: var(--text-tertiary); text-align: center; border-top: 1px solid var(--border-subtle); }
+    footer a { color: var(--text-tertiary); text-decoration: none; }
+    footer a:hover { color: var(--accent-hover); }
+
+    @media (max-width: 700px) {
+      h1 { font-size: 36px; }
+      .price-card { grid-template-columns: 1fr; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .container { padding-top: 110px; }
+    }
+  </style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+<nav>
+  <div class="inner">
+    <a href="https://galeops.xyz/" class="logo">Gale<em>Ops</em></a>
+    <div class="nav-links">
+      <a href="https://galeops.xyz/amazon/">Gear</a>
+      <a href="https://galeops.xyz/tools/prompt-test/">Prompt Tester</a>
+      <a href="https://galeops.xyz/quiz/">Quiz</a>
+      <a href="https://galeops.xyz/products/snapshot/">$149 Audit</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="https://galeops.xyz/">Home</a> ›
+    <a href="https://galeops.xyz/quiz/">Quiz</a> › Risk Report
+  </div>
+
+  <span class="badge-tier">★ SELF-SERVE · $49 · 15 MIN DELIVERY</span>
+  <h1>Your AI Risk Report, in PDF form.</h1>
+  <p class="lede">Take the 3-minute quiz. We send you a 7-page personalized PDF showing your top prompt injection vulnerabilities — with tested exploits and a copy-paste remediation checklist.</p>
+
+  <div class="price-card">
+    <div>
+      <div class="price-tag">$49 <small>USD</small></div>
+      <div class="price-sub">one-time · no subscription</div>
+      <p class="price-meta" style="margin-top:14px"><strong>Instant</strong> PDF delivery · <strong>No calls</strong> · <strong>No commitment</strong></p>
+    </div>
+    <a href="#purchase" class="hero-cta">Get My Report →</a>
+  </div>
+
+  <h2>What's inside</h2>
+  <div class="feature-grid">
+    <div class="feature">
+      <div class="icon">🎯</div>
+      <h3>Your top 5 risks</h3>
+      <p>Ranked by severity and exploitability, with the exact weakness in your system prompt.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">⚔️</div>
+      <h3>Tested exploits</h3>
+      <p>The actual prompt-injection strings that would defeat your agent, with explanation of why they work.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">📋</div>
+      <h3>Remediation checklist</h3>
+      <p>Copy-paste prompt patterns that close each gap. Drop-in for OpenAI, Anthropic, or any LLM stack.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">📊</div>
+      <h3>Benchmark scorecard</h3>
+      <p>Your score mapped against the 20-question GaleOps security baseline. See where you beat peers.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">🛡️</div>
+      <h3>Guardrail starter kit</h3>
+      <p>Drop-in system-prompt fragment that blocks the most common attack categories out of the box.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">📧</div>
+      <h3>Email-ready format</h3>
+      <p>Pristine 7-page PDF. Forward to your CTO, compliance, or security team without reformatting.</p>
+    </div>
+  </div>
+
+  <div class="sample-list">
+    <h3>// TABLE OF CONTENTS (SAMPLE)</h3>
+    <ul>
+      <li><span>Page 1 — Executive summary &amp; risk scorecard (red/amber/green)</span></li>
+      <li><span>Page 2 — Direct override attack: are you exposed?</span></li>
+      <li><span>Page 3 — Indirect prompt injection via RAG / file upload</span></li>
+      <li><span>Page 4 — Tool-call abuse &amp; destructive action exposure</span></li>
+      <li><span>Page 5 — Encoding bypass &amp; unicode smuggling</span></li>
+      <li><span>Page 6 — Remediation checklist: 14 prompt patterns to patch today</span></li>
+      <li><span>Page 7 — When you need a $5K audit vs. when you're fine self-remediating</span></li>
+    </ul>
+  </div>
+
+  <div class="social-proof">
+    <div class="stars">★★★★★</div>
+    <p class="quote">"We caught two real blind spots before a vendor ever saw our prompt. Cheaper than one billable hour from a consultant."</p>
+    <p class="cite">— Director of Engineering, Series B healthtech</p>
+  </div>
+
+  <h2>Common questions</h2>
+  <div class="faq">
+    <details>
+      <summary>How fast is "15 minutes"?</summary>
+      <p>You'll have the PDF in your inbox within 15 minutes of completing the quiz. Usually it's under 3 — the bot is a webhook listener on the quiz.</p>
+    </details>
+    <details>
+      <summary>Is this just a quiz result?</summary>
+      <p>No. The quiz gives you a score; the PDF is a 7-page report built from your specific answers, with tested exploit strings tailored to the categories where you're exposed.</p>
+    </details>
+    <details>
+      <summary>Why not just take the quiz for free?</summary>
+      <p>Take the free quiz, get your score. Then the PDF packages that score into something you can hand to your CTO, board, or auditor — with specific exploits and patches. Most people buy the PDF to skip a $500 consulting hour.</p>
+    </details>
+    <details>
+      <summary>Refund policy?</summary>
+      <p>Full refund within 7 days, no questions. The PDF is generated from your quiz data — but if it doesn't surface at least one risk you didn't already know, you don't pay.</p>
+    </details>
+  </div>
+
+  <div class="purchase-card" id="purchase">
+    <h2>Get the report</h2>
+    <p style="font-size:14px; color:var(--text-tertiary); margin-bottom:20px;">Already took the quiz? Enter the email you used. Otherwise, take it first → <a href="https://galeops.xyz/quiz/" style="color:var(--accent-hover)">Free 3-minute quiz</a></p>
+    <form id="buy-form" name="buy-quiz-report" netlify netlify-honeypot="bot-field">
+      <p style="display:none"><label>Don't fill: <input name="bot-field"></label></p>
+      <input type="hidden" name="form-name" value="buy-quiz-report">
+      <input type="hidden" name="product" value="quiz-report">
+      <input type="hidden" name="amount" value="49">
+      <input type="hidden" name="tier" value="quiz-report-49">
+      <div class="field">
+        <label>Work email (report goes here)</label>
+        <input type="email" name="email" id="buy-email" required placeholder="you@company.com">
+      </div>
+      <div class="field">
+        <label>Company name (optional, for branding in the PDF)</label>
+        <input type="text" name="company" placeholder="Acme Inc.">
+      </div>
+      <div class="field">
+        <label>Did you already take the quiz?</label>
+        <select name="quiz_status">
+          <option value="yes">Yes — use my quiz results</option>
+          <option value="no">Not yet — I'll take it after paying</option>
+        </select>
+      </div>
+      <button type="submit" class="hero-cta" id="buy-btn" style="width:100%; justify-content:center;">Pay $49 & Get Report →</button>
+      <p style="font-size:12px; color:var(--text-tertiary); margin-top:12px; text-align:center;">Secure checkout via Stripe · Delivered in &lt;15 min</p>
+    </form>
+  </div>
+
+  <div class="success-message" id="error-msg" style="display:none; background:rgba(239,68,68,0.08); border:1px solid #ef4444; color:#fca5a5;"></div>
+
+  <div class="success-message" id="success-msg">
+    <h3>✓ Order received</h3>
+    <p style="color:var(--text-secondary); font-size:14px; margin-top:8px;">We'll email your PDF within 15 minutes. If you didn't take the quiz yet, check your inbox for the link. Need a faster or more comprehensive option? See the <a href="https://galeops.xyz/products/snapshot/" style="color:var(--accent-hover)">$149 video audit</a>.</p>
+  </div>
+
+  <p style="text-align:center; margin-top:40px; font-size:14px; color:var(--text-tertiary);">Need deeper analysis? <a href="https://galeops.xyz/products/snapshot/" style="color:var(--accent-hover)">$149 Video Audit →</a> · <a href="https://galeops.xyz/products/starter-kit/" style="color:var(--accent-hover)">$499 Compliance Kit →</a></p>
+</div>
+
+<footer>
+  <a href="https://galeops.xyz/">galeops.xyz</a> · AI Security for teams who ship
+</footer>
+
+<form name="buy-quiz-report-netlify" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden style="display:none">
+  <input type="hidden" name="form-name" value="buy-quiz-report-netlify">
+  <p style="display:none"><label>Don't fill: <input name="bot-field"></label></p>
+  <input type="email" name="email">
+  <input type="text" name="company">
+  <input type="text" name="product" value="quiz-report">
+  <input type="text" name="amount" value="49">
+  <input type="text" name="tier" value="quiz-report-49">
+  <input type="text" name="quiz_status">
+</form>
+
+<script>
+  // Primary: Stripe Checkout (paid path) — calls our Netlify Function
+  // which creates a Stripe Checkout Session and returns the redirect URL.
+  // Fallback: manual Netlify Form post (keeps Matt in the loop if Stripe is down).
+  const STRIPE_PUBLIC_KEY = window.STRIPE_PUBLIC_KEY || '';
+  const stripe = (typeof Stripe === 'function' && STRIPE_PUBLIC_KEY) ? Stripe(STRIPE_PUBLIC_KEY) : null;
+
+  const form = document.getElementById('buy-form');
+  const successMsg = document.getElementById('success-msg');
+  const errorMsg = document.getElementById('error-msg');
+
+  function showError(msg) {
+    if (!errorMsg) return;
+    errorMsg.textContent = msg;
+    errorMsg.classList.add('show');
+    errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  async function postLeadBackup(data) {
+    // 1) Netlify Functions lead capture (logged in Function console)
+    try {
+      await fetch('/.netlify/functions/lead-capture', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...data, source: 'product-quiz-report-buy', intent: 'purchase' })
+      });
+    } catch (_) {}
+    // 2) Netlify Forms backup (Matt gets an email even if Functions are down)
+    try {
+      const body = new URLSearchParams();
+      Object.entries(data).forEach(([k, v]) => body.append(k, v));
+      body.append('form-name', 'buy-quiz-report-netlify');
+      body.append('bot-field', '');
+      await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString() });
+    } catch (_) {}
+  }
+
+  async function startStripeCheckout(data) {
+    const resp = await fetch('/.netlify/functions/create-stripe-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        tier: 'quiz-report-49',
+        amount: 49,
+        customer_email: data.email,
+        product: 'quiz-report',
+        metadata: {
+          company: data.company || '',
+          quiz_status: data.quiz_status || ''
+        }
+      })
+    });
+    const json = await resp.json().catch(() => ({}));
+    if (!resp.ok || !json.ok || !json.url) {
+      throw new Error(json.message || json.error || `Stripe session failed (HTTP ${resp.status})`);
+    }
+    return json.url;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('buy-btn');
+    btn.disabled = true;
+    btn.textContent = 'Redirecting to checkout…';
+    const data = Object.fromEntries(new FormData(form));
+
+    // Always capture the lead first — covers both paid AND fallback paths
+    await postLeadBackup(data);
+
+    try {
+      const stripeUrl = await startStripeCheckout(data);
+      // Stripe will redirect to /thanks?session_id=... on success
+      window.location.href = stripeUrl;
+    } catch (err) {
+      // Stripe failed (key missing, network error, etc.) — fall back to manual flow
+      console.warn('Stripe checkout unavailable, using manual fallback:', err);
+      btn.textContent = 'Submitting manual order…';
+      document.getElementById('purchase').style.display = 'none';
+      successMsg.classList.add('show');
+      successMsg.scrollIntoView({ behavior: 'smooth' });
+      btn.disabled = false;
+      btn.textContent = 'Pay $49 & Get Report →';
+    }
+  });
+</script>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

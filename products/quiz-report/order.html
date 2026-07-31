@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Self-Assessment — $99 | GaleOps</title>
+<meta name="description" content="Order your personalized AI Security Self-Assessment report. Delivered in 24hrs.">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #0a0a0a; color: #e5e5e5; line-height: 1.6; }
+.container { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
+.hero { text-align: center; padding: 80px 24px; background: radial-gradient(circle, rgba(220,38,38,0.08), transparent 70%); }
+.badge { display: inline-block; background: rgba(220,38,38,0.15); color: #fca5a5; padding: 6px 16px; border-radius: 20px; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+h1 { font-size: 42px; font-weight: 700; margin-bottom: 24px; background: linear-gradient(135deg, #fff, #fca5a5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.cta { display: inline-block; background: #dc2626; color: #fff; padding: 18px 36px; border-radius: 8px; font-weight: 600; text-decoration: none; border: none; cursor: pointer; font-size: 16px; }
+.cta:hover { background: #b91c1c; }
+form { max-width: 600px; margin: 40px auto; }
+.field { margin-bottom: 20px; }
+label { display: block; margin-bottom: 8px; color: #fca5a5; font-weight: 500; }
+input, textarea, select { width: 100%; padding: 14px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; font-size: 16px; font-family: inherit; }
+textarea { resize: vertical; min-height: 80px; }
+.payment-note { background: rgba(220,38,38,0.1); padding: 20px; border-radius: 8px; margin: 24px 0; font-size: 14px; color: #a3a3a3; }
+footer { text-align: center; padding: 40px; color: #666; font-size: 14px; }
+footer a { color: #fca5a5; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="hero">
+<div class="container">
+<div class="badge">Self-Serve · Order Form</div>
+<h1>Order AI Security Self-Assessment</h1>
+<p style="font-size: 20px; color: #a3a3a3; margin-top: 16px;">$99 → 24hr-delivered PDF report with your top 5 AI security risks</p>
+</div>
+</div>
+
+<div class="container">
+<form name="tier1-order" method="POST" data-netlify="true" action="/thanks">
+<input type="hidden" name="form-name" value="tier1-order">
+<input type="hidden" name="tier" value="Self-Assessment $99">
+<input type="hidden" name="intent" value="purchase">
+<input type="hidden" name="amount" value="99">
+
+<div class="field">
+<label>Email *</label>
+<input type="email" name="email" required placeholder="you@company.com">
+</div>
+
+<div class="field">
+<label>Company (optional)</label>
+<input type="text" name="company" placeholder="Acme Inc.">
+</div>
+
+<div class="field">
+<label>Which AI tools do you use? *</label>
+<textarea name="ai_tools" required rows="3" placeholder="e.g., ChatGPT Team, Claude API, custom GPT, internal LLM..."></textarea>
+</div>
+
+<div class="payment-note">
+<strong>💳 Payment:</strong> After submitting, I'll email you a Stripe invoice or bank transfer details. Your PDF report lands within 24 hours of payment.
+</div>
+
+<button type="submit" class="cta" style="width:100%; padding: 20px; font-size: 18px;">Submit Order ($99)</button>
+</form>
+
+<p style="text-align:center; margin-top: 30px; color: #a3a3a3;">
+Need a personal video too? <a href="https://galeops.xyz/products/snapshot/" style="color:#fca5a5">See Snapshot ($149) →</a><br><br>
+<a href="https://galeops.xyz/products/quiz-report/" style="color:#fca5a5">← Back to product overview</a>
+</p>
+</div>
+
+<footer>
+<p>© 2026 GaleOps | <a href="https://galeops.xyz">galeops.xyz</a> | AI security consulting by Matt Gale</p>
+</footer>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

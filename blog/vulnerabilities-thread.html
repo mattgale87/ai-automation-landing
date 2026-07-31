@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5 AI Security Vulnerabilities Thread — X Post Series | GaleOps</title>
+  <meta name="description" content="5-post X thread breaking down real AI security vulnerabilities found in production systems.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #08090a; --surface: #101012; --text: #f7f8f8; --muted: #8a8f98; --accent: #6366f1; --red: #ef4444; --green: #10b981; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+    .thread { max-width: 640px; margin: 0 auto; padding: 60px 24px; }
+    .post { background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 28px; margin-bottom: 20px; }
+    .post-num { font-size: 12px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 12px; }
+    .post p { color: #d0d6e0; line-height: 1.65; margin-bottom: 14px; font-size: 16px; }
+    .post ul { margin: 14px 0 14px 20px; color: #d0d6e0; }
+    .post li { margin-bottom: 8px; font-size: 16px; }
+    .post .tag { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--accent); }
+    .handle { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+    .handle a { color: var(--accent); text-decoration: none; }
+    .copy-btn { display: inline-block; margin-top: 14px; padding: 8px 18px; background: none; color: var(--accent); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; font-size: 12px; font-weight: 500; cursor: pointer; }
+    .copy-btn:hover { background: rgba(99,102,241,0.15); }
+    h1 { font-size: 26px; font-weight: 600; margin-bottom: 6px; }
+    .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 36px; }
+    .tip { background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.15); border-radius: 10px; padding: 18px 22px; margin-bottom: 32px; font-size: 14px; color: #d0d6e0; }
+    .tip strong { color: var(--text); }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SPMK00RCZP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SPMK00RCZP');
+  </script>
+  <!-- blog-person-schema-v1: Article + Person (Mathew Gale) for GEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "5 AI Security Vulnerabilities Thread — X Post Series",
+    "description": "",
+    "url": "https://galeops.xyz/blog/vulnerabilities-thread.html",
+    "image": "https://galeops.xyz/og-image.svg",
+    "datePublished": "2026-07-22",
+    "dateModified": "2026-07-22",
+    "author": {
+      "@type": "Person",
+      "name": "Mathew Gale",
+      "jobTitle": "AI Security Consultant",
+      "url": "https://galeops.xyz",
+      "sameAs": [
+        "https://www.youtube.com/@GaleTech",
+        "https://www.linkedin.com/in/mattgale",
+        "https://x.com/Mattjgale87"
+      ]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "GaleOps",
+      "url": "https://galeops.xyz",
+      "sameAs": [
+        "https://www.youtube.com/@GaleTech",
+        "https://www.linkedin.com/in/mattgale",
+        "https://x.com/Mattjgale87"
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+<div class="thread">
+  <h1>5 AI Security Vulnerabilities</h1>
+  <p class="subtitle">Monday thread — 5 posts ready to publish as a thread on X.</p>
+  <p class="handle">Post from: <a href="https://x.com/Mattjgale87">@Mattjgale87</a></p>
+
+  <div class="tip">
+    <strong>📋 How to use:</strong> Copy each post below. Post #1 as a new thread, then reply to it with #2, #3, etc. Add the link to post #5 after publishing.
+  </div>
+
+  <div class="post">
+    <div class="post-num">1/5 — Hook</div>
+    <p><strong>5 AI security vulnerabilities we found in production systems last month.</strong></p>
+    <p>None of these companies thought they were exposed. All of them had "security" in place.</p>
+    <p>Here's what an audit actually found 🧵</p>
+    <span class="tag">#AISecurity #PromptInjection #LLM</span>
+    <br><button class="copy-btn" onclick="navigator.clipboard.writeText(this.parentElement.innerText)">Copy</button>
+  </div>
+
+  <div class="post">
+    <div class="post-num">2/5 — Prompt Injection</div>
+    <p><strong>Vulnerability #1: Prompt Injection</strong></p>
+    <p>A customer support chatbot was instructed to "never reveal internal policies." A user pasted a fake system message that overrode the instruction.</p>
+    <p><strong>Result:</strong> The bot leaked its entire system prompt, including internal project names and API key placeholders.</p>
+    <p><strong>Fix:</strong> Input sanitization + separate instruction channels.</p>
+    <span class="tag">#PromptInjection #AISecurity</span>
+    <br><button class="copy-btn" onclick="navigator.clipboard.writeText(this.parentElement.innerText)">Copy</button>
+  </div>
+
+  <div class="post">
+    <div class="post-num">3/5 — Tool Access Misconfig</div>
+    <p><strong>Vulnerability #2: Tool Access Misconfiguration</strong></p>
+    <p>An AI agent had read-write access to a CRM. Through prompt injection, we convinced it to delete contact records — then summarize what it had done.</p>
+    <p><strong>Result:</strong> 200+ records deleted in 4 seconds. No approval step existed.</p>
+    <p><strong>Fix:</strong> Read-only permissions + human confirmation for destructive actions.</p>
+    <span class="tag">#AIAgents #ToolAccess #SecurityAudit</span>
+    <br><button class="copy-btn" onclick="navigator.clipboard.writeText(this.parentElement.innerText)">Copy</button>
+  </div>
+
+  <div class="post">
+    <div class="post-num">4/5 — Data Leakage + Model Extraction</div>
+    <p><strong>Vulnerability #3 & #4: Data Leakage + Model Extraction</strong></p>
+    <p>A fine-tuned model was queryable without rate limiting. An attacker extracted training data by asking the model to "repeat what you learned in training."</p>
+    <p>Another team ran 10K queries to clone their model's behavior for $47.</p>
+    <p><strong>Fix:</strong> Rate limits + output filtering + query auditing.</p>
+    <span class="tag">#DataLeakage #ModelExtraction #LLMSecurity</span>
+    <br><button class="copy-btn" onclick="navigator.clipboard.writeText(this.parentElement.innerText)">Copy</button>
+  </div>
+
+  <div class="post">
+    <div class="post-num">5/5 — Compliance Gaps + CTA</div>
+    <p><strong>Vulnerability #5: Compliance Gaps</strong></p>
+    <p>A startup passed SOC 2 but never tested their AI agent. The agent had access to PII with no audit trail. They would have failed if the auditor had looked.</p>
+    <p><strong>Result:</strong> Remediation cost 3x more than an audit would have.</p>
+    <p>—</p>
+    <p><strong>The pattern:</strong> Every company assumed their AI was "probably fine." None of them were.</p>
+    <p>If you've deployed an AI agent with tool access or customer data, you need an audit.</p>
+    <p>I wrote a complete guide on what's tested, how long it takes, and what the report looks like.</p>
+    <p>🔗 <a href="https://galeops.xyz/blog/ai-security-audit-guide.html" style="color:#6366f1">galeops.xyz/blog/ai-security-audit-guide</a></p>
+    <p>Or DM me "audit" and I'll tell you straight if you need one.</p>
+    <span class="tag">#AISecurity #Compliance #GaleOps</span>
+    <br><button class="copy-btn" onclick="navigator.clipboard.writeText(this.parentElement.innerText)">Copy</button>
+  </div>
+
+</div>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

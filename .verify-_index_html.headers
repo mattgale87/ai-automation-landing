@@ -1,0 +1,16 @@
+HTTP/1.1 302 Found
+Age: 0
+Cache-Control: public,max-age=0,must-revalidate
+Cache-Status: "Netlify Edge"; fwd=miss
+Content-Length: 27
+Content-Type: text/plain; charset=utf-8
+Date: Wed, 29 Jul 2026 00:11:50 GMT
+Location: /ai-security?verify=202607290006
+Netlify-Vary: query
+Referrer-Policy: strict-origin-when-cross-origin
+Server: Netlify
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Nf-Request-Id: 01KYNKD6BT3TW0C0AAD65BDAA9
+

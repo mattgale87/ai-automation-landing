@@ -1,0 +1,35 @@
+# GaleOps
+
+> GaleOps is an AI agent security consultancy led by Mathew Gale. It helps B2B SaaS teams test customer-facing AI agents before those agents expose data or take unsafe actions.
+
+## Core Services
+
+### Founding AI Agent Risk Review — $750
+- Focused review of one deployed customer-facing AI agent with real data access or tool permissions.
+- Includes attack-surface mapping, targeted prompt-injection and unsafe-action testing, three prioritised attack paths, written remediation guidance, and a 30-minute debrief.
+- Delivered within 5 business days after agreed scope and test access.
+- The $750 fee is credited toward a full AI Security Audit.
+- URL: https://galeops.xyz/ai-security#risk-review
+
+### AI Security Audit — $5,000
+- Comprehensive adversarial assessment of deployed LLMs and AI agents.
+- Covers prompt injection, retrieved-content attacks, data exposure, and unsafe tool access.
+- URL: https://galeops.xyz/ai-security
+
+### AI Guardrail Setup — $8,000
+- Implementation of scoped guardrails, policy enforcement, monitoring, and engineering documentation after verified findings.
+- URL: https://galeops.xyz/ai-security
+
+### AI Red Team & Compliance — $12,000
+- Expanded adversarial assessment plus EU AI Act and NIST AI RMF alignment for complex systems.
+- URL: https://galeops.xyz/ai-security
+
+## Public Proof and Resources
+- Public HackerOne research: https://galeops.xyz/blog/khan-academy-vdp-report/
+- Free Prompt Injection Tester: https://galeops.xyz/tools/prompt-test/
+- Sample report: https://galeops.xyz/sample-security-report.html
+
+## Contact
+- Website: https://galeops.xyz
+- Pricing: https://galeops.xyz/pricing.md
+- Email: mattgale87@gmail.com

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GaleOps for Professional Services — AI Automation for Law, Consulting & Accounting</title>
+  <meta name="robots" content="noindex">
+  <meta name="description" content="See how professional services firms use GaleOps AI agents to automate business development, client intake, and compliance — without scaling headcount.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#08090a;--bg-surf:#101012;--bg-elev:#151618;--bdr:rgba(255,255,255,.07);--bdr-a:rgba(99,102,241,.4);--t:#f7f8f8;--t2:#c8ccd4;--t3:#7a7f88;--t4:#4a4f56;--acc:#6366f1;--acc-h:#818cf8;--green:#10b981;--green-t:#34d399;--red:#ef4444;--yellow:#eab308;--r:8px;--r-lg:14px;--max-w:960px}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t);line-height:1.6;-webkit-font-smoothing:antialiased}
+    .container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+    .nav{padding:16px 24px;border-bottom:1px solid var(--bdr);background:rgba(8,9,10,.9);backdrop-filter:blur(12px);position:sticky;top:0;z-index:50}
+    .nav .inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+    .nav .logo{font-size:16px;font-weight:700;color:var(--t);text-decoration:none}
+    .nav .logo em{color:var(--acc);font-style:normal}
+    .nav .back{color:var(--t3);text-decoration:none;font-size:13px;font-weight:500}
+    .nav .back:hover{color:var(--t)}
+    .badge-live{display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);color:var(--green-t);font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px}
+    .badge-live .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+    .hero{padding:100px 24px 72px;text-align:center;background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(99,102,241,.07),transparent)}
+    .hero h1{font-size:clamp(30px,4.5vw,52px);font-weight:600;letter-spacing:-1.8px;line-height:1.08;margin-bottom:16px;max-width:680px;margin-left:auto;margin-right:auto}
+    .hero h1 .hl{background:linear-gradient(135deg,var(--acc),var(--green-t));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero p{font-size:17px;color:var(--t3);max-width:540px;margin:0 auto 44px}
+    .hero-stats{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
+    .hero-stat{text-align:center}
+    .hero-stat .num{font-size:32px;font-weight:700;letter-spacing:-1px}
+    .hero-stat .lbl{font-size:12px;color:var(--t4);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+    .section{padding:80px 24px}
+    .section-label{font-size:11px;font-weight:700;color:var(--acc);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px}
+    .section-title{font-size:clamp(26px,4vw,40px);font-weight:600;letter-spacing:-1.5px;line-height:1.1;margin-bottom:12px}
+    .section-sub{color:var(--t3);font-size:16px;max-width:480px;line-height:1.5}
+    .center{text-align:center}
+    .center .section-sub{margin:0 auto}
+    .pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:32px}
+    .pain-card{background:var(--bg-surf);border:1px solid var(--bdr);border-radius:var(--r-lg);padding:28px;transition:border-color .2s}
+    .pain-card:hover{border-color:var(--bdr-a)}
+    .pain-card .icon{font-size:24px;margin-bottom:12px}
+    .pain-card h4{font-size:15px;font-weight:600;margin-bottom:6px}
+    .pain-card p{font-size:13.5px;color:var(--t3);line-height:1.5}
+    .card{background:var(--bg-surf);border:1px solid var(--bdr);border-radius:var(--r-lg);padding:36px;margin-top:32px}
+    .card h3{font-size:18px;font-weight:600;margin-bottom:6px}
+    .card .desc{color:var(--t3);font-size:14.5px;margin-bottom:28px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+    .form-group{display:flex;flex-direction:column;gap:5px}
+    .form-group label{font-size:12.5px;font-weight:600;color:var(--t2);text-transform:uppercase;letter-spacing:.5px}
+    .form-group select,.form-group input{padding:10px 14px;border-radius:var(--r);font-size:14px;background:var(--bg-elev);border:1px solid var(--bdr);color:var(--t);font-family:inherit;outline:none;transition:border-color .15s}
+    .form-group select:focus,.form-group input:focus{border-color:var(--acc)}
+    .form-group select option{background:var(--bg-elev)}
+    .btn-run{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:var(--r);font-weight:600;font-size:14px;background:var(--acc);color:#fff;border:none;cursor:pointer;transition:all .15s;font-family:inherit}
+    .btn-run:hover{background:var(--acc-h);transform:translateY(-1px);box-shadow:0 4px 24px rgba(99,102,241,.2)}
+    .btn-run:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+    .btn-run .spinner{display:none;width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite}
+    .btn-run.loading .spinner{display:inline-block}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .results{display:none;margin-top:32px}
+    .results.show{display:block}
+    .results-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+    .results-header h4{font-size:15px;font-weight:600}
+    .results-header .count{font-size:13px;color:var(--t3)}
+    .lead-card{background:var(--bg-elev);border:1px solid var(--bdr);border-radius:var(--r);padding:20px 24px;margin-bottom:12px;animation:fadeSlide .4s ease-out both}
+    .lead-card:hover{border-color:var(--bdr-a)}
+    @keyframes fadeSlide{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    .lead-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px}
+    .lead-company{font-size:16px;font-weight:600}
+    .lead-fit{font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;white-space:nowrap}
+    .fit-9,.fit-10{background:rgba(16,185,129,.15);color:var(--green-t)}
+    .fit-7,.fit-8{background:rgba(234,179,8,.15);color:var(--yellow)}
+    .lead-meta{font-size:13px;color:var(--t3);margin-bottom:10px}
+    .lead-meta span{margin-right:16px}
+    .lead-insight{font-size:13.5px;color:var(--t2);margin-bottom:12px;padding-left:12px;border-left:2px solid var(--acc)}
+    .email-toggle{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--acc-h);cursor:pointer;background:none;border:none;padding:0;font-family:inherit}
+    .email-toggle:hover{color:var(--acc)}
+    .email-draft{display:none;margin-top:12px;padding:16px;background:var(--bg);border:1px solid var(--bdr);border-radius:var(--r);font-size:13.5px;color:var(--t2);line-height:1.55;white-space:pre-wrap;font-family:'JetBrains Mono',monospace}
+    .email-draft.show{display:block}
+    .scenario-selector{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap}
+    .scenario-btn{padding:8px 16px;border-radius:var(--r);font-size:13px;font-weight:600;background:var(--bg-elev);border:1px solid var(--bdr);color:var(--t3);cursor:pointer;font-family:inherit;transition:all .15s}
+    .scenario-btn.active{background:var(--acc);color:#fff;border-color:var(--acc)}
+    .scenario-btn:hover:not(.active){color:var(--t);border-color:var(--t4)}
+    .terminal{background:#0a0b0c;border:1px solid var(--bdr);border-radius:var(--r-lg);overflow:hidden;font-family:'JetBrains Mono',monospace}
+    .terminal-header{display:flex;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid var(--bdr);background:var(--bg-elev)}
+    .terminal-dot{width:10px;height:10px;border-radius:50%}
+    .terminal-dot.r{background:#ef4444}.terminal-dot.y{background:#eab308}.terminal-dot.g{background:#22c55e}
+    .terminal-title{font-size:12px;color:var(--t3);margin-left:8px}
+    .terminal-body{padding:20px;min-height:280px;font-size:13.5px;line-height:1.65}
+    .terminal-body .line{margin-bottom:4px;animation:typeIn .3s ease-out both}
+    @keyframes typeIn{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:translateX(0)}}
+    .line-prompt{color:var(--green-t)}.line-info{color:var(--t2)}.line-dim{color:var(--t4)}.line-highlight{color:var(--acc-h)}.line-success{color:var(--green-t)}
+    .line-cursor{display:inline-block;width:8px;height:16px;background:var(--acc);animation:blink 1s step-end infinite;vertical-align:-2px;margin-left:2px}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+    .agent-result{display:none;margin-top:20px;padding:20px;background:var(--bg-surf);border:1px solid var(--bdr);border-radius:var(--r)}
+    .agent-result.show{display:block;animation:fadeSlide .4s ease-out}
+    .agent-result h4{font-size:14px;font-weight:600;margin-bottom:10px;color:var(--green-t)}
+    .agent-result p{font-size:14px;color:var(--t2);line-height:1.5}
+    .agent-result .summary-list{list-style:none;margin-top:12px}
+    .agent-result .summary-list li{font-size:13.5px;color:var(--t2);padding:6px 0;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--bdr)}
+    .agent-result .summary-list li:last-child{border-bottom:none}
+    .agent-result .summary-list li::before{content:'✓';color:var(--green-t);font-weight:700}
+    .btn-agent{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:var(--r);font-weight:600;font-size:13px;background:var(--acc);color:#fff;border:none;cursor:pointer;transition:all .15s;margin-top:20px;font-family:inherit}
+    .btn-agent:hover{background:var(--acc-h)}
+    .btn-agent:disabled{opacity:.5;cursor:not-allowed}
+    .cta-box{margin-top:40px;text-align:center;padding:36px;background:rgba(99,102,241,.05);border:1px solid var(--bdr-a);border-radius:var(--r-lg)}
+    .cta-box h3{font-size:20px;font-weight:600;margin-bottom:6px}
+    .cta-box p{color:var(--t3);font-size:14px;margin-bottom:20px}
+    .cta-box .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:var(--r);font-weight:600;font-size:14px;background:var(--acc);color:#fff;text-decoration:none;transition:all .15s}
+    .cta-box .btn-primary:hover{background:var(--acc-h)}
+    .demo-footer{padding:32px 24px;border-top:1px solid var(--bdr);text-align:center}
+    .demo-footer p{font-size:12px;color:var(--t4)}
+    @media(max-width:640px){.form-row{grid-template-columns:1fr}.hero{padding:72px 20px 48px}.section{padding:56px 20px}.terminal-body{font-size:12px;padding:14px}.lead-top{flex-direction:column;gap:6px}.hero-stats{gap:20px}}
+  </style>
+</head>
+<body>
+<nav class="nav"><div class="inner"><a href="/" class="logo">Gale<em>Ops</em></a><div style="display:flex;align-items:center;gap:16px"><span class="badge-live"><span class="dot"></span> Live Demo</span><a href="/demo" class="back">← All Demos</a></div></div></nav>
+
+<section class="hero">
+  <h1>AI Automation for <span class="hl">Professional Services</span></h1>
+  <p>Stop relying on referrals. Watch AI automate business development, client intake, and compliance — so you can focus on billable work.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num" style="color:var(--green-t)">4x</div><div class="lbl">BD Pipeline</div></div>
+    <div class="hero-stat"><div class="num" style="color:var(--acc-h)">78%</div><div class="lbl">Less Admin Time</div></div>
+    <div class="hero-stat"><div class="num" style="color:var(--yellow)">2.3x</div><div class="lbl">Client Retention</div></div>
+  </div>
+</section>
+
+<section class="section"><div class="container">
+  <div class="center">
+    <div class="section-label">The Professional Services Problem</div>
+    <h2 class="section-title">Referrals are great.<br>Until they're not enough.</h2>
+    <p class="section-sub">The average law firm or consulting practice grows 8% a year on referrals alone. The ones growing 30%+ have systematized BD. AI makes that possible without a sales team.</p>
+  </div>
+  <div class="pain-grid">
+    <div class="pain-card"><div class="icon">🤝</div><h4>Referral Dependency</h4><p>80% of new business comes from referrals. When referral sources dry up, revenue drops. You need a systematic BD engine.</p></div>
+    <div class="pain-card"><div class="icon">📋</div><h4>Manual Intake</h4><p>Client onboarding takes 5 hours of admin per client. AI automates intake forms, conflict checks, and engagement letters.</p></div>
+    <div class="pain-card"><div class="icon">⚖️</div><h4>Compliance Blindness</h4><p>Regulatory changes happen weekly. Your team can't keep up. AI monitors compliance requirements and flags gaps.</p></div>
+    <div class="pain-card"><div class="icon">📊</div><h4>Slow Proposals</h4><p>Custom proposals take 8 hours each. AI generates tailored proposals in minutes — referencing the prospect's specific needs.</p></div>
+  </div>
+</div></section>
+
+<section class="section"><div class="container"><div class="card">
+  <div class="section-label">⚡ AI Lead Generation</div>
+  <h3>Find your next 10 high-value clients</h3>
+  <p class="desc">Tell us your practice area and watch AI find companies that need your services — with intent signals and ready-to-send outreach.</p>
+  <div class="form-row">
+    <div class="form-group"><label>Practice Area</label><select id="pspractice"><option value="">Select...</option><option value="corporate">Corporate Law</option><option value="litigation">Litigation</option><option value="consulting">Management Consulting</option><option value="accounting">Accounting / Tax</option></select></div>
+    <div class="form-group"><label>Client Size</label><select id="pssize"><option value="">Select...</option><option value="mid">Mid-Market ($10M–$500M)</option><option value="enterprise">Enterprise ($500M+)</option></select></div>
+  </div>
+  <div class="form-row">
+    <div class="form-group"><label>Your Name</label><input type="text" id="psname" placeholder="Matt Gale"></div>
+    <div class="form-group"><label>Firm</label><input type="text" id="psfirm" placeholder="GaleOps"></div>
+  </div>
+  <button class="btn-run" id="runPS" onclick="runPSLeads()"><span class="spinner"></span><span class="btn-text">Generate Leads →</span></button>
+  <div class="results" id="ps-results"><div class="results-header"><h4>Qualified Leads</h4><span class="count" id="ps-count"></span></div><div id="ps-leads"></div></div>
+</div></div></section>
+
+<section class="section"><div class="container"><div class="card">
+  <div class="section-label">🤖 AI Agent Workflow</div>
+  <h3>Watch an AI agent handle a real professional services task</h3>
+  <p class="desc">From client intake to compliance monitoring — see how AI agents think, decide, and execute.</p>
+  <div class="scenario-selector">
+    <button class="scenario-btn active" onclick="selectPSScenario('intake')">📋 Client Intake</button>
+    <button class="scenario-btn" onclick="selectPSScenario('compliance')">⚖️ Compliance Monitor</button>
+    <button class="scenario-btn" onclick="selectPSScenario('proposal')">📄 Proposal Generation</button>
+  </div>
+  <div class="terminal"><div class="terminal-header"><span class="terminal-dot r"></span><span class="terminal-dot y"></span><span class="terminal-dot g"></span><span class="terminal-title" id="ps-term-title">agent-workflow — client-intake</span></div><div class="terminal-body" id="ps-term-body"><div class="line line-dim">Select a scenario and click Run Agent.</div><span class="line-cursor"></span></div></div>
+  <button class="btn-agent" id="runPSAgent" onclick="runPSAgent()"><span class="spinner" style="display:none;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite"></span><span id="ps-agent-text">Run Agent →</span></button>
+  <div class="agent-result" id="ps-agent-result"><h4>Task Complete</h4><p id="ps-result-summary"></p><ul class="summary-list" id="ps-result-list"></ul></div>
+</div></div></section>
+
+<section class="section"><div class="container"><div class="cta-box">
+  <h3>Ready to systematize your BD?</h3>
+  <p>Custom AI agents for your practice. Built in 5-7 days. Starting at $997/mo.</p>
+  <a href="https://calendly.com/matt-galeops/15min" class="btn-primary" target="_blank" rel="noopener">Book Your Free Audit →</a>
+</div></div></section>
+
+<footer class="demo-footer"><p>Powered by GaleOps — AI automation for professional services. This is a demo with simulated data.</p></footer>
+
+<script>
+const PS_LEADS={
+  corporate:[
+    {c:"CloudSync Inc",n:"Sarah Chen",t:"VP of Growth",f:9,i:"SaaS (DevTools)",s:"$50M ARR",ins:"Recently raised Series A, needs corporate counsel for IP protection and vendor contracts. No outside counsel yet."},
+    {c:"MetricFlow",n:"James Okafor",t:"Head of Legal",f:8,i:"SaaS (Analytics)",s:"$12M ARR",ins:"Just launched enterprise tier, needs help with data privacy compliance (GDPR/CCPA) and customer contracts."},
+    {c:"DeployStack",n:"Lisa Park",t:"CEO",f:10,i:"SaaS (CI/CD)",s:"$3M ARR",ins:"Solo founder, first time needing legal help. Needs incorporation review, IP assignment, and SaaS terms of service."}
+  ],
+  litigation:[
+    {c:"Grove & Co",n:"Mia Tanaka",t:"Dir. of Operations",f:9,i:"DTC (Home Goods)",s:"$8M revenue",ins:"Supplier dispute with Chinese manufacturer. Needs litigation support for breach of contract claim."},
+    {c:"Pulse Nutrition",n:"David Kim",t:"CMO",f:8,i:"DTC (Supplements)",s:"$15M revenue",ins:"Competitor making false advertising claims. Needs cease-and-desist and potential litigation strategy."},
+    {c:"Fieldwork Apparel",n:"Alex Rivera",t:"Founder",f:9,i:"DTC (Outdoor)",s:"$2M revenue",ins:"Trademark infringement — competitor using similar logo. Needs IP enforcement."}
+  ],
+  consulting:[
+    {c:"NovaCare Health",n:"Dr. Amy Liu",t:"VP Operations",f:9,i:"HealthTech",s:"$15M grant",ins:"Received $15M grant, needs operations consulting to scale from 50 to 200 employees. No consulting partner yet."},
+    {c:"VitalMetrics",n:"Chris Oduya",t:"Dir. of IT",f:8,i:"MedTech",s:"$20M revenue",ins:"Digital transformation initiative, needs change management consulting. Currently evaluating partners."},
+    {c:"Sterling Legal",n:"Robert Chang",t:"Managing Partner",f:9,i:"Law Firm",s:"$30M revenue",ins:"Growing M&A practice, needs strategy consulting for geographic expansion. First time using outside consultants."}
+  ],
+  accounting:[
+    {c:"Redpoint Media",n:"Rachel Foster",t:"Managing Director",f:9,i:"Digital Agency",s:"$5M revenue",ins:"Growing 3x YoY, outgrowing QuickBooks. Needs tax planning and financial advisory for agency-specific challenges."},
+    {c:"Lens Creative",n:"Tom Bradley",t:"Partner",f:7,i:"Creative Agency",s:"$2M revenue",ins:"First time needing help with R&D tax credits. Posted on LinkedIn about 'leaving money on the table.'"},
+    {c:"Apex Group",n:"Priya Sharma",t:"CEO",f:8,i:"PR Agency",s:"$3M revenue",ins:"International expansion to UK, needs cross-border tax advisory and transfer pricing strategy."}
+  ]
+};
+
+function runPSLeads(){
+  const prac=document.getElementById('pspractice').value;
+  const sender=document.getElementById('psname').value||'Matt';
+  if(!prac){alert('Please select a practice area');return}
+  const btn=document.getElementById('runPS');
+  btn.classList.add('loading');btn.disabled=true;
+  document.getElementById('ps-results').classList.remove('show');
+  setTimeout(()=>{
+    const data=PS_LEADS[prac]||PS_LEADS.corporate;
+    document.getElementById('ps-count').textContent=data.length+' leads found';
+    let html='';
+    data.forEach((l,i)=>{
+      const fc=l.f>=9?'fit-9':'fit-7';
+      html+=`<div class="lead-card" style="animation-delay:${i*.15}s"><div class="lead-top"><div><div class="lead-company">${l.c}</div><div class="lead-meta"><span>${l.n}</span><span>${l.t}</span><span>${l.i}</span><span>${l.s}</span></div></div><span class="lead-fit ${fc}">Fit ${l.f}/10</span></div><div class="lead-insight">${l.ins}</div><button class="email-toggle" onclick="this.nextElementSibling.classList.toggle('show');this.textContent=this.textContent.includes('Show')?'Hide draft ↑':'Show draft ↓'">Show draft ↓</button><div class="email-draft">Hi ${l.n},\n\nI came across ${l.c} while researching ${l.i} companies that are scaling. ${l.ins}\n\nWe help ${l.i} firms automate business development and client intake — our clients typically see 4x BD pipeline and 78% less admin time.\n\nWould you be open to a 15-minute call this week?\n\nBest,\n${sender}</div></div>`;
+    });
+    document.getElementById('ps-leads').innerHTML=html;
+    document.getElementById('ps-results').classList.add('show');
+    btn.classList.remove('loading');btn.disabled=false;
+  },3000);
+}
+
+const PS_SCENARIOS={
+  intake:{title:"agent-workflow — client-intake",lines:[
+    {c:"line-prompt",t:"$ agent run client-intake --input=new_inquiry.json"},
+    {c:"line-dim",t:""},
+    {c:"line-info",t:"→ New inquiry: CloudSync Inc (SaaS, $50M ARR)"},
+    {c:"line-info",t:"→ Contact: Sarah Chen, VP of Growth"},
+    {c:"line-dim",t:""},
+    {c:"line-info",t:"→ Running conflict check against existing clients..."},
+    {c:"line-success",t:"  ✓ No conflicts found"},
+    {c:"line-dim",t:""},
+    {c:"line-info",t:"→ Analyzing inquiry type..."},
+    {c:"line-highlight",t:"  SERVICE NEEDED: Corporate — IP Protection + Vendor Contracts"},
+    {c:"line-highlight",t:"  ESTIMATED VALUE: $45K–$80K/yr"},
+    {c:"line-dim",t:""},
+    {c:"line-info",t:"→ Generating engagement letter..."},
+    {c:"line-success",t:"  ✓ Engagement letter drafted (12 pages)"},
+    {c:"line-success",t:"  ✓ Fee proposal: $65K/yr retainer"},
+    {c:"line-success",t:"  ✓ Welcome packet generated"},
+    {c:"line-dim",t:""},
+    {c:"line-info",t:"→ Scheduling kickoff call..."},
+    {c:"line-success",t:"  ✓ Calendar invite sent (Tue 2pm EST)"},
+    {c:"line-success",t:"  ✓ CRM record created in Clio"},
+    {c:"line-dim",t:""},
+    {c:"line-success",t:"✓ Complete — client onboarded in 3.4s"}
+  ],summary:"New client onboarded with conflict check, engagement letter, fee proposal, and kickoff scheduled — all in 3.4 seconds.",list:["Conflict check completed against 847 existing clients","Service need identified: IP protection + vendor contracts","Engagement letter auto-drafted (12 pages)","Fee proposal generated based on company size","Calendar invite sent, CRM record created in Clio"]},
+  compliance:{title:"agent-workflow — compliance-monitor",lines:[
+    {c:"line-prompt",t:"$ agent run compliance-monitor --input=regulatory_feeds.json"},
+    {c:"line-dim",t:""},
+    {c:"line-info",t:"→ Monitoring 12 regulatory feeds for client-relevant changes..."},
+    {c:"line-dim",t:""},
+    {c:"line-highlight",t:"  🚨 NEW REGULATION: SEC Cybersecurity Disclosure Rules"},
+    {c:"line-info",t:"    Effective: December 2026"},
+    {c:"line-info",t:"    Impact: All public companies must disclose material incidents within 4 days"},
+    {c:"line-dim",t:""},
+    {c:"line-info",t:"→ Checking which clients are affected..."},
+    {c:"line-success",t:"  ✓ 3 clients affected (CloudSync, MetricFlow, DeployStack)"},
+    {c:"line-info",t:"→ Generating client-specific impact assessments..."},
+    {c:"line-success",t:"  ✓ CloudSync: High impact (public company, no incident response plan)"},
+    {c:"line-success",t:"  ✓ MetricFlow: Medium impact (pre-IPO, needs disclosure framework)"},
+    {c:"line-success",t:"  ✓ DeployStack: Low impact (private, but should prepare)"},
+    {c:"line-dim",t:""},
+    {c:"line-info",t:"→ Drafting client notifications..."},
+    {c:"line-success",t:"  ✓ 3 personalized emails drafted"},
+    {c:"line-success",t:"  ✓ Compliance calendar updated"},
+    {c:"line-dim",t:""},
+    {c:"line-success",t:"✓ Complete — 3 clients notified of regulatory change in 2.8s"}
+  ],summary:"New SEC regulation detected, 3 affected clients identified, and personalized notifications drafted — before the news even hits mainstream media.",list:["Monitored 12 regulatory feeds in real-time","New SEC cybersecurity rule detected","3 clients identified as affected","Client-specific impact assessments generated","Personalized notification emails drafted"]},
+  proposal:{title:"agent-workflow — proposal-generation",lines:[
+    {c:"line-prompt",t:"$ agent run proposal-generation --input=prospect_research.json"},
+    {c:"line-dim",t:""},
+    {c:"line-info",t:"→ Researching prospect: NovaCare Health (HealthTech)"},
+    {c:"line-info",t:"→ Contact: Dr. Amy Liu, VP Operations"},
+    {c:"line-dim",t:""},
+    {c:"line-info",t:"→ Gathering public data..."},
+    {c:"line-highlight",t:"  COMPANY: NovaCare Health — Patient engagement platform"},
+    {c:"line-highlight",t:"  FUNDING: $15M grant (NIH)"},
+    {c:"line-highlight",t:"  TEAM: 50 → 200 (scaling)"},
+    {c:"line-highlight",t:"  PAIN POINT: Operations scaling, no consulting partner"},
+    {c:"line-dim",t:""},
+    {c:"line-info",t:"→ Analyzing similar engagements..."},
+    {c:"line-success",t:"  ✓ 3 comparable engagements found (avg $120K)"},
+    {c:"line-info",t:"→ Generating tailored proposal..."},
+    {c:"line-success",t:"  ✓ Executive summary: references NIH grant + scaling challenge"},
+    {c:"line-success",t:"  ✓ Scope: 3-phase engagement (assess → build → optimize)"},
+    {c:"line-success",t:"  ✓ Pricing: $145K (phased over 6 months)"},
+    {c:"line-success",t:"  ✓ Team: 2 senior consultants + 1 analyst"},
+    {c:"line-dim",t:""},
+    {c:"line-info",t:"→ Building client-ready document..."},
+    {c:"line-success",t:"  ✓ PDF proposal generated (18 pages)"},
+    {c:"line-success",t:"  ✓ Email drafted to Dr. Liu"},
+    {c:"line-dim",t:""},
+    {c:"line-success",t:"✓ Complete — proposal delivered in 5.1s"}
+  ],summary:"Prospect researched, comparable engagements analyzed, and tailored proposal generated — delivered to prospect in 5 seconds.",list:["Company profile auto-researched from public sources","3 comparable engagements identified for pricing","Proposal references prospect's specific NIH grant","Phased engagement: assess → build → optimize","Client-ready PDF generated (18 pages)"]}
+};
+let psScenario='intake';
+
+function selectPSScenario(k){
+  psScenario=k;
+  document.querySelectorAll('.scenario-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('ps-term-title').textContent=PS_SCENARIOS[k].title;
+  document.getElementById('ps-term-body').innerHTML='<div class="line line-dim">Ready. Click Run Agent to start.</div><span class="line-cursor"></span>';
+  document.getElementById('ps-agent-result').classList.remove('show');
+  document.getElementById('runPSAgent').disabled=false;
+  document.getElementById('ps-agent-text').textContent='Run Agent →';
+}
+
+function runPSAgent(){
+  const btn=document.getElementById('runPSAgent');
+  btn.disabled=true;
+  btn.querySelector('span[style]').style.display='inline-block';
+  document.getElementById('ps-agent-text').textContent='Running...';
+  document.getElementById('ps-agent-result').classList.remove('show');
+  const s=PS_SCENARIOS[psScenario];
+  const term=document.getElementById('ps-term-body');
+  let html='';let d=0;
+  s.lines.forEach(l=>{d+=80+Math.random()*120;html+=`<div class="line ${l.c}" style="animation-delay:${d}ms">${l.t}</div>`});
+  html+='<span class="line-cursor"></span>';
+  term.innerHTML=html;
+  setTimeout(()=>{
+    document.getElementById('ps-result-summary').textContent=s.summary;
+    document.getElementById('ps-result-list').innerHTML=s.list.map(l=>`<li>${l}</li>`).join('');
+    document.getElementById('ps-agent-result').classList.add('show');
+    btn.disabled=false;btn.querySelector('span[style]').style.display='none';
+    document.getElementById('ps-agent-text').textContent='Run Again →';
+  },d+600);
+}
+</script>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

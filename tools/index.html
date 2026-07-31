@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tools I Use and Recommend | GaleOps</title>
+  <meta name="description" content="My recommended stack for ecommerce, automation, AI productivity, and online business tools. Curated by GaleOps.">
+  <link rel="canonical" href="https://galeops.xyz/tools/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://galeops.xyz/tools/">
+  <meta property="og:title" content="Tools I Use and Recommend | GaleOps">
+  <meta property="og:description" content="A curated recommended stack for ecommerce, automation, AI productivity, and business operations.">
+  <meta property="og:image" content="https://galeops.xyz/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tools I Use and Recommend | GaleOps">
+  <meta name="twitter:description" content="A curated recommended stack for ecommerce, automation, AI productivity, and business operations.">
+  <meta name="twitter:image" content="https://galeops.xyz/og-image.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #08090a;
+      --surface: #101012;
+      --surface-2: #151618;
+      --card: #17181b;
+      --border: rgba(255,255,255,0.08);
+      --border-strong: rgba(99,102,241,0.35);
+      --text: #f7f8f8;
+      --text-soft: #cfd5df;
+      --text-muted: #8a9099;
+      --accent: #6366f1;
+      --accent-2: #34d399;
+      --accent-3: #a78bfa;
+      --shadow: 0 24px 80px rgba(0,0,0,0.35);
+      --radius: 18px;
+      --radius-sm: 10px;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(99,102,241,0.16), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(52,211,153,0.08), transparent 24%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      z-index: 1;
+    }
+
+    .wrap { position: relative; z-index: 2; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(8,9,10,0.82);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      font-size: 1.05rem;
+    }
+    .brand span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      padding: 8px 12px;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+    .nav-links .cta {
+      color: white;
+      background: linear-gradient(135deg, var(--accent), var(--accent-3));
+      font-weight: 700;
+    }
+
+    .hero {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 84px 24px 48px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+    .hero-copy,
+    .hero-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+    .hero-copy {
+      padding: 42px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-copy::after {
+      content: '';
+      position: absolute;
+      inset: auto -10% -30% auto;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99,102,241,0.18), transparent 70%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #c7d2fe;
+      border: 1px solid rgba(99,102,241,0.28);
+      background: rgba(99,102,241,0.12);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 0 6px rgba(52,211,153,0.12);
+    }
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 4.9rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      margin-bottom: 18px;
+      max-width: 10ch;
+    }
+    .hero-copy p {
+      color: var(--text-soft);
+      font-size: 1.08rem;
+      max-width: 58ch;
+      margin-bottom: 28px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 14px 20px;
+      border-radius: 14px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--accent), var(--accent-3));
+      box-shadow: 0 14px 34px rgba(99,102,241,0.24);
+    }
+    .btn-secondary {
+      color: var(--text);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+    }
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 10px;
+    }
+    .meta-card {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.025);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .meta-card strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+      letter-spacing: -0.03em;
+    }
+    .meta-card span {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .hero-panel {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .panel-label {
+      color: var(--accent-2);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+    .stack-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .stack-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 14px;
+      align-items: center;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      border-radius: 16px;
+      padding: 14px 16px;
+    }
+    .stack-number {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(99,102,241,0.16);
+      color: #c7d2fe;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem;
+    }
+    .stack-item strong { display: block; font-size: 0.96rem; }
+    .stack-item span { color: var(--text-muted); font-size: 0.88rem; }
+    .pill {
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: rgba(52,211,153,0.12);
+      color: #a7f3d0;
+    }
+
+    .section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 30px 24px 72px;
+    }
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 26px;
+    }
+    .section-header h2 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      letter-spacing: -0.05em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .section-header p {
+      color: var(--text-muted);
+      max-width: 56ch;
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .tool-card {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015));
+      padding: 24px;
+      min-height: 100%;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .tool-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-strong);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.22);
+    }
+    .tool-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .tool-kicker {
+      color: var(--accent-2);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .tool-card h3 {
+      font-size: 1.5rem;
+      letter-spacing: -0.04em;
+      margin-bottom: 10px;
+    }
+    .tool-card p { color: var(--text-soft); }
+    .tool-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tool-tags span {
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.79rem;
+      background: rgba(255,255,255,0.025);
+    }
+    .tool-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: auto;
+    }
+    .tool-actions a {
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    .tool-actions .visit {
+      background: linear-gradient(135deg, var(--accent), var(--accent-3));
+      color: white;
+    }
+    .tool-actions .context {
+      border: 1px solid var(--border);
+      color: var(--text-soft);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .use-cases {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .use-card {
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.028);
+      padding: 20px;
+    }
+    .use-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+      letter-spacing: -0.03em;
+    }
+    .use-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      color: var(--text-soft);
+      font-size: 0.94rem;
+    }
+    .use-card li::before {
+      content: '•';
+      color: var(--accent-2);
+      margin-right: 8px;
+    }
+
+    .disclosure {
+      margin-top: 22px;
+      padding: 20px 22px;
+      border-radius: 18px;
+      border: 1px solid rgba(245,158,11,0.22);
+      background: rgba(245,158,11,0.08);
+      color: #fcdba5;
+    }
+    .disclosure strong { color: #fde68a; }
+
+    .footer {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 10px 24px 60px;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+    .footer-card {
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .footer a { color: var(--text-soft); text-decoration: none; }
+
+    @media (max-width: 980px) {
+      .hero,
+      .tool-grid,
+      .use-cases {
+        grid-template-columns: 1fr;
+      }
+      .hero-copy,
+      .hero-panel { padding: 28px; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner,
+      .hero,
+      .section,
+      .footer { padding-left: 18px; padding-right: 18px; }
+      .hero { padding-top: 48px; }
+      .hero-meta { grid-template-columns: 1fr; }
+      .tool-top { align-items: start; flex-direction: column; }
+      .stack-item { grid-template-columns: auto 1fr; }
+      .stack-item .pill { grid-column: 1 / -1; justify-self: start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="wrap">
+    <nav>
+      <div class="nav-inner">
+        <a class="brand" href="/">Gale<span>Ops</span></a>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="#stack">Stack</a>
+          <a href="#tools">Tools</a>
+          <a href="https://galeops.xyz/scan/" class="cta">Get a Free AI Risk Scan</a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="dot"></span>Curated by GaleOps</div>
+        <h1>Tools I Use and Recommend</h1>
+        <p>
+          This is my recommended stack for building online businesses, shipping products, running automation,
+          and moving faster with AI. Instead of random tool spam, these are the ones that actually make sense together.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#tools">Browse the Stack</a>
+          <a class="btn btn-secondary" href="https://galeops.xyz/scan/">Need help securing your AI stack?</a>
+        </div>
+        <div class="hero-meta">
+          <div class="meta-card">
+            <strong>6 tools</strong>
+            <span>Curated for practical business use</span>
+          </div>
+          <div class="meta-card">
+            <strong>4 categories</strong>
+            <span>Ecommerce, automation, websites, productivity</span>
+          </div>
+          <div class="meta-card">
+            <strong>No filler</strong>
+            <span>Only tools that fit a real stack</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-panel" id="stack">
+        <div>
+          <div class="panel-label">Recommended Stack</div>
+          <ul class="stack-list">
+            <li class="stack-item">
+              <div class="stack-number">01</div>
+              <div><strong>Shopify</strong><span>Storefront + commerce engine</span></div>
+              <div class="pill">Sell</div>
+            </li>
+            <li class="stack-item">
+              <div class="stack-number">02</div>
+              <div><strong>Easyship</strong><span>Shipping + fulfillment workflow</span></div>
+              <div class="pill">Ship</div>
+            </li>
+            <li class="stack-item">
+              <div class="stack-number">03</div>
+              <div><strong>Proxy-Cheap</strong><span>Scraping + automation + geo-testing</span></div>
+              <div class="pill">Automate</div>
+            </li>
+            <li class="stack-item">
+              <div class="stack-number">04</div>
+              <div><strong>Appy Pie</strong><span>No-code app building + lightweight workflows</span></div>
+              <div class="pill">Build</div>
+            </li>
+            <li class="stack-item">
+              <div class="stack-number">05</div>
+              <div><strong>Wegic</strong><span>Fast AI-assisted website creation</span></div>
+              <div class="pill">Launch</div>
+            </li>
+            <li class="stack-item">
+              <div class="stack-number">06</div>
+              <div><strong>PopAi Sheets</strong><span>AI-assisted spreadsheet productivity</span></div>
+              <div class="pill">Operate</div>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="tools">
+      <div class="section-header">
+        <div>
+          <h2>Recommended tools, in the order they make sense</h2>
+          <p>
+            If you are building an ecommerce business, AI workflow, side project, or lightweight operations stack,
+            start here. These complement each other instead of overlapping randomly.
+          </p>
+        </div>
+      </div>
+
+      <div class="tool-grid">
+        <article class="tool-card">
+          <div class="tool-top">
+            <div>
+              <div class="tool-kicker">Build your storefront</div>
+              <h3>Shopify</h3>
+            </div>
+            <div class="pill">Best for ecommerce</div>
+          </div>
+          <p>
+            Launch an online store, manage products, process orders, and build a serious ecommerce operation on the platform most people should start with.
+          </p>
+          <div class="tool-tags">
+            <span>Storefront</span><span>Checkout</span><span>Products</span><span>Growth</span>
+          </div>
+          <div class="tool-actions">
+            <a class="visit" href="https://shopify.pxf.io/WO9Dbe" target="_blank" rel="nofollow sponsored noopener">Visit Shopify</a>
+            <a class="context" href="#ecommerce">Why it fits this stack</a>
+          </div>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-top">
+            <div>
+              <div class="tool-kicker">Handle shipping and fulfillment</div>
+              <h3>Easyship</h3>
+            </div>
+            <div class="pill">Ops multiplier</div>
+          </div>
+          <p>
+            Once you start selling, Easyship helps simplify carriers, labels, rates, and fulfillment workflows without turning the backend into chaos.
+          </p>
+          <div class="tool-tags">
+            <span>Shipping</span><span>Labels</span><span>Rates</span><span>Fulfillment</span>
+          </div>
+          <div class="tool-actions">
+            <a class="visit" href="https://easyship.ilbqy6.net/oNGeAW" target="_blank" rel="nofollow sponsored noopener">Visit Easyship</a>
+            <a class="context" href="#ecommerce">Best paired with Shopify</a>
+          </div>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-top">
+            <div>
+              <div class="tool-kicker">Scraping, automation, and geo-testing</div>
+              <h3>Proxy-Cheap</h3>
+            </div>
+            <div class="pill">Technical workflows</div>
+          </div>
+          <p>
+            Affordable proxies for scraping, browser automation, agents, account operations, geo-targeted testing, and data collection workflows.
+          </p>
+          <div class="tool-tags">
+            <span>Scraping</span><span>Automation</span><span>Proxies</span><span>Geo-testing</span>
+          </div>
+          <div class="tool-actions">
+            <a class="visit" href="https://app.proxy-cheap.com/r/DIqGfG" target="_blank" rel="nofollow sponsored noopener">Visit Proxy-Cheap</a>
+            <a class="context" href="#automation">Fits GaleTech-style content</a>
+          </div>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-top">
+            <div>
+              <div class="tool-kicker">Build apps without heavy dev work</div>
+              <h3>Appy Pie</h3>
+            </div>
+            <div class="pill">No-code build layer</div>
+          </div>
+          <p>
+            A practical no-code option for building apps, simple internal tools, and lightweight automations without a full engineering buildout.
+          </p>
+          <div class="tool-tags">
+            <span>No-code</span><span>Apps</span><span>Automation</span><span>Fast launch</span>
+          </div>
+          <div class="tool-actions">
+            <a class="visit" href="https://appypie.pxf.io/X4rx63" target="_blank" rel="nofollow sponsored noopener">Visit Appy Pie</a>
+            <a class="context" href="#launch">Good for quick MVPs</a>
+          </div>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-top">
+            <div>
+              <div class="tool-kicker">Launch websites faster</div>
+              <h3>Wegic</h3>
+            </div>
+            <div class="pill">Speed-first websites</div>
+          </div>
+          <p>
+            AI-assisted website creation for landing pages, business sites, and fast web builds when you want momentum more than complexity.
+          </p>
+          <div class="tool-tags">
+            <span>Websites</span><span>Landing pages</span><span>AI builder</span><span>Speed</span>
+          </div>
+          <div class="tool-actions">
+            <a class="visit" href="https://wegic-ai.pxf.io/0GnJbN" target="_blank" rel="nofollow sponsored noopener">Visit Wegic</a>
+            <a class="context" href="#launch">Best for rapid site creation</a>
+          </div>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-top">
+            <div>
+              <div class="tool-kicker">AI productivity for spreadsheets</div>
+              <h3>PopAi Sheets</h3>
+            </div>
+            <div class="pill">Operate faster</div>
+          </div>
+          <p>
+            Useful for people who live in spreadsheets and want AI help with analysis, structure, repetitive work, and faster decision support.
+          </p>
+          <div class="tool-tags">
+            <span>Sheets</span><span>Analysis</span><span>AI productivity</span><span>Operations</span>
+          </div>
+          <div class="tool-actions">
+            <a class="visit" href="https://sheetspopaipro.sjv.io/zz0aWG" target="_blank" rel="nofollow sponsored noopener">Visit PopAi Sheets</a>
+            <a class="context" href="#productivity">Best for operator workflows</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="use-cases">
+        <article class="use-card" id="ecommerce">
+          <h3>For ecommerce</h3>
+          <ul>
+            <li>Shopify</li>
+            <li>Easyship</li>
+          </ul>
+        </article>
+        <article class="use-card" id="automation">
+          <h3>For automation</h3>
+          <ul>
+            <li>Proxy-Cheap</li>
+            <li>Appy Pie</li>
+          </ul>
+        </article>
+        <article class="use-card" id="launch">
+          <h3>For fast launches</h3>
+          <ul>
+            <li>Wegic</li>
+            <li>Appy Pie</li>
+            <li>Shopify</li>
+          </ul>
+        </article>
+        <article class="use-card" id="productivity">
+          <h3>For productivity</h3>
+          <ul>
+            <li>PopAi Sheets</li>
+            <li>Appy Pie</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="disclosure">
+        <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links, which means I may earn a commission if you sign up through them at no extra cost to you. I only recommend tools that fit real business, ecommerce, automation, or AI productivity workflows.
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-card">
+        <div>GaleOps — AI security, automation, and practical operator tools.</div>
+        <div>
+          <a href="/">Home</a> ·
+          <a href="https://galeops.xyz/scan/">Free AI Risk Scan</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

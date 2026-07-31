@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order received — thanks! | GaleOps</title>
+  <meta name="description" content="Your GaleOps order has been received. Watch your inbox for delivery.">
+  <link rel="canonical" href="https://galeops.xyz/thanks/">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-abyss: #08090a;
+      --bg-surface: #101012;
+      --bg-elevated: #191a1b;
+      --border-default: rgba(255,255,255,0.09);
+      --text-primary: #f7f8f8;
+      --text-secondary: #d0d6e0;
+      --text-tertiary: #8a8f98;
+      --accent: #6366f1;
+      --accent-hover: #818cf8;
+      --green: #10b981;
+      --green-text: #34d399;
+    }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg-abyss); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+    .card { max-width: 560px; width: 100%; background: linear-gradient(180deg, var(--bg-elevated), var(--bg-surface)); border: 1px solid var(--border-default); border-radius: 16px; padding: 48px 40px; text-align: center; }
+    .check { width: 72px; height: 72px; border-radius: 50%; background: rgba(16,185,129,0.1); border: 2px solid var(--green); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 36px; color: var(--green-text); }
+    h1 { font-size: 32px; margin-bottom: 12px; letter-spacing: -0.5px; }
+    .lede { font-size: 16px; color: var(--text-secondary); margin-bottom: 28px; }
+    .meta { background: var(--bg-abyss); border: 1px solid var(--border-default); border-radius: 10px; padding: 16px; margin-bottom: 28px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-tertiary); text-align: left; word-break: break-all; }
+    .meta strong { color: var(--text-secondary); }
+    .btn { display: inline-block; background: var(--accent); color: #fff; padding: 12px 24px; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; }
+    .btn:hover { background: var(--accent-hover); }
+    .deliveries { text-align: left; margin: 28px 0; }
+    .deliveries li { list-style: none; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 14px; color: var(--text-secondary); }
+    .deliveries li:last-child { border: none; }
+    .deliveries ul { list-style: none; }
+    footer { margin-top: 32px; font-size: 12px; color: var(--text-tertiary); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="check">✓</div>
+    <h1>Order received</h1>
+    <p class="lede">Thanks — your payment went through. We'll email you as soon as your deliverable is ready.</p>
+
+    <div class="meta" id="meta">
+      <div><strong>Session:</strong> <span id="session-id">…</span></div>
+      <div style="margin-top:6px"><strong>Tier:</strong> <span id="tier">…</span></div>
+    </div>
+
+    <ul class="deliveries" id="deliveries">
+      <!-- Filled by JS based on tier -->
+    </ul>
+
+    <a href="https://galeops.xyz/" class="btn">← Back to GaleOps</a>
+    <footer>Need help? Reply to your receipt email or message <a href="mailto:matt@galeops.xyz" style="color:var(--accent-hover)">matt@galeops.xyz</a></footer>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get('session_id') || '(not provided)';
+    const tier = params.get('tier') || 'unknown';
+
+    document.getElementById('session-id').textContent = sessionId;
+    document.getElementById('tier').textContent = tier;
+
+    const deliveriesByTier = {
+      'quiz-report-49': [
+        '📄 PDF report — within 15 minutes',
+        'Includes your top 5 prompt injection risks + tested exploits + remediation checklist',
+        'Sent to the email on your order'
+      ],
+      'snapshot-149': [
+        '🎥 15-minute video walkthrough — within 48 hours',
+        '📄 Branded PDF audit — same delivery',
+        '🛠️ Drop-in patch snippets — included',
+        'You\'ll get a Loom link + a Calendly link for any follow-up'
+      ],
+      'starter-kit-499': [
+        '📄 Personalized PDF audit — Day 3',
+        '🎥 Branded video walkthrough — Day 3',
+        '📋 Editable policy templates — Day 4',
+        '🎙️ 1-hour live consult — scheduled within the first week',
+        '📞 2 weeks of async email support — through day 21'
+      ]
+    };
+
+    const list = deliveriesByTier[tier] || ['We\'ll be in touch with delivery details shortly.'];
+    const ul = document.getElementById('deliveries');
+    list.forEach(d => {
+      const li = document.createElement('li');
+      li.textContent = d;
+      ul.appendChild(li);
+    });
+  </script>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

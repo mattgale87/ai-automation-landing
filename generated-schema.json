@@ -1,0 +1,13 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Matt Gale",
+  "jobTitle": "AI Security Consultant",
+  "url": "https://galeops.xyz",
+  "sameAs": [
+    "https://www.youtube.com/@GaleTech",
+    "https://www.linkedin.com/in/mattgale",
+    "https://x.com/Mattjgale87"
+  ],
+  "worksFor": { "@type": "Organization", "name": "GaleOps", "url": "https://galeops.xyz" }
+}

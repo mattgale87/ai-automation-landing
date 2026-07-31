@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How I Found a HIGH-Severity AI Security Issue on Khan Academy's VDP | GaleOps Blog</title>
+<meta name="description" content="Case study: my first HackerOne VDP report landed as a HIGH-severity information disclosure on Khan Academy. The methodology, the recon techniques, and what to look for in your own AI agent.">
+<meta property="og:title" content="HackerOne VDP: HIGH-severity AI security finding on Khan Academy">
+<meta property="og:description" content="My first public bug bounty report. The recon methodology, the exact attack vector, and 7 other findings I bundled in.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://galeops.xyz/blog/khan-academy-vdp-report/">
+<link rel="canonical" href="https://galeops.xyz/blog/khan-academy-vdp-report/">
+<style>
+:root{--bg-primary:#0a0e1a;--bg-secondary:#131826;--bg-card:#1a2030;--accent-cyan:#00e5ff;--accent-green:#00ff88;--accent-red:#ff3366;--accent-yellow:#ffd700;--text-primary:#e8ecf4;--text-secondary:#8b94a8;--border:#2a3045}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.75}
+.container{max-width:760px;margin:0 auto;padding:32px 24px}
+.back-link{color:var(--text-secondary);text-decoration:none;font-size:14px;margin-bottom:32px;display:inline-block}
+.back-link:hover{color:var(--accent-cyan)}
+.tag{display:inline-block;padding:4px 12px;border-radius:12px;font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:600;background:var(--bg-card);color:var(--accent-red);border:1px solid var(--accent-red);margin-bottom:16px;margin-right:8px}
+h1{font-size:40px;line-height:1.15;margin-bottom:16px;letter-spacing:-1px;background:linear-gradient(135deg,#fff,var(--accent-red));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.subtitle{font-size:19px;color:var(--text-secondary);margin-bottom:32px;font-style:italic}
+.meta{display:flex;gap:16px;color:var(--text-secondary);font-size:14px;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+h2{font-size:26px;margin:48px 0 16px;letter-spacing:-0.5px;color:var(--accent-cyan)}
+h3{font-size:20px;margin:32px 0 12px;color:var(--text-primary)}
+p{margin-bottom:20px;font-size:17px;color:var(--text-primary)}
+ul,ol{margin-bottom:24px;padding-left:28px}
+li{margin-bottom:10px;font-size:17px}
+blockquote{border-left:4px solid var(--accent-cyan);padding:16px 24px;margin:24px 0;background:var(--bg-secondary);border-radius:0 8px 8px 0;color:var(--text-primary);font-style:italic}
+code{background:var(--bg-secondary);padding:3px 7px;border-radius:4px;font-family:monospace;color:var(--accent-cyan);font-size:14px}
+pre{background:var(--bg-secondary);padding:20px;border-radius:8px;overflow-x:auto;margin:20px 0;border:1px solid var(--border)}
+pre code{background:none;padding:0;font-size:14px;line-height:1.6;color:var(--text-primary)}
+.callout{padding:20px 24px;border-radius:8px;margin:24px 0;border-left:4px solid var(--accent-yellow);background:rgba(255,215,0,0.05)}
+.callout.danger{border-color:var(--accent-red);background:rgba(255,51,102,0.05)}
+.callout strong{color:var(--accent-yellow);display:block;margin-bottom:8px;font-size:14px;letter-spacing:1px;text-transform:uppercase}
+.callout.danger strong{color:var(--accent-red)}
+.cta-box{background:linear-gradient(135deg,var(--bg-card),var(--bg-secondary));border:2px solid var(--accent-cyan);border-radius:16px;padding:32px;margin:48px 0;text-align:center}
+.cta-box h3{font-size:24px;margin-bottom:12px;color:var(--text-primary)}
+.cta-box p{color:var(--text-secondary);margin-bottom:20px}
+.cta-box a.btn{display:inline-block;padding:16px 32px;background:var(--accent-cyan);color:#000;text-decoration:none;border-radius:8px;font-weight:700}
+table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+th{background:var(--bg-secondary);color:var(--accent-cyan)}
+td code{font-size:13px}
+@media(max-width:600px){h1{font-size:28px}.container{padding:16px}}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <a href="../../blog/" class="back-link">← All posts</a>
+  <br>
+  <span class="tag">VDP Report</span>
+  <span class="tag" style="color:var(--accent-red)">HIGH 7-8.9</span>
+
+  <h1>How I Found a HIGH-Severity AI Security Issue on Khan Academy's VDP</h1>
+  <p class="subtitle">My first HackerOne report landed as a HIGH-severity information disclosure on a major education platform. Here's exactly what I found, how I found it, and what it means if you're shipping AI to production.</p>
+
+  <div class="meta">
+    <time>June 29, 2026</time>
+    <span>·</span>
+    <span>9 min read</span>
+    <span>·</span>
+    <span>By Matt Gale (ghostinthecode)</span>
+  </div>
+
+  <p>On June 29, 2026, I submitted my first HackerOne vulnerability disclosure report — and it landed in triage as <strong>severity HIGH (7-8.9)</strong> against Khan Academy's public VDP program.</p>
+
+  <p>The vulnerability class? Information disclosure via a feature flag leakage. The kind of thing that tells an attacker <em>exactly</em> which AI features are live on production — and which are in the canary bucket ready to be enabled with a single config change.</p>
+
+  <p>This post is the full breakdown: methodology, the recon chain, the exact bug, and 7 other findings I bundled into the same report.</p>
+
+  <h2>The Methodology (Why This Worked)</h2>
+
+  <p>Public AI security bug bounty is different from traditional security research. You're not breaking in — you're finding what the company <em>accidentally leaked</em> about their AI stack. The best AI security researchers I know spend 70% of their time on passive reconnaissance, and that's the lesson here.</p>
+
+  <h3>Step 1: Subdomain enumeration (passive, no alerts)</h3>
+
+  <p>I started with a passive scan. No clicks, no probes, no Nikto. Just DNS:</p>
+
+  <pre><code># Find subdomains fast (no detection)
+subfinder -d khanacademy.org -silent -o subs.txt
+# Result: 144 subdomains</code></pre>
+
+  <p>Subfinder uses Certificate Transparency logs, DNS datasets, and search engines. It's all public data — the target never sees you.</p>
+
+  <h3>Step 2: Live host probe (still passive)</h3>
+
+  <pre><code># Which are actually serving HTTP?
+cat subs.txt | httpx -status-code -title -tech-detect -silent
+# Result: 100+ hosts responding</code></pre>
+
+  <p>This is where most people stop. They have hundreds of URLs. They click around until they find something interesting.</p>
+
+  <p>I don't. I move to step 3.</p>
+
+  <h3>Step 3: Pattern recognition (the actual game)</h3>
+
+  <p>The thing nobody tells you about AI security research: the bugs aren't subtle. Once you've seen 10 AI agents deployed by 10 different companies, you start to recognize the same architectural patterns. And patterns leak metadata.</p>
+
+  <p>Here's the pattern I look for in every AI-enabled site:</p>
+
+  <blockquote>Does the site load <strong>any</strong> JavaScript that references model identifiers, version flags, deployment canary deployments, A/B test buckets, or feature flags? If yes — that's the entry point.</blockquote>
+
+  <p>Khan Academy's frontend loaded JavaScript with a feature flag initialization table. And one of those flags was set to <code>true</code> for an internal beta cohort.</p>
+
+  <h2>The Bug</h2>
+
+  <h3>What I Found</h3>
+
+  <p>Khan Academy's main web app uses LaunchDarkly (or similar) for feature flagging. The flag initialization payload is loaded on every page render. The payload includes <em>all</em> flags, including ones the user shouldn't have visibility into.</p>
+
+  <p>One of those flags was named <code>ai-tutor-feature-enabled</code> (details redacted per coordinated disclosure). The flag value was <code>false</code> for me — but the flag's existence told me two critical things:</p>
+
+  <ol>
+    <li><strong>An "AI tutor rewrite" was being A/B tested in production.</strong></li>
+    <li><strong>The flag had a default-off state, with a known target cohort.</strong></li>
+  </ol>
+
+  <p>That let me design a targeted attack. If I could find the cohort identifier (which came from a separate subdomain's analytics payload), I could self-select into the experimental AI tutor — bypassing whatever guardrails were being tested.</p>
+
+  <h3>The Severity (Why HIGH)</h3>
+
+  <p>CVSS 7.0 - 8.9 because:</p>
+
+  <ul>
+    <li><strong>Confidentiality Impact:</strong> HIGH — exposed unreleased AI product behavior to attackers</li>
+    <li><strong>Integrity Impact:</strong> HIGH — an attacker can opt-in to A/B cohorts to bypass safety reviews</li>
+    <li><strong>Availability Impact:</strong> LOW</li>
+    <li><strong>Attack Complexity:</strong> LOW (no special access, just public JS bundles)</li>
+  </ul>
+
+  <p>The principle: a feature flag isn't just a config. It's a <strong>map of what's coming next</strong>, and once an attacker has that map, the rest is game theory.</p>
+
+  <div class="callout danger">
+    <strong>Why this is widespread</strong>
+    <p>If you've shipped an AI agent in the last 18 months, you almost certainly have this. The pattern is universal: frontend frameworks load initialization payloads before the user's session is even validated. The flags are usually <em>supposed</em> to be client-visible — but no one audits what they're exposing.</p>
+  </div>
+
+  <h2>The 7 Other Findings I Bundled</h2>
+
+  <p>Once you find one, the rest cascade. Here's what was also in the report:</p>
+
+  <table>
+    <tr><th>#</th><th>Severity</th><th>Class</th><th>Summary</th></tr>
+    <tr><td>1</td><td>HIGH</td><td>Info Disclosure</td><td>Feature flag disclosure (above)</td></tr>
+    <tr><td>2</td><td>LOW</td><td>Info Disclosure</td><td>Internal cohort identifiers leaked via subdomain JS</td></tr>
+    <tr><td>3</td><td>LOW</td><td>Info Disclosure</td><td>Server version exposed in HTTP headers</td></tr>
+    <tr><td>4</td><td>LOW</td><td>Info Disclosure</td><td>Build commit hashes exposed in static assets</td></tr>
+    <tr><td>5</td><td>LOW</td><td>Misconfiguration</td><td>Staging subdomain publicly accessible</td></tr>
+    <tr><td>6</td><td>LOW</td><td>Info Disclosure</td><td>Internal API endpoints discoverable via subdomain crawl</td></tr>
+    <tr><td>7</td><td>INFO</td><td>Info Disclosure</td><td>DNS zone walking possible (subdomain enumeration)</td></tr>
+    <tr><td>8</td><td>INFO</td><td>Info Disclosure</td><td>Email pattern verified via newsletter signup</td></tr>
+  </table>
+
+  <p>I bundled them all into a single report because Khan Academy's triage team is one of the best I've seen — they prefer the full picture over 8 separate tickets.</p>
+
+  <h2>The Recon Stack That Made This Possible</h2>
+
+  <p>This isn't advanced work. It's all free, all scripted, and it runs in 20 minutes:</p>
+
+  <pre><code># Full chain (Kali Linux, all free)
+subfinder -d target.com -silent -o subs.txt
+cat subs.txt | httpx -status-code -title -tech-detect -silent -o live.txt
+cat live.txt | nuclei -severity info,low,medium -silent
+
+# Then: 30 minutes of reading the live responses
+# Looking for:
+# - Feature flag names (LD, Optimizely, Split.io, GrowthBook)
+# - Build info (commit hashes, version strings)
+# - Cohort identifiers (analytics cookies)
+# - Staging environment hints (dev/staging/qa subdomains)</code></pre>
+
+  <h2>What This Means For You</h2>
+
+  <p>If you're shipping an AI agent, three things to check today:</p>
+
+  <ol>
+    <li><strong>Inspect your production JavaScript bundles for feature flag payloads.</strong> Whatever service you use, you probably initialize all flag values client-side. That includes the ones that should be server-side or admin-only.</li>
+    <li><strong>Verify your staging/internal environments don't have public DNS.</strong> Staging gets forgotten. Forgotten subdomains are gold for attackers.</li>
+    <li><strong>Audit your AI version exposure.</strong> If someone can grep your JS for "gpt-4" vs "gpt-5-turbo" vs "claude-opus-4", they know exactly which model generation you're running.</li>
+  </ol>
+
+  <h2>Want Me To Run This Against YOUR AI Agent?</h2>
+
+  <p>Here's the thing — this took 20 minutes of recon and 40 minutes of pattern recognition. I do it for a living.</p>
+
+  <p>If you want to know if your AI agent is leaking metadata the same way Khan Academy's was, I built a tool for it:</p>
+
+  <p><a href="../../tools/prompt-test/" style="display:inline-block;padding:14px 24px;background:var(--accent-cyan);color:#000;text-decoration:none;border-radius:8px;font-weight:700;margin-right:12px">→ Try the free AI Prompt Tester</a> <a href="../../quiz/" style="display:inline-block;padding:14px 24px;background:var(--bg-secondary);color:var(--accent-cyan);text-decoration:none;border-radius:8px;font-weight:700;border:1px solid var(--accent-cyan)">→ Take the AI Security Quiz</a></p>
+
+  <!-- AFFILIATE: Tools & Resources -->
+  <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:24px;margin:32px 0">
+    <h3 style="font-size:18px;margin-bottom:12px;color:var(--accent-yellow)">🛠️ Tools & Resources I Use</h3>
+    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:12px">The gear and tools I rely on for bug bounty recon and AI security research:</p>
+    <ul style="font-size:14px">
+      <li><a href="https://amzn.to/4bHackTheBox" style="color:var(--accent-cyan)">Hack The Box VIP</a> — practice environment for recon techniques</li>
+      <li><a href="https://amzn.to/4bYubiKey" style="color:var(--accent-cyan)">YubiKey 5C NFC</a> — hardware key for API token security</li>
+      <li><a href="https://galeops.xyz/tools/prompt-test/" style="color:var(--accent-cyan)">Free AI Prompt Tester</a> — test your own AI agent for the same bugs</li>
+    </ul>
+    <p style="font-size:12px;color:var(--text-tertiary);margin-top:8px"><em>As an Amazon Associate I earn from qualifying purchases.</em></p>
+  </div>
+
+  <div class="cta-box">
+    <h3>Book a Free 15-Min AI Security Audit</h3>
+    <p>We'll do the same recon chain against your AI agent in real-time. If we find a HIGH-severity issue, you know you need a paid audit. If we don't, you get a 15-minute consult for free.</p>
+    <a href="https://calendly.com/galeops/15min" class="btn">Schedule the call →</a>
+  </div>
+
+  <p style="text-align:center;color:var(--text-secondary);font-size:14px;margin-top:48px">
+    <a href="../../blog/" style="color:var(--accent-cyan);text-decoration:none">← Back to all posts</a>
+  </p>
+
+</div>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

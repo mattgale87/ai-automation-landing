@@ -1,0 +1,210 @@
+[build]
+  # Auto-inject the first-party counter snippet into every HTML page, then publish
+  command = "node ./scripts/inject-counter.js && echo 'counter injected, build done'"
+  publish = "."
+
+[[redirects]]
+  from = "/"
+  to = "/ai-security"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/index.html"
+  to = "/ai-security"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/leads"
+  to = "https://galetech-hub.netlify.app/leads.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/leads.html"
+  to = "https://galetech-hub.netlify.app/leads.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/amazon/*"
+  to = "https://galetech-hub.netlify.app/amazon/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/amazon"
+  to = "https://galetech-hub.netlify.app/amazon/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tools"
+  to = "https://galetech-hub.netlify.app/tools/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tools/"
+  to = "https://galetech-hub.netlify.app/tools/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog"
+  to = "/blog/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/newsletter"
+  to = "/newsletter/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/newsletter/"
+  to = "/newsletter/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog/khan-academy-vdp-report"
+  to = "/blog/khan-academy-vdp-report/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog/zest-v2-methodology-review"
+  to = "/blog/zest-v2-methodology-review/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog/five-prompt-injection-attack-vectors"
+  to = "/blog/five-prompt-injection-attack-vectors/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/demo"
+  to = "/demo.html"
+  status = 200
+
+[[redirects]]
+  from = "/products/quiz-report"
+  to = "/products/quiz-report/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/products/snapshot"
+  to = "/ai-security#risk-review"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/products/snapshot/index.html"
+  to = "/ai-security#risk-review"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/snapshot"
+  to = "/ai-security#risk-review"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/snapshot/"
+  to = "/ai-security#risk-review"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/snapshot/index.html"
+  to = "/ai-security#risk-review"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/scan"
+  to = "/scan/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/scan/"
+  to = "/scan/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/products/starter-kit"
+  to = "/products/starter-kit/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/thanks"
+  to = "/thanks/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/products/**"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/snapshot/**"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[redirects]]
+  from = "/ai-security-audit/"
+  to = "/ai-security-audit/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ai-guardrail-setup/"
+  to = "/ai-guardrail-setup/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ai-red-team/"
+  to = "/ai-red-team/index.html"
+  status = 200
+  force = true
+
+# --- GaleOps self-owned analytics (Netlify Functions + Blobs) ---
+[functions]
+  directory = "netlify/functions"
+
+[[redirects]]
+  from = "/ai-security-web-alternative/"
+  to = "/ai-security-web-alternative/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/red-ai-team-alternative/"
+  to = "/red-ai-team-alternative/index.html"
+  status = 200
+  force = true
+
+# Clean URL for lead-capture function (homepage form posts here)
+[[redirects]]
+  from = "/lead-capture"
+  to = "/.netlify/functions/lead-capture"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/stats"
+  [headers.values]
+    Cache-Control = "no-store"
+
+[[headers]]
+  for = "/count"
+  [headers.values]
+    Cache-Control = "no-store"

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EU AI Act & NIST for SMBs (2026) | GaleOps</title>
+<meta name="description" content="EU AI Act and NIST AI RMF, explained for small AI companies. The 3 things you actually do — and how a GaleOps audit produces the proof.">
+<link rel="canonical" href="https://galeops.xyz/blog/eu-ai-act-nist-smbs.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://galeops.xyz/blog/eu-ai-act-nist-smbs.html">
+<meta property="og:title" content="EU AI Act & NIST for SMBs (2026)">
+<meta property="og:description" content="EU AI Act and NIST AI RMF for small AI companies — the 3 things you actually do.">
+<meta property="og:image" content="https://galeops.xyz/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #08090a; --surface: #101012; --text: #f7f8f8; --muted: #8a8f98; --accent: #6366f1; --green: #10b981; --red: #ef4444; --gold: #f59e0b; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 720px; margin: 0 auto; padding: 60px 24px; }
+  .breadcrumb { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px; font-weight: 600; }
+  .meta { font-size: 14px; color: var(--muted); margin-bottom: 40px; }
+  .lead { font-size: 19px; color: #d0d6e0; line-height: 1.6; margin-bottom: 40px; }
+  h2 { font-size: 26px; font-weight: 600; margin: 48px 0 16px; letter-spacing: -0.5px; }
+  h3 { font-size: 20px; font-weight: 600; margin: 32px 0 12px; }
+  p { margin-bottom: 18px; color: #d0d6e0; }
+  ul, ol { margin: 20px 0 20px 24px; color: #d0d6e0; }
+  li { margin-bottom: 10px; }
+  .step { background: var(--surface); border-radius: 12px; padding: 22px 24px; margin: 18px 0; border-left: 3px solid var(--green); }
+  .step strong { color: var(--green); }
+  .cta-bar { background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 32px; text-align: center; margin: 48px 0; }
+  .cta-bar h3 { margin-top: 0; }
+  .btn { display: inline-block; background: var(--green); color: #fff; padding: 14px 28px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "EU AI Act & NIST AI RMF for SMBs (2026)",
+  "author": { "@type": "Person", "name": "Mathew Gale", "sameAs": ["https://www.youtube.com/@GaleTech", "https://www.linkedin.com/in/mattgale", "https://x.com/Mattjgale87"] },
+  "datePublished": "2026-07-22",
+  "dateModified": "2026-07-22",
+  "publisher": { "@type": "Organization", "name": "GaleOps" }
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb"><a href="/blog/">Blog</a> → EU AI Act for SMBs</div>
+  <h1>EU AI Act & NIST AI RMF for SMBs</h1>
+  <div class="meta">By Mathew Gale · Bug-bounty operator · Updated 2026-07-22</div>
+  <p class="lead">Most AI compliance content is written for enterprises with a legal team. If you're a 20-person company shipping AI, here's what actually applies to you — and the three things you need to do.</p>
+
+  <h2>Are you even in scope?</h2>
+  <p>The EU AI Act tiers risk. As a small company, you're likely <strong>limited-risk or minimal-risk</strong> unless you build something in a high-risk category (e.g., hiring, credit scoring, critical infrastructure). Quick test:</p>
+  <ul>
+    <li>Does your AI make decisions about people's rights/access? → likely high-risk</li>
+    <li>Does it interact with humans (chatbot, bot)? → likely limited-risk (transparency duty)</li>
+    <li>Is it an internal tool with no external users? → likely minimal-risk</li>
+  </ul>
+  <p>Most SMB AI products land in <strong>limited-risk</strong>: you owe users transparency, not a full conformity assessment.</p>
+
+  <h2>The 3 things you actually do</h2>
+  <div class="step"><strong>1. Document your AI use.</strong> What it does, what data it touches, what guardrails exist. A one-page internal memo beats a 40-page policy you'll never read.</div>
+  <div class="step"><strong>2. Run a security audit.</strong> The Act expects you to manage AI risk. A GaleOps <a href="/ai-security-audit/">$6K audit</a> produces the evidence: what you tested, what broke, what you fixed.</div>
+  <div class="step"><strong>3. Keep the evidence.</strong> When a customer or regulator asks "is your AI secure?", you send the report. The red-team engagement adds <a href="/ai-red-team/">EU AI Act + NIST AI RMF mapping</a> for board-ready proof.</div>
+
+  <h2>NIST AI RMF in 4 plain functions</h2>
+  <ul>
+    <li><strong>Govern</strong> — someone owns AI risk (even if it's just you).</li>
+    <li><strong>Map</strong> — you know what your AI does and where it can go wrong.</li>
+    <li><strong>Measure</strong> — you test it (that's the audit).</li>
+    <li><strong>Manage</strong> — you fix findings and keep proof.</li>
+  </ul>
+  <p>That's the loop our audit → guardrail → red-team services walk you through. You don't need a framework certification; you need to show the loop ran.</p>
+
+  <h2>How GaleOps makes it painless</h2>
+  <p>We're not a compliance consultancy charging enterprise rates. We're operators who break AI systems — and our deliverables happen to be the artifacts the Act wants: a mapped audit report, a remediation record, and (for red team) a board-ready compliance summary.</p>
+
+  <div class="cta-bar">
+    <h3>Start with the $149 24-hour snapshot</h3>
+    <p style="margin-bottom:20px;">Get a fast written report you can hand to legal. Then escalate to the $6K audit or $12K red team if you need more depth.</p>
+    <a href="/ai-security-audit/" class="btn">Start with the Audit →</a>
+    <a href="/snapshot/" class="btn" style="margin-left:8px;background:var(--gold);color:#08090a;">$149 Snapshot (24h) →</a>
+    <p style="margin-top:14px;font-size:13px;color:var(--muted);">The snapshot is the only paid entry-level report in the AI-security space — others only offer free scans.</p>
+  </div>
+
+  <p style="font-size:14px;color:var(--muted);">Related: <a href="/blog/owasp-llm-top-10-business.html">OWASP LLM Top 10 for Business Owners</a> · <a href="/ai-red-team/">$12K Red Team</a></p>
+</div>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

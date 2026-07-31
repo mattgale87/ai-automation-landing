@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Red Team & Compliance — $12,000 Fixed Fee | GaleOps</title>
+  <meta name="description" content="Full adversarial red team engagement against your AI systems, plus a compliance gap analysis for EU AI Act and NIST AI RMF — with an executive summary ready for the board. ~3 weeks delivery.">
+  <link rel="canonical" href="https://galeops.xyz/red-team/">
+  <meta property="og:title" content="AI Red Team & Compliance — $12,000 Fixed Fee | GaleOps">
+  <meta property="og:description" content="Full adversarial red team engagement against your AI systems, plus a compliance gap analysis for EU AI Act and NIST AI RMF — with an executive summary ready for the board. ~3 weeks delivery.">
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://galeops.xyz/red-team/">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Bitcount+Grid+Single:wght@100..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-abyss: #08090a;
+      --bg-surface: #101012;
+      --bg-elevated: #191a1b;
+      --bg-hover: #222324;
+      --border-subtle: rgba(255,255,255,0.06);
+      --border-default: rgba(255,255,255,0.09);
+      --border-active: rgba(99,102,241,0.5);
+      --text-primary: #f7f8f8;
+      --text-secondary: #d0d6e0;
+      --text-tertiary: #8a8f98;
+      --text-muted: #5a5f66;
+      --accent: #6366f1;
+      --accent-hover: #818cf8;
+      --accent-glow: rgba(99,102,241,0.15);
+      --green: #10b981;
+      --green-text: #34d399;
+      --gold: #f59e0b;
+      --gold-accent: #c89a45;
+      --gold-hover: #d9b768;
+      --gold-glow: rgba(200,154,69,0.18);
+      --red: #dc2626;
+      --red-hover: #ef4444;
+      --font-display: 'DM Sans', 'Inter', system-ui, sans-serif;
+      --font-numeral: 'Bitcount Grid Single', 'DM Sans', system-ui, sans-serif;
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --max-w: 1120px;
+    }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg-abyss);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    .noise-overlay {
+      position: fixed; inset: 0; z-index: 9998; pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(8,9,10,0.85); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    nav .inner {
+      max-width: var(--max-w); margin: 0 auto; padding: 0 32px;
+      display: flex; justify-content: space-between; align-items: center; height: 64px;
+    }
+    nav .logo { font-size: 19px; font-weight: 700; color: var(--text-primary); text-decoration: none; letter-spacing: -0.3px; }
+    nav .logo em { color: var(--accent); font-style: normal; font-weight: 500; }
+    .nav-links { display: flex; gap: 6px; align-items: center; }
+    .nav-links a {
+      color: var(--text-tertiary); text-decoration: none; font-size: 13.5px;
+      font-weight: 500; padding: 6px 12px; border-radius: var(--radius-sm);
+      transition: color 0.15s; position: relative;
+    }
+    .nav-links a:not(.btn-cta)::after {
+      content: ''; position: absolute; left: 12px; right: 12px; bottom: 1px;
+      height: 1px; background: var(--gold-accent); transform: scaleX(0);
+      transform-origin: left; transition: transform 0.25s ease;
+    }
+    .nav-links a:not(.btn-cta):hover { color: var(--text-primary); }
+    .nav-links a:not(.btn-cta):hover::after { transform: scaleX(1); }
+    .btn-cta {
+      background: var(--accent); color: #fff !important;
+      padding: 7px 16px; border-radius: var(--radius-sm); font-weight: 600; font-size: 13px;
+      box-shadow: 0 0 0 1px rgba(200,154,69,0.4), 0 0 18px var(--gold-glow);
+      transition: background 0.15s, box-shadow 0.2s; text-decoration: none;
+    }
+    .section { padding: 100px 24px; }
+    .section-center { max-width: var(--max-w); margin: 0 auto; text-align: center; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2);
+      border-radius: 100px; padding: 6px 16px; font-size: 12px;
+      color: var(--accent-hover); font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: var(--font-display); font-size: clamp(32px, 5vw, 56px);
+      font-weight: 700; letter-spacing: -2px; line-height: 1.05; margin-bottom: 20px;
+    }
+    .section-subtitle { font-size: 18px; color: var(--text-tertiary); max-width: 640px; margin: 0 auto; }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .price-hero { max-width: var(--max-w); margin: 0 auto 60px; text-align: center; }
+    .price-tier { font-size: 14px; font-weight: 600; color: var(--red-hover); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .price-amount { font-family: var(--font-display); font-size: clamp(56px, 8vw, 88px); font-weight: 700; letter-spacing: -3px; line-height: 1; color: var(--text-primary); margin-bottom: 8px; }
+    .price-period { font-size: 16px; color: var(--text-muted); font-weight: 400; }
+    .price-desc { font-size: 17px; color: var(--text-secondary); margin: 24px auto 40px; max-width: 600px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: var(--max-w); margin: 0 auto 60px; }
+    .feature-card {
+      background: var(--bg-elevated); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg); padding: 28px 24px; transition: border-color 0.2s, transform 0.2s;
+    }
+    .feature-card:hover { border-color: var(--red); transform: translateY(-2px); box-shadow: 0 0 24px rgba(220,38,38,0.15), 0 16px 36px -16px rgba(0,0,0,0.55); }
+    .feature-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+    .feature-card h3 { font-size: 16px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; letter-spacing: -0.2px; }
+    .feature-card p { font-size: 14px; color: var(--text-tertiary); line-height: 1.55; }
+    .deliverables { max-width: var(--max-w); margin: 0 auto 60px; }
+    .deliverables h3 { font-size: 20px; font-weight: 600; margin-bottom: 24px; text-align: center; }
+    .deliverables-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+    .deliverable-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: var(--bg-elevated); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md); padding: 20px 18px;
+    }
+    .deliverable-item .check { color: var(--green-text); font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .deliverable-item span { font-size: 14.5px; color: var(--text-secondary); line-height: 1.5; }
+    .cta-section { text-align: center; margin-top: 40px; }
+    .cta-button {
+      display: inline-block; padding: 16px 36px;
+      background: var(--red); color: #fff; border-radius: 8px;
+      text-decoration: none; font-weight: 600; font-size: 15px;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .cta-button:hover { background: var(--red-hover); transform: translateY(-1px); }
+    .cta-ghost {
+      display: inline-block; margin-left: 16px; padding: 16px 36px;
+      background: transparent; color: var(--text-secondary); border: 1px solid var(--border-default);
+      border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 15px;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .cta-ghost:hover { border-color: var(--border-active); color: var(--text-primary); }
+    .process-section { background: var(--bg-surface); }
+    .process-track { display: flex; align-items: flex-start; justify-content: center; gap: 0; max-width: 840px; margin: 64px auto 0; }
+    .process-step { flex: 1; text-align: center; padding: 0 16px; max-width: 240px; }
+    .process-icon-wrap {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: rgba(220,38,38,0.1); border: 1px solid rgba(220,38,38,0.4);
+      display: flex; align-items: center; justify-content: center; font-size: 26px;
+      margin: 0 auto 18px; box-shadow: 0 0 28px rgba(220,38,38,0.2);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .process-step:hover .process-icon-wrap { box-shadow: 0 0 44px rgba(220,38,38,0.4); transform: scale(1.05); }
+    .process-step-label { font-size: 11px; font-weight: 700; color: var(--red-hover); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+    .process-step h3 { font-size: 18px; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.3px; }
+    .process-step p { font-size: 14px; color: var(--text-tertiary); line-height: 1.55; }
+    .process-connector { flex-shrink: 0; width: 80px; margin-top: 30px; height: 1px; background: linear-gradient(90deg, rgba(220,38,38,0.4), rgba(220,38,38,0.1)); position: relative; }
+    .process-connector::after { content: '→'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 13px; color: var(--red-hover); background: var(--bg-abyss); padding: 0 4px; }
+    @media (max-width: 900px) {
+      .process-track { flex-direction: column; align-items: center; gap: 40px; }
+      .process-connector { display: none; }
+    }
+    footer { border-top: 1px solid var(--border-subtle); padding: 60px 24px 32px; background: var(--bg-surface); }
+    .footer-grid { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--border-subtle); }
+    .footer-brand .logo { font-size: 17px; font-weight: 700; color: var(--text-primary); text-decoration: none; letter-spacing: -0.3px; display: inline-block; margin-bottom: 12px; }
+    .footer-brand .logo em { color: var(--accent); font-style: normal; font-weight: 500; }
+    .footer-brand p { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; max-width: 260px; margin-bottom: 20px; }
+    .footer-badge { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--border-default); border-radius: 100px; padding: 6px 14px; font-size: 12px; color: var(--text-muted); }
+    .footer-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
+    .footer-col h4 { font-size: 11.5px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { color: var(--text-tertiary); text-decoration: none; font-size: 13.5px; transition: color 0.15s; }
+    .footer-col ul li a:hover { color: var(--text-primary); }
+    .footer-social { display: flex; gap: 8px; }
+    .social-link {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: var(--radius-sm);
+      border: 1px solid var(--border-default); background: var(--bg-elevated);
+      color: var(--text-tertiary); text-decoration: none; font-size: 15px;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+    .social-link:hover { border-color: var(--accent); color: var(--accent-hover); background: var(--accent-glow); }
+    .footer-bottom { max-width: var(--max-w); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 24px; }
+    .footer-bottom p { color: var(--text-muted); font-size: 13px; }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-links a { color: var(--text-tertiary); text-decoration: none; font-size: 13px; transition: color 0.15s; }
+    .footer-bottom-links a:hover { color: var(--text-primary); }
+    .page-curtain {
+      position: fixed; inset: 0; z-index: 10000; overflow: hidden;
+      background: var(--bg-abyss); will-change: transform;
+    }
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 100%;
+      background: linear-gradient(90deg, var(--gold-accent), var(--gold-hover));
+      transform: scaleX(0); transform-origin: left; z-index: 10001;
+    }
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-curtain"></div>
+  <div class="scroll-progress"></div>
+  <div class="noise-overlay"></div>
+  
+  <nav>
+    <div class="inner">
+      <a href="https://galeops.xyz/" class="logo">Gale<em>Ops</em></a>
+      <div class="nav-links">
+        <a href="https://galeops.xyz/">Home</a>
+        <a href="https://galeops.xyz/ai-automation.html">AI Automation</a>
+        <a href="https://galeops.xyz/ai-security.html">AI Security</a>
+        <a href="https://galeops.xyz/products/starter-kit/">Pricing</a>
+        <a href="https://calendly.com/galeops/15min?subject=RedTeam" class="btn-cta" target="_blank" rel="noopener">Book Free Consultation</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="section-center">
+      <div class="section-label">AI Security</div>
+      <h1 class="section-title">AI Red Team & Compliance</h1>
+      <p class="section-subtitle">Full adversarial red team engagement against your AI systems, plus a compliance gap analysis for EU AI Act and NIST AI RMF — with an executive summary ready for the board.</p>
+    </div>
+
+    <div class="price-hero fade-in">
+      <div class="price-tier">Red Team & Compliance</div>
+      <div class="price-amount">$12,000</div>
+      <div class="price-period">fixed fee</div>
+      <p class="price-desc">Full adversarial red team engagement against your AI systems, plus a compliance gap analysis for EU AI Act and NIST AI RMF — with an executive summary ready for the board. Multi-step attacker simulation (tool injection, RCE, data exfil). EU AI Act + NIST AI RMF gap analysis. Post-mitigation verification testing. Compliance alignment mapping. ~3 weeks delivery.</p>
+      
+      <div class="cta-section">
+        <a href="https://buy.stripe.com/fZucN6cdk1qe0NH82da3u05" class="cta-button" target="_blank" rel="noopener">Purchase Red Team →</a>
+        <a href="https://calendly.com/galeops/15min?subject=RedTeam" class="cta-ghost" target="_blank" rel="noopener">Book Free Consultation First</a>
+      </div>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card fade-in">
+        <span class="feature-icon">⚔️</span>
+        <h3>Adversarial Prompt & Jailbreak Testing</h3>
+        <p>Systematic testing for direct and indirect prompt injection, multi-turn jailbreaks, role-play escapes, encoding/obfuscation bypasses, and model-specific vulnerabilities across all model touchpoints.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <span class="feature-icon">🔧</span>
+        <h3>Agent Tool Misuse Scenarios</h3>
+        <p>Simulate privilege escalation, lateral movement, and unintended actions via tool injection. Test HTTP call SSRF, filesystem access, code execution, database queries, and custom tool chains.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <span class="feature-icon">📋</span>
+        <h3>EU AI Act Gap Analysis</h3>
+        <p>Map your AI system against EU AI Act requirements: risk classification, data governance, transparency obligations, human oversight, accuracy/robustness/cybersecurity requirements, and post-market monitoring.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <span class="feature-icon">🏛️</span>
+        <h3>NIST AI RMF Alignment Report</h3>
+        <p>Govern, Map, Measure, Manage — assess your AI risk management practices against NIST AI RMF 1.0. Prioritised action items with maturity scoring and evidence requirements for each subcategory.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <span class="feature-icon">✅</span>
+        <h3>Post-Mitigation Verification Testing</h3>
+        <p>After you implement fixes, we re-test the original findings to confirm remediation. Regression testing ensures new defenses don't introduce new attack surface. Verification report included.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <span class="feature-icon">📊</span>
+        <h3>Executive Summary + Board-Ready Deck</h3>
+        <p>Non-technical executive summary with risk ratings, business impact, and investment priorities. 10-slide board deck with compliance posture, remediation roadmap, and competitive benchmarking.</p>
+      </div>
+    </div>
+
+    <div class="deliverables">
+      <h3>What You Receive</h3>
+      <div class="deliverables-grid">
+        <div class="deliverable-item"><span class="check">✓</span><span>Adversarial test report with severity ratings + reproducible PoCs</span></div>
+        <div class="deliverable-item"><span class="check">✓</span><span>EU AI Act gap analysis with article-level mapping</span></div>
+        <div class="deliverable-item"><span class="check">✓</span><span>NIST AI RMF alignment assessment (Govern/Map/Measure/Manage)</span></div>
+        <div class="deliverable-item"><span class="check">✓</span><span>Post-mitigation verification testing (re-test after fixes)</span></div>
+        <div class="deliverable-item"><span class="check">✓</span><span>Executive summary + 10-slide board deck</span></div>
+        <div class="deliverable-item"><span class="check">✓</span><span>~3 weeks delivery from kickoff</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section process-section">
+    <div class="section-center">
+      <div class="section-label">Process</div>
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-subtitle">From scope to board deck in three weeks. Rigorous, repeatable, and designed for regulatory scrutiny.</p>
+    </div>
+    <div class="process-track">
+      <div class="process-step fade-in">
+        <div class="process-icon-wrap">1</div>
+        <div class="process-step-label">Scope & Rules</div>
+        <h3>Kickoff & Rules of Engagement</h3>
+        <p>Define target systems, attack constraints, data handling, communication protocol, and escalation paths. Compliance scope (EU AI Act, NIST, both) confirmed.</p>
+      </div>
+      <div class="process-connector"></div>
+      <div class="process-step fade-in">
+        <div class="process-icon-wrap">2</div>
+        <div class="process-step-label">Reconnaissance</div>
+        <h3>Attack Surface Mapping</h3>
+        <p>Enumerate all model endpoints, agent tools, data flows, integration points, and trust boundaries. Build the attack matrix with compliance control mapping.</p>
+      </div>
+      <div class="process-connector"></div>
+      <div class="process-step fade-in">
+        <div class="process-icon-wrap">3</div>
+        <div class="process-step-label">Execution</div>
+        <h3>Red Team Engagement</h3>
+        <p>Execute multi-step attack chains: prompt injection → tool misuse → data exfil → privilege escalation. Document every step with timestamps, inputs, outputs, and evidence.</p>
+      </div>
+      <div class="process-connector"></div>
+      <div class="process-step fade-in">
+        <div class="process-icon-wrap">4</div>
+        <div class="process-step-label">Compliance Mapping</div>
+        <h3>Gap Analysis & Reporting</h3>
+        <p>Map findings to EU AI Act articles and NIST AI RMF subcategories. Produce technical report, executive summary, and board deck. Readout call with leadership.</p>
+      </div>
+      <div class="process-connector"></div>
+      <div class="process-step fade-in">
+        <div class="process-icon-wrap">5</div>
+        <div class="process-step-label">Verify</div>
+        <h3>Post-Mitigation Verification</h3>
+        <p>After you implement fixes, we re-test the original findings. Confirm remediation, check for regressions, issue verification addendum. Close the loop.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-surface); text-align: center;">
+    <div class="section-center">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Common Questions</h2>
+    </div>
+    <div class="faq-css" style="max-width: 720px; margin: 56px auto 0;">
+      <details>
+        <summary>Do you test production or staging?</summary>
+        <div class="faq-answer">Staging for invasive tests (tool misuse, data exfil, RCE). Production-safe tests (UI prompt injection) can run in prod with read-only scopes. We agree on rules upfront and use feature flags.</div>
+      </details>
+      <details>
+        <summary>What if you find a critical vulnerability during testing?</summary>
+        <div class="faq-answer">Immediate pause. We notify your designated contact within 1 hour with details and suggested mitigation. Testing resumes only after you acknowledge and approve.</div>
+      </details>
+      <details>
+        <summary>Can you test open-weight models (Llama, Mistral, etc.)?</summary>
+        <div class="faq-answer">Yes. The attack surface differs (no hidden system prompt, but model weights accessible). We adapt the matrix — focus shifts to weight extraction, backdoor triggers, and supply chain risks.</div>
+      </details>
+      <details>
+        <summary>Does this satisfy EU AI Act conformity assessment?</summary>
+        <div class="faq-answer">This is a gap analysis and adversarial test — not a formal conformity assessment by a notified body. However, the evidence package (test results, risk assessments, mitigations) directly supports your technical documentation for Annex IV and conformity assessment.</div>
+      </details>
+      <details>
+        <summary>What's the difference between this and the $8K Guardrails?</summary>
+        <div class="faq-answer">Guardrails = preventive controls you run continuously. Red Team = adversarial validation that those controls (and your overall posture) actually work. Red Team includes compliance mapping Guardrails doesn't. Most clients do Guardrails first, then Red Team to validate.</div>
+      </details>
+    </div>
+  </section>
+
+  <section class="section" style="text-align: center; background: var(--bg-surface);">
+    <div class="final-cta-inner" style="position: relative; z-index: 1; max-width: 640px; margin: 0 auto;">
+      <div class="section-label" style="justify-content: center; margin-bottom: 20px;">Ready for the Real Test?</div>
+      <h2 style="font-family: var(--font-display); font-size: clamp(28px, 4.5vw, 52px); font-weight: 700; letter-spacing: -2px; line-height: 1.08; margin-bottom: 20px;">Run your <span style="background: linear-gradient(135deg, var(--red) 0%, var(--red-hover) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Red Team</span></h2>
+      <p style="font-size: 17px; color: var(--text-tertiary); margin-bottom: 36px; line-height: 1.5; max-width: 480px; margin-left: auto; margin-right: auto;">Stop assuming your defenses hold. Get a professional adversarial engagement with compliance mapping and a board-ready deck.</p>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+        <a href="https://buy.stripe.com/fZucN6cdk1qe0NH82da3u05" class="cta-button" target="_blank" rel="noopener">Purchase $12,000 Red Team →</a>
+        <a href="https://calendly.com/galeops/15min?subject=RedTeam" class="cta-ghost" target="_blank" rel="noopener">Book Free Consultation First</a>
+        <span style="font-size: 12.5px; color: var(--text-muted);">Post-mitigation verification included · Board-ready deck · ~3 weeks delivery</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="https://galeops.xyz/" class="logo">Gale<em>Ops</em></a>
+        <p>AI automation and AI security for businesses that want to move faster, work smarter, and stay secure. Created by the team behind <a href="https://www.youtube.com/@GaleTech" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">GaleTech</a>.</p>
+        <div class="footer-badge"><span class="dot"></span> Powered by AI Agents</div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="https://galeops.xyz/#services">Social Media Automation</a></li>
+          <li><a href="https://galeops.xyz/#services">Lead Response Automation</a></li>
+          <li><a href="https://galeops.xyz/#services">Custom AI Agents</a></li>
+          <li><a href="https://galeops.xyz/#services">Reporting & Dashboards</a></li>
+          <li><a href="https://galeops.xyz/security-audit/">AI Security Audit</a></li>
+          <li><a href="https://galeops.xyz/guardrail-setup/">AI Guardrail Setup</a></li>
+          <li><a href="https://galeops.xyz/red-team/">AI Red Team & Compliance</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://galeops.xyz/#case-study">Case Study</a></li>
+          <li><a href="https://galeops.xyz/#process">How It Works</a></li>
+          <li><a href="https://galeops.xyz/ai-security.html">AI Security</a></li>
+          <li><a href="https://galeops.xyz/ai-automation.html">AI Automation</a></li>
+          <li><a href="https://galeops.xyz/products/starter-kit/">Pricing</a></li>
+          <li><a href="https://galeops.xyz/products/snapshot/">Snapshot ($149)</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="https://galeops.xyz/privacy.html">Privacy Policy</a></li>
+          <li><a href="https://galeops.xyz/terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 GaleOps. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="mailto:mattgale87@gmail.com">mattgale87@gmail.com</a>
+        <a href="https://calendly.com/galeops/15min" target="_blank" rel="noopener">Book a Call</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script>
+    (function() {
+      const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.to('.scroll-progress', { scrollTrigger: { scrub: 0.1 }, width: '100%', ease: 'none' });
+      gsap.to('.page-curtain', { scrollTrigger: { trigger: 'body', start: 'top top', end: '+=200', scrub: 1 }, transformOrigin: 'top center', scaleY: 0, ease: 'none' });
+      gsap.utils.toArray('.fade-in').forEach(el => {
+        gsap.from(el, { opacity: 0, y: 30, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none reverse' } });
+      });
+    })();
+  </script>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

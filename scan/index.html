@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GaleScan — Free 90-Second AI Chatbot Security Grade | GaleOps</title>
+<meta name="description" content="Paste your AI chatbot's system prompt. Get an A-F security grade + top 3 issues in 90 seconds. 100% self-check — your bot, your prompt, your review. No signup, no data stored.">
+<link rel="canonical" href="https://galeops.xyz/scan/">
+<meta property="og:title" content="GaleScan — Free 90-Second AI Chatbot Security Grade">
+<meta property="og:description" content="Paste your AI chatbot's system prompt. Get an A-F security grade + top 3 issues in 90 seconds. Free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://galeops.xyz/scan/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GaleScan — Free 90-Second AI Chatbot Security Grade">
+<meta name="twitter:description" content="Paste your AI chatbot's system prompt. Get an A-F security grade + top 3 issues in 90 seconds. Free.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg-abyss: #08090a;
+    --bg-surface: #101012;
+    --bg-elevated: #191a1b;
+    --border-subtle: rgba(255,255,255,0.06);
+    --border-default: rgba(255,255,255,0.09);
+    --text-primary: #f7f8f8;
+    --text-secondary: #d0d6e0;
+    --text-tertiary: #8a8f98;
+    --text-muted: #5a5f66;
+    --accent: #6366f1;
+    --accent-hover: #818cf8;
+    --accent-glow: rgba(99,102,241,0.15);
+    --gold: #f59e0b;
+    --gold-hover: #fbbf24;
+    --green: #10b981;
+    --green-text: #34d399;
+    --red: #ef4444;
+    --orange: #fb923c;
+    --lime: #84cc16;
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --max-w: 1120px;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg-abyss);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .noise-overlay {
+    position: fixed; inset: 0; z-index: 9998; pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(8,9,10,0.85); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  nav .inner {
+    max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
+    display: flex; justify-content: space-between; align-items: center; height: 60px;
+  }
+  nav .logo { font-size: 17px; font-weight: 700; color: var(--text-primary); text-decoration: none; letter-spacing: -0.3px; }
+  nav .logo em { color: var(--accent); font-style: normal; font-weight: 500; }
+  .nav-links { display: flex; gap: 8px; align-items: center; }
+  .nav-links a {
+    color: var(--text-tertiary); text-decoration: none; font-size: 13.5px;
+    font-weight: 500; padding: 6px 12px; border-radius: var(--radius-sm);
+    transition: color 0.15s, background 0.15s;
+  }
+  .nav-links a:hover { color: var(--text-primary); background: var(--bg-elevated); }
+  .nav-links a.active { color: var(--text-primary); background: var(--bg-elevated); }
+  .nav-links .btn-cta {
+    background: var(--accent); color: #fff !important;
+    padding: 7px 16px; border-radius: var(--radius-sm); font-weight: 600; font-size: 13px;
+  }
+  .nav-links .btn-cta:hover { background: var(--accent-hover); }
+
+  /* HERO */
+  .hero {
+    padding: 140px 24px 56px;
+    position: relative;
+    background: var(--bg-abyss);
+    overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-glow {
+    position: absolute; top: -160px; left: 50%; transform: translateX(-50%);
+    width: 720px; height: 360px; border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(99,102,241,0.18), transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+  .hero-inner {
+    position: relative; z-index: 1; max-width: 880px; margin: 0 auto;
+    text-align: center;
+  }
+  .hero .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent-glow); border: 1px solid var(--border-default);
+    border-radius: 100px; padding: 6px 14px; font-size: 12.5px;
+    color: var(--accent-hover); font-weight: 600; margin-bottom: 24px;
+    font-family: 'JetBrains Mono', monospace; letter-spacing: 0.5px;
+  }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+  .hero h1 {
+    font-size: clamp(36px, 5.5vw, 56px); line-height: 1.05; font-weight: 700;
+    letter-spacing: -1.6px; margin-bottom: 20px;
+    background: linear-gradient(180deg, #fff 0%, #a8a8b3 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero .lede {
+    font-size: 18.5px; color: var(--text-secondary); margin: 0 auto 24px;
+    max-width: 680px;
+  }
+  .hero .lede strong { color: var(--text-primary); font-weight: 600; }
+  .trust-line {
+    font-size: 13px; color: var(--text-tertiary); margin: 0 auto 28px;
+    display: flex; justify-content: center; flex-wrap: wrap; gap: 16px;
+    max-width: 620px;
+  }
+  .trust-line span { display: inline-flex; align-items: center; gap: 6px; }
+  .trust-line .dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--green); display: inline-block;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold); color: #000; padding: 16px 28px;
+    border-radius: var(--radius-lg); font-weight: 600; font-size: 16px;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: all 0.15s; font-family: inherit;
+  }
+  .hero-cta:hover { background: var(--gold-hover); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(245,158,11,0.35); }
+
+  /* SECTION CHROME */
+  .container { max-width: 880px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+  .container-wide { max-width: 1120px; }
+  .section { padding: 80px 0; }
+  .section-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 1.5px;
+    color: var(--accent-hover); text-transform: uppercase;
+    margin-bottom: 14px; display: inline-block;
+  }
+  h2 {
+    font-size: 36px; line-height: 1.15; font-weight: 700;
+    letter-spacing: -1px; margin-bottom: 14px;
+    background: linear-gradient(180deg, #fff 0%, #b8b8c3 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .section-lede {
+    font-size: 17px; color: var(--text-secondary);
+    max-width: 620px; margin-bottom: 40px;
+  }
+  .center { text-align: center; margin-left: auto; margin-right: auto; }
+  .divider {
+    height: 1px; max-width: 880px; margin: 0 auto;
+    background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
+  }
+
+  /* STEPS */
+  .steps { counter-reset: step; display: grid; gap: 14px; }
+  .step {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 22px 26px;
+    display: grid; grid-template-columns: 64px 1fr auto; gap: 22px;
+    align-items: center;
+  }
+  .step::before {
+    counter-increment: step;
+    content: counter(step, decimal-leading-zero);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px; font-weight: 700;
+    color: var(--gold);
+  }
+  .step h3 { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
+  .step p { font-size: 14px; color: var(--text-tertiary); }
+  .step .step-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--gold);
+    background: rgba(245,158,11,0.08);
+    border: 1px solid rgba(245,158,11,0.25);
+    border-radius: 100px; padding: 4px 12px;
+    letter-spacing: 1px; white-space: nowrap;
+  }
+
+  /* FORM */
+  #intake { scroll-margin-top: 90px; }
+  .form-card {
+    background: linear-gradient(180deg, var(--bg-elevated), var(--bg-surface));
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-xl);
+    padding: 40px;
+    position: relative;
+  }
+  .form-card::before {
+    content: ''; position: absolute; inset: 0;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(180deg, rgba(99,102,241,0.06), transparent 30%);
+    pointer-events: none;
+  }
+  .form-card > * { position: relative; }
+  .form-header { margin-bottom: 28px; }
+  .form-header h2 { margin-bottom: 8px; }
+  .form-header p { font-size: 14px; color: var(--text-tertiary); }
+  .field { margin-bottom: 18px; }
+  .field label {
+    display: block; font-size: 13px; color: var(--text-secondary);
+    margin-bottom: 7px; font-weight: 500;
+  }
+  .field label .req { color: var(--gold); margin-left: 2px; }
+  .field label .opt {
+    font-size: 11px; color: var(--text-muted); margin-left: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .field input, .field textarea, .field select {
+    width: 100%; padding: 12px 14px;
+    background: var(--bg-abyss);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    color: var(--text-primary); font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus {
+    outline: none; border-color: var(--accent);
+    background: #0c0c0e;
+  }
+  .field textarea { min-height: 130px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.6; }
+  .field textarea.short { min-height: 90px; }
+  .field select { appearance: none; -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238a8f98'%3E%3Cpath d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 14px center;
+    padding-right: 36px; cursor: pointer;
+  }
+  .field-hint { font-size: 12px; color: var(--text-muted); margin-top: 6px; font-family: 'JetBrains Mono', monospace; }
+  .honeypot { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+
+  .checkbox-field {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: rgba(245,158,11,0.04);
+    border: 1px solid rgba(245,158,11,0.2);
+    border-radius: var(--radius-md);
+    padding: 14px;
+    cursor: pointer;
+  }
+  .checkbox-field input[type="checkbox"] {
+    appearance: none; -webkit-appearance: none;
+    width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px;
+    background: var(--bg-abyss);
+    border: 1px solid var(--border-default);
+    border-radius: 4px;
+    cursor: pointer; position: relative;
+    transition: all 0.15s;
+  }
+  .checkbox-field input[type="checkbox"]:checked {
+    background: var(--gold); border-color: var(--gold);
+  }
+  .checkbox-field input[type="checkbox"]:checked::after {
+    content: '✓'; position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000; font-size: 13px; font-weight: 700;
+  }
+  .checkbox-field label {
+    display: block; font-size: 13px; color: var(--text-secondary);
+    margin: 0; font-weight: 400; line-height: 1.5; cursor: pointer;
+  }
+  .checkbox-field label .req { color: var(--gold); margin-left: 2px; }
+
+  .form-submit {
+    width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: var(--gold); color: #000;
+    padding: 16px; border-radius: var(--radius-md);
+    font-weight: 700; font-size: 16px;
+    border: none; cursor: pointer; margin-top: 10px;
+    transition: all 0.15s; font-family: inherit;
+  }
+  .form-submit:hover { background: var(--gold-hover); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(245,158,11,0.3); }
+  .form-submit:disabled { opacity: 0.6; cursor: wait; transform: none; box-shadow: none; }
+  .form-trust {
+    display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+    font-size: 12px; color: var(--text-tertiary); margin-top: 14px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .form-trust span { display: inline-flex; align-items: center; gap: 5px; }
+  .form-trust .lock { color: var(--green); }
+
+  /* LOADING */
+  #loading { display: none; }
+  #loading .spinner {
+    width: 56px; height: 56px; margin: 0 auto 20px;
+    border: 3px solid var(--border-subtle);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  #loading h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+  #loading p { color: var(--text-tertiary); font-size: 14px; }
+  .loading-stages {
+    display: inline-flex; gap: 6px; margin-top: 18px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--text-muted); letter-spacing: 1px;
+  }
+  .loading-stages span {
+    padding: 4px 10px; border-radius: 100px;
+    background: var(--bg-elevated); border: 1px solid var(--border-subtle);
+  }
+  .loading-stages span.active { color: var(--accent-hover); border-color: var(--accent); background: var(--accent-glow); }
+
+  /* RESULT */
+  #result { display: none; }
+  .grade-card {
+    background: linear-gradient(180deg, var(--bg-elevated), var(--bg-surface));
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-xl);
+    padding: 48px 40px 40px;
+    text-align: center;
+    position: relative; overflow: hidden;
+    margin-bottom: 28px;
+  }
+  .grade-card::before {
+    content: ''; position: absolute; top: -120px; left: 50%;
+    transform: translateX(-50%); width: 480px; height: 240px;
+    background: radial-gradient(closest-side, var(--grade-glow, rgba(99,102,241,0.12)), transparent 70%);
+    pointer-events: none;
+  }
+  .grade-card > * { position: relative; }
+  .grade-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--accent-hover); margin-bottom: 12px;
+  }
+  .grade-letter {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 140px; line-height: 1; font-weight: 700;
+    margin: 8px 0 6px;
+    text-shadow: 0 0 60px var(--grade-glow, rgba(99,102,241,0.3));
+  }
+  .grade-label {
+    font-size: 22px; font-weight: 600; color: var(--text-primary);
+    margin-bottom: 6px; letter-spacing: -0.3px;
+  }
+  .grade-score {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px; color: var(--text-tertiary);
+    margin-bottom: 24px;
+  }
+  .grade-score strong { color: var(--text-secondary); font-weight: 600; }
+  .grade-summary {
+    color: var(--text-secondary); font-size: 15px;
+    max-width: 560px; margin: 0 auto; line-height: 1.55;
+  }
+
+  /* FINDINGS */
+  .findings-section {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-xl);
+    padding: 32px;
+    margin-bottom: 28px;
+  }
+  .findings-section h3 {
+    font-size: 18px; font-weight: 600; margin-bottom: 18px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .findings-section h3 .count {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    color: var(--text-tertiary);
+    background: var(--bg-elevated); padding: 2px 8px; border-radius: 100px;
+  }
+  .finding-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 20px 22px;
+    margin-bottom: 12px;
+  }
+  .finding-card:last-child { margin-bottom: 0; }
+  .finding-card .top {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .severity-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px; font-weight: 700; letter-spacing: 1px;
+    padding: 3px 10px; border-radius: 100px; text-transform: uppercase;
+  }
+  .severity-critical { background: rgba(239,68,68,0.12); color: #fca5a5; border: 1px solid rgba(239,68,68,0.35); }
+  .severity-high     { background: rgba(251,146,60,0.12); color: #fdba74; border: 1px solid rgba(251,146,60,0.35); }
+  .severity-medium   { background: rgba(245,158,11,0.12); color: var(--gold); border: 1px solid rgba(245,158,11,0.35); }
+  .severity-low      { background: rgba(99,102,241,0.12); color: var(--accent-hover); border: 1px solid rgba(99,102,241,0.35); }
+  .severity-none     { background: rgba(16,185,129,0.1); color: var(--green-text); border: 1px solid rgba(16,185,129,0.35); }
+  .finding-card .owasp-ref {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--text-muted); letter-spacing: 0.5px;
+  }
+  .finding-card h4 { font-size: 15.5px; font-weight: 600; margin-bottom: 8px; }
+  .finding-card .evidence {
+    font-size: 13.5px; color: var(--text-tertiary);
+    line-height: 1.6; font-style: italic;
+    border-left: 2px solid var(--border-default);
+    padding-left: 12px;
+  }
+
+  /* SHARE */
+  .share-section {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-xl);
+    padding: 28px 32px;
+    margin-bottom: 28px;
+  }
+  .share-section h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .share-section p { font-size: 13.5px; color: var(--text-tertiary); margin-bottom: 16px; }
+  .share-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .share-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 18px; border-radius: var(--radius-md);
+    font-weight: 600; font-size: 13.5px; text-decoration: none;
+    transition: all 0.15s; border: 1px solid var(--border-default);
+    background: var(--bg-elevated); color: var(--text-primary);
+  }
+  .share-btn:hover { border-color: var(--accent); background: var(--accent-glow); color: var(--text-primary); }
+  .share-btn.twitter:hover { border-color: #1da1f2; background: rgba(29,161,242,0.1); }
+  .share-btn.linkedin:hover { border-color: #0a66c2; background: rgba(10,102,194,0.1); }
+
+  /* DEEP SCAN / EMAIL GATE */
+  .deep-scan-card {
+    background: linear-gradient(180deg, rgba(245,158,11,0.06), rgba(245,158,11,0.02));
+    border: 1px solid rgba(245,158,11,0.28);
+    border-radius: var(--radius-xl);
+    padding: 36px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .deep-scan-card::before {
+    content: ''; position: absolute; top: -80px; left: 50%;
+    transform: translateX(-50%); width: 400px; height: 200px;
+    background: radial-gradient(closest-side, rgba(245,158,11,0.18), transparent 70%);
+    pointer-events: none;
+  }
+  .deep-scan-card > * { position: relative; }
+  .deep-scan-card .ribbon {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(245,158,11,0.12); color: var(--gold);
+    border: 1px solid rgba(245,158,11,0.3);
+    border-radius: 100px; padding: 5px 14px;
+    font-size: 11.5px; font-weight: 700; letter-spacing: 1px; margin-bottom: 18px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .deep-scan-card h3 { font-size: 24px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.4px; }
+  .deep-scan-card .price-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 44px;
+    font-weight: 700; line-height: 1; color: var(--text-primary);
+    margin: 16px 0 4px;
+  }
+  .deep-scan-card .price-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: var(--text-tertiary);
+    margin-bottom: 22px; letter-spacing: 0.5px;
+  }
+  .deep-scan-card ul {
+    list-style: none; text-align: left; max-width: 480px; margin: 0 auto 24px;
+  }
+  .deep-scan-card ul li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14px; color: var(--text-secondary);
+    padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .deep-scan-card ul li:last-child { border-bottom: none; }
+  .deep-scan-card ul li::before { content: '✓'; color: var(--green-text); font-weight: 700; flex-shrink: 0; }
+  .deep-scan-form { display: flex; gap: 8px; max-width: 480px; margin: 0 auto; }
+  .deep-scan-form input[type="email"] {
+    flex: 1; padding: 14px 16px;
+    background: var(--bg-abyss);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    color: var(--text-primary); font-size: 14px; font-family: inherit;
+  }
+  .deep-scan-form input[type="email"]:focus { outline: none; border-color: var(--accent); }
+  .deep-scan-form button {
+    background: var(--gold); color: #000;
+    padding: 14px 22px; border-radius: var(--radius-md);
+    font-weight: 700; font-size: 14px; border: none; cursor: pointer;
+    font-family: inherit; white-space: nowrap;
+    transition: all 0.15s;
+  }
+  .deep-scan-form button:hover { background: var(--gold-hover); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(245,158,11,0.3); }
+  .deep-scan-form button:disabled { opacity: 0.6; cursor: wait; transform: none; }
+  .deep-scan-card .fine-print {
+    font-size: 11.5px; color: var(--text-muted); margin-top: 14px;
+    font-family: 'JetBrains Mono', monospace; letter-spacing: 0.3px;
+  }
+
+  /* OWASP CLASSES */
+  .owasp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .owasp-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 22px 24px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .owasp-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .owasp-card .owasp-id {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
+    color: var(--accent-hover); letter-spacing: 1px; margin-bottom: 6px;
+  }
+  .owasp-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+  .owasp-card p { font-size: 13px; color: var(--text-tertiary); line-height: 1.55; }
+
+  /* FAQ */
+  .faq { max-width: 760px; margin: 0 auto; }
+  .faq details { border-bottom: 1px solid var(--border-subtle); }
+  .faq details:first-of-type { border-top: 1px solid var(--border-subtle); }
+  .faq summary {
+    font-size: 16px; font-weight: 600; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--text-primary); padding: 20px 0; list-style: none; gap: 16px;
+    transition: color 0.15s;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary:hover { color: var(--accent-hover); }
+  .faq summary::after {
+    content: '+'; font-size: 22px; color: var(--text-muted);
+    flex-shrink: 0; display: block; width: 22px; text-align: center;
+    transition: transform 0.25s; line-height: 1;
+  }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq p {
+    color: var(--text-secondary); font-size: 14.5px; line-height: 1.65;
+    padding-bottom: 20px; padding-right: 38px;
+  }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: linear-gradient(180deg, var(--bg-surface), var(--bg-abyss));
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-xl);
+    padding: 64px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before {
+    content: ''; position: absolute; top: -50%; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 400px;
+    background: radial-gradient(closest-side, rgba(245,158,11,0.1), transparent 70%);
+    pointer-events: none;
+  }
+  .final-cta > * { position: relative; }
+  .final-cta h2 { margin-bottom: 14px; }
+  .final-cta .sub { font-size: 17px; color: var(--text-secondary); margin-bottom: 28px; }
+
+  /* INLINE MESSAGES */
+  .inline-msg {
+    display: none; padding: 14px 18px; border-radius: var(--radius-md);
+    margin-top: 18px; font-size: 13.5px;
+  }
+  .inline-msg.show { display: block; }
+  .inline-msg.error {
+    background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.35);
+    color: #fca5a5;
+  }
+  .inline-msg.success {
+    background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.35);
+    color: var(--green-text);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border-subtle);
+    padding: 60px 24px 32px; background: var(--bg-surface);
+    margin-top: 80px;
+  }
+  .footer-inner {
+    max-width: var(--max-w); margin: 0 auto;
+    display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap;
+  }
+  .footer-brand .logo { font-size: 17px; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+  .footer-brand .logo em { color: var(--accent); font-style: normal; }
+  .footer-brand p { font-size: 13px; color: var(--text-muted); line-height: 1.6; max-width: 280px; margin-top: 10px; }
+  .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+  .footer-links a {
+    color: var(--text-tertiary); text-decoration: none; font-size: 13.5px;
+    transition: color 0.15s;
+  }
+  .footer-links a:hover { color: var(--text-primary); }
+  .footer-bottom {
+    max-width: var(--max-w); margin: 32px auto 0;
+    padding-top: 24px; border-top: 1px solid var(--border-subtle);
+    display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+    font-size: 12.5px; color: var(--text-muted);
+  }
+  .footer-bottom a { color: var(--text-tertiary); text-decoration: none; }
+  .footer-bottom a:hover { color: var(--text-primary); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { padding: 110px 20px 32px; }
+    .hero h1 { font-size: 36px; }
+    .form-card { padding: 28px 22px; }
+    .owasp-grid { grid-template-columns: 1fr; }
+    .section { padding: 56px 0; }
+    h2 { font-size: 28px; }
+    .final-cta { padding: 44px 24px; }
+    .grade-card { padding: 36px 24px 28px; }
+    .grade-letter { font-size: 110px; }
+    .step { grid-template-columns: 48px 1fr; }
+    .step .step-time { grid-column: 2; justify-self: start; }
+    .deep-scan-form { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="inner">
+    <a href="https://galeops.xyz/" class="logo">Gale<em>Ops</em></a>
+    <div class="nav-links">
+      <a href="https://galeops.xyz/">Home</a>
+      <a href="https://galeops.xyz/#ai-security">AI Security</a>
+      <a href="https://galeops.xyz/blog/">Blog</a>
+      <a href="https://galeops.xyz/snapshot/">$149 Snapshot</a>
+      <a href="https://galeops.xyz/scan/" class="active">Free Scan</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <span class="badge"><span class="badge-dot"></span> GALE SCAN · FREE · 90 SEC</span>
+    <h1>Scan Your AI Chatbot Before You Deploy.<br>Free 90-Second Grade.</h1>
+    <p class="lede">
+      Paste your bot's system prompt. Get an <strong>A-F security grade</strong> + <strong>top 3 issues</strong>.
+      100% self-check — your bot, your prompt, your review.
+    </p>
+    <div class="trust-line">
+      <span><span class="dot"></span> No signup</span>
+      <span>·</span>
+      <span>No data stored</span>
+      <span>·</span>
+      <span>Results in 90 seconds</span>
+    </div>
+    <a href="#intake" class="hero-cta">Grade My Bot →</a>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+  <div class="container">
+    <span class="section-tag">// HOW IT WORKS</span>
+    <h2>Three steps. Ninety seconds.</h2>
+    <p class="section-lede">You spend 35 seconds on steps 1 and 2. Our model spends 60 on step 3.</p>
+    <div class="steps">
+      <div class="step">
+        <div>
+          <h3>Paste your system prompt</h3>
+          <p>The full instructions you give your AI agent. Don't worry — we don't store it.</p>
+        </div>
+        <span class="step-time">30 SEC</span>
+      </div>
+      <div class="step">
+        <div>
+          <h3>Attest bot ownership</h3>
+          <p>One-click legal safeguard. We only scan bots you own or operate — never third parties.</p>
+        </div>
+        <span class="step-time">5 SEC</span>
+      </div>
+      <div class="step">
+        <div>
+          <h3>Get your A-F grade + top 3 issues</h3>
+          <p>OWASP LLM Top 10 analysis: prompt injection, data leakage, excessive agency, prompt leakage.</p>
+        </div>
+        <span class="step-time">60 SEC</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- INTAKE FORM -->
+<section class="section" id="intake">
+  <div class="container">
+    <div class="form-card">
+      <div class="form-header">
+        <span class="section-tag">// SCAN</span>
+        <h2>Grade my bot.</h2>
+        <p>Free, instant, and your prompt is never stored. Results stay on your screen.</p>
+      </div>
+
+      <form id="scan-form" name="galescan-intake" autocomplete="on" novalidate>
+        <!-- Honeypot -->
+        <div class="honeypot" aria-hidden="true">
+          <label>Don't fill: <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="field">
+          <label for="system_prompt">System prompt <span class="req">*</span></label>
+          <textarea id="system_prompt" name="system_prompt" required minlength="20" placeholder="You are a customer support agent for..."></textarea>
+          <div class="field-hint">Minimum 20 characters. Paste the full prompt you give your bot.</div>
+        </div>
+
+        <div class="field">
+          <label for="sample_interactions">Sample interactions <span class="opt">optional · one per line</span></label>
+          <textarea id="sample_interactions" name="sample_interactions" class="short" placeholder="User: ...
+Agent: ..."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ai_model">AI model powering the agent</label>
+          <select id="ai_model" name="ai_model">
+            <option value="gpt-4">GPT-4 / GPT-4o</option>
+            <option value="claude">Claude (Sonnet / Opus)</option>
+            <option value="llama">Llama (open-source)</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <div class="checkbox-field">
+            <input type="checkbox" id="bot_owner_attestation" name="bot_owner_attestation" required>
+            <label for="bot_owner_attestation">I confirm I own or operate this AI deployment and am authorized to test it. <span class="req">*</span><br><span style="color:var(--text-muted); font-size:12px;">We do not scan third-party chatbots.</span></label>
+          </div>
+        </div>
+
+        <button type="submit" class="form-submit" id="scan-submit">
+          Grade My Bot →
+        </button>
+
+        <div class="form-trust">
+          <span><span class="lock">🔒</span> TLS encrypted</span>
+          <span>·</span>
+          <span>Prompt not stored</span>
+          <span>·</span>
+          <span>No account needed</span>
+        </div>
+
+        <div id="form-error" class="inline-msg error" role="alert"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- LOADING -->
+<section class="section" id="loading">
+  <div class="container">
+    <div class="form-card" style="text-align:center; padding: 64px 40px;">
+      <div class="spinner"></div>
+      <h3>Grading your bot…</h3>
+      <p>Running OWASP LLM Top 10 analysis across 4 vulnerability classes.</p>
+      <div class="loading-stages">
+        <span class="active">PARSE</span>
+        <span>PROBE</span>
+        <span>SCORE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULT -->
+<section class="section" id="result">
+  <div class="container">
+    <div class="grade-card" id="grade-card">
+      <div class="grade-tag">// YOUR GRADE</div>
+      <div class="grade-letter" id="grade-letter">A</div>
+      <div class="grade-label" id="grade-label">Ship It</div>
+      <div class="grade-score">Risk score: <strong id="grade-score">0/100</strong></div>
+      <p class="grade-summary" id="grade-summary">Your system prompt has been graded against the OWASP LLM Top 10 framework.</p>
+    </div>
+
+    <div class="findings-section">
+      <h3>What we found <span class="count" id="findings-count">0</span></h3>
+      <div id="top-3-list"></div>
+    </div>
+
+    <div class="share-section" id="share-section">
+      <h3>Share your grade</h3>
+      <p>Help other AI builders harden their bots.</p>
+      <div class="share-row">
+        <a href="#" target="_blank" rel="noopener" class="share-btn twitter" id="tweet-link">𝕏 Post on X / Twitter</a>
+        <a href="#" target="_blank" rel="noopener" class="share-btn linkedin" id="linkedin-link">in Share on LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="deep-scan-card" id="deep-scan-card">
+      <span class="ribbon">★ DEEP SCAN · 30-DAY ACTION PLAN</span>
+      <h3>Want the full picture?</h3>
+      <p style="color: var(--text-secondary); font-size: 15px; max-width: 520px; margin: 0 auto 8px;">Get the full top 10 issues + a 30-day action plan tailored to your bot. Delivered within 24 hours.</p>
+      <div class="price-tag">$49</div>
+      <div class="price-sub">one-time · 24-hr delivery · PDF report</div>
+      <ul>
+        <li>Top 10 vulnerabilities (vs. top 3 here)</li>
+        <li>30-day prioritized action plan</li>
+        <li>Drop-in prompt patches for each issue</li>
+        <li>PDF report, white-labeled for your team</li>
+        <li>Email support for follow-up questions</li>
+      </ul>
+      <form class="deep-scan-form" id="deep-scan-form">
+        <input type="email" id="deep-scan-email" name="email" required placeholder="you@company.com" autocomplete="email">
+        <button type="submit" id="deep-scan-btn">Continue to Checkout →</button>
+      </form>
+      <p class="fine-print">Secure checkout via Stripe · 7-day refund window</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT THIS SCANS -->
+<section class="section" id="scans">
+  <div class="container">
+    <span class="section-tag">// COVERAGE</span>
+    <h2>What GaleScan actually scans for.</h2>
+    <p class="section-lede">Four high-impact classes from the OWASP LLM Top 10 — the ones that hit SMB chatbots hardest.</p>
+    <div class="owasp-grid">
+      <div class="owasp-card">
+        <div class="owasp-id">OWASP LLM01</div>
+        <h4>Prompt Injection</h4>
+        <p>User input that overrides the system prompt — direct injection, indirect via documents/RAG, multi-turn setup, encoding chains.</p>
+      </div>
+      <div class="owasp-card">
+        <div class="owasp-id">OWASP LLM02</div>
+        <h4>Sensitive Information Disclosure</h4>
+        <p>Whether the prompt leaks internal docs, pricing, customer data, API keys, or other secrets through model outputs.</p>
+      </div>
+      <div class="owasp-card">
+        <div class="owasp-id">OWASP LLM06</div>
+        <h4>Excessive Agency</h4>
+        <p>Tool-calling permissions, irreversible actions, lack of human-in-the-loop, scope creep in agentic workflows.</p>
+      </div>
+      <div class="owasp-card">
+        <div class="owasp-id">OWASP LLM07</div>
+        <h4>System Prompt Leakage</h4>
+        <p>Can a user extract the system prompt verbatim? Reverse-engineer hidden rules? Discover the model and version?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <span class="section-tag">// FAQ</span>
+    <h2 class="center">Common questions.</h2>
+    <p class="section-lede center">If yours isn't here, email <a href="mailto:mattgale87@gmail.com" style="color:var(--accent-hover); text-decoration:none;">mattgale87@gmail.com</a>.</p>
+    <div class="faq">
+      <details>
+        <summary>Do you store my system prompt?</summary>
+        <p>No. The prompt is sent over TLS to the grading function, used for the analysis, and discarded. We do not write your prompt to disk, database, or any log. The analysis result (grade + findings) is held in your browser session only.</p>
+      </details>
+      <details>
+        <summary>Can I scan someone else's chatbot?</summary>
+        <p>No — and we built it that way on purpose. The attestation checkbox is a legal safeguard. We only grade prompts you own or operate. Scanning third-party chatbots raises CFAA / Terms of Service issues we want to avoid entirely.</p>
+      </details>
+      <details>
+        <summary>How is this different from the $149 Snapshot?</summary>
+        <p>GaleScan is automated, instant, and free — it gives you a top-3 issues triage in 90 seconds. The $149 Snapshot is a manual review by Matt Gale (H1 researcher, Zest V2 auditor) with 25+ targeted probes, a branded PDF, and a 15-min walkthrough video delivered in 5 business days. GaleScan is your "should I worry?" check; Snapshot is your "show me exactly what to fix" deliverable.</p>
+      </details>
+      <details>
+        <summary>What does the $49 Deep Scan include?</summary>
+        <p>The full top 10 vulnerabilities (not just the top 3 surfaced here), a 30-day prioritized action plan, drop-in prompt patches for each issue, and a PDF report white-labeled for your team. Delivered within 24 hours. The $49 is a stepping-stone to the $149 Snapshot and the $5K audit engagement if you need deeper work.</p>
+      </details>
+      <details>
+        <summary>Is the A-F grade the same as the Snapshot's risk score?</summary>
+        <p>They measure the same thing (OWASP LLM Top 10 risk surface) but with different fidelity. GaleScan's grade is a quick triage from a single LLM analysis pass — fast and free, but with less precision than 4-6 hours of manual review. If your GaleScan shows Critical or High, the $149 Snapshot is the right next step.</p>
+      </details>
+      <details>
+        <summary>Why is it free?</summary>
+        <p>Because the funnel works: you grade your bot, you see the issues, you want the full fix — that's where the $49 Deep Scan, $149 Snapshot, and $5K audit live. Free grading is the top of the funnel. We make money on the resolutions, not the read.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FINAL CTA -->
+<section class="section">
+  <div class="container">
+    <div class="final-cta">
+      <span class="section-tag">// READY?</span>
+      <h2>Scan your bot. Ship it safely.</h2>
+      <p class="sub">Free 90-second grade. No signup. Your prompt never leaves the request.</p>
+      <a href="#intake" class="hero-cta">Grade My Bot →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="https://galeops.xyz/" class="logo">Gale<em>Ops</em></a>
+      <p>AI security &amp; automation consulting. Founded by the team behind <a href="https://www.youtube.com/@GaleTech" style="color: var(--accent); text-decoration: none;" target="_blank" rel="noopener">GaleTech</a>.</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://galeops.xyz/">Home</a>
+      <a href="https://galeops.xyz/#services">Services</a>
+      <a href="https://galeops.xyz/snapshot/">$149 Snapshot</a>
+      <a href="https://galeops.xyz/scan/">Free Scan</a>
+      <a href="mailto:mattgale87@gmail.com">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 GaleOps — AI Security &amp; Automation</p>
+    <div>
+      <a href="mailto:mattgale87@gmail.com">mattgale87@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const form = document.getElementById('scan-form');
+  const loadingEl = document.getElementById('loading');
+  const resultEl = document.getElementById('result');
+  const intakeEl = document.getElementById('intake');
+  const errEl = document.getElementById('form-error');
+  const submitBtn = document.getElementById('scan-submit');
+  const deepScanForm = document.getElementById('deep-scan-form');
+  const deepScanBtn = document.getElementById('deep-scan-btn');
+  const deepScanEmail = document.getElementById('deep-scan-email');
+
+  const COLOR_MAP = {
+    green: '#10b981',
+    yellow: '#f59e0b',
+    orange: '#fb923c',
+    red: '#ef4444',
+    lime: '#84cc16'
+  };
+
+  function showError(msg) {
+    errEl.textContent = msg;
+    errEl.classList.add('show');
+    errEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  function clearError() {
+    errEl.classList.remove('show');
+    errEl.textContent = '';
+  }
+
+  let stageTimer = null;
+  function startStages() {
+    const stages = document.querySelectorAll('#loading .loading-stages span');
+    stages.forEach(s => s.classList.remove('active'));
+    if (stages[0]) stages[0].classList.add('active');
+    let i = 0;
+    stageTimer = setInterval(() => {
+      i = (i + 1) % stages.length;
+      stages.forEach(s => s.classList.remove('active'));
+      stages[i].classList.add('active');
+    }, 1200);
+  }
+  function stopStages() {
+    if (stageTimer) { clearInterval(stageTimer); stageTimer = null; }
+  }
+
+  function escapeHtml(str) {
+    if (str == null) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function renderResult(data) {
+    const letter = data.grade || '?';
+    const colorName = data.grade_color || 'green';
+    const colorHex = COLOR_MAP[colorName] || COLOR_MAP.green;
+
+    const letterEl = document.getElementById('grade-letter');
+    letterEl.textContent = letter;
+    letterEl.style.color = colorHex;
+    document.getElementById('grade-card').style.setProperty('--grade-glow', colorHex + '40');
+
+    document.getElementById('grade-label').textContent = data.grade_label || 'Graded';
+    document.getElementById('grade-score').textContent = (data.score != null ? data.score : 0) + '/100';
+
+    const top3 = Array.isArray(data.top_3) ? data.top_3 : [];
+    const summaryEl = document.getElementById('grade-summary');
+    if (data.grade_label) {
+      summaryEl.textContent = 'Your bot is rated "' + data.grade_label + '" based on ' + top3.length + ' high-priority issue' + (top3.length === 1 ? '' : 's') + ' found in the OWASP LLM Top 10 scan.';
+    }
+
+    document.getElementById('findings-count').textContent = top3.length;
+    const issuesHtml = top3.map(f => {
+      const sev = (f.severity || 'medium').toLowerCase();
+      return '<div class="finding-card">' +
+        '<div class="top">' +
+          '<span class="severity-badge severity-' + escapeHtml(sev) + '">' + escapeHtml(f.severity || 'Medium') + '</span>' +
+          (f.owasp_ref ? '<span class="owasp-ref">' + escapeHtml(f.owasp_ref) + '</span>' : '') +
+        '</div>' +
+        '<h4>' + escapeHtml(f.name || 'Vulnerability') + '</h4>' +
+        '<p class="evidence">' + escapeHtml(f.evidence || 'No specific evidence quoted.') + '</p>' +
+      '</div>';
+    }).join('');
+    document.getElementById('top-3-list').innerHTML = issuesHtml;
+
+    const tweetText = 'I just scanned my AI chatbot with @GaleOps GaleScan: ' + letter + ' — ' + (data.grade_label || '') + '. Free 90-sec check → galeops.xyz/scan';
+    document.getElementById('tweet-link').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweetText);
+    document.getElementById('linkedin-link').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent('https://galeops.xyz/scan');
+
+    setTimeout(() => resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  }
+
+  function renderDemoResult() {
+    document.getElementById('grade-letter').textContent = 'A';
+    document.getElementById('grade-letter').style.color = COLOR_MAP.green;
+    document.getElementById('grade-card').style.setProperty('--grade-glow', COLOR_MAP.green + '40');
+    document.getElementById('grade-label').textContent = 'Submission received';
+    document.getElementById('grade-score').textContent = '—/100';
+    document.getElementById('grade-summary').textContent = 'Thanks — we received your submission. We will follow up by email if you requested the Deep Scan.';
+    document.getElementById('top-3-list').innerHTML = '';
+    document.getElementById('findings-count').textContent = '0';
+    setTimeout(() => resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearError();
+
+    const botField = form.querySelector('input[name="bot-field"]');
+    if (botField && botField.value) {
+      intakeEl.style.display = 'none';
+      loadingEl.style.display = 'block';
+      setTimeout(() => {
+        loadingEl.style.display = 'none';
+        resultEl.style.display = 'block';
+        renderDemoResult();
+      }, 2200);
+      return;
+    }
+
+    const system_prompt = (document.getElementById('system_prompt').value || '').trim();
+    const sample_raw = (document.getElementById('sample_interactions').value || '').trim();
+    const ai_model = document.getElementById('ai_model').value;
+    const attestation = document.getElementById('bot_owner_attestation').checked;
+
+    if (!system_prompt || system_prompt.length < 20) {
+      showError('Please paste your system prompt (at least 20 characters).');
+      return;
+    }
+    if (!attestation) {
+      showError('You must confirm you own or operate this AI deployment.');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Grading…';
+
+    intakeEl.style.display = 'none';
+    loadingEl.style.display = 'block';
+    loadingEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    startStages();
+
+    const payload = {
+      system_prompt,
+      sample_interactions: sample_raw ? sample_raw.split('\n').filter(Boolean) : [],
+      ai_model,
+      bot_owner_attestation: true,
+      'bot-field': ''
+    };
+
+    try {
+      const r = await fetch('/.netlify/functions/galescan-grade', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok) {
+        throw new Error(data.error || data.message || 'Scan failed (HTTP ' + r.status + ')');
+      }
+      stopStages();
+      loadingEl.style.display = 'none';
+      resultEl.style.display = 'block';
+      renderResult(data);
+    } catch (err) {
+      console.warn('galescan-grade failed:', err);
+      stopStages();
+      loadingEl.style.display = 'none';
+      intakeEl.style.display = 'block';
+      showError('Scan temporarily unavailable: ' + (err.message || 'Network error.') + ' Please try again.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Grade My Bot →';
+    }
+  });
+
+  deepScanForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = (deepScanEmail.value || '').trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    deepScanBtn.disabled = true;
+    const originalText = deepScanBtn.textContent;
+    deepScanBtn.textContent = 'Redirecting…';
+
+    try {
+      await fetch('/.netlify/functions/galescan-grade', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          system_prompt: '[deep-scan-checkout] re-grade requested',
+          sample_interactions: [],
+          ai_model: 'other',
+          bot_owner_attestation: true,
+          email: email,
+          deep_scan: true,
+          intent: 'deep_scan_checkout'
+        })
+      });
+    } catch (_) { /* non-fatal */ }
+
+    window.location.href = 'https://buy.stripe.com/8x27sM6T07OCfIBfuFa3u01';
+    setTimeout(() => {
+      deepScanBtn.disabled = false;
+      deepScanBtn.textContent = originalText;
+    }, 4000);
+  });
+})();
+</script>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

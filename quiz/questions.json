@@ -1,0 +1,348 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "section": "AI Agent Basics",
+      "q": "Does your AI agent use tools (browse web, send email, call APIs, execute code)?",
+      "options": [
+        "Yes, multiple tools",
+        "Yes, 1-2 tools",
+        "No, just generates text"
+      ],
+      "weight": [
+        3,
+        2,
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "section": "AI Agent Basics",
+      "q": "Can your AI agent take real actions (delete records, send money, modify accounts)?",
+      "options": [
+        "Yes, with approval workflow",
+        "Yes, autonomously",
+        "No, read-only"
+      ],
+      "weight": [
+        2,
+        3,
+        0
+      ]
+    },
+    {
+      "id": 3,
+      "section": "AI Agent Basics",
+      "q": "How does your AI agent handle user input?",
+      "options": [
+        "Direct from end users (production)",
+        "Internal only (employees)",
+        "Both"
+      ],
+      "weight": [
+        3,
+        1,
+        2
+      ]
+    },
+    {
+      "id": 4,
+      "section": "AI Agent Basics",
+      "q": "Does your AI agent access customer data, PII, or proprietary information?",
+      "options": [
+        "Yes, sensitive data",
+        "Yes, public/internal only",
+        "No"
+      ],
+      "weight": [
+        3,
+        1,
+        0
+      ]
+    },
+    {
+      "id": 5,
+      "section": "Current Protections",
+      "q": "Do you have explicit input validation/sanitization on prompts before they reach your LLM?",
+      "options": [
+        "Yes, comprehensive",
+        "Basic/partial",
+        "No"
+      ],
+      "weight": [
+        0,
+        2,
+        3
+      ]
+    },
+    {
+      "id": 6,
+      "section": "Current Protections",
+      "q": "Do you monitor for prompt injection attempts in production?",
+      "options": [
+        "Yes, real-time alerts",
+        "Logged but no alerts",
+        "Not monitored"
+      ],
+      "weight": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "id": 7,
+      "section": "Current Protections",
+      "q": "Have you tested your AI agent against prompt injection attacks in the last 6 months?",
+      "options": [
+        "Yes, by external red team",
+        "Yes, internally",
+        "No"
+      ],
+      "weight": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "id": 8,
+      "section": "Current Protections",
+      "q": "Do you have output filtering for PII, secrets, or harmful content?",
+      "options": [
+        "Yes, before output reaches user",
+        "Basic keyword filtering",
+        "No"
+      ],
+      "weight": [
+        0,
+        2,
+        3
+      ]
+    },
+    {
+      "id": 9,
+      "section": "Current Protections",
+      "q": "Does your AI agent have guardrails against tool-call abuse (e.g., can't delete all records)?",
+      "options": [
+        "Yes, role-based + rate limits",
+        "Basic limits only",
+        "No restrictions"
+      ],
+      "weight": [
+        0,
+        2,
+        3
+      ]
+    },
+    {
+      "id": 10,
+      "section": "Incident Response",
+      "q": "Has your AI agent ever produced inappropriate or unsafe output?",
+      "options": [
+        "Yes, multiple times",
+        "Yes, once or twice",
+        "No / Don't know"
+      ],
+      "weight": [
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "id": 11,
+      "section": "Incident Response",
+      "q": "Do you have a documented incident response plan for AI agent failures?",
+      "options": [
+        "Yes, AI-specific plan",
+        "General security plan covers it",
+        "No"
+      ],
+      "weight": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "id": 12,
+      "section": "Incident Response",
+      "q": "Can you revoke an AI agent's tool access within minutes if compromised?",
+      "options": [
+        "Yes, automatic kill switch",
+        "Yes, manual process (<1 hour)",
+        "No / Not sure"
+      ],
+      "weight": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "id": 13,
+      "section": "Incident Response",
+      "q": "Do you audit/log every tool call your AI agent makes?",
+      "options": [
+        "Yes, with retention",
+        "Yes, briefly",
+        "No"
+      ],
+      "weight": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "id": 14,
+      "section": "Compliance",
+      "q": "Do you have SOC 2, ISO 27001, or similar certification?",
+      "options": [
+        "Yes, certified",
+        "In progress",
+        "No"
+      ],
+      "weight": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": 15,
+      "section": "Compliance",
+      "q": "Has your AI agent been reviewed by legal/compliance for data handling?",
+      "options": [
+        "Yes, fully reviewed",
+        "Partial review",
+        "No"
+      ],
+      "weight": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "id": 16,
+      "section": "Compliance",
+      "q": "Do you have a bug bounty program that covers your AI agent?",
+      "options": [
+        "Yes, public program",
+        "Private program",
+        "No"
+      ],
+      "weight": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "id": 17,
+      "section": "Compliance",
+      "q": "Are you required to comply with EU AI Act, NIST AI RMF, or similar AI-specific regulations?",
+      "options": [
+        "Yes, actively",
+        "Yes, monitoring",
+        "No / Unsure"
+      ],
+      "weight": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "id": 18,
+      "section": "Investment",
+      "q": "What's your annual budget for AI security?",
+      "options": [
+        "$50K+",
+        "$10K-$50K",
+        "<$10K",
+        "Not allocated"
+      ],
+      "weight": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": 19,
+      "section": "Investment",
+      "q": "Do you have a dedicated security engineer working on AI/ML systems?",
+      "options": [
+        "Yes, full-time",
+        "Yes, part-time",
+        "No, general security team"
+      ],
+      "weight": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": 20,
+      "section": "Investment",
+      "q": "Are you planning an external AI security audit in the next 12 months?",
+      "options": [
+        "Yes, scheduled",
+        "Yes, planning",
+        "Considering",
+        "No"
+      ],
+      "weight": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "scoring": {
+    "tiers": [
+      {
+        "max": 15,
+        "tier": "low",
+        "label": "Early Stage",
+        "color": "green",
+        "message": "Your AI security posture looks solid for an early-stage AI deployment.",
+        "recommendation": "Continue monitoring. Consider annual AI security review as you scale.",
+        "cta": "ai-security-audit"
+      },
+      {
+        "max": 35,
+        "tier": "medium",
+        "label": "Moderate Risk",
+        "color": "yellow",
+        "message": "Your AI agent has gaps that attackers could exploit.",
+        "recommendation": "Recommended: AI Security Audit ($5K) to identify and fix your top 5 vulnerabilities before they become incidents.",
+        "cta": "ai-security-audit"
+      },
+      {
+        "max": 55,
+        "tier": "high",
+        "label": "High Risk",
+        "color": "orange",
+        "message": "Your AI agent has significant exposure to prompt injection, data leakage, and tool abuse.",
+        "recommendation": "Recommended: AI Guardrail Setup ($8K) + targeted red team engagement to lock down attack vectors.",
+        "cta": "ai-guardrail-setup"
+      },
+      {
+        "max": 100,
+        "tier": "critical",
+        "label": "Critical Risk",
+        "color": "red",
+        "message": "Your AI agent is a high-value target with multiple critical vulnerabilities.",
+        "recommendation": "Recommended: Full AI Red Team & Compliance engagement ($12K) with quarterly retest. SOC 2/ISO 27001 evidence included.",
+        "cta": "ai-red-team"
+      }
+    ]
+  }
+}

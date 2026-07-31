@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Is an AI Security Audit? A Practical Guide for 2026 | GaleOps</title>
+  <meta name="description" content="AI security audits find prompt injection, data leakage, and agent misconfigurations before attackers do. Learn what's tested, how long it takes, and what a board-ready report looks like.">
+  <link rel="canonical" href="https://galeops.xyz/blog/ai-security-audit-guide.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://galeops.xyz/blog/ai-security-audit-guide.html">
+  <meta property="og:title" content="What Is an AI Security Audit? A Practical Guide for 2026">
+  <meta property="og:description" content="AI security audits find prompt injection, data leakage, and agent misconfigurations before attackers do.">
+  <meta property="og:image" content="https://galeops.xyz/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What Is an AI Security Audit? A Practical Guide for 2026">
+  <meta name="twitter:description" content="AI security audits find prompt injection, data leakage, and agent misconfigurations before attackers do.">
+  <meta name="twitter:image" content="https://galeops.xyz/og-image.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #08090a; --surface: #101012; --text: #f7f8f8; --muted: #8a8f98; --accent: #6366f1; --green: #10b981; --red: #ef4444; --gold: #f59e0b; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 720px; margin: 0 auto; padding: 60px 24px; }
+    .breadcrumb { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px; font-weight: 600; }
+    .meta { font-size: 14px; color: var(--muted); margin-bottom: 40px; }
+    .lead { font-size: 19px; color: #d0d6e0; line-height: 1.6; margin-bottom: 40px; }
+    h2 { font-size: 26px; font-weight: 600; margin: 48px 0 16px; letter-spacing: -0.5px; }
+    h3 { font-size: 20px; font-weight: 600; margin: 32px 0 12px; }
+    p { margin-bottom: 18px; color: #d0d6e0; }
+    ul, ol { margin: 20px 0 20px 24px; color: #d0d6e0; }
+    li { margin-bottom: 10px; }
+    .highlight-box { background: var(--surface); border-left: 3px solid var(--red); padding: 24px 28px; margin: 32px 0; border-radius: 0 10px 10px 0; }
+    .highlight-box.green { border-color: var(--green); }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin: 32px 0; }
+    .stat { background: var(--surface); padding: 20px; border-radius: 10px; text-align: center; }
+    .stat-num { font-size: 28px; font-weight: 700; color: var(--accent); }
+    .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+    table { width: 100%; border-collapse: collapse; margin: 24px 0; background: var(--surface); border-radius: 10px; overflow: hidden; }
+    th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    th { font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); }
+    .check { color: var(--green); font-weight: 700; }
+    .cta-bar { background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 32px; text-align: center; margin: 48px 0; }
+    .cta-bar h3 { margin-top: 0; }
+    .btn { display: inline-block; padding: 14px 28px; background: var(--accent); color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600; margin-top: 8px; }
+    .btn:hover { background: #818cf8; }
+    code { background: rgba(99,102,241,0.15); color: #a5b4fc; padding: 2px 6px; border-radius: 4px; font-size: 90%; }
+    .author { display: flex; align-items: center; gap: 14px; margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .author-img { width: 50px; height: 50px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff; }
+    .author-name { font-weight: 600; }
+    .author-role { font-size: 13px; color: var(--muted); }
+    @media (max-width: 600px) { .container { padding: 40px 20px; } .stat-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+  <!-- blog-person-schema-v1: Article + Person (Mathew Gale) for GEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What Is an AI Security Audit? A Practical Guide for 2026",
+    "description": "AI security audits find prompt injection, data leakage, and agent misconfigurations before attackers do.",
+    "url": "https://galeops.xyz/blog/ai-security-audit-guide.html",
+    "image": "https://galeops.xyz/og-image.svg",
+    "datePublished": "2026-07-22",
+    "dateModified": "2026-07-22",
+    "author": {
+      "@type": "Person",
+      "name": "Mathew Gale",
+      "jobTitle": "AI Security Consultant",
+      "url": "https://galeops.xyz",
+      "sameAs": [
+        "https://www.youtube.com/@GaleTech",
+        "https://www.linkedin.com/in/mattgale",
+        "https://x.com/Mattjgale87"
+      ]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "GaleOps",
+      "url": "https://galeops.xyz",
+      "sameAs": [
+        "https://www.youtube.com/@GaleTech",
+        "https://www.linkedin.com/in/mattgale",
+        "https://x.com/Mattjgale87"
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+<div class="container">
+  <nav class="breadcrumb"><a href="/">GaleOps</a> / <a href="/blog">Blog</a> / AI Security Audit Guide</nav>
+  <h1>What Is an AI Security Audit? A Practical Guide for 2026</h1>
+  <div class="meta">June 25, 2026 · 8 min read · By GaleOps Security Team</div>
+
+  <p class="lead">
+    If your company has deployed a large language model (LLM), an AI agent, or a chatbot that touches customer data, you have already inherited a new class of security risk. An AI security audit is the fastest way to find those risks before an attacker, a regulator, or a headline does.
+  </p>
+
+  <div class="stat-grid">
+    <div class="stat"><div class="stat-num">#1</div><div class="stat-label">LLM risk per OWASP</div></div>
+    <div class="stat"><div class="stat-num">12-15</div><div class="stat-label">Vulns found per audit</div></div>
+    <div class="stat"><div class="stat-num">5 days</div><div class="stat-label">Standard turnaround</div></div>
+    <div class="stat"><div class="stat-num">$5K</div><div class="stat-label">Starting price</div></div>
+  </div>
+
+  <h2>What exactly is an AI security audit?</h2>
+  <p style="margin-bottom:20px;">The $149 snapshot is a 24-hour, OWASP-mapped, bug-bounty-grade review. Or book the $6K audit for the full engagement.</p>
+  <p>
+    Unlike a traditional penetration test, an AI audit focuses on model-specific behaviors: how inputs are interpreted, how instructions are separated from user content, how outputs are filtered, and what happens when the model is connected to real systems.
+  </p>
+
+  <h2>What gets tested</h2>
+  <p>A thorough audit covers at least these seven areas:</p>
+  <ol>
+    <li><strong>Prompt injection testing.</strong> Can a user override system instructions by burying them in chat input, uploaded documents, or third-party data?</li>
+    <li><strong>Indirect prompt injection.</strong> Can a malicious webpage, email, or document fed to the model hijack its behavior?</li>
+    <li><strong>Data leakage.</strong> Does the model reveal training data, internal prompts, or information about other users?</li>
+    <li><strong>Tool and agent permissions.</strong> What APIs, files, or databases can the AI access? Can privilege escalation occur?</li>
+    <li><strong>Output safety.</strong> Can the model produce harmful, illegal, or brand-damaging content?</li>
+    <li><strong>Model extraction.</strong> Can an attacker cheaply clone your model or steal fine-tuning through repeated queries?</li>
+    <li><strong>Compliance gaps.</strong> Does the deployment meet EU AI Act, NIST AI RMF, or SOC 2 expectations?</li>
+  </ol>
+
+  <h2>What does a real finding look like?</h2>
+  <div class="highlight-box">
+    <strong>Example: Tool access misconfiguration</strong><br>
+    A customer service AI agent was given read-write access to a CRM. During testing, we showed that a prompt injection could convince the agent to delete contact records and then summarize what it had done. The fix was narrowing permissions to read-only and adding a human confirmation step for destructive actions.
+  </div>
+  <div class="highlight-box green">
+    <strong>Example: Prompt leakage</strong><br>
+    A chatbot revealed its full system prompt, including internal project names and an API key placeholder. The report included a remediation script to move secrets and instructions out of the model context.
+  </div>
+
+  <h2>What the report should include</h2>
+  <table>
+    <tr><th>Section</th><th>Why it matters</th></tr>
+    <tr><td>Executive summary</td><td>Board-ready language and risk scoring</td></tr>
+    <tr><td>Attack scenarios</td><td>Proof-of-concept prompts and chain-of-exploit walkthroughs</td></tr>
+    <tr><td>Findings matrix</td><td>Severity, exploitability, and business impact</td></tr>
+    <tr><td>Remediation steps</td><td>Specific code, config, or process changes</td></tr>
+    <tr><td>Retest plan</td><td>How to verify fixes hold up</td></tr>
+  </table>
+
+  <h2>How long does it take?</h2>
+  <p>
+    A standard AI security audit typically takes 3–5 business days from kickoff to report delivery. Larger deployments, multi-model systems, or red team engagements can extend to 1–2 weeks. At GaleOps, expedited 48-hour delivery is available with the Red Team & Compliance tier.
+  </p>
+
+  <h2>Who needs an AI security audit?</h2>
+  <ul>
+    <li>Companies with customer-facing chatbots or virtual assistants</li>
+    <li>Teams deploying autonomous AI agents with API or database access</li>
+    <li>Startups preparing for SOC 2, EU AI Act, or enterprise security reviews</li>
+    <li>Organizations integrating LLMs into HR, legal, finance, or healthcare workflows</li>
+  </ul>
+
+  <h2>How much does it cost?</h2>
+  <p>
+    Pricing varies by scope, but a focused AI security audit for a single deployed model typically starts around <strong>$5,000</strong>. Guardrail design and implementation starts at <strong>$8,000</strong>, and full red team plus compliance mapping starts at <strong>$12,000</strong>.
+  </p>
+
+  <div class="cta-bar">
+    <h3>Want a written report you can share with your team?</h3>
+    <p>The $149 snapshot is a 24-hour, OWASP-mapped, bug-bounty-grade review. Or book the $6K audit for the full engagement.</p>
+    <a href="https://calendly.com/galeops/15min" class="btn" target="_blank" rel="noopener">Book Free AI Security Consultation →</a>
+    <a href="/snapshot/" class="btn" style="margin-left:8px;background:var(--gold);color:#08090a;">$149 Snapshot (24h) →</a>
+    <p style="margin-top:14px;font-size:13px;color:var(--muted);">The snapshot is the only paid entry-level report in the AI-security space — others only offer free scans.</p>
+  </div>
+
+  <div class="author">
+    <div class="author-img">MG</div>
+    <div>
+      <div class="author-name">Matt Gale</div>
+      <div class="author-role">Founder, GaleOps · 12+ years enterprise IT & AI security</div>
+    </div>
+  </div>
+</div>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SPMK00RCZP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SPMK00RCZP');
+</script>
+<script>
+document.querySelectorAll('a.btn').forEach(function(el){
+  el.addEventListener('click', function(){
+    gtag && gtag('event', 'cta_click', { event_category: 'blog', event_label: el.textContent.trim() });
+  });
+});
+</script>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

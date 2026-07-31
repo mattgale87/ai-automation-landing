@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#08090a"/>
+      <stop offset="100%" stop-color="#101012"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="50%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.3" r="0.6">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <text x="100" y="120" font-family="Inter, system-ui, sans-serif" font-size="42" font-weight="700" fill="#f7f8f8" letter-spacing="-1.5">Gale<tspan fill="#6366f1">Ops</tspan></text>
+
+  <text x="100" y="260" font-family="Inter, system-ui, sans-serif" font-size="68" font-weight="700" fill="url(#textGrad)" letter-spacing="-2.5">AI Security &amp; Automation</text>
+
+  <text x="100" y="350" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="500" fill="#d0d6e0" letter-spacing="-0.8">Prompt Injection Testing · EU AI Act Compliance</text>
+  <text x="100" y="395" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="500" fill="#d0d6e0" letter-spacing="-0.8">AI Red Team · Custom AI Agent Workflows</text>
+
+  <g transform="translate(100, 470)">
+    <rect x="0" y="0" width="290" height="56" rx="8" fill="#6366f1"/>
+    <text x="145" y="36" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#ffffff" text-anchor="middle">$5K Audit · $8K Guardrails · $12K Red Team</text>
+  </g>
+
+  <g transform="translate(420, 470)">
+    <rect x="0" y="0" width="240" height="56" rx="8" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+    <text x="120" y="36" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#d0d6e0" text-anchor="middle">12+ years enterprise IT</text>
+  </g>
+
+  <text x="100" y="570" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="500" fill="#8a8f98">galeops.xyz · Free 15-min audit</text>
+
+  <g transform="translate(1000, 500)">
+    <rect x="0" y="0" width="100" height="40" rx="20" fill="rgba(99,102,241,0.15)" stroke="rgba(99,102,241,0.4)" stroke-width="1"/>
+    <text x="50" y="26" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#818cf8" text-anchor="middle">OWASP · NIST · EU AI Act</text>
+  </g>
+</svg>

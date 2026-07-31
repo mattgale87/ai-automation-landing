@@ -1,0 +1,31 @@
+# Netlify local state and build output
+.netlify/
+
+# Dependencies and local environment
+node_modules/
+.env
+.env.*
+!.env.example
+
+# Local sales/customer data (not site content)
+prospects.json
+outreach/
+snapshots/
+
+# Editor and backup artifacts
+*.bak
+*.bak-*
+*.tmp
+*~
+
+# Legacy, unreferenced large media exports
+/videos/
+galetech-welcome-video.mp4
+ai-security-audit-video.mp4
+youtube-automation-video-v2.mp4
+youtube-automation-video.mp4
+youtube-automation-video.b64
+narration.wav
+
+# Keep the site videos used by current landing pages.
+!assets/videos/*.mp4

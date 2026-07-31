@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Security Quiz | GaleOps AI Security</title>
+<meta name="description" content="Is your AI agent secure? Take our free 20-question AI security assessment. Get a personalized risk report in 3 minutes.">
+<meta property="og:title" content="Free AI Security Quiz | GaleOps">
+<meta property="og:description" content="Is your AI agent secure? 20 questions, 3 minutes, instant risk report.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://galeops.xyz/quiz/">
+<link rel="canonical" href="https://galeops.xyz/quiz/">
+<style>
+  :root {
+    --bg-primary: #0a0e1a;
+    --bg-secondary: #131826;
+    --bg-card: #1a2030;
+    --accent-cyan: #00e5ff;
+    --accent-green: #00ff88;
+    --accent-yellow: #ffd700;
+    --accent-orange: #ff9500;
+    --accent-red: #ff3366;
+    --text-primary: #e8ecf4;
+    --text-secondary: #8b94a8;
+    --border: #2a3045;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 24px; }
+  header { text-align: center; padding: 40px 0 32px; }
+  .logo {
+    font-size: 14px; letter-spacing: 4px; color: var(--accent-cyan);
+    margin-bottom: 16px; font-weight: 700;
+  }
+  h1 {
+    font-size: 38px; line-height: 1.2; margin-bottom: 16px;
+    background: linear-gradient(135deg, #fff 0%, var(--accent-cyan) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subtitle { font-size: 18px; color: var(--text-secondary); margin-bottom: 24px; }
+  .badges { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
+  .badge {
+    background: var(--bg-card); padding: 6px 14px; border-radius: 20px;
+    font-size: 13px; color: var(--text-secondary); border: 1px solid var(--border);
+  }
+  .badge-check { color: var(--accent-green); }
+
+  .progress-wrap {
+    background: var(--bg-card); border-radius: 12px; padding: 16px;
+    margin-bottom: 24px; border: 1px solid var(--border);
+  }
+  .progress-text { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
+  .progress-bar { height: 6px; background: var(--bg-secondary); border-radius: 3px; overflow: hidden; }
+  .progress-fill {
+    height: 100%; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
+    transition: width 0.3s ease; width: 0%;
+  }
+
+  .quiz-card {
+    background: var(--bg-card); border-radius: 16px; padding: 32px;
+    border: 1px solid var(--border); margin-bottom: 24px;
+  }
+  .section-tag {
+    display: inline-block; padding: 4px 12px; background: var(--bg-secondary);
+    border-radius: 6px; font-size: 12px; color: var(--accent-cyan);
+    margin-bottom: 16px; letter-spacing: 1px;
+  }
+  .question { font-size: 20px; margin-bottom: 24px; font-weight: 600; }
+  .options { display: flex; flex-direction: column; gap: 12px; }
+  .option {
+    background: var(--bg-secondary); padding: 16px 20px; border-radius: 10px;
+    cursor: pointer; border: 2px solid transparent;
+    transition: all 0.2s ease; display: flex; align-items: center; gap: 12px;
+  }
+  .option:hover { border-color: var(--accent-cyan); background: var(--bg-card); }
+  .option.selected { border-color: var(--accent-green); background: rgba(0,255,136,0.05); }
+  .option-circle {
+    width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--text-secondary);
+    flex-shrink: 0; position: relative;
+  }
+  .option.selected .option-circle { border-color: var(--accent-green); }
+  .option.selected .option-circle::after {
+    content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 10px; height: 10px; border-radius: 50%; background: var(--accent-green);
+  }
+
+  .nav-buttons { display: flex; justify-content: space-between; gap: 12px; margin-top: 24px; }
+  .btn {
+    padding: 14px 28px; border-radius: 8px; font-size: 16px; font-weight: 600;
+    border: none; cursor: pointer; transition: all 0.2s;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
+    color: #000; flex: 1;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,229,255,0.3); }
+  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+  .btn-secondary { background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border); }
+
+  .email-gate {
+    background: var(--bg-card); border-radius: 16px; padding: 40px;
+    border: 2px solid var(--accent-cyan); margin-bottom: 24px; text-align: center;
+  }
+  .email-gate h2 { font-size: 28px; margin-bottom: 12px; }
+  .email-gate p { color: var(--text-secondary); margin-bottom: 24px; }
+  .email-gate input {
+    width: 100%; padding: 14px 20px; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--bg-secondary);
+    color: var(--text-primary); font-size: 16px; margin-bottom: 12px;
+  }
+  .email-gate input:focus { outline: none; border-color: var(--accent-cyan); }
+  .email-gate .fine-print { font-size: 12px; color: var(--text-secondary); margin-top: 16px; }
+
+  .results-card { background: var(--bg-card); border-radius: 16px; padding: 40px; border: 2px solid var(--border); }
+  .results-card.green { border-color: var(--accent-green); }
+  .results-card.yellow { border-color: var(--accent-yellow); }
+  .results-card.orange { border-color: var(--accent-orange); }
+  .results-card.red { border-color: var(--accent-red); }
+  .score-circle {
+    width: 180px; height: 180px; border-radius: 50%; margin: 0 auto 24px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background: var(--bg-secondary); border: 4px solid;
+  }
+  .score-circle.green { border-color: var(--accent-green); }
+  .score-circle.yellow { border-color: var(--accent-yellow); }
+  .score-circle.orange { border-color: var(--accent-orange); }
+  .score-circle.red { border-color: var(--accent-red); }
+  .score-number { font-size: 56px; font-weight: 700; line-height: 1; }
+  .score-label { font-size: 14px; color: var(--text-secondary); margin-top: 8px; letter-spacing: 2px; }
+  .tier-label { font-size: 32px; font-weight: 700; text-align: center; margin-bottom: 24px; }
+  .tier-message { font-size: 18px; margin-bottom: 16px; text-align: center; line-height: 1.6; }
+  .recommendation {
+    background: var(--bg-secondary); border-radius: 12px; padding: 24px;
+    margin: 24px 0; border-left: 4px solid var(--accent-cyan);
+  }
+  .recommendation h3 { color: var(--accent-cyan); margin-bottom: 8px; }
+  .cta-button {
+    display: inline-block; padding: 18px 40px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
+    color: #000; text-decoration: none; font-weight: 700; font-size: 18px;
+    margin-top: 16px; transition: all 0.2s;
+  }
+  .cta-button:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,229,255,0.4); }
+  .breakdown { margin-top: 32px; }
+  .breakdown h3 { margin-bottom: 16px; color: var(--text-secondary); font-size: 14px; letter-spacing: 2px; }
+  .section-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 0; border-bottom: 1px solid var(--border);
+  }
+  .section-name { font-size: 14px; }
+  .section-score { font-weight: 700; font-family: monospace; }
+  .share-cta {
+    margin-top: 32px; padding: 24px; background: var(--bg-secondary);
+    border-radius: 12px; text-align: center;
+  }
+  .share-cta p { color: var(--text-secondary); margin-bottom: 12px; }
+  .share-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .share-btn {
+    padding: 8px 16px; border-radius: 6px; background: var(--bg-card);
+    color: var(--text-primary); text-decoration: none; font-size: 14px;
+    border: 1px solid var(--border); transition: all 0.2s;
+  }
+  .share-btn:hover { border-color: var(--accent-cyan); }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 28px; }
+    .quiz-card { padding: 20px; }
+    .score-circle { width: 140px; height: 140px; }
+    .score-number { font-size: 44px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div style="display:flex; justify-content:space-between; align-items:center; max-width:760px; margin: 0 auto;">
+      <div class="logo">⚡ GALEOPS AI SECURITY</div>
+      <a href="https://galeops.xyz/amazon/" style="color:#8b94a8; font-size:13px; text-decoration:none; padding:6px 12px; border:1px solid var(--border); border-radius:6px;">🛒 Gear</a>
+    </div>
+    <h1>Is Your AI Agent Secure?</h1>
+    <p class="subtitle">20 questions · 3 minutes · Instant personalized risk report</p>
+    <div class="badges">
+      <span class="badge">🔒 100% Confidential</span>
+      <span class="badge"><span class="badge-check">✓</span> No credit card</span>
+      <span class="badge">⚡ Instant results</span>
+    </div>
+  </header>
+
+  <div id="progress-wrap" class="progress-wrap" style="display: none;">
+    <div class="progress-text">
+      <span id="progress-section">AI Agent Basics</span>
+      <span id="progress-count">Question 1 of 20</span>
+    </div>
+    <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+  </div>
+
+  <div id="quiz-container"></div>
+
+  <div id="email-gate" class="email-gate" style="display: none;">
+    <h2>📊 Your results are ready</h2>
+    <p>Enter your work email to see your personalized AI Security Risk Report</p>
+    <input type="email" id="email-input" placeholder="you@company.com" required>
+    <button class="btn btn-primary" onclick="submitEmail()">Show My Risk Report →</button>
+    <p class="fine-print">🔒 We'll never share your info. Used to send your report only.</p>
+  </div>
+
+  <div id="results-container"></div>
+</div>
+
+<script>
+// Load quiz data
+const QUIZ_DATA = {"questions": [{"id": 1, "section": "AI Agent Basics", "q": "Does your AI agent use tools (browse web, send email, call APIs, execute code)?", "options": ["Yes, multiple tools", "Yes, 1-2 tools", "No, just generates text"], "weight": [3, 2, 0]}, {"id": 2, "section": "AI Agent Basics", "q": "Can your AI agent take real actions (delete records, send money, modify accounts)?", "options": ["Yes, with approval workflow", "Yes, autonomously", "No, read-only"], "weight": [2, 3, 0]}, {"id": 3, "section": "AI Agent Basics", "q": "How does your AI agent handle user input?", "options": ["Direct from end users (production)", "Internal only (employees)", "Both"], "weight": [3, 1, 2]}, {"id": 4, "section": "AI Agent Basics", "q": "Does your AI agent access customer data, PII, or proprietary information?", "options": ["Yes, sensitive data", "Yes, public/internal only", "No"], "weight": [3, 1, 0]}, {"id": 5, "section": "Current Protections", "q": "Do you have explicit input validation/sanitization on prompts before they reach your LLM?", "options": ["Yes, comprehensive", "Basic/partial", "No"], "weight": [0, 2, 3]}, {"id": 6, "section": "Current Protections", "q": "Do you monitor for prompt injection attempts in production?", "options": ["Yes, real-time alerts", "Logged but no alerts", "Not monitored"], "weight": [0, 1, 3]}, {"id": 7, "section": "Current Protections", "q": "Have you tested your AI agent against prompt injection attacks in the last 6 months?", "options": ["Yes, by external red team", "Yes, internally", "No"], "weight": [0, 1, 3]}, {"id": 8, "section": "Current Protections", "q": "Do you have output filtering for PII, secrets, or harmful content?", "options": ["Yes, before output reaches user", "Basic keyword filtering", "No"], "weight": [0, 2, 3]}, {"id": 9, "section": "Current Protections", "q": "Does your AI agent have guardrails against tool-call abuse (e.g., can't delete all records)?", "options": ["Yes, role-based + rate limits", "Basic limits only", "No restrictions"], "weight": [0, 2, 3]}, {"id": 10, "section": "Incident Response", "q": "Has your AI agent ever produced inappropriate or unsafe output?", "options": ["Yes, multiple times", "Yes, once or twice", "No / Don't know"], "weight": [3, 2, 1]}, {"id": 11, "section": "Incident Response", "q": "Do you have a documented incident response plan for AI agent failures?", "options": ["Yes, AI-specific plan", "General security plan covers it", "No"], "weight": [0, 1, 3]}, {"id": 12, "section": "Incident Response", "q": "Can you revoke an AI agent's tool access within minutes if compromised?", "options": ["Yes, automatic kill switch", "Yes, manual process (<1 hour)", "No / Not sure"], "weight": [0, 1, 3]}, {"id": 13, "section": "Incident Response", "q": "Do you audit/log every tool call your AI agent makes?", "options": ["Yes, with retention", "Yes, briefly", "No"], "weight": [0, 1, 3]}, {"id": 14, "section": "Compliance", "q": "Do you have SOC 2, ISO 27001, or similar certification?", "options": ["Yes, certified", "In progress", "No"], "weight": [1, 2, 3]}, {"id": 15, "section": "Compliance", "q": "Has your AI agent been reviewed by legal/compliance for data handling?", "options": ["Yes, fully reviewed", "Partial review", "No"], "weight": [0, 1, 3]}, {"id": 16, "section": "Compliance", "q": "Do you have a bug bounty program that covers your AI agent?", "options": ["Yes, public program", "Private program", "No"], "weight": [0, 1, 3]}, {"id": 17, "section": "Compliance", "q": "Are you required to comply with EU AI Act, NIST AI RMF, or similar AI-specific regulations?", "options": ["Yes, actively", "Yes, monitoring", "No / Unsure"], "weight": [2, 1, 0]}, {"id": 18, "section": "Investment", "q": "What's your annual budget for AI security?", "options": ["$50K+", "$10K-$50K", "<$10K", "Not allocated"], "weight": [0, 1, 2, 3]}, {"id": 19, "section": "Investment", "q": "Do you have a dedicated security engineer working on AI/ML systems?", "options": ["Yes, full-time", "Yes, part-time", "No, general security team"], "weight": [0, 1, 2]}, {"id": 20, "section": "Investment", "q": "Are you planning an external AI security audit in the next 12 months?", "options": ["Yes, scheduled", "Yes, planning", "Considering", "No"], "weight": [0, 1, 2, 3]}], "scoring": {"tiers": [{"max": 15, "tier": "low", "label": "Early Stage", "color": "green", "message": "Your AI security posture looks solid for an early-stage AI deployment.", "recommendation": "Continue monitoring. Consider annual AI security review as you scale.", "cta": "ai-security-audit"}, {"max": 35, "tier": "medium", "label": "Moderate Risk", "color": "yellow", "message": "Your AI agent has gaps that attackers could exploit.", "recommendation": "Recommended: AI Security Audit ($5K) to identify and fix your top 5 vulnerabilities before they become incidents.", "cta": "ai-security-audit"}, {"max": 55, "tier": "high", "label": "High Risk", "color": "orange", "message": "Your AI agent has significant exposure to prompt injection, data leakage, and tool abuse.", "recommendation": "Recommended: AI Guardrail Setup ($8K) + targeted red team engagement to lock down attack vectors.", "cta": "ai-guardrail-setup"}, {"max": 100, "tier": "critical", "label": "Critical Risk", "color": "red", "message": "Your AI agent is a high-value target with multiple critical vulnerabilities.", "recommendation": "Recommended: Full AI Red Team & Compliance engagement ($12K) with quarterly retest. SOC 2/ISO 27001 evidence included.", "cta": "ai-red-team"}]}};
+
+let currentQ = 0;
+let answers = {};
+let emailCaptured = null;
+
+function start() {
+  document.getElementById('progress-wrap').style.display = 'block';
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = QUIZ_DATA.questions[currentQ];
+  const progressPct = ((currentQ) / QUIZ_DATA.questions.length) * 100;
+  document.getElementById('progress-fill').style.width = progressPct + '%';
+  document.getElementById('progress-section').textContent = q.section;
+  document.getElementById('progress-count').textContent = `Question ${currentQ + 1} of ${QUIZ_DATA.questions.length}`;
+
+  const html = `
+    <div class="quiz-card">
+      <span class="section-tag">${q.section}</span>
+      <div class="question">${q.q}</div>
+      <div class="options">
+        ${q.options.map((opt, i) => `
+          <div class="option ${answers[q.id] === i ? 'selected' : ''}" onclick="selectOption(${q.id}, ${i})">
+            <div class="option-circle"></div>
+            <span>${opt}</span>
+          </div>
+        `).join('')}
+      </div>
+      <div class="nav-buttons">
+        <button class="btn btn-secondary" onclick="prev()" ${currentQ === 0 ? 'disabled' : ''}>← Back</button>
+        <button class="btn btn-primary" onclick="next()" ${answers[q.id] === undefined ? 'disabled' : ''}>
+          ${currentQ === QUIZ_DATA.questions.length - 1 ? 'See Results →' : 'Next →'}
+        </button>
+      </div>
+    </div>
+  `;
+  document.getElementById('quiz-container').innerHTML = html;
+}
+
+function selectOption(qid, idx) {
+  answers[qid] = idx;
+  renderQuestion();
+  // Auto-advance after brief delay
+  setTimeout(() => { if (currentQ < QUIZ_DATA.questions.length - 1) next(); }, 300);
+}
+
+function next() {
+  if (answers[QUIZ_DATA.questions[currentQ].id] === undefined) return;
+  if (currentQ < QUIZ_DATA.questions.length - 1) {
+    currentQ++;
+    renderQuestion();
+  } else {
+    showEmailGate();
+  }
+}
+
+function prev() {
+  if (currentQ > 0) { currentQ--; renderQuestion(); }
+}
+
+function showEmailGate() {
+  document.getElementById('progress-wrap').style.display = 'none';
+  document.getElementById('quiz-container').style.display = 'none';
+  document.getElementById('email-gate').style.display = 'block';
+  document.getElementById('email-input').focus();
+}
+
+async function submitEmail() {
+  const email = document.getElementById('email-input').value.trim();
+  if (!email || !email.includes('@')) {
+    alert('Please enter a valid email');
+    return;
+  }
+  emailCaptured = email;
+  // ALWAYS submit to Netlify Forms first (backup capture)
+  submitToNetlifyQuiz(email);
+  await calculateResults();
+}
+
+async function submitToNetlifyQuiz(email) {
+  // PRIMARY: Netlify Function (guaranteed)
+  try {
+    const r = await fetch('/.netlify/functions/lead-capture', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, source: 'quiz' })
+    });
+    if (r.ok) return;
+  } catch (e) {}
+
+  // FALLBACK: Netlify Forms
+  try {
+    const body = new URLSearchParams();
+    body.append('form-name', 'quiz-lead');
+    body.append('email', email);
+    body.append('source', 'quiz');
+    body.append('bot-field', '');
+    await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString()
+    });
+  } catch (e) {
+    console.log('Netlify backup capture failed (continuing):', e);
+  }
+}
+
+async function submitToModalQuiz(email, score, tier, sectionScores) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 5000);
+  try {
+    await fetch('https://mattgale87--galeops-prompt-tester-fastapi-app.modal.run/quiz', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        score: score,
+        tier: tier,
+        section_scores: sectionScores,
+      }),
+      signal: controller.signal
+    });
+    clearTimeout(timeout);
+    return true;
+  } catch (e) {
+    console.log('Modal API failed (Netlify capture still active):', e);
+    return false;
+  }
+}
+
+async function calculateResults() {
+  let totalScore = 0;
+  const sectionScores = {};
+  QUIZ_DATA.questions.forEach(q => {
+    const ansIdx = answers[q.id];
+    if (ansIdx === undefined) return;
+    const w = q.weight[ansIdx] || 0;
+    totalScore += w;
+    if (!sectionScores[q.section]) sectionScores[q.section] = { score: 0, max: 0 };
+    sectionScores[q.section].score += w;
+    sectionScores[q.section].max += Math.max(...q.weight);
+  });
+
+  // Determine tier
+  let tier = QUIZ_DATA.scoring.tiers[3]; // critical default
+  for (const t of QUIZ_DATA.scoring.tiers) {
+    if (totalScore <= t.max) { tier = t; break; }
+  }
+
+  // Send to Modal (primary) — fire and forget, errors handled internally
+  submitToModalQuiz(emailCaptured, totalScore, tier.label, sectionScores);
+
+  renderResults(totalScore, tier, sectionScores);
+}
+
+function renderResults(score, tier, sectionScores) {
+  document.getElementById('email-gate').style.display = 'none';
+  document.getElementById('results-container').innerHTML = `
+    <div class="results-card ${tier.color}">
+      <div class="score-circle ${tier.color}">
+        <div class="score-number">${score}</div>
+        <div class="score-label">RISK SCORE</div>
+      </div>
+      <div class="tier-label">${tier.label}</div>
+      <p class="tier-message">${tier.message}</p>
+      <div class="recommendation">
+        <h3>📋 Our Recommendation</h3>
+        <p>${tier.recommendation}</p>
+        <a href="https://galeops.xyz/${tier.cta}/" class="cta-button">Get Started →</a>
+      </div>
+      <div class="breakdown">
+        <h3>SCORE BY SECTION</h3>
+        ${Object.entries(sectionScores).map(([name, data]) => {
+          const pct = Math.round((data.score / data.max) * 100);
+          return `
+            <div class="section-row">
+              <span class="section-name">${name}</span>
+              <span class="section-score">${data.score} / ${data.max} (${pct}%)</span>
+            </div>
+          `;
+        }).join('')}
+      </div>
+      <div class="share-cta">
+        <p>Know someone shipping AI? Help them avoid getting breached:</p>
+        <div class="share-buttons">
+          <a href="https://twitter.com/intent/tweet?text=I scored my AI agent's security with GaleOps — ${score}% risk. Is yours safer? https://galeops.xyz/quiz/" class="share-btn" target="_blank">Share on X</a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://galeops.xyz/quiz/" class="share-btn" target="_blank">Share on LinkedIn</a>
+          <a href="https://galeops.xyz/quiz/" class="share-btn">Copy Link</a>
+        </div>
+      </div>
+      <div style="margin-top:32px; padding:24px; background:linear-gradient(135deg, rgba(0,229,255,0.05), rgba(0,255,136,0.05)); border:1px solid var(--accent-cyan); border-radius:16px; text-align:center;">
+        <h3 style="color:var(--accent-cyan); margin-bottom:8px; font-size:16px;">Want the full report in PDF?</h3>
+        <p style="color:var(--text-secondary); font-size:14px; margin-bottom:16px;">7-page personalized PDF: your top vulnerabilities + remediation checklist. Delivered in 15 min.</p>
+        <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+          <a href="/products/quiz-report/" class="cta-button" style="font-size:14px; padding:12px 24px;">$49 PDF Report →</a>
+          <a href="/products/snapshot/" class="cta-button" style="font-size:14px; padding:12px 24px; background: linear-gradient(135deg, #ffd700, #ff9500);">$149 Video Audit →</a>
+        </div>
+        <p style="font-size:12px; color:var(--text-tertiary); margin-top:12px;">Self-serve · No calls · Pay once</p>
+      </div>
+    </div>
+  `;
+}
+
+// Start on load
+window.addEventListener('DOMContentLoaded', start);
+</script>
+
+<!-- Netlify Forms backup — hidden, statically-rendered so Netlify detects at deploy -->
+<form name="quiz-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;height:0;width:0;overflow:hidden" aria-hidden="true">
+  <input type="hidden" name="form-name" value="quiz-lead">
+  <p style="display:none"><label>Don't fill: <input name="bot-field"></label></p>
+  <input type="email" name="email">
+  <input type="text" name="source">
+</form>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tuesday Post — AI Agent Tool Access | GaleOps</title>
+  <meta name="description" content="Single X post: If your AI agent has tool access, assume it can be exploited.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #08090a; --surface: #101012; --text: #f7f8f8; --muted: #8a8f98; --accent: #6366f1; --red: #ef4444; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+    .post { max-width: 640px; margin: 0 auto; padding: 60px 24px; }
+    .card { background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 32px; }
+    .handle { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+    .handle a { color: var(--accent); text-decoration: none; }
+    .content p { color: #d0d6e0; line-height: 1.7; margin-bottom: 16px; font-size: 17px; }
+    .content strong { color: var(--text); }
+    .content .highlight { color: var(--red); font-weight: 600; }
+    .tag { display: inline-block; margin-top: 16px; font-size: 14px; color: var(--accent); margin-right: 8px; }
+    .copy-btn { display: inline-block; margin-top: 20px; padding: 10px 22px; background: none; color: var(--accent); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; font-size: 13px; font-weight: 500; cursor: pointer; }
+    .copy-btn:hover { background: rgba(99,102,241,0.15); }
+    .tip { background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.15); border-radius: 10px; padding: 16px 20px; margin-bottom: 28px; font-size: 13px; color: #d0d6e0; }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SPMK00RCZP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SPMK00RCZP');
+  </script>
+  <!-- blog-person-schema-v1: Article + Person (Mathew Gale) for GEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Tuesday Post — AI Agent Tool Access",
+    "description": "",
+    "url": "https://galeops.xyz/blog/tuesday-post.html",
+    "image": "https://galeops.xyz/og-image.svg",
+    "datePublished": "2026-07-22",
+    "dateModified": "2026-07-22",
+    "author": {
+      "@type": "Person",
+      "name": "Mathew Gale",
+      "jobTitle": "AI Security Consultant",
+      "url": "https://galeops.xyz",
+      "sameAs": [
+        "https://www.youtube.com/@GaleTech",
+        "https://www.linkedin.com/in/mattgale",
+        "https://x.com/Mattjgale87"
+      ]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "GaleOps",
+      "url": "https://galeops.xyz",
+      "sameAs": [
+        "https://www.youtube.com/@GaleTech",
+        "https://www.linkedin.com/in/mattgale",
+        "https://x.com/Mattjgale87"
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+<div class="post">
+  <div class="handle">Post from: <a href="https://x.com/Mattjgale87">@Mattjgale87</a> · Tuesday 7/1/26</div>
+
+  <div class="tip">
+    💡 <strong>Posting tip:</strong> This is a standalone post. For maximum reach, post at 9-10am EST or 12-1pm EST. Pair with a relevant AI news hook if possible.
+  </div>
+
+  <div class="card content">
+    <p><strong>If your AI agent has tool access, assume it can be exploited.</strong></p>
+    <p>Here's why:</p>
+    <p>Every tool you give your AI — database, API, file system, email — is an attack surface.</p>
+    <p>The moment you connect an LLM to a real system, you've created a new class of vulnerability: <span class="highlight">prompt injection → tool execution → real-world damage.</span></p>
+    <p>It's not theoretical. We've seen agents:</p>
+    <p>• Delete database records via injected instructions<br>
+    • Exfiltrate customer data through API calls<br>
+    • Send emails on behalf of the company<br>
+    • Execute code on production servers</p>
+    <p><strong>The fix isn't "be careful with prompts."</strong></p>
+    <p>It's architecture-level: least privilege, human confirmation for destructive actions, output filtering, and audit logging.</p>
+    <p>If you're deploying AI agents and haven't had a security audit, you're gambling.</p>
+    <p>DM me "audit" — I'll tell you straight if you actually need one or if you're fine.</p>
+    <p><span class="tag">#AISecurity</span><span class="tag">#AIAgents</span><span class="tag">#PromptInjection</span></p>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(this.parentElement.innerText)">Copy Post</button>
+  </div>
+</div>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

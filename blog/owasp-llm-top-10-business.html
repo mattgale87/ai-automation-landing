@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OWASP LLM Top 10 for Business Owners | GaleOps</title>
+<meta name="description" content="The OWASP LLM Top 10, explained in plain English. What each risk means for your business — and how a GaleOps audit maps to it.">
+<link rel="canonical" href="https://galeops.xyz/blog/owasp-llm-top-10-business.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://galeops.xyz/blog/owasp-llm-top-10-business.html">
+<meta property="og:title" content="OWASP LLM Top 10 for Business Owners">
+<meta property="og:description" content="The OWASP LLM Top 10 in plain English — what each risk means for your business.">
+<meta property="og:image" content="https://galeops.xyz/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #08090a; --surface: #101012; --text: #f7f8f8; --muted: #8a8f98; --accent: #6366f1; --green: #10b981; --red: #ef4444; --gold: #f59e0b; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 720px; margin: 0 auto; padding: 60px 24px; }
+  .breadcrumb { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px; font-weight: 600; }
+  .meta { font-size: 14px; color: var(--muted); margin-bottom: 40px; }
+  .lead { font-size: 19px; color: #d0d6e0; line-height: 1.6; margin-bottom: 40px; }
+  h2 { font-size: 26px; font-weight: 600; margin: 48px 0 16px; letter-spacing: -0.5px; }
+  h3 { font-size: 20px; font-weight: 600; margin: 32px 0 12px; }
+  p { margin-bottom: 18px; color: #d0d6e0; }
+  ul, ol { margin: 20px 0 20px 24px; color: #d0d6e0; }
+  li { margin-bottom: 10px; }
+  .owasp-item { background: var(--surface); border-radius: 12px; padding: 22px 24px; margin: 18px 0; border-left: 3px solid var(--accent); }
+  .owasp-item strong { color: var(--green); }
+  .cta-bar { background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 32px; text-align: center; margin: 48px 0; }
+  .cta-bar h3 { margin-top: 0; }
+  .btn { display: inline-block; background: var(--green); color: #fff; padding: 14px 28px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "OWASP LLM Top 10 for Business Owners",
+  "author": { "@type": "Person", "name": "Mathew Gale", "sameAs": ["https://www.youtube.com/@GaleTech", "https://www.linkedin.com/in/mattgale", "https://x.com/Mattjgale87"] },
+  "datePublished": "2026-07-22",
+  "dateModified": "2026-07-22",
+  "publisher": { "@type": "Organization", "name": "GaleOps" }
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb"><a href="/blog/">Blog</a> → OWASP LLM Top 10</div>
+  <h1>OWASP LLM Top 10 for Business Owners</h1>
+  <div class="meta">By Mathew Gale · Bug-bounty operator · Updated 2026-07-22</div>
+  <p class="lead">You don't need a security degree to understand the OWASP LLM Top 10. You need to know what each risk means for your business — and whether you're exposed. Here's the plain-English version, mapped to what we test.</p>
+
+  <h2>Why business owners should care</h2>
+  <p>Customers and regulators increasingly ask: "Is your AI secure?" The OWASP LLM Top 10 is the closest thing to a standard answer. If your audit report references it, you can prove you took security seriously. If it doesn't, you're guessing.</p>
+
+  <div class="owasp-item"><strong>LLM01 — Prompt Injection</strong><br>The #1 risk. Attacker overrides your model's instructions. <em>GaleOps tests this with direct + indirect (RAG) injection chains.</em></div>
+  <div class="owasp-item"><strong>LLM02 — Sensitive Information Disclosure</strong><br>PII, secrets, or training data leaks through responses. <em>We review output handling + log exposure.</em></div>
+  <div class="owasp-item"><strong>LLM03 — Supply Chain</strong><br>Vulnerable plugins, packages, or third-party models. <em>We scan dependencies your AI pulls in.</em></div>
+  <div class="owasp-item"><strong>LLM04 — Data Training Poisoning</strong><br>Manipulated training data skews behavior. <em>Relevant if you fine-tune.</em></div>
+  <div class="owasp-item"><strong>LLM05 — Improper Output Handling</strong><br>Unfiltered model output triggers XSS/injection downstream. <em>We test output→app flow.</em></div>
+  <div class="owasp-item"><strong>LLM06 — Excessive Agency</strong><br>The agent has dangerous tools it shouldn't. <em>We review tool permissions.</em></div>
+  <div class="owasp-item"><strong>LLM07 — System Prompt Leakage</strong><br>Your secret instructions get exposed. <em>We attempt extraction directly.</em></div>
+  <div class="owasp-item"><strong>LLM08 — Excessive Permission</strong><br>Over-broad access granted to model/tools. <em>Least-privilege review.</em></div>
+  <div class="owasp-item"><strong>LLM09 — Over-reliance</strong><br>Users trust unsafe output. <em>A process/UX finding in our report.</em></div>
+  <div class="owasp-item"><strong>LLM10 — Model Theft</strong><br>Costly model extracted via queries. <em>Rate-limit + guard review.</em></div>
+
+  <h2>How a GaleOps audit maps to it</h2>
+  <p>Every finding in our $6K audit is traced to the relevant OWASP control, so your report speaks the language your board and regulators expect. We don't just say "you have a problem" — we say "you have LLM06 Excessive Agency, here's the tool, here's the fix."</p>
+  <div class="highlight-note" style="background:var(--surface);border-radius:10px;padding:18px 22px;margin:24px 0;color:#d0d6e0;">Beyond OWASP, we also map to <strong>NIST AI RMF</strong> and the <strong>EU AI Act</strong> in the red-team engagement — so compliance and security are one report, not three.</div>
+
+  <div class="cta-bar">
+    <h3>Get a $149 snapshot mapped to OWASP LLM Top 10</h3>
+    <p style="margin-bottom:20px;">24-hour written report. Every finding traced to a control. Or book the full $6K audit for the complete engagement.</p>
+    <a href="/ai-security-audit/" class="btn">Get Your Audit →</a>
+    <a href="/snapshot/" class="btn" style="margin-left:8px;background:var(--gold);color:#08090a;">$149 Snapshot (24h) →</a>
+    <p style="margin-top:14px;font-size:13px;color:var(--muted);">The snapshot is the only paid entry-level report in the AI-security space — others only offer free scans.</p>
+  </div>
+
+  <p style="font-size:14px;color:var(--muted);">Related: <a href="/blog/prompt-injection-llm-vulnerability.html">Prompt Injection explained</a> · <a href="/ai-red-team/">$12K Red Team (compliance)</a></p>
+</div>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

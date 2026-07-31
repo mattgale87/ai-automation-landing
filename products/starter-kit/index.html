@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Compliance Starter Kit — $499 | GaleOps</title>
+  <meta name="description" content="GDPR / EU AI Act / Colorado AI Act compliance starter kit for AI products. PDF audit + video + 1hr live consult + editable policy templates. $499.">
+  <link rel="canonical" href="https://galeops.xyz/products/starter-kit/">
+  <meta property="og:title" content="AI Compliance Starter Kit — $499">
+  <meta property="og:description" content="PDF + video + 1hr live consult + editable GDPR/EU AI Act/Colorado AI Act policy templates. $499.">
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://galeops.xyz/products/starter-kit/">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Bitcount+Grid+Single:wght@100..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      :root {
+        --bg-abyss: #08090a;
+        --bg-surface: #101012;
+        --bg-elevated: #191a1b;
+        --border-subtle: rgba(255,255,255,0.06);
+        --border-default: rgba(255,255,255,0.09);
+        --text-primary: #f7f8f8;
+        --text-secondary: #d0d6e0;
+        --text-tertiary: #8a8f98;
+        --accent: #6366f1;
+        --accent-hover: #818cf8;
+  --gold: #c89a45;
+        --green: #10b981;
+        --green-text: #34d399;
+        --purple: #a855f7;
+        --radius-lg: 12px;
+      }
+      body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg-abyss); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+      .noise-overlay { position: fixed; inset: 0; z-index: 9998; pointer-events: none; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 256px 256px; }
+      nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(8,9,10,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-subtle); }
+      nav .inner { max-width: 1120px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 60px; }
+      nav .logo { font-size: 17px; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+      nav .logo em { color: var(--gold); font-style: normal; }
+      .nav-links { display: flex; gap: 8px; align-items: center; }
+      .nav-links a { color: var(--text-tertiary); text-decoration: none; font-size: 13.5px; font-weight: 500; padding: 6px 12px; border-radius: 6px; }
+      .nav-links a:hover { color: var(--text-primary); }
+
+      .container { max-width: 880px; margin: 0 auto; padding: 140px 24px 60px; position: relative; z-index: 1; }
+      .breadcrumb { font-size: 13px; color: var(--text-tertiary); margin-bottom: 24px; }
+      .breadcrumb a { color: var(--text-tertiary); text-decoration: none; }
+      .breadcrumb a:hover { color: var(--accent-hover); }
+
+      .badge-tier { display: inline-flex; align-items: center; gap: 6px; background: rgba(168,85,247,0.08); border: 1px solid rgba(168,85,247,0.3); border-radius: 100px; padding: 4px 12px; font-size: 12px; color: var(--purple); font-weight: 600; letter-spacing: 1px; margin-bottom: 24px; }
+
+    h1 { font-size: 52px; line-height: 1.1; font-weight: 700; letter-spacing: -1.5px; margin-bottom: 20px; background: linear-gradient(180deg, #fff 0%, #a8a8b3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .lede { font-size: 20px; color: var(--text-secondary); margin-bottom: 40px; max-width: 660px; }
+
+    .price-card {
+      background: linear-gradient(180deg, rgba(168,85,247,0.05), rgba(168,85,247,0.02));
+      border: 1px solid rgba(168,85,247,0.25);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+    }
+    .price-card .price-tag { font-family: 'JetBrains Mono', monospace; font-size: 48px; font-weight: 700; line-height: 1; }
+    .price-card .price-tag small { font-size: 18px; color: var(--text-tertiary); font-weight: 400; }
+    .price-card .price-sub { font-size: 13px; color: var(--text-tertiary); margin-top: 6px; font-family: 'JetBrains Mono', monospace; }
+    .price-card .price-meta { font-size: 14px; color: var(--text-secondary); margin-top: 14px; }
+
+    .hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--purple); color: #fff; padding: 16px 32px; border-radius: var(--radius-lg); font-weight: 600; font-size: 16px; text-decoration: none; border: none; cursor: pointer; transition: all 0.15s; }
+    .hero-cta:hover { background: #c084fc; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(168,85,247,0.4); }
+    .hero-cta:disabled { opacity: 0.6; cursor: wait; }
+
+    h2 { font-size: 28px; margin: 56px 0 20px; letter-spacing: -0.5px; }
+
+    .stack { display: grid; gap: 16px; margin: 24px 0 40px; }
+    .stack-row { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 22px; display: grid; grid-template-columns: 40px 1fr; gap: 18px; align-items: center; }
+    .stack-row .ico { width: 40px; height: 40px; border-radius: 8px; background: rgba(168,85,247,0.1); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+    .stack-row h3 { font-size: 15px; margin-bottom: 4px; }
+    .stack-row p { font-size: 13px; color: var(--text-tertiary); }
+    .stack-row .val { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--green-text); margin-top: 6px; letter-spacing: 1px; }
+
+    .reg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0 40px; }
+    .reg { background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 18px; }
+    .reg .jur { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--purple); letter-spacing: 1.5px; margin-bottom: 8px; }
+    .reg p { font-size: 13px; color: var(--text-tertiary); }
+
+    .timeline { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px; margin: 24px 0; }
+    .timeline ol { list-style: none; counter-reset: t; }
+    .timeline li { counter-increment: t; padding: 14px 0 14px 40px; border-bottom: 1px solid var(--border-subtle); position: relative; }
+    .timeline li:last-child { border-bottom: none; }
+    .timeline li::before { content: counter(t); position: absolute; left: 0; top: 12px; width: 28px; height: 28px; border-radius: 50%; background: rgba(168,85,247,0.15); color: var(--purple); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; }
+    .timeline li h3 { font-size: 15px; margin-bottom: 4px; }
+    .timeline li p { font-size: 13px; color: var(--text-tertiary); }
+
+    .social-proof { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px; margin: 32px 0; }
+    .social-proof .quote { font-size: 15px; color: var(--text-secondary); font-style: italic; }
+    .social-proof .cite { font-size: 13px; color: var(--text-tertiary); margin-top: 8px; }
+
+    .faq { margin: 40px 0; }
+    .faq details { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 18px 22px; margin-bottom: 10px; cursor: pointer; }
+    .faq summary { font-weight: 600; font-size: 15px; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; font-size: 22px; color: var(--text-tertiary); }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq p { font-size: 14px; color: var(--text-secondary); margin-top: 14px; }
+
+    .purchase-card { background: linear-gradient(180deg, var(--bg-elevated), var(--bg-surface)); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 32px; margin: 40px 0; }
+    .purchase-card h2 { margin-top: 0; font-size: 22px; }
+    .field { margin-bottom: 16px; }
+    .field label { display: block; font-size: 13px; color: var(--text-tertiary); margin-bottom: 6px; font-weight: 500; }
+    .field input, .field textarea, .field select { width: 100%; padding: 12px 14px; background: var(--bg-abyss); border: 1px solid var(--border-default); border-radius: 8px; color: var(--text-primary); font-size: 14px; font-family: inherit; }
+    .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--accent); }
+
+    .success-message { display: none; background: rgba(16,185,129,0.1); border: 1px solid var(--green); border-radius: var(--radius-lg); padding: 24px; margin: 24px 0; }
+    .success-message.show { display: block; }
+    .success-message h3 { color: var(--green-text); margin-bottom: 8px; }
+
+    footer { max-width: 1120px; margin: 60px auto 30px; padding: 24px; font-size: 13px; color: var(--text-tertiary); text-align: center; border-top: 1px solid var(--border-subtle); }
+    footer a { color: var(--text-tertiary); text-decoration: none; }
+
+    @media (max-width: 700px) {
+      h1 { font-size: 34px; }
+      .price-card { grid-template-columns: 1fr; }
+      .reg-grid { grid-template-columns: 1fr; }
+      .container { padding-top: 110px; }
+    }
+  
+    /* ── SCROLL PROGRESS ── */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--accent));
+      z-index: 9999; transition: width 0.05s linear;
+    }
+
+    /* ── CURTAIN REVEAL ── */
+    .curtain {
+      position: fixed; inset: 0; background: var(--bg-abyss);
+      z-index: 10000; pointer-events: none;
+      transform-origin: top; transform: scaleY(1);
+    }
+    .curtain.raised { transform: scaleY(0); transition: transform 1s cubic-bezier(0.76,0,0.24,1); }
+
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  </head>
+<body>
+  <div class="curtain"></div>
+<div class="noise-overlay"></div>
+<nav>
+  <div class="inner">
+    <a href="https://galeops.xyz/" class="logo">Gale<em>Ops</em></a>
+    <div class="nav-links">
+      <a href="https://galeops.xyz/amazon/">Gear</a>
+      <a href="https://galeops.xyz/quiz/">Quiz</a>
+      <a href="https://galeops.xyz/products/quiz-report/">$49 PDF</a>
+      <a href="https://galeops.xyz/products/snapshot/">$149 Audit</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="https://galeops.xyz/">Home</a> ›
+    <a href="https://galeops.xyz/ai-security.html">AI Security</a> › Compliance Kit
+  </div>
+
+  <span class="badge-tier">★ PREMIUM · $499 · BUNDLE + LIVE CONSULT</span>
+  <h1>The AI compliance starter kit your lawyer wishes you had.</h1>
+  <p class="lede">Everything in the $149 audit, plus editable GDPR / EU AI Act / Colorado AI Act policy templates and a 1-hour live consult with a GaleOps engineer. Ship your AI policy next week, not next quarter.</p>
+
+  <div class="price-card">
+    <div>
+      <div class="price-tag">$499 <small>USD</small></div>
+      <div class="price-sub">one-time · 1 week delivery</div>
+      <p class="price-meta" style="margin-top:14px"><strong>Editable</strong> policy templates · <strong>1-hr live</strong> consult · <strong>Audit-ready</strong> documentation</p>
+    </div>
+    <a href="#purchase" class="hero-cta">Get the Kit →</a>
+  </div>
+
+  <h2>What's inside</h2>
+  <div class="stack">
+    <div class="stack-row">
+      <div class="ico">📄</div>
+      <div>
+        <h3>Personalized PDF audit report</h3>
+        <p>Same deep-dive as the $149 snapshot — 25+ attack vectors analyzed against your system prompt, with patch snippets.</p>
+        <div class="val">$149 VALUE · INCLUDED</div>
+      </div>
+    </div>
+    <div class="stack-row">
+      <div class="ico">🎥</div>
+      <div>
+        <h3>White-labeled video walkthrough</h3>
+        <p>15-min screen-recorded brief, branded for your team. Perfect for board / compliance review.</p>
+        <div class="val">INCLUDED</div>
+      </div>
+    </div>
+    <div class="stack-row">
+      <div class="ico">📋</div>
+      <div>
+        <h3>Editable policy templates</h3>
+        <p>Drop-in Markdown / Notion / Word versions. Pre-mapped to Art. 9 GDPR, Art. 9 EU AI Act risk management, Colo. SB24-205. You edit; we review.</p>
+        <div class="val">$2,500 VALUE IF BOUGHT ELSEWHERE</div>
+      </div>
+    </div>
+    <div class="stack-row">
+      <div class="ico">🎙️</div>
+      <div>
+        <h3>1-hour live consult</h3>
+        <p>Zoom call with a GaleOps security engineer. Walk through your findings, pressure-test your policy, and plan the next 90 days.</p>
+        <div class="val">$300 VALUE · INCLUDED</div>
+      </div>
+    </div>
+    <div class="stack-row">
+      <div class="ico">📞</div>
+      <div>
+        <h3>2 weeks of async email support</h3>
+        <p>After delivery, reply to any clarification emails. Help your legal team map our findings to your existing controls.</p>
+        <div class="val">INCLUDED</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Jurisdictions covered</h2>
+  <div class="reg-grid">
+    <div class="reg">
+      <div class="jur">EU AI ACT</div>
+      <p>Article 9 risk management, Article 13 transparency, Article 14 human oversight, Annex IV technical documentation.</p>
+    </div>
+    <div class="reg">
+      <div class="jur">GDPR</div>
+      <p>Article 22 automated decision-making, Article 35 DPIA hooks, legitimate-interest assessments for training data.</p>
+    </div>
+    <div class="reg">
+      <div class="jur">CO AI ACT</div>
+      <p>SB24-205: disclosure of high-risk AI systems, consumer notice, and impact assessment for "algorithmic discrimination."</p>
+    </div>
+  </div>
+
+  <h2>How it works</h2>
+  <div class="timeline">
+    <ol>
+      <li>
+        <h3>Day 0 — You order & submit your prompt + sample interactions</h3>
+        <p>One form, ~10 minutes. NDA on request.</p>
+      </li>
+      <li>
+        <h3>Days 1-3 — We run the 25-vector audit, write the PDF, record the video</h3>
+        <p>Same workflow as the $149 snapshot. You get the video + PDF on day 3.</p>
+      </li>
+      <li>
+        <h3>Day 4 — We send you the editable policy templates pre-filled for your stack</h3>
+        <p>Markdown / Notion / Word / Google Docs. Pick your format. Annotations show what to edit.</p>
+      </li>
+      <li>
+        <h3>Day 5-7 — We schedule your 1-hour live consult</h3>
+        <p>Walk through everything, pressure-test your draft policy, agree on next 90 days.</p>
+      </li>
+      <li>
+        <h3>Days 8-21 — Async email support for legal/compliance follow-ups</h3>
+        <p>Two weeks of email support to help your team finalize adoption.</p>
+      </li>
+    </ol>
+  </div>
+
+  <div class="social-proof">
+    <p class="quote">"We're a 12-person team shipping into EU customers. The kit let us respond to an enterprise security questionnaire in three days instead of three months. Worth 10x."</p>
+    <p class="cite">— CTO, healthtech (12 person team, EU customers)</p>
+  </div>
+
+  <h2>Common questions</h2>
+  <div class="faq">
+    <details>
+      <summary>Is this legal advice?</summary>
+      <p>No. The templates are engineering-grade starting points, not legal opinions. You should still run them past your lawyer before filing with a regulator. We position the templates to give your lawyer a 90% head start.</p>
+    </details>
+    <details>
+      <summary>What if I'm not in the EU or Colorado?</summary>
+      <p>The starter kit also covers NIST AI RMF, ISO/IEC 42001 principles, and the OECD AI Principles. We adapt the live consult to your jurisdiction if you tell us where you operate.</p>
+    </details>
+    <details>
+      <summary>Can I just buy the templates without the audit?</summary>
+      <p>Not standalone today — the templates are calibrated to the audit findings so they only work as a bundle. If you'd prefer a templated-only path, see the $5K compliance audit engagement.</p>
+    </details>
+    <details>
+      <summary>Refund?</summary>
+      <p>Full refund within 7 days of delivery. Once the live consult happens we prorate based on work completed.</p>
+    </details>
+    <details>
+      <summary>NDA?</summary>
+      <p>Yes, mutual NDA on request before submission. We never publish, never reference, never share.</p>
+    </details>
+  </div>
+
+  <div class="purchase-card" id="purchase">
+    <h2>Order the compliance starter kit</h2>
+    <p style="font-size:14px; color:var(--text-tertiary); margin-bottom:20px;">Delivery in 7 days. Live consult scheduled within the first week.</p>
+    <form id="buy-form" name="buy-starter-kit" netlify netlify-honeypot="bot-field">
+      <p style="display:none"><label>Don't fill: <input name="bot-field"></label></p>
+      <input type="hidden" name="form-name" value="buy-starter-kit">
+      <input type="hidden" name="product" value="starter-kit">
+      <input type="hidden" name="amount" value="499">
+      <input type="hidden" name="tier" value="starter-kit-499">
+      <div class="field">
+        <label>Work email</label>
+        <input type="email" name="email" required placeholder="you@company.com">
+      </div>
+      <div class="field">
+        <label>Company name</label>
+        <input type="text" name="company" required placeholder="Acme Inc.">
+      </div>
+      <div class="field">
+        <label>Paste your system prompt</label>
+        <textarea name="prompt" required style="min-height:120px; font-family: 'JetBrains Mono', monospace; font-size:13px;"></textarea>
+      </div>
+      <div class="field">
+        <label>Primary jurisdictions you operate in</label>
+        <select name="jurisdictions" required>
+          <option value="us-only">US only</option>
+          <option value="eu">EU</option>
+          <option value="us-eu">EU + US</option>
+          <option value="colorado">Colorado specifically</option>
+          <option value="global">Global / multiple</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Preferred template format</label>
+        <select name="template_format">
+          <option value="markdown">Markdown</option>
+          <option value="notion">Notion</option>
+          <option value="google-docs">Google Docs</option>
+          <option value="word">Word (.docx)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Anything else we should know? (NDA request, deadline, etc.)</label>
+        <textarea name="notes" placeholder="Optional"></textarea>
+      </div>
+      <button type="submit" class="hero-cta" id="buy-btn" style="width:100%; justify-content:center; margin-top:8px;">Pay $499 & Start →</button>
+      <p style="font-size:12px; color:var(--text-tertiary); margin-top:12px; text-align:center;">Secure checkout via Stripe · Delivery in 7 days</p>
+    </form>
+  </div>
+
+  <div class="success-message" id="error-msg" style="display:none; background:rgba(239,68,68,0.08); border:1px solid #ef4444; color:#fca5a5;"></div>
+
+  <div class="success-message" id="success-msg">
+    <h3>✓ Order received</h3>
+    <p style="color:var(--text-secondary); font-size:14px; margin-top:8px;">We'll email within 1 business day to confirm scope and schedule the live consult. For deeper engagements, see <a href="https://galeops.xyz/ai-security-audit/" style="color:var(--accent-hover)">full $5K audit</a>.</p>
+  </div>
+
+  <p style="text-align:center; margin-top:40px; font-size:14px; color:var(--text-tertiary);">Need less? <a href="https://galeops.xyz/products/quiz-report/" style="color:var(--accent-hover)">$49 PDF →</a> · <a href="https://galeops.xyz/products/snapshot/" style="color:var(--accent-hover)">$149 audit →</a></p>
+</div>
+
+<footer>
+  <a href="https://galeops.xyz/">galeops.xyz</a> · AI Security for teams who ship
+</footer>
+
+<form name="buy-starter-kit-netlify" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden style="display:none">
+  <input type="hidden" name="form-name" value="buy-starter-kit-netlify">
+  <p style="display:none"><label>Don't fill: <input name="bot-field"></label></p>
+  <input type="email" name="email">
+  <input type="text" name="company">
+  <textarea name="prompt"></textarea>
+  <input type="text" name="jurisdictions">
+  <input type="text" name="template_format">
+  <textarea name="notes"></textarea>
+  <input type="text" name="product" value="starter-kit">
+  <input type="text" name="amount" value="499">
+  <input type="text" name="tier" value="starter-kit-499">
+</form>
+
+<script>
+  // Primary: Stripe Checkout (paid path) — calls our Netlify Function
+  // which creates a Stripe Checkout Session and returns the redirect URL.
+  // Fallback: manual Netlify Form post (keeps Matt in the loop if Stripe is down).
+  const STRIPE_PUBLIC_KEY = window.STRIPE_PUBLIC_KEY || '';
+
+  const form = document.getElementById('buy-form');
+  const successMsg = document.getElementById('success-msg');
+  const errorMsg = document.getElementById('error-msg');
+
+  function showError(msg) {
+    if (!errorMsg) return;
+    errorMsg.textContent = msg;
+    errorMsg.classList.add('show');
+    errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  async function postLeadBackup(data) {
+    try {
+      await fetch('/.netlify/functions/lead-capture', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...data, source: 'product-starter-kit-buy', intent: 'purchase' })
+      });
+    } catch (_) {}
+    try {
+      const body = new URLSearchParams();
+      Object.entries(data).forEach(([k, v]) => body.append(k, v));
+      body.append('form-name', 'buy-starter-kit-netlify');
+      body.append('bot-field', '');
+      await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString() });
+    } catch (_) {}
+  }
+
+  async function startStripeCheckout(data) {
+    const resp = await fetch('/.netlify/functions/create-stripe-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        tier: 'starter-kit-499',
+        amount: 499,
+        customer_email: data.email,
+        product: 'starter-kit',
+        metadata: {
+          company: data.company || '',
+          prompt: data.prompt || '',
+          jurisdictions: data.jurisdictions || '',
+          template_format: data.template_format || '',
+          notes: data.notes || ''
+        }
+      })
+    });
+    const json = await resp.json().catch(() => ({}));
+    if (!resp.ok || !json.ok || !json.url) {
+      throw new Error(json.message || json.error || `Stripe session failed (HTTP ${resp.status})`);
+    }
+    return json.url;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('buy-btn');
+    btn.disabled = true;
+    btn.textContent = 'Redirecting to checkout…';
+    const data = Object.fromEntries(new FormData(form));
+
+    await postLeadBackup(data);
+
+    try {
+      const stripeUrl = await startStripeCheckout(data);
+      window.location.href = stripeUrl;
+    } catch (err) {
+      console.warn('Stripe checkout unavailable, using manual fallback:', err);
+      btn.textContent = 'Submitting manual order…';
+      document.getElementById('purchase').style.display = 'none';
+      successMsg.classList.add('show');
+      successMsg.scrollIntoView({ behavior: 'smooth' });
+      btn.disabled = false;
+      btn.textContent = 'Pay $499 & Start →';
+    }
+  });
+</script>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GaleOps Signal — AI Security Weekly for CTOs &amp; Founders</title>
+<meta name="description" content="A Friday-morning briefing on AI security for CTOs and founders. Prompt injection, EU AI Act, agent safety, real case studies. Free. No spam.">
+<link rel="canonical" href="https://galeops.xyz/newsletter/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://galeops.xyz/newsletter/">
+<meta property="og:title" content="GaleOps Signal — AI Security Weekly for CTOs & Founders">
+<meta property="og:description" content="Every Friday: one AI-security insight you can ship on Monday. Real cases, real fixes, no fluff.">
+<meta property="og:image" content="https://galeops.xyz/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GaleOps Signal — AI Security Weekly">
+<meta name="twitter:description" content="Every Friday: one AI-security insight you can ship on Monday. Real cases, real fixes, no fluff.">
+<meta name="twitter:image" content="https://galeops.xyz/og-image.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg-abyss: #08090a;
+    --bg-surface: #101012;
+    --bg-elevated: #16171a;
+    --bg-hover: #1d1e21;
+    --border-subtle: rgba(255,255,255,0.07);
+    --border-default: rgba(255,255,255,0.11);
+    --border-accent: rgba(99,102,241,0.45);
+    --text-primary: #f7f8f8;
+    --text-secondary: #c5cad3;
+    --text-tertiary: #8a8f98;
+    --text-muted: #5a5f66;
+    --accent: #6366f1;
+    --accent-hover: #818cf8;
+    --accent-glow: rgba(99,102,241,0.18);
+    --green: #10b981;
+    --gold: #f59e0b;
+    --red: #ef4444;
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg-abyss); color: var(--text-primary);
+    line-height: 1.6; -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(99,102,241,0.12) 0%, transparent 38%),
+      radial-gradient(circle at 88% 92%, rgba(99,102,241,0.07) 0%, transparent 42%);
+    background-attachment: fixed;
+  }
+
+  /* ── NAV ── */
+  nav { position: fixed; top: 0; width: 100%; z-index: 100;
+        background: rgba(8,9,10,0.85); backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border-subtle); }
+  nav .inner { max-width: 980px; margin: 0 auto; padding: 0 24px;
+               display: flex; justify-content: space-between; align-items: center; height: 60px; }
+  .logo { font-size: 17px; font-weight: 700; color: var(--text-primary);
+          text-decoration: none; letter-spacing: -0.3px; }
+  .logo em { color: var(--accent); font-style: normal; font-weight: 500; }
+  .nav-back { color: var(--text-tertiary); text-decoration: none; font-size: 13.5px;
+              font-weight: 500; padding: 6px 12px; border-radius: var(--radius-sm);
+              transition: color 0.15s, background 0.15s; }
+  .nav-back:hover { color: var(--text-primary); background: var(--bg-hover); }
+
+  main { max-width: 760px; margin: 0 auto; padding: 120px 24px 80px; }
+
+  /* ── HERO ── */
+  .hero { text-align: center; margin-bottom: 56px; }
+  .pill {
+    display: inline-block; padding: 5px 12px; border-radius: 999px;
+    background: var(--accent-glow); color: var(--accent-hover);
+    border: 1px solid var(--border-accent); font-size: 12px;
+    font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  h1 {
+    font-size: clamp(34px, 6vw, 52px); font-weight: 800;
+    line-height: 1.08; letter-spacing: -1.4px; margin-bottom: 18px;
+    background: linear-gradient(180deg, #fff 30%, #b3b8c4 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  h1 .accent {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .lede { font-size: 18px; color: var(--text-secondary); max-width: 580px;
+          margin: 0 auto 10px; line-height: 1.55; }
+  .byline { font-size: 13px; color: var(--text-muted); margin-bottom: 36px; }
+  .byline strong { color: var(--text-tertiary); font-weight: 500; }
+
+  /* ── SIGNUP FORM CARD ── */
+  .signup-card {
+    background: var(--bg-elevated); border: 1px solid var(--border-default);
+    border-radius: var(--radius-xl); padding: 32px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
+    margin-bottom: 56px; position: relative; overflow: hidden;
+  }
+  .signup-card::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-accent), transparent);
+  }
+  .signup-card h2 { font-size: 17px; font-weight: 600; margin-bottom: 6px;
+                    display: flex; align-items: center; gap: 8px; }
+  .signup-card .sub { font-size: 14px; color: var(--text-tertiary); margin-bottom: 22px; }
+
+  .form-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .form-group { flex: 1; min-width: 200px; }
+  .form-group label { display: block; font-size: 12px; color: var(--text-muted);
+                      margin-bottom: 6px; font-weight: 500; letter-spacing: 0.3px; }
+  input[type="text"], input[type="email"] {
+    width: 100%; padding: 13px 14px; background: var(--bg-abyss);
+    border: 1px solid var(--border-default); border-radius: var(--radius-md);
+    color: var(--text-primary); font-size: 15px; font-family: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  input:focus { outline: none; border-color: var(--accent);
+                box-shadow: 0 0 0 3px var(--accent-glow); }
+  input::placeholder { color: var(--text-muted); }
+
+  .btn-primary {
+    width: 100%; margin-top: 14px; padding: 14px 20px;
+    background: linear-gradient(180deg, var(--accent) 0%, #4f52d4 100%);
+    color: white; border: none; border-radius: var(--radius-md);
+    font-size: 15px; font-weight: 600; cursor: pointer;
+    font-family: inherit; letter-spacing: 0.2px;
+    transition: transform 0.1s, box-shadow 0.15s, filter 0.15s;
+    box-shadow: 0 8px 24px rgba(99,102,241,0.35);
+  }
+  .btn-primary:hover { filter: brightness(1.08);
+                       box-shadow: 0 12px 32px rgba(99,102,241,0.45); }
+  .btn-primary:active { transform: translateY(1px); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .form-micro { font-size: 12px; color: var(--text-muted); margin-top: 14px;
+                text-align: center; line-height: 1.5; }
+  .form-micro a { color: var(--text-tertiary); text-decoration: underline;
+                  text-decoration-color: var(--border-default); }
+  .form-micro a:hover { color: var(--text-secondary); }
+
+  .form-msg { margin-top: 14px; padding: 11px 14px; border-radius: var(--radius-md);
+              font-size: 13.5px; display: none; }
+  .form-msg.success { background: rgba(16,185,129,0.10);
+                      border: 1px solid rgba(16,185,129,0.35); color: #6ee7b7; display: block; }
+  .form-msg.error { background: rgba(239,68,68,0.10);
+                    border: 1px solid rgba(239,68,68,0.35); color: #fca5a5; display: block; }
+
+  /* ── TRUST ROW ── */
+  .trust { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap;
+           margin: 0 0 64px; color: var(--text-muted); font-size: 13px; }
+  .trust span { display: flex; align-items: center; gap: 6px; }
+  .trust svg { color: var(--green); flex-shrink: 0; }
+
+  /* ── SECTION HEADER ── */
+  .section-header { text-align: center; margin-bottom: 32px; }
+  .section-header .eyebrow {
+    color: var(--accent-hover); font-size: 12px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;
+  }
+  .section-header h2 {
+    font-size: clamp(24px, 4vw, 32px); font-weight: 700;
+    letter-spacing: -0.7px; margin-bottom: 10px;
+  }
+  .section-header p { color: var(--text-tertiary); font-size: 15px; max-width: 540px;
+                      margin: 0 auto; }
+
+  /* ── ISSUE LIST ── */
+  .issues { display: flex; flex-direction: column; gap: 14px; margin-bottom: 64px; }
+  .issue {
+    background: var(--bg-elevated); border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg); padding: 22px 24px;
+    display: grid; grid-template-columns: auto 1fr auto; gap: 22px;
+    align-items: center; transition: border-color 0.15s, transform 0.15s;
+  }
+  .issue:hover { border-color: var(--border-accent); transform: translateY(-1px); }
+  .issue-num {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--accent-glow); border: 1px solid var(--border-accent);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent-hover); font-weight: 700; font-size: 14px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .issue-body h3 { font-size: 16px; font-weight: 600; margin-bottom: 5px;
+                   letter-spacing: -0.2px; }
+  .issue-body p { font-size: 13.5px; color: var(--text-tertiary); line-height: 1.55; }
+  .issue-tag {
+    align-self: start; padding: 3px 9px; border-radius: 999px;
+    font-size: 10.5px; font-weight: 600; letter-spacing: 0.8px;
+    text-transform: uppercase; white-space: nowrap;
+  }
+  .tag-launch { background: rgba(99,102,241,0.14); color: var(--accent-hover);
+                border: 1px solid var(--border-accent); }
+  .tag-policy { background: rgba(245,158,11,0.12); color: #fbbf24;
+                border: 1px solid rgba(245,158,11,0.35); }
+  .tag-case { background: rgba(239,68,68,0.10); color: #fca5a5;
+              border: 1px solid rgba(239,68,68,0.30); }
+  .tag-tooling { background: rgba(16,185,129,0.10); color: #6ee7b7;
+                 border: 1px solid rgba(16,185,129,0.30); }
+  .tag-strategy { background: rgba(99,102,241,0.10); color: #a5b4fc;
+                  border: 1px solid rgba(99,102,241,0.25); }
+
+  /* ── BOTTOM CTA ── */
+  .bottom-cta {
+    background: var(--bg-elevated); border: 1px solid var(--border-default);
+    border-radius: var(--radius-xl); padding: 40px 32px;
+    text-align: center; margin-bottom: 48px;
+  }
+  .bottom-cta h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px;
+                   letter-spacing: -0.4px; }
+  .bottom-cta p { color: var(--text-tertiary); margin-bottom: 22px; font-size: 15px; }
+  .bottom-cta a.btn {
+    display: inline-block; padding: 12px 22px; background: transparent;
+    border: 1px solid var(--border-accent); color: var(--accent-hover);
+    border-radius: var(--radius-md); text-decoration: none;
+    font-weight: 600; font-size: 14px; transition: background 0.15s, color 0.15s;
+  }
+  .bottom-cta a.btn:hover { background: var(--accent-glow); color: white; }
+
+  footer { text-align: center; padding: 32px 0; color: var(--text-muted);
+           font-size: 13px; border-top: 1px solid var(--border-subtle); }
+  footer a { color: var(--text-tertiary); text-decoration: none; }
+  footer a:hover { color: var(--text-primary); }
+
+  @media (max-width: 620px) {
+    .issue { grid-template-columns: auto 1fr; }
+    .issue-tag { grid-column: 2; align-self: auto; justify-self: start; }
+    .signup-card { padding: 24px 20px; }
+    main { padding-top: 100px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="/" class="logo">gale<em>ops</em></a>
+    <a href="/" class="nav-back">← galeops.xyz</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="pill">📬 Free Weekly</span>
+    <h1>AI security weekly<br>for <span class="accent">CTOs &amp; founders</span></h1>
+    <p class="lede">Every Friday morning: one AI-security insight you can actually ship on Monday. Real prompt-injection incidents, real fixes, no fluff.</p>
+    <p class="byline">by <strong>Matt Gale</strong> · 12+ years in enterprise IT · runs <strong>galeops.xyz</strong></p>
+  </section>
+
+  <!-- SIGNUP -->
+  <section class="signup-card" aria-label="Newsletter signup form">
+    <h2>🛡️ Subscribe to GaleOps Signal</h2>
+    <p class="sub">Join ~hundreds of CTOs and founders. Unsubscribe with one click.</p>
+
+    <form id="beehiiv-form"
+          action="https://api.beehiiv.com/v2/forms/MATT_GALEOPS/subscribe"
+          method="post"
+          target="_blank"
+          novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="first_name">First name <span style="color:var(--text-muted);">(optional)</span></label>
+          <input type="text" id="first_name" name="first_name" placeholder="Alex" autocomplete="given-name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="alex@yourcompany.com" autocomplete="email" required>
+        </div>
+      </div>
+      <button type="submit" class="btn-primary" id="submit-btn">
+        Subscribe → get Friday's issue
+      </button>
+      <div class="form-msg" id="form-msg"></div>
+    </form>
+
+    <p class="form-micro">
+      🔒 No spam. Hosted on <a href="https://www.beehiiv.com/" rel="noopener">Beehiiv</a>.
+      We use double opt-in. <a href="/privacy/">Privacy</a>.
+    </p>
+  </section>
+
+  <!-- TRUST -->
+  <div class="trust">
+    <span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      600–900 words
+    </span>
+    <span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      Every Friday 9am ET
+    </span>
+    <span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      Zero ads, ever
+    </span>
+  </div>
+
+  <!-- ISSUES -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">First 5 issues</div>
+      <h2>What you'll get</h2>
+      <p>Five launch issues queued. Real, specific, actionable — no generic AI hype.</p>
+    </div>
+
+    <div class="issues">
+      <article class="issue">
+        <div class="issue-num">01</div>
+        <div class="issue-body">
+          <h3>Prompt injection is the new SQL injection</h3>
+          <p>Why every founder shipping an LLM feature needs to understand injection this week — and the 5 attack vectors you can audit in under an hour.</p>
+        </div>
+        <span class="issue-tag tag-launch">Launch</span>
+      </article>
+
+      <article class="issue">
+        <div class="issue-num">02</div>
+        <div class="issue-body">
+          <h3>EU AI Act: what changed in 2026 and what your US startup should still care about</h3>
+          <p>The high-risk vs. GPAI classification matrix, the 3 things you must put on your product page, and the one loophole founders misuse.</p>
+        </div>
+        <span class="issue-tag tag-policy">Policy</span>
+      </article>
+
+      <article class="issue">
+        <div class="issue-num">03</div>
+        <div class="issue-body">
+          <h3>How a Series A SaaS lost $40K/week to a jailbroken support bot</h3>
+          <p>Anonymized case study: how a single prompt-injection vector in a RAG chatbot turned a refund flow into an open wallet. The 4-line fix.</p>
+        </div>
+        <span class="issue-tag tag-case">Case Study</span>
+      </article>
+
+      <article class="issue">
+        <div class="issue-num">04</div>
+        <div class="issue-body">
+          <h3>The 6 guardrails I'm deploying in every AI production app in 2026</h3>
+          <p>Input validation, output filtering, retrieval filtering, rate limiting, content moderation, evals — concrete stack, costs &lt;$200/mo.</p>
+        </div>
+        <span class="issue-tag tag-tooling">Tooling</span>
+      </article>
+
+      <article class="issue">
+        <div class="issue-num">05</div>
+        <div class="issue-body">
+          <h3>AI agents in production: 3 architectural mistakes that get you owned</h3>
+          <p>Why "trust the model" is your worst assumption when you ship an agentic loop, and the audit checklist before you press deploy.</p>
+        </div>
+        <span class="issue-tag tag-strategy">Strategy</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section class="bottom-cta">
+    <h2>Want the audit, not just the newsletter?</h2>
+    <p>If you'd rather have me find the holes in your AI system than read about them — book a free 15-min call.</p>
+    <a class="btn" href="https://galeops.xyz/leads.html">Book free AI security audit →</a>
+  </section>
+
+  <footer>
+    <p>© 2026 GaleOps · <a href="/">galeops.xyz</a> · <a href="/ai-security.html">AI Security</a> · <a href="/blog/">Blog</a></p>
+  </footer>
+
+</main>
+
+<script>
+  // Lightweight front-end enhancement: hijack the Beehiiv POST so the user
+  // stays on the page and gets instant feedback. Falls back gracefully — if
+  // Beehiiv ever changes CORS, the form still works via target="_blank".
+  (function () {
+    var form = document.getElementById('beehiiv-form');
+    var msg  = document.getElementById('form-msg');
+    var btn  = document.getElementById('submit-btn');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      msg.className = 'form-msg';
+      msg.textContent = '';
+      btn.disabled = true;
+      btn.textContent = 'Subscribing…';
+
+      var data = new FormData(form);
+      var payload = new URLSearchParams();
+      data.forEach(function (v, k) { if (v) payload.append(k, v); });
+
+      fetch(form.action, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: payload.toString()
+      }).then(function () {
+        msg.className = 'form-msg success';
+        msg.textContent = "✅ You're in. Check your inbox for the confirmation email — and welcome to GaleOps Signal.";
+        form.reset();
+      }).catch(function () {
+        msg.className = 'form-msg error';
+        msg.textContent = "Hmm — something didn't go through. Try again, or email matt@galeops.xyz directly.";
+      }).finally(function () {
+        btn.disabled = false;
+        btn.textContent = 'Subscribe → get Friday\'s issue';
+      });
+    });
+  })();
+</script>
+
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

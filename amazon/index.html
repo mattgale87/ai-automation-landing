@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tools I Actually Use — Amazon Affiliate Hub | GaleOps</title>
+  <meta name="description" content="Hand-picked Amazon products I personally use and trust — 3D printing filament, precision measurement tools, and AI-era security gear. Affiliate links help support galeops.xyz at no extra cost.">
+  <link rel="canonical" href="https://galeops.xyz/amazon/">
+  <meta property="og:title" content="Tools I Actually Use — GaleOps Amazon Hub">
+  <meta property="og:description" content="3D printing filament, precision measurement, AI security gear. Verified picks I'd actually buy again.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://galeops.xyz/amazon/">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Bitcount+Grid+Single:wght@100..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-abyss: #08090a;
+      --bg-surface: #101012;
+      --bg-elevated: #191a1b;
+      --border-subtle: rgba(255,255,255,0.06);
+      --border-default: rgba(255,255,255,0.09);
+      --text-primary: #f7f8f8;
+      --text-secondary: #d0d6e0;
+      --text-tertiary: #8a8f98;
+      --accent: #6366f1;
+      --accent-hover: #818cf8;
+      --red: #dc2626;
+      --red-hover: #ef4444;
+  --gold: #c89a45;
+      --green: #10b981;
+      --green-text: #34d399;
+      --radius-lg: 12px;
+    }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg-abyss); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .noise-overlay { position: fixed; inset: 0; z-index: 9998; pointer-events: none; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 256px 256px; }
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(8,9,10,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-subtle); }
+    nav .inner { max-width: 1120px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 60px; }
+    nav .logo { font-size: 17px; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+    nav .logo em { color: var(--gold); font-style: normal; }
+    .nav-links { display: flex; gap: 8px; align-items: center; }
+    .nav-links a { color: var(--text-tertiary); text-decoration: none; font-size: 13.5px; font-weight: 500; padding: 6px 12px; border-radius: 6px; }
+    .nav-links a:hover { color: var(--text-primary); background: rgba(255,255,255,0.04); }
+
+    .hero { max-width: 880px; margin: 0 auto; padding: 160px 24px 24px; position: relative; z-index: 1; text-align: center; }
+    .hero .badge-aff { display: inline-flex; align-items: center; gap: 6px; background: rgba(220,38,38,0.08); border: 1px solid rgba(220,38,38,0.3); border-radius: 100px; padding: 5px 14px; font-size: 12px; color: var(--red-hover); font-weight: 600; letter-spacing: 1.2px; margin-bottom: 22px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; font-weight: 700; letter-spacing: -1.5px; margin-bottom: 18px; background: linear-gradient(180deg, #fff 0%, #a8a8b3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero .lede { font-size: 19px; color: var(--text-secondary); max-width: 620px; margin: 0 auto; }
+
+    .container { max-width: 1080px; margin: 0 auto; padding: 40px 24px 60px; position: relative; z-index: 1; }
+
+    .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 16px 0 40px; }
+    @media (max-width: 800px) { .cat-grid { grid-template-columns: 1fr; } }
+    .cat-card { background: rgba(255,255,255,0.04); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 28px; transition: all 0.15s; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+    .cat-card:hover { border-color: rgba(220,38,38,0.5); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); }
+    .cat-card .ico { font-size: 36px; margin-bottom: 16px; }
+    .cat-card h3 { font-size: 21px; margin-bottom: 10px; letter-spacing: -0.3px; }
+    .cat-card p { font-size: 14px; color: var(--text-tertiary); margin-bottom: 18px; flex-grow: 1; }
+    .cat-card .arrow { font-size: 14px; color: var(--red-hover); font-weight: 600; }
+
+    h2 { font-size: 30px; margin: 56px 0 12px; letter-spacing: -0.5px; }
+    .section-sub { font-size: 15px; color: var(--text-tertiary); margin-bottom: 24px; max-width: 700px; }
+
+    .disclosure { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px; margin: 32px 0; font-size: 13px; color: var(--text-tertiary); line-height: 1.7; }
+    .disclosure strong { color: var(--text-secondary); }
+
+    .cross-promo { background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(99,102,241,0.03)); border: 1px solid rgba(99,102,241,0.25); border-radius: var(--radius-lg); padding: 28px; margin: 48px 0 24px; text-align: center; }
+    .cross-promo h3 { font-size: 20px; margin-bottom: 8px; letter-spacing: -0.3px; }
+    .cross-promo p { font-size: 14px; color: var(--text-secondary); margin-bottom: 18px; }
+    .cross-promo a { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; padding: 12px 22px; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; }
+    .cross-promo a:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+    footer { max-width: 880px; margin: 0 auto; padding: 32px 24px 60px; border-top: 1px solid var(--border-subtle); text-align: center; font-size: 13px; color: var(--text-tertiary); position: relative; z-index: 1; }
+    footer a { color: var(--text-tertiary); text-decoration: none; }
+    footer a:hover { color: var(--text-primary); }
+    footer .disc { margin-top: 14px; max-width: 640px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+  
+    /* ── SCROLL PROGRESS ── */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--accent));
+      z-index: 9999; transition: width 0.05s linear;
+    }
+
+    /* ── CURTAIN REVEAL ── */
+    .curtain {
+      position: fixed; inset: 0; background: var(--bg-abyss);
+      z-index: 10000; pointer-events: none;
+      transform-origin: top; transform: scaleY(1);
+    }
+    .curtain.raised { transform: scaleY(0); transition: transform 1s cubic-bezier(0.76,0,0.24,1); }
+
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  </head>
+<body>
+  <div class="curtain"></div>
+  <div class="noise-overlay"></div>
+  <nav>
+    <div class="inner">
+      <a href="https://galeops.xyz/" class="logo">Gale<em>Ops</em></a>
+      <div class="nav-links">
+        <a href="https://galeops.xyz/">Home</a>
+        <a href="https://galeops.xyz/ai-automation.html">AI Audit</a>
+        <a href="https://galeops.xyz/ai-security.html">Security</a>
+        <a href="https://galeops.xyz/products/starter-kit/">Pricing</a>
+        <a href="https://galeops.xyz/amazon/">Gear</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+      <div class="badge-aff">★ Recommended Gear</div>
+      <h1>Tools I Actually Use</h1>
+      <p class="lede">Every item on this page is something I've personally tested and use daily. As an Amazon Associate I earn from qualifying purchases — no extra cost to you.</p>
+    </section>
+
+    <main class="container">
+      <div class="disclosure" style="margin-top: 16px; margin-bottom: 24px;">
+        <strong>Affiliate disclosure:</strong> galeops.xyz is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to amazon.com. As an Amazon Associate I earn from qualifying purchases — at no additional cost to you. Prices and availability shown on Amazon can change without notice.
+      </div>
+
+      <p style="color: var(--text-tertiary); font-size: 15px; margin-bottom: 28px;">
+        Amazon's reviewer team checks for a working, dedicated affiliate page. This is mine. I only link to products I'd buy again with my own money — credibility > commission.
+      </p>
+
+      <!-- Email capture before Amazon links -->
+      <div style="background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 24px; margin: 24px 0; text-align: center;">
+        <h3 style="font-size: 18px; margin-bottom: 8px;">Want the shortlist emailed?</h3>
+        <p style="font-size: 14px; color: var(--text-tertiary); margin-bottom: 16px;">Get my top 3 picks per category + price drop alerts. No spam, unsubscribe anytime.</p>
+        <form id="amazon-email-form" style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+          <input type="email" id="amazon-email-input" name="email" placeholder="your@email.com" required style="padding: 12px 16px; border: 1px solid var(--border-default); border-radius: 6px; background: var(--bg-abyss); color: var(--text-primary); font-size: 14px; min-width: 280px;">
+          <button type="submit" class="btn btn-primary" style="padding: 12px 24px;">Send me the list</button>
+        </form>
+        <p id="amazon-email-status" style="font-size: 12px; color: var(--text-tertiary); margin-top: 8px;"></p>
+      </div>
+      <script>
+      document.getElementById('amazon-email-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var email = document.getElementById('amazon-email-input').value;
+        var status = document.getElementById('amazon-email-status');
+        status.textContent = 'Subscribing...';
+        try {
+          var r = await fetch('/.netlify/functions/lead-capture', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({email: email, source: 'amazon-affiliate'})
+          });
+          if (r.ok) {
+            status.style.color = 'var(--green-text)';
+            status.textContent = '✅ You\'re on the list! Check your inbox for the shortlist.';
+            document.getElementById('amazon-email-input').value = '';
+          } else {
+            status.textContent = '⚠️ Could not subscribe. Try again or email hello@galeops.xyz';
+          }
+        } catch(e) {
+          status.textContent = '⚠️ Could not subscribe. Try again or email hello@galeops.xyz';
+        }
+      });
+      </script>
+
+      <h2>Featured Categories</h2>
+    <p class="section-sub">Three curation buckets I actively work in. Click any category for the deep-dive page with pricing, why I picked it, and direct Amazon links.</p>
+
+    <div class="cat-grid">
+      <a class="cat-card" href="/amazon/3d-printing-filament.html">
+        <div class="ico">🧵</div>
+        <h3>3D Printing Filament</h3>
+        <p>The PLA and PETG spools I keep loaded in my Bambu A1 and Prusa MK4. Verified for dimensional accuracy, no tangles, and consistent color batches.</p>
+        <div class="arrow">Browse the picks →</div>
+      </a>
+      <a class="cat-card" href="/amazon/measurement-tools.html">
+        <div class="ico">📏</div>
+        <h3>Measurement Tools</h3>
+        <p>Digital calipers, force gauges, and pocket scales. Anything I use to verify tolerances, weights, or tension on the workbench.</p>
+        <div class="arrow">Browse the picks →</div>
+      </a>
+      <a class="cat-card" href="/amazon/ai-security-gear.html">
+        <div class="ico">🔐</div>
+        <h3>AI Security Gear</h3>
+        <p>YubiKeys, webcam privacy covers, and USB data blockers. The physical-layer defenses I'd recommend to any AI engineer shipping a product.</p>
+        <div class="arrow">Browse the picks →</div>
+      </a>
+    </div>
+
+    <div class="cross-promo">
+      <h3>🛠️ Bonus tool I built</h3>
+      <p>If you build with AI, run your prompts through this free stress-test before shipping. Catches prompt injection &amp; data leak patterns in 30 seconds.</p>
+      <a href="https://galeops.xyz/tools/prompt-test/">Try the free Prompt Test →</a>
+    </div>
+
+    <div class="disclosure">
+      <strong>Affiliate disclosure:</strong> galeops.xyz is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to amazon.com. As an Amazon Associate I earn from qualifying purchases — at no additional cost to you. Prices and availability shown on Amazon can change without notice.
+    </div>
+  </main>
+
+  <footer>
+      <div>© 2026 GaleOps · <a href="https://galeops.xyz/">galeops.xyz</a></div>
+    </footer>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

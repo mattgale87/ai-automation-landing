@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Explicit AI-search crawler allow (GEO best practice, 2026-07-22)
+# Google Search ignores llms.txt but these crawlers power ChatGPT/Perplexity/AI Overviews.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://galeops.xyz/sitemap.xml

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Guardrail Setup — $8,000 Fixed Fee | GaleOps</title>
+  <meta name="description" content="Design and implementation of production-grade guardrails across your AI pipelines — from input sanitisation to output filtering and agent tool access controls. Works with OpenAI, Anthropic, open-weight, or custom models. ~2 weeks delivery.">
+  <link rel="canonical" href="https://galeops.xyz/guardrail-setup/">
+  <meta property="og:title" content="AI Guardrail Setup — $8,000 Fixed Fee | GaleOps">
+  <meta property="og:description" content="Design and implementation of production-grade guardrails across your AI pipelines — from input sanitisation to output filtering and agent tool access controls. Works with OpenAI, Anthropic, open-weight, or custom models. ~2 weeks delivery.">
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://galeops.xyz/guardrail-setup/">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Bitcount+Grid+Single:wght@100..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-abyss: #08090a;
+      --bg-surface: #101012;
+      --bg-elevated: #191a1b;
+      --bg-hover: #222324;
+      --border-subtle: rgba(255,255,255,0.06);
+      --border-default: rgba(255,255,255,0.09);
+      --border-active: rgba(99,102,241,0.5);
+      --text-primary: #f7f8f8;
+      --text-secondary: #d0d6e0;
+      --text-tertiary: #8a8f98;
+      --text-muted: #5a5f66;
+      --accent: #6366f1;
+      --accent-hover: #818cf8;
+      --accent-glow: rgba(99,102,241,0.15);
+      --green: #10b981;
+      --green-text: #34d399;
+      --gold: #f59e0b;
+      --gold-accent: #c89a45;
+      --gold-hover: #d9b768;
+      --gold-glow: rgba(200,154,69,0.18);
+      --font-display: 'DM Sans', 'Inter', system-ui, sans-serif;
+      --font-numeral: 'Bitcount Grid Single', 'DM Sans', system-ui, sans-serif;
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --max-w: 1120px;
+    }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg-abyss);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    .noise-overlay {
+      position: fixed; inset: 0; z-index: 9998; pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(8,9,10,0.85); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    nav .inner {
+      max-width: var(--max-w); margin: 0 auto; padding: 0 32px;
+      display: flex; justify-content: space-between; align-items: center; height: 64px;
+    }
+    nav .logo { font-size: 19px; font-weight: 700; color: var(--text-primary); text-decoration: none; letter-spacing: -0.3px; }
+    nav .logo em { color: var(--accent); font-style: normal; font-weight: 500; }
+    .nav-links { display: flex; gap: 6px; align-items: center; }
+    .nav-links a {
+      color: var(--text-tertiary); text-decoration: none; font-size: 13.5px;
+      font-weight: 500; padding: 6px 12px; border-radius: var(--radius-sm);
+      transition: color 0.15s; position: relative;
+    }
+    .nav-links a:not(.btn-cta)::after {
+      content: ''; position: absolute; left: 12px; right: 12px; bottom: 1px;
+      height: 1px; background: var(--gold-accent); transform: scaleX(0);
+      transform-origin: left; transition: transform 0.25s ease;
+    }
+    .nav-links a:not(.btn-cta):hover { color: var(--text-primary); }
+    .nav-links a:not(.btn-cta):hover::after { transform: scaleX(1); }
+    .btn-cta {
+      background: var(--accent); color: #fff !important;
+      padding: 7px 16px; border-radius: var(--radius-sm); font-weight: 600; font-size: 13px;
+      box-shadow: 0 0 0 1px rgba(200,154,69,0.4), 0 0 18px var(--gold-glow);
+      transition: background 0.15s, box-shadow 0.2s; text-decoration: none;
+    }
+    .section { padding: 100px 24px; }
+    .section-center { max-width: var(--max-w); margin: 0 auto; text-align: center; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2);
+      border-radius: 100px; padding: 6px 16px; font-size: 12px;
+      color: var(--accent-hover); font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: var(--font-display); font-size: clamp(32px, 5vw, 56px);
+      font-weight: 700; letter-spacing: -2px; line-height: 1.05; margin-bottom: 20px;
+    }
+    .section-subtitle { font-size: 18px; color: var(--text-tertiary); max-width: 640px; margin: 0 auto; }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .price-hero { max-width: var(--max-w); margin: 0 auto 60px; text-align: center; }
+    .price-tier { font-size: 14px; font-weight: 600; color: var(--gold-accent); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    .price-amount { font-family: var(--font-display); font-size: clamp(56px, 8vw, 88px); font-weight: 700; letter-spacing: -3px; line-height: 1; color: var(--text-primary); margin-bottom: 8px; }
+    .price-period { font-size: 16px; color: var(--text-muted); font-weight: 400; }
+    .price-desc { font-size: 17px; color: var(--text-secondary); margin: 24px auto 40px; max-width: 600px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: var(--max-w); margin: 0 auto 60px; }
+    .feature-card {
+      background: var(--bg-elevated); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg); padding: 28px 24px; transition: border-color 0.2s, transform 0.2s;
+    }
+    .feature-card:hover { border-color: var(--border-active); transform: translateY(-2px); }
+    .feature-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+    .feature-card h3 { font-size: 16px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; letter-spacing: -0.2px; }
+    .feature-card p { font-size: 14px; color: var(--text-tertiary); line-height: 1.55; }
+    .deliverables { max-width: var(--max-w); margin: 0 auto 60px; }
+    .deliverables h3 { font-size: 20px; font-weight: 600; margin-bottom: 24px; text-align: center; }
+    .deliverables-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+    .deliverable-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: var(--bg-elevated); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md); padding: 20px 18px;
+    }
+    .deliverable-item .check { color: var(--green-text); font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .deliverable-item span { font-size: 14.5px; color: var(--text-secondary); line-height: 1.5; }
+    .cta-section { text-align: center; margin-top: 40px; }
+    .cta-button {
+      display: inline-block; padding: 16px 36px;
+      background: var(--accent); color: #fff; border-radius: 8px;
+      text-decoration: none; font-weight: 600; font-size: 15px;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .cta-button:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .cta-ghost {
+      display: inline-block; margin-left: 16px; padding: 16px 36px;
+      background: transparent; color: var(--text-secondary); border: 1px solid var(--border-default);
+      border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 15px;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .cta-ghost:hover { border-color: var(--border-active); color: var(--text-primary); }
+    .process-section { background: var(--bg-surface); }
+    .process-track { display: flex; align-items: flex-start; justify-content: center; gap: 0; max-width: 840px; margin: 64px auto 0; }
+    .process-step { flex: 1; text-align: center; padding: 0 16px; max-width: 240px; }
+    .process-icon-wrap {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: var(--accent-glow); border: 1px solid var(--border-active);
+      display: flex; align-items: center; justify-content: center; font-size: 26px;
+      margin: 0 auto 18px; box-shadow: 0 0 28px rgba(99,102,241,0.2);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .process-step:hover .process-icon-wrap { box-shadow: 0 0 44px rgba(99,102,241,0.4); transform: scale(1.05); }
+    .process-step-label { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+    .process-step h3 { font-size: 18px; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.3px; }
+    .process-step p { font-size: 14px; color: var(--text-tertiary); line-height: 1.55; }
+    .process-connector { flex-shrink: 0; width: 80px; margin-top: 30px; height: 1px; background: linear-gradient(90deg, var(--border-active), rgba(99,102,241,0.2)); position: relative; }
+    .process-connector::after { content: '→'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 13px; color: var(--accent); background: var(--bg-abyss); padding: 0 4px; }
+    @media (max-width: 900px) {
+      .process-track { flex-direction: column; align-items: center; gap: 40px; }
+      .process-connector { display: none; }
+    }
+    footer { border-top: 1px solid var(--border-subtle); padding: 60px 24px 32px; background: var(--bg-surface); }
+    .footer-grid { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--border-subtle); }
+    .footer-brand .logo { font-size: 17px; font-weight: 700; color: var(--text-primary); text-decoration: none; letter-spacing: -0.3px; display: inline-block; margin-bottom: 12px; }
+    .footer-brand .logo em { color: var(--accent); font-style: normal; font-weight: 500; }
+    .footer-brand p { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; max-width: 260px; margin-bottom: 20px; }
+    .footer-badge { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--border-default); border-radius: 100px; padding: 6px 14px; font-size: 12px; color: var(--text-muted); }
+    .footer-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
+    .footer-col h4 { font-size: 11.5px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { color: var(--text-tertiary); text-decoration: none; font-size: 13.5px; transition: color 0.15s; }
+    .footer-col ul li a:hover { color: var(--text-primary); }
+    .footer-social { display: flex; gap: 8px; }
+    .social-link {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: var(--radius-sm);
+      border: 1px solid var(--border-default); background: var(--bg-elevated);
+      color: var(--text-tertiary); text-decoration: none; font-size: 15px;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+    .social-link:hover { border-color: var(--accent); color: var(--accent-hover); background: var(--accent-glow); }
+    .footer-bottom { max-width: var(--max-w); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 24px; }
+    .footer-bottom p { color: var(--text-muted); font-size: 13px; }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-links a { color: var(--text-tertiary); text-decoration: none; font-size: 13px; transition: color 0.15s; }
+    .footer-bottom-links a:hover { color: var(--text-primary); }
+    .page-curtain {
+      position: fixed; inset: 0; z-index: 10000; overflow: hidden;
+      background: var(--bg-abyss); will-change: transform;
+    }
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 100%;
+      background: linear-gradient(90deg, var(--gold-accent), var(--gold-hover));
+      transform: scaleX(0); transform-origin: left; z-index: 10001;
+    }
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-curtain"></div>
+  <div class="scroll-progress"></div>
+  <div class="noise-overlay"></div>
+  
+  <nav>
+    <div class="inner">
+      <a href="https://galeops.xyz/" class="logo">Gale<em>Ops</em></a>
+      <div class="nav-links">
+        <a href="https://galeops.xyz/">Home</a>
+        <a href="https://galeops.xyz/ai-automation.html">AI Automation</a>
+        <a href="https://galeops.xyz/ai-security.html">AI Security</a>
+        <a href="https://galeops.xyz/products/starter-kit/">Pricing</a>
+        <a href="https://calendly.com/galeops/15min?subject=Guardrails" class="btn-cta" target="_blank" rel="noopener">Book Free Consultation</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="section-center">
+      <div class="section-label">AI Security</div>
+      <h1 class="section-title">AI Guardrail Setup</h1>
+      <p class="section-subtitle">Design and implementation of production-grade guardrails across your AI pipelines — from input sanitisation to output filtering and agent tool access controls.</p>
+    </div>
+
+    <div class="price-hero fade-in">
+      <div class="price-tier">Guardrail Setup</div>
+      <div class="price-amount">$8,000</div>
+      <div class="price-period">fixed fee</div>
+      <p class="price-desc">Design and implementation of production-grade guardrails across your AI pipelines — from input sanitisation to output filtering and agent tool access controls. Works with OpenAI, Anthropic, open-weight, or custom models. Real-time monitoring + jailbreak alerting. Developer docs + security runbook. ~2 weeks delivery.</p>
+      
+      <div class="cta-section">
+        <a href="https://buy.stripe.com/28EdRacdk5GueEx82da3u04" class="cta-button" target="_blank" rel="noopener">Purchase Guardrails →</a>
+        <a href="https://calendly.com/galeops/15min?subject=Guardrails" class="cta-ghost" target="_blank" rel="noopener">Book Free Consultation First</a>
+      </div>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card fade-in">
+        <span class="feature-icon">🛡️</span>
+        <h3>Input Sanitisation & Injection Defence</h3>
+        <p>Layered input validation: regex patterns, semantic similarity checks, embedding-based anomaly detection, and LLM-as-judge classifiers. Blocks prompt injection, jailbreak attempts, and data exfiltration prompts before they reach the model.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <span class="feature-icon">🔍</span>
+        <h3>Model Output Filtering & Classification</h3>
+        <p>Real-time output scanning for PII, secrets, unsafe content, hallucination markers, and brand-violating language. Configurable allow/block/quarantine actions per category with audit logging.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <span class="feature-icon">🔧</span>
+        <h3>Agent Tool Access Policy Enforcement</h3>
+        <p>Principle-of-least-privilege tool schemas with runtime validation. Parameter allow-lists, rate limits, domain allow-lists for HTTP calls, and dynamic policy evaluation based on user context and conversation state.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <span class="feature-icon">🔑</span>
+        <h3>API Key Hardening & Rotation Strategy</h3>
+        <p>Credential scoping per environment, automated rotation schedules, short-lived token exchange, and vault integration (AWS Secrets Manager, HashiCorp Vault, 1Password). Eliminates long-lived keys in code.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <span class="feature-icon">📡</span>
+        <h3>Monitoring & Alerting Setup</h3>
+        <p>Real-time dashboards for injection attempts, policy violations, tool misuse, and anomaly scores. Alert routing to Slack, PagerDuty, or email with severity tiers. Historical trend analysis for security reviews.</p>
+      </div>
+    </div>
+
+    <div class="deliverables">
+      <h3>What You Receive</h3>
+      <div class="deliverables-grid">
+        <div class="deliverable-item"><span class="check">✓</span><span>Input sanitisation pipeline (code + config) deployed to your infra</span></div>
+        <div class="deliverable-item"><span class="check">✓</span><span>Output filter ruleset tuned to your domain + brand guidelines</span></div>
+        <div class="deliverable-item"><span class="check">✓</span><span>Agent tool permission configs with runtime enforcement</span></div>
+        <div class="deliverable-item"><span class="check">✓</span><span>Monitoring dashboards + alert routing (Slack/PagerDuty/email)</span></div>
+        <div class="deliverable-item"><span class="check">✓</span><span>Developer docs + security runbook for ongoing ops</span></div>
+        <div class="deliverable-item"><span class="check">✓</span><span>~2 weeks delivery from kickoff</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section process-section">
+    <div class="section-center">
+      <div class="section-label">Process</div>
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-subtitle">From audit to deployed guardrails in two weeks. No vendor lock-in — you own the code and configs.</p>
+    </div>
+    <div class="process-track">
+      <div class="process-step fade-in">
+        <div class="process-icon-wrap">1</div>
+        <div class="process-step-label">Audit & Design</div>
+        <h3>Current State Audit</h3>
+        <p>Review existing AI pipelines, model providers, tool schemas, data flows, and threat model. Define guardrail requirements and success criteria.</p>
+      </div>
+      <div class="process-connector"></div>
+      <div class="process-step fade-in">
+        <div class="process-icon-wrap">2</div>
+        <div class="process-step-label">Build & Test</div>
+        <h3>Implementation</h3>
+        <p>Build sanitisation layers, output filters, tool policies, and monitoring. Unit test each layer against adversarial dataset. Staging deployment.</p>
+      </div>
+      <div class="process-connector"></div>
+      <div class="process-step fade-in">
+        <div class="process-icon-wrap">3</div>
+        <div class="process-step-label">Validate</div>
+        <h3>Red-Team Validation</h3>
+        <p>Run automated + manual adversarial tests against deployed guardrails. Measure bypass rates, false positive rates, latency overhead. Iterate until targets met.</p>
+      </div>
+      <div class="process-connector"></div>
+      <div class="process-step fade-in">
+        <div class="process-icon-wrap">4</div>
+        <div class="process-step-label">Handoff</div>
+        <h3>Production Deploy + Handoff</h3>
+        <p>Deploy to production with feature flags. Provide developer docs, security runbook, and 2-week hypercare support. You own the code.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-surface); text-align: center;">
+    <div class="section-center">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Common Questions</h2>
+    </div>
+    <div class="faq-css" style="max-width: 720px; margin: 56px auto 0;">
+      <details>
+        <summary>What model providers does this work with?</summary>
+        <div class="faq-answer">OpenAI, Anthropic, Azure OpenAI, AWS Bedrock, Google Vertex, self-hosted open-weight (Llama, Mistral, Qwen), and custom fine-tunes. The guardrails sit at the application layer, not the model layer.</div>
+      </details>
+      <details>
+        <summary>What's the latency overhead?</summary>
+        <div class="faq-answer">Typically 50-150ms per request for the full stack (sanitisation + filtering + policy check). We optimise with async processing, caching, and tiered checks so the critical path stays fast.</div>
+      </details>
+      <details>
+        <summary>Can we tune false positive rates?</summary>
+        <div class="faq-answer">Yes. Each filter category has configurable thresholds. We calibrate during the validation phase using your actual traffic samples. You get dashboards to monitor and adjust post-launch.</div>
+      </details>
+      <details>
+        <summary>Do you host the guardrails or do we?</summary>
+        <div class="faq-answer">You host. We deliver the code (Python/TypeScript), configs, and IaC (Terraform/CDK) for your cloud. No SaaS dependency, no data leaves your VPC.</div>
+      </details>
+      <details>
+        <summary>What's the difference between this and the $5K Audit?</summary>
+        <div class="faq-answer">Audit = find the holes. Guardrails = plug them permanently. Audit is a point-in-time assessment; Guardrails is a production system that continuously protects. Most clients do Audit first, then Guardrails.</div>
+      </details>
+    </div>
+  </section>
+
+  <section class="section" style="text-align: center; background: var(--bg-surface);">
+    <div class="final-cta-inner" style="position: relative; z-index: 1; max-width: 640px; margin: 0 auto;">
+      <div class="section-label" style="justify-content: center; margin-bottom: 20px;">Ready to Harden Your AI?</div>
+      <h2 style="font-family: var(--font-display); font-size: clamp(28px, 4.5vw, 52px); font-weight: 700; letter-spacing: -2px; line-height: 1.08; margin-bottom: 20px;">Deploy <span style="background: linear-gradient(135deg, var(--gold-accent) 0%, var(--accent-hover) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Guardrails</span></h2>
+      <p style="font-size: 17px; color: var(--text-tertiary); margin-bottom: 36px; line-height: 1.5; max-width: 480px; margin-left: auto; margin-right: auto;">Stop hoping your prompts hold. Build guardrails that actually work — with monitoring, alerting, and code you own.</p>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+        <a href="https://buy.stripe.com/28EdRacdk5GueEx82da3u04" class="cta-button" target="_blank" rel="noopener">Purchase $8,000 Guardrails →</a>
+        <a href="https://calendly.com/galeops/15min?subject=Guardrails" class="cta-ghost" target="_blank" rel="noopener">Book Free Consultation First</a>
+        <span style="font-size: 12.5px; color: var(--text-muted);">No vendor lock-in · You own the code · ~2 weeks delivery</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="https://galeops.xyz/" class="logo">Gale<em>Ops</em></a>
+        <p>AI automation and AI security for businesses that want to move faster, work smarter, and stay secure. Created by the team behind <a href="https://www.youtube.com/@GaleTech" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">GaleTech</a>.</p>
+        <div class="footer-badge"><span class="dot"></span> Powered by AI Agents</div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="https://galeops.xyz/#services">Social Media Automation</a></li>
+          <li><a href="https://galeops.xyz/#services">Lead Response Automation</a></li>
+          <li><a href="https://galeops.xyz/#services">Custom AI Agents</a></li>
+          <li><a href="https://galeops.xyz/#services">Reporting & Dashboards</a></li>
+          <li><a href="https://galeops.xyz/security-audit/">AI Security Audit</a></li>
+          <li><a href="https://galeops.xyz/guardrail-setup/">AI Guardrail Setup</a></li>
+          <li><a href="https://galeops.xyz/red-team/">AI Red Team & Compliance</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://galeops.xyz/#case-study">Case Study</a></li>
+          <li><a href="https://galeops.xyz/#process">How It Works</a></li>
+          <li><a href="https://galeops.xyz/ai-security.html">AI Security</a></li>
+          <li><a href="https://galeops.xyz/ai-automation.html">AI Automation</a></li>
+          <li><a href="https://galeops.xyz/products/starter-kit/">Pricing</a></li>
+          <li><a href="https://galeops.xyz/products/snapshot/">Snapshot ($149)</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="https://galeops.xyz/privacy.html">Privacy Policy</a></li>
+          <li><a href="https://galeops.xyz/terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 GaleOps. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="mailto:mattgale87@gmail.com">mattgale87@gmail.com</a>
+        <a href="https://calendly.com/galeops/15min" target="_blank" rel="noopener">Book a Call</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script>
+    (function() {
+      const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.to('.scroll-progress', { scrollTrigger: { scrub: 0.1 }, width: '100%', ease: 'none' });
+      gsap.to('.page-curtain', { scrollTrigger: { trigger: 'body', start: 'top top', end: '+=200', scrub: 1 }, transformOrigin: 'top center', scaleY: 0, ease: 'none' });
+      gsap.utils.toArray('.fade-in').forEach(el => {
+        gsap.from(el, { opacity: 0, y: 30, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none reverse' } });
+      });
+    })();
+  </script>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

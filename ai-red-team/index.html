@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Red Team & Compliance ($12,000) — Adversarial Testing + EU AI Act | GaleOps</title>
+  <meta name="description" content="Full adversarial red team engagement against your AI systems, plus compliance gap analysis for EU AI Act and NIST AI RMF — with an executive summary ready for the board. $12,000 flat.">
+  <link rel="canonical" href="https://galeops.xyz/ai-red-team/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://galeops.xyz/ai-red-team/">
+  <meta property="og:title" content="AI Red Team & Compliance — Adversarial Testing + EU AI Act / NIST">
+  <meta property="og:description" content="Adversarial red team engagement against your AI systems + EU AI Act and NIST AI RMF compliance gap analysis. Board-ready executive summary. $12,000 flat.">
+  <meta property="og:image" content="https://galeops.xyz/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Red Team & Compliance — GaleOps">
+  <meta name="twitter:description" content="Adversarial red team + EU AI Act / NIST compliance. Board-ready. $12,000 flat.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI Red Team & Compliance",
+    "description": "Full adversarial red team engagement against AI systems plus compliance gap analysis for EU AI Act and NIST AI RMF, with an executive summary ready for the board.",
+    "url": "https://galeops.xyz/ai-red-team/",
+    "provider": { "@type": "Organization", "name": "GaleOps", "url": "https://galeops.xyz", "sameAs": ["https://www.youtube.com/@GaleTech", "https://www.linkedin.com/in/mattgale", "https://x.com/Mattjgale87"] },
+    "offers": { "@type": "Offer", "price": "12000", "priceCurrency": "USD", "url": "https://buy.stripe.com/fZucN6cdk1qe0NH82da3u05" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"What does the red team engagement include?","acceptedAnswer":{"@type":"Answer","text":"Adversarial prompt & jailbreak testing, agent tool misuse scenarios, EU AI Act gap analysis, NIST AI RMF alignment report, and an executive summary + board-ready deck."}},
+      {"@type":"Question","name":"How is this different from the $6K audit?","acceptedAnswer":{"@type":"Answer","text":"The audit finds vulnerabilities. The red team actively exploits them — testing real attack scenarios end-to-end — and adds compliance mapping for EU AI Act and NIST AI RMF."}},
+      {"@type":"Question","name":"Do you test against our live systems?","acceptedAnswer":{"@type":"Answer","text":"Yes, against a staging or test environment. We run adversarial scenarios: jailbreaks, prompt injection chains, agent tool misuse, data exfiltration attempts — all documented."}},
+      {"@type":"Question","name":"Is the compliance report board-ready?","acceptedAnswer":{"@type":"Answer","text":"Yes. You get an executive summary + deck suitable for board or regulator presentation, with specific gaps mapped to EU AI Act articles and NIST AI RMF functions."}}
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg-abyss: #08090a; --bg-surface: #101012; --bg-elevated: #191a1b; --border: rgba(255,255,255,0.08); --border-subtle: rgba(255,255,255,0.06); --text-primary: #f7f8f8; --text-secondary: #d0d6e0; --text-tertiary: #8a8f98; --text-muted: #5a5f66; --accent: #6366f1; --accent-hover: #818cf8; --green: #10b981; --gold: #c89a45; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg-abyss); color: var(--text-primary); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-decoration: none; }
+    .nav { position: sticky; top: 0; z-index: 100; background: rgba(8,9,10,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 20px; } .nav-logo em { color: var(--gold); font-style: normal; }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { color: var(--text-secondary); font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent-hover); }
+    .btn-primary { display: inline-block; background: var(--accent); color: #fff; padding: 12px 24px; border-radius: 10px; font-weight: 600; font-size: 15px; }
+    .btn-stripe { display: inline-block; background: var(--green); color: #fff; padding: 14px 28px; border-radius: 10px; font-weight: 700; font-size: 16px; }
+    .btn-stripe:hover { transform: translateY(-1px); box-shadow: 0 4px 24px rgba(16,185,129,0.3); }
+    .hero { text-align: center; padding: 80px 24px 60px; max-width: 760px; margin: 0 auto; }
+    .hero-label { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    .hero h1 { font-family: 'DM Sans', sans-serif; font-size: clamp(32px, 5vw, 52px); font-weight: 700; letter-spacing: -2px; line-height: 1.08; margin-bottom: 24px; }
+    .hero h1 span { color: var(--gold); }
+    .hero p { font-size: 18px; color: var(--text-secondary); max-width: 580px; margin: 0 auto 32px; }
+    .price-tag { display: inline-flex; align-items: center; gap: 12px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 16px 28px; margin-bottom: 32px; }
+    .price-tag .amount { font-family: 'DM Sans', sans-serif; font-size: 32px; font-weight: 700; color: var(--green); }
+    .price-tag .label { font-size: 14px; color: var(--text-tertiary); }
+    .container { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+    .section { margin-bottom: 64px; }
+    .section h2 { font-family: 'DM Sans', sans-serif; font-size: clamp(24px, 3.5vw, 36px); font-weight: 600; letter-spacing: -1px; margin-bottom: 24px; }
+    .section p { color: var(--text-secondary); margin-bottom: 16px; font-size: 17px; }
+    .deliverables { list-style: none; }
+    .deliverables li { display: flex; align-items: flex-start; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); font-size: 17px; }
+    .deliverables li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .cta-section { text-align: center; padding: 60px 24px; background: var(--bg-surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .cta-section h2 { font-family: 'DM Sans', sans-serif; font-size: clamp(24px, 4vw, 40px); font-weight: 700; margin-bottom: 16px; }
+    .cta-section p { color: var(--text-tertiary); margin-bottom: 32px; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+    .faq-item h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .faq-item p { color: var(--text-tertiary); font-size: 16px; }
+    .upsell { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+    .upsell-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 24px; max-width: 280px; text-align: center; }
+    .upsell-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+    .upsell-card .price { color: var(--gold); font-weight: 700; font-size: 18px; margin-bottom: 12px; }
+    .upsell-card a { font-size: 14px; color: var(--accent); }
+    footer { text-align: center; padding: 40px 24px; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border); }
+    footer a { color: var(--accent); }
+    @media (max-width: 640px) { .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="nav-logo">Gale<em>Ops</em></a>
+    <div class="nav-links">
+      <a href="/ai-security.html">All Services</a>
+      <a href="/scan/">Free Scan</a>
+      <a href="/blog/">Blog</a>
+      <a href="https://calendly.com/galeops/15min" class="btn-primary" style="padding:8px 18px;font-size:14px;">Book a Call</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-label">AI Red Team & Compliance</div>
+    <h1>We break your AI <span>so attackers can't</span>.</h1>
+    <p>Full adversarial red team engagement against your AI systems, plus a compliance gap analysis for EU AI Act and NIST AI RMF — with an executive summary ready for the board.</p>
+    <div class="price-tag">
+      <span class="amount">$12,000</span>
+      <span class="label">flat fee · 2–3 weeks</span>
+    </div>
+    <div>
+      <a href="https://buy.stripe.com/fZucN6cdk1qe0NH82da3u05" class="btn-stripe">Start Red Team →</a>
+      <p style="margin-top:12px;font-size:13px;color:var(--text-muted);">or <a href="https://calendly.com/galeops/15min">book a free 15-min call first</a></p>
+    </div>
+  </section>
+
+  <!-- Funnel video -->
+  <section style="max-width:800px;margin:32px auto;padding:0 24px;">
+    <video controls preload="metadata" style="width:100%;border-radius:16px;border:1px solid var(--border);">
+      <source src="/assets/videos/galeops-redteam-v2.mp4" type="video/mp4">
+    </video>
+    <p style="text-align:center;margin-top:8px;font-size:13px;color:var(--text-tertiary);">What's tested — 60 second walkthrough</p>
+  </section>
+
+  <div class="container">
+    <div class="section">
+      <h2>What's tested</h2>
+      <ul class="deliverables">
+        <li><div><strong>Adversarial prompt & jailbreak testing</strong> — real attack chains against your LLM, not just single prompts</div></li>
+        <li><div><strong>Agent tool misuse scenarios</strong> — can an attacker weaponise your agent's tools?</div></li>
+        <li><div><strong>MCP server security audit</strong> — tool boundary testing for Model Context Protocol architectures (agent↔tool handoffs)</div></li>
+        <li><div><strong>Long-running agent loops</strong> — state persistence, multi-step plan manipulation, tool-output injection that compounds across turns</div></li>
+        <li><div><strong>EU AI Act gap analysis</strong> — mapped to specific articles, with what you need to close</div></li>
+        <li><div><strong>NIST AI RMF alignment report</strong> — Govern, Map, Measure, Manage — where you stand</div></li>
+        <li><div><strong>Executive summary + board-ready deck</strong> — presentable to board, auditor, or regulator</div></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>What you get</h2>
+      <ul class="deliverables">
+        <li>Full red team report — every attack scenario, what worked, what didn't</li>
+        <li>EU AI Act compliance gap analysis (article-by-article)</li>
+        <li>NIST AI RMF alignment report</li>
+        <li>Executive summary + board-ready slide deck (PDF + PPTX)</li>
+        <li>A 60-minute executive briefing with Mathew Gale</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>How it works</h2>
+      <ul class="deliverables">
+        <li><strong>Week 1:</strong> Recon + adversarial testing against staging environment</li>
+        <li><strong>Week 2:</strong> Compliance mapping (EU AI Act + NIST AI RMF)</li>
+        <li><strong>Week 3:</strong> Report writing + executive deck + briefing</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Frequently asked</h2>
+      <div class="faq-item"><h3>What does the red team include?</h3><p>Adversarial prompt & jailbreak testing, agent tool misuse scenarios, EU AI Act gap analysis, NIST AI RMF alignment, and a board-ready executive summary + deck.</p></div>
+      <div class="faq-item"><h3>How is this different from the $6K audit?</h3><p>The audit finds vulnerabilities. The red team actively exploits them — testing real attack scenarios end-to-end — and adds compliance mapping.</p></div>
+      <div class="faq-item"><h3>Do you test against live systems?</h3><p>Yes, against a staging/test environment. We run adversarial scenarios: jailbreaks, injection chains, tool misuse, data exfiltration — all documented.</p></div>
+      <div class="faq-item"><h3>Is the compliance report board-ready?</h3><p>Yes. Executive summary + deck for board or regulator presentation, with gaps mapped to EU AI Act articles and NIST AI RMF functions.</p></div>
+    </div>
+  </div>
+
+  <section class="cta-section">
+    <h2>Ready to test your defences?</h2>
+    <p>$12,000 flat. Board-ready report in 3 weeks.</p>
+    <a href="https://buy.stripe.com/fZucN6cdk1qe0NH82da3u05" class="btn-stripe">Start Red Team →</a>
+    <p style="margin-top:12px;font-size:13px;color:var(--text-muted);">or <a href="https://calendly.com/galeops/15min">book a free 15-min call first</a></p>
+  </section>
+
+  <div class="container">
+    <div class="section" style="text-align:center;">
+      <h2 style="font-size:22px;">Related services</h2>
+      <p>After the red team, keep posture fresh with a monthly retainer.</p>
+      <div class="upsell">
+        <div class="upsell-card" style="border:2px solid var(--accent-cyan)">
+          <h3>Continuous AI Security</h3>
+          <div class="price">$2,500/mo</div>
+          <p style="font-size:14px;color:var(--text-tertiary);margin-bottom:12px;">Monthly regression testing, guardrail drift checks, updated technical docs</p>
+          <a href="https://calendly.com/galeops/15min">Talk to Mathew →</a>
+        </div>
+        <div class="upsell-card">
+          <h3>AI Security Audit</h3>
+          <div class="price">$6,000</div>
+          <p style="font-size:14px;color:var(--text-tertiary);margin-bottom:12px;">Find the gaps first</p>
+          <a href="/ai-security-audit/">Learn more →</a>
+        </div>
+        <div class="upsell-card">
+          <h3>AI Guardrail Setup</h3>
+          <div class="price">$8,000</div>
+          <p style="font-size:14px;color:var(--text-tertiary);margin-bottom:12px;">Fix the gaps with guardrails</p>
+          <a href="/ai-guardrail-setup/">Learn more →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 GaleOps — AI Security & Automation Consulting · <a href="/">Home</a> · <a href="/blog/">Blog</a> · <a href="/scan/">Free Scan</a></p>
+    <p style="margin-top:8px;">Run by Mathew Gale · <a href="https://www.youtube.com/@GaleTech">YouTube</a> · <a href="https://calendly.com/galeops/15min">Book a call</a></p>
+  </footer>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

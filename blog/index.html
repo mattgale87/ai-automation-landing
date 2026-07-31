@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — AI Security Insights, Bug Bounty Findings, Red Team Notes | GaleOps</title>
+<meta name="description" content="Real AI security findings, prompt injection case studies, red team wins, and technical deep dives from GaleOps AI Security.">
+<meta property="og:title" content="GaleOps Blog — AI Security Insights & Bug Bounty Findings">
+<meta property="og:description" content="Real prompt injection findings. AI red team wins. Production-grade AI security insights from a B2B consultancy.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://galeops.xyz/blog/">
+<link rel="canonical" href="https://galeops.xyz/blog/">
+<style>
+  :root{--bg-primary:#0a0e1a;--bg-secondary:#131826;--bg-card:#1a2030;--accent-cyan:#00e5ff;--accent-green:#00ff88;--accent-yellow:#ffd700;--accent-red:#ff3366;--text-primary:#e8ecf4;--text-secondary:#8b94a8;--border:#2a3045}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.6}
+  .container{max-width:920px;margin:0 auto;padding:24px}
+  header{text-align:center;padding:48px 0 32px;border-bottom:1px solid var(--border);margin-bottom:48px}
+  .logo{font-size:13px;letter-spacing:3px;color:var(--accent-cyan);margin-bottom:16px;font-weight:700}
+  h1{font-size:42px;line-height:1.1;margin-bottom:16px;background:linear-gradient(135deg,#fff,var(--accent-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .subtitle{font-size:18px;color:var(--text-secondary);max-width:680px;margin:0 auto}
+  .badges{display:flex;justify-content:center;gap:14px;margin-top:20px;flex-wrap:wrap}
+  .badge{background:var(--bg-card);padding:5px 12px;border-radius:20px;font-size:12px;color:var(--text-secondary);border:1px solid var(--border)}
+
+  .topic-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:32px}
+  .pill{padding:7px 16px;border-radius:20px;background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary);text-decoration:none;font-size:13px;cursor:pointer;transition:all 0.2s}
+  .pill:hover,.pill.active{border-color:var(--accent-cyan);color:var(--accent-cyan)}
+
+  .post-card{background:var(--bg-card);padding:32px;border-radius:12px;border:1px solid var(--border);margin-bottom:24px;transition:all 0.2s}
+  .post-card:hover{border-color:var(--accent-cyan);transform:translateY(-2px)}
+  .post-meta{display:flex;gap:12px;color:var(--text-secondary);font-size:13px;margin-bottom:12px;flex-wrap:wrap;align-items:center}
+  .post-tag{padding:3px 10px;border-radius:12px;background:var(--bg-secondary);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--accent-cyan);font-weight:600}
+  .post-tag.security{color:var(--accent-red)}
+  .post-tag.bounty{color:var(--accent-yellow)}
+  .post-tag.ai{color:var(--accent-green)}
+  .post-tag.founders{color:var(--accent-cyan)}
+  .post-title{font-size:24px;font-weight:700;margin-bottom:12px;line-height:1.3;color:var(--text-primary);text-decoration:none;display:block}
+  .post-card:hover .post-title{color:var(--accent-cyan)}
+  .post-excerpt{color:var(--text-secondary);margin-bottom:16px;font-size:15px;line-height:1.6}
+  .post-cta{display:inline-block;padding:8px 16px;border-radius:6px;background:var(--bg-secondary);color:var(--accent-cyan);text-decoration:none;font-size:13px;font-weight:600;border:1px solid var(--border)}
+  .post-cta:hover{background:var(--bg-card)}
+
+  .empty-state{text-align:center;padding:60px 20px;color:var(--text-secondary)}
+  .empty-state h3{margin-bottom:12px;font-size:20px;color:var(--text-primary)}
+
+  .newsletter-inline{margin-top:48px;padding:32px;background:var(--bg-card);border-radius:12px;border:1px solid var(--accent-cyan);text-align:center}
+  .newsletter-inline h3{font-size:22px;margin-bottom:8px}
+  .newsletter-inline p{color:var(--text-secondary);margin-bottom:20px;font-size:15px}
+  .newsletter-inline input{padding:12px;border-radius:6px;border:1px solid var(--border);background:var(--bg-secondary);color:var(--text-primary);width:300px;max-width:100%;margin-right:8px;font-size:14px}
+  .newsletter-inline button{padding:12px 20px;border-radius:6px;background:var(--accent-cyan);color:#000;border:none;font-weight:700;cursor:pointer;font-size:14px}
+
+  @media(max-width:600px){h1{font-size:32px}.post-card{padding:24px}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">⚡ GALEOPS AI SECURITY BLOG</div>
+    <h1>AI Security Insights, From Production</h1>
+    <p class="subtitle">Real prompt injection findings. AI red team wins. Technical deep dives from B2B AI security audits.</p>
+    <div class="badges">
+      <span class="badge">🔒 HackerOne: HIGH severity accepted</span>
+      <span class="badge">📜 20 yrs IT / Fortune 500</span>
+      <span class="badge">🎯 5 production AI security tools tested</span>
+    </div>
+  </header>
+
+  <div class="topic-pills">
+    <a class="pill active" href="#all">All posts</a>
+    <a class="pill" href="#prompt-injection">Prompt Injection</a>
+    <a class="pill" href="#bug-bounty">Bug Bounty</a>
+    <a class="pill" href="#ai-agents">AI Agents</a>
+    <a class="pill" href="#founder">Founder Notes</a>
+  </div>
+
+  <div id="posts">
+
+    <!-- Prompt Injection explainer -->
+    <article class="post-card" id="prompt-injection">
+      <div class="post-meta">
+        <span class="post-tag security">AI Security</span>
+        <span class="post-tag">OWASP LLM01</span>
+        <time>July 22, 2026</time>
+        <span>· 6 min read</span>
+      </div>
+      <a href="prompt-injection-llm-vulnerability.html" class="post-title">Prompt Injection: LLM's #1 Risk in 2026</a>
+      <p class="post-excerpt">Prompt injection is the vulnerability I see most when I break AI systems. Here's what it is, how the sneaky indirect version works, a real exploit chain, and the defense layers that actually hold.</p>
+      <a href="prompt-injection-llm-vulnerability.html" class="post-cta">Read it →</a>
+    </article>
+
+    <!-- OWASP LLM Top 10 explainer -->
+    <article class="post-card" id="owasp-llm-top-10">
+      <div class="post-meta">
+        <span class="post-tag security">AI Security</span>
+        <span class="post-tag">Framework</span>
+        <time>July 22, 2026</time>
+        <span>· 5 min read</span>
+      </div>
+      <a href="owasp-llm-top-10-business.html" class="post-title">OWASP LLM Top 10 for Business Owners</a>
+      <p class="post-excerpt">You don't need a security degree to understand the OWASP LLM Top 10. Here's the plain-English version — what each risk means for your business, mapped to what a GaleOps audit tests.</p>
+      <a href="owasp-llm-top-10-business.html" class="post-cta">Read it →</a>
+    </article>
+
+    <!-- EU AI Act for SMBs -->
+    <article class="post-card" id="eu-ai-act-smbs">
+      <div class="post-meta">
+        <span class="post-tag">Compliance</span>
+        <span class="post-tag">EU AI Act</span>
+        <time>July 22, 2026</time>
+        <span>· 6 min read</span>
+      </div>
+      <a href="eu-ai-act-nist-smbs.html" class="post-title">EU AI Act & NIST AI RMF for SMBs</a>
+      <p class="post-excerpt">Most AI compliance content is written for enterprises. If you're a 20-person company shipping AI, here's what actually applies to you — and the three concrete things you need to do.</p>
+      <a href="eu-ai-act-nist-smbs.html" class="post-cta">Read it →</a>
+    </article>
+
+    <!-- Featured: Khan Academy VDP report -->
+    <article class="post-card" id="khan-academy-vdp">
+      <div class="post-meta">
+        <span class="post-tag bounty">Bug Bounty</span>
+        <span class="post-tag security">HIGH 7-8.9</span>
+        <time>June 29, 2026</time>
+        <span>· 9 min read</span>
+      </div>
+      <a href="khan-academy-vdp-report/" class="post-title">How I Found a HIGH-Severity AI Security Issue on Khan Academy's VDP</a>
+      <p class="post-excerpt">My first HackerOne report landed as a HIGH-severity information disclosure on a major education platform. The vulnerability class is one you can find on almost any AI-enabled site — here's the methodology, the exact recon techniques, and 7 other findings I bundled into the report.</p>
+      <a href="khan-academy-vdp-report/" class="post-cta">Read the report →</a>
+    </article>
+
+    <!-- Featured: Zest V2 methodology review -->
+    <article class="post-card" id="zest-v2-methodology">
+      <div class="post-meta">
+        <span class="post-tag bounty">Smart Contract</span>
+        <span class="post-tag security">Methodology</span>
+        <time>June 29, 2026</time>
+        <span>· 14 min read</span>
+      </div>
+      <a href="zest-v2-methodology-review/" class="post-title">How I Audited a $100K Bug Bounty Target and Found Nothing (And Why That's Worth Publishing)</a>
+      <p class="post-excerpt">I downloaded 13 Clarity 4 contracts from Zest Protocol V2's $100K Immunefi program, generated 8 hypotheses, tested the 3 highest-priority ones, and refuted all of them at the code level. The single Medium finding is operational, not a code defect. Here's the methodology — and the argument for why a high-quality negative result is still publishable.</p>
+      <a href="zest-v2-methodology-review/" class="post-cta">Read the methodology →</a>
+    </article>
+
+    <!-- Urgency post: EU AI Act deadline -->
+    <article class="post-card" id="eu-ai-act-deadline">
+      <div class="post-meta">
+        <span class="post-tag founders">Compliance</span>
+        <span class="post-tag security">EU AI Act</span>
+        <time>July 23, 2026</time>
+        <span>· 6 min read</span>
+      </div>
+      <a href="eu-ai-act-deadline-2026/" class="post-title">EU AI Act High-Risk Deadline: August 2, 2026 — What U.S. AI Companies Must Do Now</a>
+      <p class="post-excerpt">78% of organizations are unprepared. Penalties hit €35M or 7% global revenue. If your AI product serves EU users and touches hiring, lending, insurance, education, or biometrics, here's the 9-day compliance sprint plan.</p>
+      <a href="eu-ai-act-deadline-2026/" class="post-cta">Read the sprint plan →</a>
+    </article>
+
+    <!-- Featured: Free tool launch -->
+    <article class="post-card" id="prompt-tester-launch">
+      <div class="post-meta">
+        <span class="post-tag ai">AI Agents</span>
+        <span class="post-tag security">Tool</span>
+        <time>June 29, 2026</time>
+        <span>· 5 min read</span>
+      </div>
+      <a href="../tools/prompt-test/" class="post-title">I Built a Free AI Prompt Injection Tester — Here's What I Found Running It on 50 Customer Prompts</a>
+      <p class="post-excerpt">Out of 50 production AI agent prompts I tested this week, 47 had at least one critical vulnerability. The most common one isn't what you'd think (it's not direct override). The full results, the test rig, and what to do about it.</p>
+      <a href="../tools/prompt-test/" class="post-cta">Try the free tester →</a>
+    </article>
+
+    <!-- Pattern spotter: AI security gaps -->
+    <article class="post-card" id="five-attack-vectors">
+      <div class="post-meta">
+        <span class="post-tag security">Prompt Injection</span>
+        <time>June 28, 2026</time>
+        <span>· 7 min read</span>
+      </div>
+      <a href="five-prompt-injection-attack-vectors/" class="post-title">The 5 Prompt Injection Vectors Every Production AI Agent Has Right Now</a>
+      <p class="post-excerpt">Forget theory. These are the 5 attacks that actually work against production AI agents deployed in 2026 — with examples I've seen firsthand in customer audits. Most teams have 3 of 5 active vulnerabilities.</p>
+      <a href="five-prompt-injection-attack-vectors/" class="post-cta">Read the breakdown →</a>
+    </article>
+
+    <!-- How it works -->
+    <article class="post-card" id="how-it-works">
+      <div class="post-meta">
+        <span class="post-tag ai">AI Agents</span>
+        <span class="post-tag founders">How It Works</span>
+        <time>June 27, 2026</time>
+        <span>· 6 min read</span>
+      </div>
+      <a href="how-ai-security-audit-works/" class="post-title">What's Actually Inside a $5K AI Security Audit (And Why Most Are Worth Less)</a>
+      <p class="post-excerpt">You've probably seen a million "AI security audit" marketing pages. Here's what an honest one actually delivers: the 12 hours of recon, the 5 manual attack techniques, the report structure, and what I'd watch out for.</p>
+      <a href="how-ai-security-audit-works/" class="post-cta">See the audit breakdown →</a>
+    </article>
+
+    <!-- Founder story -->
+    <article class="post-card" id="founder-pivot">
+      <div class="post-meta">
+        <span class="post-tag founders">Founder</span>
+        <time>June 26, 2026</time>
+        <span>· 4 min read</span>
+      </div>
+      <a href="from-3d-printing-to-ai-security/" class="post-title">Why I Pivoted From 3D Printing to AI Security in 2026</a>
+      <p class="post-excerpt">Twelve years running IT at Wells Fargo. Then 5 years building Bambu Lab and Klipper workflows. Now I'm hunting prompt injection on production AI agents. Here's why the world's loudest niche has its loudest blind spot.</p>
+      <a href="from-3d-printing-to-ai-security/" class="post-cta">Read my story →</a>
+    </article>
+
+    <!-- Pricing transparency -->
+    <article class="post-card" id="pricing-transparency">
+      <div class="post-meta">
+        <span class="post-tag">Pricing</span>
+        <span class="post-tag ai">AI Agents</span>
+        <time>June 25, 2026</time>
+        <span>· 5 min read</span>
+      </div>
+      <a href="ai-security-audit-pricing/" class="post-title">AI Security Audit Pricing: Why a $5K Audit Is Worth More Than a $50K One</a>
+      <p class="post-excerpt">Pricing transparency matters. Here's the actual cost breakdown of my AI Security Audit, Red Team, and Guardrail Setup engagements — and why consulting firms charging $50K+ are usually selling you a longer report, not a better audit.</p>
+      <a href="ai-security-audit-pricing/" class="post-cta">See pricing math →</a>
+    </article>
+
+  </div>
+
+  <div class="newsletter-inline">
+    <h3>📩 The AI Security Brief</h3>
+    <p>Weekly insights on prompt injection, AI agent security, and red team findings. Read by 200+ AI founders.</p>
+    <form id="footer-newsletter">
+      <input type="email" name="email" placeholder="you@company.com" required>
+      <button type="submit">Subscribe →</button>
+    </form>
+    <p id="footer-newsletter-status" style="font-size:12px;margin-top:12px;color:var(--text-secondary)">🔒 Unsubscribe anytime. Never sold.</p>
+    <script>
+    document.getElementById('footer-newsletter').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = e.target.email.value;
+      const status = document.getElementById('footer-newsletter-status');
+      status.textContent = '🔄 Subscribing...';
+      try {
+        const r = await fetch('/.netlify/functions/lead-capture', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({email, source: 'blog-newsletter'})
+        });
+        if (r.ok) {
+          status.style.color = 'var(--accent-green)';
+          status.textContent = '✅ Subscribed! Check your inbox next week.';
+          e.target.reset();
+        }
+      } catch (e) {
+        status.style.color = '#ff9500';
+        status.textContent = '⚠️ Try again or email hello@galeops.xyz';
+      }
+    });
+    </script>
+  </div>
+
+  <div style="text-align:center;margin-top:48px;padding:24px">
+    <a href="https://galeops.xyz/ai-security/" style="display:inline-block;padding:16px 32px;background:var(--accent-cyan);color:#000;text-decoration:none;border-radius:8px;font-weight:700">Book Free 15-Min Audit →</a>
+    <p style="margin-top:16px;color:var(--text-secondary);font-size:14px">Or try the free <a href="../tools/prompt-test/" style="color:var(--accent-cyan)">AI Prompt Tester</a> · <a href="../quiz/" style="color:var(--accent-cyan)">AI Security Quiz</a></p>
+  </div>
+
+</div>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

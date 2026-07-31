@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agent Security Snapshot — $149, 5-Day Delivery | GaleOps</title>
+<meta name="description" content="Your AI agent has vulnerabilities. We find them in 5 business days. Manual review by an H1 security researcher. Branded PDF + 15-min video. $149.">
+<link rel="canonical" href="https://galeops.xyz/snapshot/">
+<meta property="og:title" content="AI Agent Security Snapshot — $149">
+<meta property="og:description" content="Your AI agent has vulnerabilities. We find them in 5 business days. Manual review, branded PDF, 15-min video.">
+<meta property="og:type" content="product">
+<meta property="og:url" content="https://galeops.xyz/snapshot/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Agent Security Snapshot — $149">
+<meta name="twitter:description" content="Your AI agent has vulnerabilities. We find them in 5 business days. Manual review by an H1 researcher. $149.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg-abyss: #08090a;
+    --bg-surface: #101012;
+    --bg-elevated: #191a1b;
+    --border-subtle: rgba(255,255,255,0.06);
+    --border-default: rgba(255,255,255,0.09);
+    --text-primary: #f7f8f8;
+    --text-secondary: #d0d6e0;
+    --text-tertiary: #8a8f98;
+    --text-muted: #5a5f66;
+    --accent: #6366f1;
+    --accent-hover: #818cf8;
+    --accent-glow: rgba(99,102,241,0.15);
+    --gold: #f59e0b;
+    --gold-hover: #fbbf24;
+    --green: #10b981;
+    --green-text: #34d399;
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --max-w: 1120px;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg-abyss);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .noise-overlay {
+    position: fixed; inset: 0; z-index: 9998; pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(8,9,10,0.85); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  nav .inner {
+    max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
+    display: flex; justify-content: space-between; align-items: center; height: 60px;
+  }
+  nav .logo { font-size: 17px; font-weight: 700; color: var(--text-primary); text-decoration: none; letter-spacing: -0.3px; }
+  nav .logo em { color: var(--accent); font-style: normal; font-weight: 500; }
+  .nav-links { display: flex; gap: 8px; align-items: center; }
+  .nav-links a {
+    color: var(--text-tertiary); text-decoration: none; font-size: 13.5px;
+    font-weight: 500; padding: 6px 12px; border-radius: var(--radius-sm);
+    transition: color 0.15s, background 0.15s;
+  }
+  .nav-links a:hover { color: var(--text-primary); background: var(--bg-elevated); }
+  .nav-links .btn-cta {
+    background: var(--accent); color: #fff !important;
+    padding: 7px 16px; border-radius: var(--radius-sm); font-weight: 600; font-size: 13px;
+  }
+  .nav-links .btn-cta:hover { background: var(--accent-hover); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 140px 24px 40px;
+    position: relative;
+    background: var(--bg-abyss);
+    overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-glow {
+    position: absolute; top: -160px; left: 50%; transform: translateX(-50%);
+    width: 720px; height: 360px; border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(99,102,241,0.18), transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+  .hero-inner {
+    position: relative; z-index: 1; max-width: 1120px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center;
+  }
+  .hero h1 {
+    font-size: 52px; line-height: 1.05; font-weight: 700;
+    letter-spacing: -1.6px; margin-bottom: 20px;
+    background: linear-gradient(180deg, #fff 0%, #a8a8b3 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero .lede {
+    font-size: 18.5px; color: var(--text-secondary); margin-bottom: 28px;
+    max-width: 580px;
+  }
+  .hero .lede strong { color: var(--text-primary); font-weight: 600; }
+  .trust-line {
+    font-size: 13.5px; color: var(--text-tertiary); margin-bottom: 28px;
+    display: flex; flex-wrap: wrap; gap: 18px;
+  }
+  .trust-line span { display: inline-flex; align-items: center; gap: 6px; }
+  .trust-line .dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--green); display: inline-block;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold); color: #000; padding: 16px 28px;
+    border-radius: var(--radius-lg); font-weight: 600; font-size: 16px;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: all 0.15s; font-family: inherit;
+  }
+  .hero-cta:hover { background: var(--gold-hover); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(245,158,11,0.35); }
+  .hero-cta.ghost {
+    background: transparent; color: var(--text-secondary);
+    border: 1px solid var(--border-default);
+  }
+  .hero-cta.ghost:hover { color: var(--text-primary); border-color: var(--accent); background: rgba(99,102,241,0.06); box-shadow: none; }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+  /* Inline price card */
+  .price-card-vertical {
+    background: linear-gradient(180deg, rgba(245,158,11,0.06), rgba(245,158,11,0.02));
+    border: 1px solid rgba(245,158,11,0.22);
+    border-radius: var(--radius-xl);
+    padding: 32px;
+    position: relative;
+  }
+  .price-card-vertical .ribbon {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(245,158,11,0.12); color: var(--gold);
+    border: 1px solid rgba(245,158,11,0.3);
+    border-radius: 100px; padding: 5px 14px;
+    font-size: 11.5px; font-weight: 700; letter-spacing: 1px; margin-bottom: 18px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .price-card-vertical .price-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 56px;
+    font-weight: 700; line-height: 1; color: var(--text-primary);
+  }
+  .price-card-vertical .price-tag small {
+    font-size: 18px; color: var(--text-tertiary); font-weight: 400;
+    font-family: 'Inter', sans-serif;
+  }
+  .price-card-vertical .price-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; color: var(--text-tertiary);
+    margin-top: 8px; margin-bottom: 22px;
+    letter-spacing: 0.5px;
+  }
+  .price-card-vertical ul { list-style: none; margin-bottom: 22px; }
+  .price-card-vertical ul li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14px; color: var(--text-secondary);
+    padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .price-card-vertical ul li:last-child { border-bottom: none; }
+  .price-card-vertical ul li::before {
+    content: '✓'; color: var(--green-text); font-weight: 700; flex-shrink: 0;
+  }
+  .price-card-vertical .btn-full {
+    display: flex; align-items: center; justify-content: center;
+    background: var(--gold); color: #000; padding: 14px;
+    border-radius: var(--radius-md); font-weight: 600; font-size: 15px;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: all 0.15s; width: 100%; font-family: inherit;
+  }
+  .price-card-vertical .btn-full:hover { background: var(--gold-hover); }
+  .price-card-vertical .fine-print {
+    font-size: 12px; color: var(--text-muted);
+    text-align: center; margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── SECTION CHROME ── */
+  .container { max-width: 880px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+  .container-wide { max-width: 1120px; }
+  .section { padding: 80px 0; }
+  .section-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 1.5px;
+    color: var(--accent-hover); text-transform: uppercase;
+    margin-bottom: 14px; display: inline-block;
+  }
+  h2 {
+    font-size: 36px; line-height: 1.15; font-weight: 700;
+    letter-spacing: -1px; margin-bottom: 14px;
+    background: linear-gradient(180deg, #fff 0%, #b8b8c3 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .section-lede {
+    font-size: 17px; color: var(--text-secondary);
+    max-width: 620px; margin-bottom: 40px;
+  }
+  .center { text-align: center; margin-left: auto; margin-right: auto; }
+  .divider {
+    height: 1px; max-width: 880px; margin: 0 auto;
+    background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
+  }
+
+  /* ── DELIVERABLES GRID ── */
+  .deliv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .deliv {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .deliv:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .deliv .ico {
+    width: 44px; height: 44px;
+    background: var(--accent-glow);
+    border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 18px;
+  }
+  .deliv h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+  .deliv p { font-size: 14px; color: var(--text-tertiary); }
+
+  /* ── STEPS ── */
+  .steps { counter-reset: step; display: grid; gap: 14px; }
+  .step {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 22px 26px;
+    display: grid; grid-template-columns: 64px 1fr auto; gap: 22px;
+    align-items: center;
+  }
+  .step::before {
+    counter-increment: step;
+    content: counter(step, decimal-leading-zero);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px; font-weight: 700;
+    color: var(--gold);
+  }
+  .step h3 { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
+  .step p { font-size: 14px; color: var(--text-tertiary); }
+  .step .step-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--gold);
+    background: rgba(245,158,11,0.08);
+    border: 1px solid rgba(245,158,11,0.25);
+    border-radius: 100px; padding: 4px 12px;
+    letter-spacing: 1px; white-space: nowrap;
+  }
+
+  /* ── SAMPLE REPORT ── */
+  .sample-row {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-xl);
+    padding: 32px 36px;
+    display: flex; align-items: center; gap: 28px;
+  }
+  .sample-row .file-thumb {
+    width: 96px; height: 120px; flex-shrink: 0;
+    background: linear-gradient(180deg, var(--bg-elevated), var(--bg-abyss));
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; gap: 8px;
+    position: relative;
+  }
+  .sample-row .file-thumb::before {
+    content: ''; position: absolute; top: 0; right: 0;
+    width: 16px; height: 16px;
+    background: linear-gradient(225deg, var(--bg-surface) 50%, transparent 50%);
+    border-radius: 0 var(--radius-md) 0 0;
+  }
+  .sample-row .file-thumb .file-ico { font-size: 26px; }
+  .sample-row .file-thumb .file-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    color: var(--text-tertiary); letter-spacing: 1px;
+  }
+  .sample-row h3 { font-size: 19px; font-weight: 600; margin-bottom: 6px; }
+  .sample-row p { font-size: 14px; color: var(--text-tertiary); margin-bottom: 14px; }
+  .sample-row a.btn-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--accent-hover); text-decoration: none; font-weight: 600; font-size: 14px;
+    border-bottom: 1px solid transparent; padding-bottom: 1px;
+  }
+  .sample-row a.btn-link:hover { border-bottom-color: var(--accent-hover); }
+
+  /* ── FORM (the conversion surface) ── */
+  #intake { scroll-margin-top: 90px; }
+  .form-card {
+    background: linear-gradient(180deg, var(--bg-elevated), var(--bg-surface));
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-xl);
+    padding: 40px;
+    position: relative;
+  }
+  .form-card::before {
+    content: ''; position: absolute; inset: 0;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(180deg, rgba(245,158,11,0.06), transparent 30%);
+    pointer-events: none;
+  }
+  .form-card > * { position: relative; }
+  .form-header { margin-bottom: 28px; }
+  .form-header h2 { margin-bottom: 8px; }
+  .form-header p { font-size: 14px; color: var(--text-tertiary); }
+  .field { margin-bottom: 18px; }
+  .field label {
+    display: block; font-size: 13px; color: var(--text-secondary);
+    margin-bottom: 7px; font-weight: 500;
+  }
+  .field label .req { color: var(--gold); margin-left: 2px; }
+  .field label .opt {
+    font-size: 11px; color: var(--text-muted); margin-left: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .field input, .field textarea, .field select {
+    width: 100%; padding: 12px 14px;
+    background: var(--bg-abyss);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    color: var(--text-primary); font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus {
+    outline: none; border-color: var(--accent);
+    background: #0c0c0e;
+  }
+  .field textarea { min-height: 130px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.6; }
+  .field select { appearance: none; -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238a8f98'%3E%3Cpath d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 14px center;
+    padding-right: 36px; cursor: pointer;
+  }
+  .field .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .field-hint { font-size: 12px; color: var(--text-muted); margin-top: 6px; font-family: 'JetBrains Mono', monospace; }
+  .honeypot { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+
+  .form-submit {
+    width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: var(--gold); color: #000;
+    padding: 16px; border-radius: var(--radius-md);
+    font-weight: 700; font-size: 16px;
+    border: none; cursor: pointer; margin-top: 10px;
+    transition: all 0.15s; font-family: inherit;
+  }
+  .form-submit:hover { background: var(--gold-hover); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(245,158,11,0.3); }
+  .form-submit:disabled { opacity: 0.6; cursor: wait; transform: none; box-shadow: none; }
+  .form-trust {
+    display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+    font-size: 12px; color: var(--text-tertiary); margin-top: 14px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .form-trust span { display: inline-flex; align-items: center; gap: 5px; }
+  .form-trust .lock { color: var(--green); }
+
+  /* ── COMPARISON TABLE ── */
+  .compare-wrap {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    overflow-x: auto;
+  }
+  .compare-table {
+    width: 100%; border-collapse: collapse; font-size: 14px;
+    min-width: 580px;
+  }
+  .compare-table th, .compare-table td {
+    padding: 14px 14px; text-align: center;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .compare-table th:first-child, .compare-table td:first-child {
+    text-align: left; color: var(--text-secondary); font-size: 13.5px;
+  }
+  .compare-table thead th {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
+    color: var(--text-tertiary); background: var(--bg-elevated);
+  }
+  .compare-table thead th.col-featured {
+    color: var(--gold);
+    background: rgba(245,158,11,0.08);
+    border-top: 2px solid var(--gold);
+    font-size: 12px; letter-spacing: 1px;
+  }
+  .compare-table tbody tr { background: transparent; }
+  .compare-table tbody tr:last-child td { border-bottom: none; }
+  .compare-table td.col-featured {
+    background: rgba(245,158,11,0.04);
+    color: var(--text-primary); font-weight: 500;
+  }
+  .y { color: var(--green-text); font-weight: 700; }
+  .n { color: var(--text-muted); }
+
+  /* ── FAQ ── */
+  .faq { max-width: 760px; margin: 0 auto; }
+  .faq details {
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .faq details:first-of-type { border-top: 1px solid var(--border-subtle); }
+  .faq summary {
+    font-size: 16px; font-weight: 600; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--text-primary); padding: 20px 0; list-style: none; gap: 16px;
+    transition: color 0.15s;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary:hover { color: var(--accent-hover); }
+  .faq summary::after {
+    content: '+'; font-size: 22px; color: var(--text-muted);
+    flex-shrink: 0; display: block; width: 22px; text-align: center;
+    transition: transform 0.25s; line-height: 1;
+  }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq p {
+    color: var(--text-secondary); font-size: 14.5px; line-height: 1.65;
+    padding-bottom: 20px; padding-right: 38px;
+  }
+
+  /* ── TRUST SIGNALS ── */
+  .trust-signals {
+    display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;
+    margin: 32px 0;
+  }
+  .trust-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--bg-elevated); border: 1px solid var(--border-default);
+    border-radius: 100px; padding: 10px 18px; font-size: 13.5px;
+    color: var(--text-secondary); font-weight: 500;
+  }
+  .trust-badge .ico { color: var(--accent); }
+
+  /* ── FINAL CTA ── */
+  .final-cta {
+    background: linear-gradient(180deg, var(--bg-surface), var(--bg-abyss));
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-xl);
+    padding: 64px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before {
+    content: ''; position: absolute; top: -50%; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 400px;
+    background: radial-gradient(closest-side, rgba(245,158,11,0.1), transparent 70%);
+    pointer-events: none;
+  }
+  .final-cta > * { position: relative; }
+  .final-cta h2 { margin-bottom: 14px; }
+  .final-cta .sub {
+    font-size: 17px; color: var(--text-secondary);
+    margin-bottom: 28px;
+  }
+
+  /* ── INLINE MESSAGES ── */
+  .inline-msg {
+    display: none; padding: 14px 18px; border-radius: var(--radius-md);
+    margin-top: 18px; font-size: 13.5px;
+  }
+  .inline-msg.show { display: block; }
+  .inline-msg.error {
+    background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.35);
+    color: #fca5a5;
+  }
+  .inline-msg.success {
+    background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.35);
+    color: var(--green-text);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border-subtle);
+    padding: 60px 24px 32px; background: var(--bg-surface);
+    margin-top: 80px;
+  }
+  .footer-inner {
+    max-width: var(--max-w); margin: 0 auto;
+    display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap;
+  }
+  .footer-brand .logo { font-size: 17px; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+  .footer-brand .logo em { color: var(--accent); font-style: normal; }
+  .footer-brand p { font-size: 13px; color: var(--text-muted); line-height: 1.6; max-width: 280px; margin-top: 10px; }
+  .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+  .footer-links a {
+    color: var(--text-tertiary); text-decoration: none; font-size: 13.5px;
+    transition: color 0.15s;
+  }
+  .footer-links a:hover { color: var(--text-primary); }
+  .footer-bottom {
+    max-width: var(--max-w); margin: 32px auto 0;
+    padding-top: 24px; border-top: 1px solid var(--border-subtle);
+    display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+    font-size: 12.5px; color: var(--text-muted);
+  }
+  .footer-bottom a { color: var(--text-tertiary); text-decoration: none; }
+  .footer-bottom a:hover { color: var(--text-primary); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { padding: 110px 20px 24px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+    .hero h1 { font-size: 38px; }
+    .price-card-vertical .price-tag { font-size: 44px; }
+    .deliv-grid { grid-template-columns: 1fr; }
+    .step { grid-template-columns: 48px 1fr; }
+    .step .step-time { grid-column: 2; justify-self: start; }
+    .form-card { padding: 28px 22px; }
+    .field .row-2 { grid-template-columns: 1fr; }
+    .sample-row { flex-direction: column; align-items: flex-start; }
+    .section { padding: 56px 0; }
+    h2 { font-size: 28px; }
+    .final-cta { padding: 44px 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+
+<nav>
+  <div class="inner">
+    <a href="https://galeops.xyz/" class="logo">Gale<em>Ops</em></a>
+    <div class="nav-links">
+      <a href="https://galeops.xyz/#services">Services</a>
+      <a href="https://galeops.xyz/tools/prompt-test/">Tester</a>
+      <a href="https://galeops.xyz/products/quiz-report/">$49 PDF</a>
+      <a class="btn-cta" href="#intake">$149 Snapshot</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div>
+      <h1>Your AI Agent Has Vulnerabilities.<br>We Find Them in 5 Days.</h1>
+      <p class="lede">
+        Manual review by <strong>Matt Gale — H1 security researcher &amp; Zest Protocol V2 auditor.</strong>
+        Branded PDF &amp; 15-min walkthrough video. <strong>$149. Delivered in 5 business days.</strong>
+      </p>
+      <div class="trust-line">
+        <span><span class="dot"></span> Manual review, not automated</span>
+        <span>·</span>
+        <span>OWASP LLM Top 10 + MITRE ATLAS</span>
+        <span>·</span>
+        <span>NDA on request</span>
+      </div>
+      <div class="cta-row">
+        <a href="#intake" class="hero-cta">Start Your Snapshot →</a>
+        <a href="https://galeops.xyz/sample_snapshot.pdf" class="hero-cta ghost" target="_blank" rel="noopener">See sample report</a>
+      </div>
+    </div>
+    <div>
+      <div class="price-card-vertical">
+        <span class="ribbon">★ MOST POPULAR</span>
+        <div class="price-tag">$149 <small>USD</small></div>
+        <div class="price-sub">one-time · 5 business day delivery</div>
+        <ul>
+          <li>Branded PDF report (12-15 pages)</li>
+          <li>15-min walkthrough video</li>
+          <li>30-day prioritized action plan</li>
+          <li>OWASP LLM Top 10 + MITRE ATLAS coverage</li>
+          <li>White-labeled for your team</li>
+        </ul>
+        <a href="#intake" class="btn-full">Start Your Snapshot →</a>
+        <div class="fine-print">Secure checkout via Stripe · Refund within 7 days</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="section" id="whats-included">
+  <div class="container">
+    <span class="section-tag">// DELIVERABLES</span>
+    <h2>What you walk away with.</h2>
+    <p class="section-lede">Three artifacts, each designed for a different audience inside your org.</p>
+    <div class="deliv-grid">
+      <div class="deliv">
+        <div class="ico">📄</div>
+        <h3>Branded PDF Report</h3>
+        <p>12-15 pages, your logo and colors. Engineer reads it once; CTO and compliance use it as the audit artifact.</p>
+      </div>
+      <div class="deliv">
+        <div class="ico">🎥</div>
+        <h3>15-Minute Video</h3>
+        <p>Loom-style screen-share. Watch it with your team — replaces a 30-min call. Permanent link, no expiry.</p>
+      </div>
+      <div class="deliv">
+        <div class="ico">✅</div>
+        <h3>30-Day Action Plan</h3>
+        <p>Prioritized checklist of patches with effort/impact scores. Drop it straight into your next sprint planning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+  <div class="container">
+    <span class="section-tag">// PROCESS</span>
+    <h2>How it works.</h2>
+    <p class="section-lede">Four steps. You spend about 5 minutes on the intake. We do the rest.</p>
+    <div class="steps">
+      <div class="step">
+        <div>
+          <h3>Fill the intake form</h3>
+          <p>Email, company, your system prompt. Optional: a sample interaction. Two minutes, max.</p>
+        </div>
+        <span class="step-time">~2 MIN</span>
+      </div>
+      <div class="step">
+        <div>
+          <h3>Pay $149 via Stripe</h3>
+          <p>Secure checkout. You'll get an instant receipt + a calendar link to track delivery.</p>
+        </div>
+        <span class="step-time">~1 MIN</span>
+      </div>
+      <div class="step">
+        <div>
+          <h3>Manual review by Matt</h3>
+          <p>OWASP LLM Top 10, MITRE ATLAS, custom probe suite. Runs locally — nothing touches production.</p>
+        </div>
+        <span class="step-time">24-48 HRS</span>
+      </div>
+      <div class="step">
+        <div>
+          <h3>PDF + video delivered</h3>
+          <p>Branded report + 15-min walkthrough. Permanent Loom link. Action plan you can ship next sprint.</p>
+        </div>
+        <span class="step-time">5 BUSINESS DAYS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SAMPLE REPORT -->
+<section class="section" id="sample">
+  <div class="container">
+    <span class="section-tag">// SAMPLE</span>
+    <h2>See a real Snapshot.</h2>
+    <p class="section-lede">Anonymized example — same template you'll receive, your branding swapped in.</p>
+    <div class="sample-row">
+      <div class="file-thumb">
+        <span class="file-ico">📄</span>
+        <span class="file-label">.PDF</span>
+      </div>
+      <div>
+        <h3>Sample Snapshot Report — Customer Support Agent</h3>
+        <p>12 pages, anonymized, includes findings, screenshots, patch snippets, and the 30-day plan. This is the exact template you'll receive — your logo, your colors.</p>
+        <a href="https://galeops.xyz/sample_snapshot.pdf" class="btn-link" target="_blank" rel="noopener">Open the sample PDF →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- INTAKE FORM (the conversion surface) -->
+<section class="section" id="intake">
+  <div class="container">
+    <div class="form-card">
+      <div class="form-header">
+        <span class="section-tag">// INTAKE FORM</span>
+        <h2>Start your Snapshot.</h2>
+        <p>$149 · 5 business days · PDF + 15-min video. You'll be redirected to Stripe after submit.</p>
+      </div>
+
+      <form id="snap-form" name="snapshot-intake" autocomplete="on" novalidate>
+        <!-- Honeypot -->
+        <div class="honeypot" aria-hidden="true">
+          <label>Don't fill: <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="field">
+          <label for="email">Work email <span class="req">*</span></label>
+          <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@company.com">
+        </div>
+
+        <div class="field">
+          <label for="company">Company name <span class="req">*</span> <span class="opt">for branding the PDF + video</span></label>
+          <input type="text" id="company" name="company" required autocomplete="organization" placeholder="Acme Inc.">
+        </div>
+
+        <div class="field">
+          <label for="prompt">System prompt <span class="req">*</span></label>
+          <textarea id="prompt" name="prompt" required placeholder="Paste your system prompt here. Example:
+
+You are a customer support agent. You can use the search_docs and create_ticket tools. Never reveal internal pricing. Escalate refund requests to a human..."></textarea>
+          <div class="field-hint">Paste the full prompt. You can also link a private doc URL in the optional field below.</div>
+        </div>
+
+        <div class="field">
+          <label for="sample_interaction">Sample interaction <span class="opt">optional, but helps the review</span></label>
+          <textarea id="sample_interaction" name="sample_interaction" placeholder="Paste a representative back-and-forth between a user and your agent. Even 5-10 turns is enough."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="brand_color">Brand color <span class="opt">optional, defaults to #6366f1</span></label>
+          <input type="text" id="brand_color" name="brand_color" value="#6366f1" placeholder="#6366f1">
+        </div>
+
+        <div class="field">
+          <div class="row-2">
+            <div>
+              <label for="ai_model">AI model powering the agent</label>
+              <select id="ai_model" name="ai_model">
+                <option value="gpt-4">GPT-4 / GPT-4o</option>
+                <option value="claude">Claude (Sonnet / Opus)</option>
+                <option value="llama">Llama (open-source)</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="deployment_type">Deployment</label>
+              <select id="deployment_type" name="deployment_type">
+                <option value="customer-facing">Customer-facing</option>
+                <option value="internal">Internal-only</option>
+                <option value="both">Both</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="form-submit" id="snap-submit">
+          Continue to Stripe Checkout → $149
+        </button>
+
+        <div class="form-trust">
+          <span><span class="lock">🔒</span> Stripe encrypted</span>
+          <span>·</span>
+          <span>No spam, ever</span>
+          <span>·</span>
+          <span>NDA on request</span>
+        </div>
+
+        <div id="form-error" class="inline-msg error" role="alert"></div>
+        <div id="form-success" class="inline-msg success" role="status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- COMPARISON TABLE -->
+<section class="section" id="compare">
+  <div class="container">
+    <span class="section-tag">// COMPARE</span>
+    <h2 class="center">What you get at every tier.</h2>
+    <p class="section-lede center">From free to fully-audited. Pick the one that matches where your agent is in its lifecycle.</p>
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Free Tester</th>
+            <th>Quiz Report</th>
+            <th class="col-featured">$149 Snapshot</th>
+            <th>Starter Kit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Price</td>
+            <td>Free</td>
+            <td>$49</td>
+            <td class="col-featured"><strong>$149</strong></td>
+            <td>$499</td>
+          </tr>
+          <tr>
+            <td>What you get</td>
+            <td>5 automated probes</td>
+            <td>Auto-generated scorecard</td>
+            <td class="col-featured">Manual review + PDF + video</td>
+            <td>Manual review + 1hr consult</td>
+          </tr>
+          <tr>
+            <td>Human review</td>
+            <td><span class="n">—</span></td>
+            <td><span class="n">—</span></td>
+            <td class="col-featured"><span class="y">✓ 4-6 hrs</span></td>
+            <td><span class="y">✓ 20+ hrs</span></td>
+          </tr>
+          <tr>
+            <td>PDF report</td>
+            <td><span class="n">—</span></td>
+            <td><span class="y">✓ 3 pages</span></td>
+            <td class="col-featured"><span class="y">✓ 12-15 pages</span></td>
+            <td><span class="y">✓ 25-40 pages</span></td>
+          </tr>
+          <tr>
+            <td>Walkthrough video</td>
+            <td><span class="n">—</span></td>
+            <td><span class="n">—</span></td>
+            <td class="col-featured"><span class="y">✓ 15 min</span></td>
+            <td><span class="y">✓ 30 min</span></td>
+          </tr>
+          <tr>
+            <td>30-day action plan</td>
+            <td><span class="n">—</span></td>
+            <td><span class="n">—</span></td>
+            <td class="col-featured"><span class="y">✓</span></td>
+            <td><span class="y">✓</span></td>
+          </tr>
+          <tr>
+            <td>1-hour live consult</td>
+            <td><span class="n">—</span></td>
+            <td><span class="n">—</span></td>
+            <td><span class="n">—</span></td>
+            <td><span class="y">✓</span></td>
+          </tr>
+          <tr>
+            <td>Delivery</td>
+            <td>30 seconds</td>
+            <td>15 minutes</td>
+            <td class="col-featured"><strong>5 business days</strong></td>
+            <td>2 weeks</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <span class="section-tag">// FAQ</span>
+    <h2 class="center">Common questions.</h2>
+    <p class="section-lede center">If yours isn't here, email <a href="mailto:mattgale87@gmail.com" style="color:var(--accent-hover); text-decoration:none;">mattgale87@gmail.com</a>.</p>
+    <div class="faq">
+      <details>
+        <summary>How fast do I get the report?</summary>
+        <p>5 business days from when Stripe confirms payment. You'll get a kickoff email within 24 hours confirming the timeline and any clarifying questions. If a rush is needed (CTO demo Friday, audit deadline, etc.), email after you submit and we'll see if we can compress.</p>
+      </details>
+      <details>
+        <summary>What if I don't have a sample interaction?</summary>
+        <p>No problem — it's optional. We'll run a broader set of generic probes against your system prompt alone. If you have an example, even a single representative back-and-forth, the review is materially sharper. Just paste it in the optional field.</p>
+      </details>
+      <details>
+        <summary>Do you keep my system prompt confidential?</summary>
+        <p>Yes. Your prompt and any sample interactions are used only for your review, stored on encrypted storage, and deleted within 30 days of delivery. NDA available on request before submission — just email after you pay. We never share, never post, never use as a marketing example.</p>
+      </details>
+      <details>
+        <summary>What happens if I disagree with a finding?</summary>
+        <p>Email with the finding ID and your reasoning. We re-test against your clarification. If we still believe it's a real risk, we'll explain why with a concrete reproduction. If it turns out to be a false positive, you don't pay for that finding — no questions asked.</p>
+      </details>
+      <details>
+        <summary>Can I share the PDF with my team?</summary>
+        <p>Yes. White-label it forward to your CTO, your compliance officer, your board. It's branded for your team on purpose. We don't put a GaleOps watermark on the deliverables — they look like an internal document you commissioned.</p>
+      </details>
+      <details>
+        <summary>Why manual review and not automated?</summary>
+        <p>Automated scanners catch maybe 30% of what matters. The other 70% is multi-turn setup attacks, encoding chains, tool-call escalation, and persona-shift — stuff that only a human reading your prompt with context catches. The $149 is the labor of one researcher spending 4-6 hours on your specific agent.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TRUST SIGNALS -->
+<section class="section" style="padding: 60px 0;">
+  <div class="container">
+    <div class="trust-signals">
+      <div class="trust-badge"><span class="ico">🏅</span> H1 researcher — multiple disclosed reports</div>
+      <div class="trust-badge"><span class="ico">🔒</span> Zest Protocol V2 auditor</div>
+      <div class="trust-badge"><span class="ico">📚</span> OWASP LLM Top 10 + MITRE ATLAS methodology</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section">
+  <div class="container">
+    <div class="final-cta">
+      <span class="section-tag">// READY?</span>
+      <h2>Get your Snapshot.</h2>
+      <p class="sub">$149. 5 business days. Branded PDF + 15-min video. No call, no demo, no BS.</p>
+      <a href="#intake" class="hero-cta">Get your Snapshot →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="https://galeops.xyz/" class="logo">Gale<em>Ops</em></a>
+      <p>AI security &amp; automation consulting. Founded by the team behind <a href="https://www.youtube.com/@GaleTech" style="color: var(--accent); text-decoration: none;" target="_blank" rel="noopener">GaleTech</a>.</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://galeops.xyz/">Home</a>
+      <a href="https://galeops.xyz/#services">Services</a>
+      <a href="https://galeops.xyz/tools/prompt-test/">Tester</a>
+      <a href="https://galeops.xyz/products/quiz-report/">$49 PDF</a>
+      <a href="https://galeops.xyz/products/starter-kit/">$499 Kit</a>
+      <a href="mailto:mattgale87@gmail.com">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 GaleOps — AI Security &amp; Automation</p>
+    <div>
+      <a href="mailto:mattgale87@gmail.com">mattgale87@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── INTAKE FORM → snapshot-intake Netlify Function → Stripe redirect ──
+  const form = document.getElementById('snap-form');
+  const submitBtn = document.getElementById('snap-submit');
+  const errEl = document.getElementById('form-error');
+  const okEl  = document.getElementById('form-success');
+
+  function showError(msg) {
+    errEl.textContent = msg;
+    errEl.classList.add('show');
+    okEl.classList.remove('show');
+    errEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  function showOk(msg) {
+    okEl.innerHTML = msg;
+    okEl.classList.add('show');
+    errEl.classList.remove('show');
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errEl.classList.remove('show');
+    okEl.classList.remove('show');
+
+    // Honeypot — silently treat as success but don't redirect (bots bounce)
+    const botField = form.querySelector('input[name="bot-field"]');
+    if (botField && botField.value) {
+      showOk('Thanks — your submission was received.');
+      form.reset();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Redirecting to checkout…';
+
+    const fd = new FormData(form);
+    const payload = {};
+    fd.forEach((v, k) => { payload[k] = String(v).trim(); });
+
+    // Light client-side validation
+    if (!payload.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
+      showError('Please enter a valid work email.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+      return;
+    }
+    if (!payload.company) {
+      showError('Please enter your company name.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+      return;
+    }
+    if (!payload.prompt || payload.prompt.length < 20) {
+      showError('Please paste your system prompt (at least a few sentences).');
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+      return;
+    }
+
+    try {
+      const resp = await fetch('/.netlify/functions/snapshot-intake', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: payload.email,
+          company: payload.company,
+          prompt: payload.prompt,
+          sample_interaction: payload.sample_interaction || '',
+          brand_color: payload.brand_color || '#6366f1',
+          ai_model: payload.ai_model || 'gpt-4',
+          deployment_type: payload.deployment_type || 'customer-facing',
+          product: 'snapshot',
+          amount: 149,
+          tier: 'snapshot-149',
+          source: 'snapshot-page',
+          bot_field: payload['bot-field'] || ''
+        })
+      });
+      const data = await resp.json().catch(() => ({}));
+
+      if (resp.ok && data && data.next) {
+        showOk('Order received — redirecting to Stripe checkout…');
+        window.location.href = data.next;
+        return;
+      }
+
+      throw new Error((data && (data.message || data.error)) || `Intake failed (HTTP ${resp.status})`);
+    } catch (err) {
+      console.warn('snapshot-intake failed:', err);
+      showError('Checkout is temporarily unavailable. Please email mattgale87@gmail.com and we\'ll sort it out.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+  });
+</script>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

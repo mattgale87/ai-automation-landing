@@ -1,0 +1,21 @@
+I haven't manually uploaded a video in 47 days. One command. Six agents. Published everywhere. Zero manual work.
+
+Here's how the pipeline works.
+
+The Research Agent scans twelve sources — YouTube, Google, Reddit, Twitter — finds trending topics, competitor gaps, and keyword opportunities. It delivers a weekly brief in under sixty seconds.
+
+The Script Agent takes that brief and writes a retention-optimized script — hook in the first fifteen seconds, chapter markers, Shorts clip boundaries, all matched to your voice from training examples.
+
+The Visual Agent generates three thumbnail variants, a B-roll shot list with timestamps, and motion graphics specs — all using your brand palette.
+
+The Edit Agent takes the script and visual cues, assembles a DaVinci Resolve or CapCut timeline via XML, burns in word-by-word captions, levels the music, and applies your color grade.
+
+The SEO Agent writes ten title variants with CTR prediction, a full description with chapters, fifteen tags, and hashtag sets.
+
+The Publish Agent uploads to YouTube, Shorts, TikTok, Reels, X, and LinkedIn — each with platform-native metadata.
+
+The entire pipeline runs from one terminal command. Ship video, space, topic name. Done.
+
+Results after 47 videos: 34 percent retention increase, 2.1 times CTR, 12 hours per week saved.
+
+Stop doing work a machine can do. Book a free 15-minute audit at galeops dot xyz.
