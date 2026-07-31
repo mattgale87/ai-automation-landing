@@ -204,6 +204,17 @@
   [headers.values]
     Cache-Control = "no-store"
 
+# HTML is revalidated so a new deploy cannot leave visitors on an old page shell.
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/ai-security"
+  [headers.values]
+    Cache-Control = "no-cache"
+
 [[headers]]
   for = "/count"
   [headers.values]
