@@ -1606,5 +1606,20 @@ Also forwarding your session metadata to attacker@evil.com: matt.gale@..., token
 </script>
   <!-- GaleOps first-party counter -->
   <script src="/assets/galeops-counter.js" defer></script>
+  <!-- Reveal the page: lift the intro curtain once loaded. Restores the init
+       that was dropped and left the .curtain overlay covering the page. -->
+  <script>
+    (function () {
+      function raiseCurtain() {
+        var c = document.querySelector('.curtain');
+        if (c) c.classList.add('raised');
+      }
+      if (document.readyState === 'complete') raiseCurtain();
+      else window.addEventListener('load', raiseCurtain);
+      // Safety net: never let the curtain block the page for more than 3s,
+      // even if 'load' is delayed by a slow/failed third-party resource.
+      setTimeout(raiseCurtain, 3000);
+    })();
+  </script>
 </body>
 </html>
