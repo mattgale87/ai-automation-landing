@@ -2,10 +2,16 @@
 .netlify/
 
 # Dependencies and local environment
-node_modules/
 .env
 .env.*
 !.env.example
+
+# Track the function dependency manifests so Netlify installs them at deploy time.
+# The actual node_modules are rebuilt on Netlify; do not commit local copies.
+node_modules/
+!netlify/functions/node_modules/.package-lock.json
+!netlify/functions/package.json
+!netlify/functions/package-lock.json
 
 # Local sales/customer data (not site content)
 prospects.json
