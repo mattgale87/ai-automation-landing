@@ -215,6 +215,18 @@
   [headers.values]
     Cache-Control = "no-cache"
 
+[[redirects]]
+  from = "/iso-42001-gap"
+  to = "/iso-42001-gap.html"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/guardrail-retainer"
+  to = "/guardrail-retainer.html"
+  status = 302
+  force = true
+
 [[headers]]
   for = "/count"
   [headers.values]
