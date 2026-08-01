@@ -227,6 +227,12 @@
   status = 302
   force = true
 
+[[redirects]]
+  from = "/mcp-security-assessment"
+  to = "/mcp-security-assessment.html"
+  status = 302
+  force = true
+
 [[headers]]
   for = "/count"
   [headers.values]
