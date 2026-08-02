@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Mathew Gale — AI Security & Enterprise IT Executive | GaleOps</title>
+  <meta name="description" content="14+ years leading enterprise IT, infrastructure, and AI security at Wells Fargo, Tile Shop, and MidHudson Regional Hospital. Now securing AI agents for B2B SaaS teams.">
+  <link rel="canonical" href="https://galeops.xyz/about">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://galeops.xyz/about">
+  <meta property="og:title" content="About Mathew Gale — AI Security & Enterprise IT Executive">
+  <meta property="og:description" content="14+ years leading enterprise IT, infrastructure, and AI security. Now securing AI agents for B2B SaaS teams.">
+  <meta property="og:image" content="https://galeops.xyz/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Mathew Gale — AI Security & Enterprise IT Executive">
+  <meta name="twitter:description" content="14+ years leading enterprise IT, infrastructure, and AI security. Now securing AI agents for B2B SaaS teams.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Bitcount+Grid+Single:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-abyss: #08090a;
+      --bg-surface: #101012;
+      --bg-elevated: #191a1b;
+      --bg-hover: #222324;
+      --border-subtle: rgba(255,255,255,0.06);
+      --border-default: rgba(255,255,255,0.09);
+      --border-active: rgba(99,102,241,0.5);
+      --text-primary: #f7f8f8;
+      --text-secondary: #d0d6e0;
+      --text-tertiary: #8a8f98;
+      --text-muted: #5a5f66;
+      --accent: #6366f1;
+      --accent-hover: #818cf8;
+      --accent-glow: rgba(99,102,241,0.15);
+      --green: #10b981;
+      --green-text: #34d399;
+      --gold: #f59e0b;
+      --gold-accent: #c89a45;
+      --gold-hover: #d9b768;
+      --gold-glow: rgba(200,154,69,0.18);
+      --font-display: 'DM Sans', 'Inter', system-ui, sans-serif;
+      --font-numeral: 'Bitcount Grid Single', 'DM Sans', system-ui, sans-serif;
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --max-w: 1120px;
+    }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg-abyss);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    .noise-overlay {
+      position: fixed; inset: 0; z-index: 9998; pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(8,9,10,0.85); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    nav .inner {
+      max-width: var(--max-w); margin: 0 auto; padding: 0 32px;
+      display: flex; justify-content: space-between; align-items: center; height: 64px;
+    }
+    nav .logo { font-size: 19px; font-weight: 700; color: var(--text-primary); text-decoration: none; letter-spacing: -0.3px; }
+    nav .logo em { color: var(--accent); font-style: normal; font-weight: 500; }
+    .nav-links { display: flex; gap: 6px; align-items: center; }
+    .nav-links a {
+      color: var(--text-tertiary); text-decoration: none; font-size: 13.5px;
+      font-weight: 500; padding: 6px 12px; border-radius: var(--radius-sm);
+      transition: color 0.15s; position: relative;
+    }
+    .nav-links a:not(.btn-cta)::after {
+      content: ''; position: absolute; left: 12px; right: 12px; bottom: 1px;
+      height: 1px; background: var(--gold-accent); transform: scaleX(0);
+      transform-origin: left; transition: transform 0.25s ease;
+    }
+    .nav-links a:not(.btn-cta):hover { color: var(--text-primary); }
+    .nav-links a:not(.btn-cta):hover::after { transform: scaleX(1); }
+    .btn-cta {
+      background: var(--accent); color: #fff !important;
+      padding: 7px 16px; border-radius: var(--radius-sm); font-weight: 600; font-size: 13px;
+      box-shadow: 0 0 0 1px rgba(200,154,69,0.4), 0 0 18px var(--gold-glow);
+      transition: background 0.15s, box-shadow 0.2s; text-decoration: none;
+    }
+    .btn-cta:hover { background: var(--accent-hover); box-shadow: 0 0 0 1px rgba(200,154,69,0.7), 0 0 28px rgba(200,154,69,0.4); }
+    .mobile-toggle { display: none; background: none; border: none; color: var(--text-primary); font-size: 22px; cursor: pointer; padding: 4px; }
+    .mobile-nav { display: none; position: fixed; inset: 60px 0 0; z-index: 99; background: rgba(8,9,10,0.97); backdrop-filter: blur(12px); padding: 24px; }
+    .mobile-nav.open { display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav a { color: var(--text-secondary); text-decoration: none; font-size: 16px; font-weight: 500; padding: 12px 16px; border-radius: var(--radius-sm); }
+    .mobile-nav a:hover { background: var(--bg-hover); }
+    .mobile-nav .btn-cta { margin-top: 12px; text-align: center; display: block; }
+
+    .page-header {
+      padding: 140px 24px 60px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(99,102,241,0.2) 0%, transparent 60%);
+    }
+    .page-header > * { position: relative; z-index: 1; }
+    .page-header .label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 16px;
+    }
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 6vw, 64px); font-weight: 700;
+      letter-spacing: -2.5px; line-height: 1.05; margin-bottom: 20px;
+    }
+    .page-header h1 .highlight {
+      background: linear-gradient(135deg, var(--gold-accent) 0%, var(--accent-hover) 55%, var(--green-text) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .page-header p {
+      font-size: clamp(16px, 2vw, 19px); color: var(--text-tertiary);
+      max-width: 600px; margin: 0 auto; line-height: 1.55;
+    }
+
+    .section { padding: 80px 24px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 16px;
+    }
+    .section-title { font-family: var(--font-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 16px; }
+    .section-subtitle { color: var(--text-tertiary); font-size: 17px; max-width: 600px; line-height: 1.5; }
+
+    .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .content-text p { color: var(--text-secondary); font-size: 16px; line-height: 1.7; margin-bottom: 20px; }
+    .content-text p.lead { font-size: 18px; color: var(--text-primary); font-weight: 500; }
+
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+    .stat-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 32px 24px; text-align: center; }
+    .stat-card .num { font-family: var(--font-numeral); font-size: 36px; font-weight: 700; color: var(--gold-accent); letter-spacing: -1px; }
+    .stat-card .desc { font-size: 14px; color: var(--text-tertiary); margin-top: 8px; }
+
+    .role-timeline { margin-top: 48px; }
+    .role-item {
+      display: grid; grid-template-columns: 200px 1fr; gap: 32px;
+      padding: 28px 0; border-bottom: 1px solid var(--border-subtle);
+    }
+    .role-item:last-child { border-bottom: none; }
+    .role-meta .company { font-size: 16px; font-weight: 600; color: var(--text-primary); }
+    .role-meta .title { font-size: 14px; color: var(--accent); font-weight: 500; margin-top: 4px; }
+    .role-meta .dates { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+    .role-details ul { list-style: none; }
+    .role-details ul li {
+      font-size: 14.5px; color: var(--text-secondary); padding: 6px 0;
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .role-details ul li::before { content: '→'; color: var(--accent); font-weight: 600; flex-shrink: 0; }
+
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 24px; }
+    .cert-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 18px; border-radius: 100px;
+      border: 1px solid var(--border-default); background: var(--bg-elevated);
+      font-size: 13px; color: var(--text-secondary); font-weight: 500;
+    }
+
+    .cta-section {
+      padding: 100px 24px; text-align: center;
+      position: relative; overflow: hidden; background: var(--bg-surface);
+    }
+    .cta-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(99,102,241,0.14) 0%, rgba(167,139,250,0.07) 50%, rgba(52,211,153,0.04) 100%);
+    }
+    .cta-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .cta-section h2 { font-family: var(--font-display); font-size: clamp(28px, 4.5vw, 52px); font-weight: 700; letter-spacing: -2px; line-height: 1.08; margin-bottom: 20px; }
+    .cta-section h2 span {
+      background: linear-gradient(135deg, var(--gold-accent) 0%, var(--accent-hover) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .cta-section p { font-size: 17px; color: var(--text-tertiary); margin-bottom: 36px; line-height: 1.5; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 28px; border-radius: var(--radius-sm); font-weight: 600;
+      font-size: 15px; text-decoration: none; transition: all 0.15s; border: none; cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+      box-shadow: 0 0 0 1px rgba(200,154,69,0.4), 0 0 20px var(--gold-glow);
+    }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 0 0 1px rgba(200,154,69,0.75), 0 4px 24px rgba(99,102,241,0.35), 0 0 32px rgba(200,154,69,0.4); }
+    .btn-ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--border-default); }
+    .btn-ghost:hover { background: var(--bg-hover); color: var(--text-primary); border-color: var(--text-muted); }
+
+    footer { border-top: 1px solid var(--border-subtle); padding: 60px 24px 32px; background: var(--bg-surface); }
+    .footer-grid { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--border-subtle); }
+    .footer-brand .logo { font-size: 17px; font-weight: 700; color: var(--text-primary); text-decoration: none; letter-spacing: -0.3px; display: inline-block; margin-bottom: 12px; }
+    .footer-brand .logo em { color: var(--accent); font-style: normal; font-weight: 500; }
+    .footer-brand p { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; max-width: 260px; margin-bottom: 20px; }
+    .footer-col h4 { font-size: 11.5px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { color: var(--text-tertiary); text-decoration: none; font-size: 13.5px; transition: color 0.15s; }
+    .footer-col ul li a:hover { color: var(--text-primary); }
+    .footer-bottom { max-width: var(--max-w); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 24px; }
+    .footer-bottom p { color: var(--text-muted); font-size: 13px; }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-links a { color: var(--text-tertiary); text-decoration: none; font-size: 13px; transition: color 0.15s; }
+    .footer-bottom-links a:hover { color: var(--text-primary); }
+
+    @media (max-width: 900px) {
+      .content-grid { grid-template-columns: 1fr; gap: 32px; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .role-item { grid-template-columns: 1fr; gap: 12px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .section { padding: 60px 20px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mathew Gale",
+    "givenName": "Mathew",
+    "familyName": "Gale",
+    "email": "mattgale87@gmail.com",
+    "telephone": "845-750-5549",
+    "jobTitle": "Senior Technology Executive & AI Security Consultant",
+    "worksFor": { "@type": "Organization", "name": "GaleOps", "url": "https://galeops.xyz" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Western Governors University" },
+      { "@type": "CollegeOrUniversity", "name": "Dutchess Community College" }
+    ],
+    "knowsAbout": ["AI Security", "Enterprise IT", "Infrastructure", "Network Engineering", "Cloud Architecture", "Cybersecurity", "Zero Trust", "SD-WAN"],
+    "url": "https://galeops.xyz/about",
+    "sameAs": [
+      "https://www.linkedin.com/in/mattgale87",
+      "https://www.youtube.com/@GaleTech",
+      "https://x.com/Mattjgale87"
+    ]
+  }
+  </script>
+</head>
+<body>
+<div class="noise-overlay" aria-hidden="true"></div>
+
+<nav>
+  <div class="inner">
+    <a href="/" class="logo">Gale<em>Ops</em></a>
+    <div class="nav-links">
+      <a href="/about">About</a>
+      <a href="/services">Services</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/case-studies">Case Studies</a>
+      <a href="/blog/">Blog</a>
+      <a href="/contact">Contact</a>
+      <a href="https://calendly.com/galeops/15min" class="btn-cta" target="_blank" rel="noopener">Book Free Audit →</a>
+    </div>
+    <button class="mobile-toggle" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="/about">About</a>
+  <a href="/services">Services</a>
+  <a href="/pricing">Pricing</a>
+  <a href="/case-studies">Case Studies</a>
+  <a href="/blog/">Blog</a>
+  <a href="/contact">Contact</a>
+  <a href="https://calendly.com/galeops/15min" class="btn-cta" target="_blank" rel="noopener">Book Free Audit →</a>
+</div>
+
+<section class="page-header">
+  <div class="label">About</div>
+  <h1>Enterprise IT leader turned <span class="highlight">AI security specialist</span></h1>
+  <p>14+ years building, securing, and scaling enterprise infrastructure at Wells Fargo, Tile Shop, and MidHudson Regional Hospital. Now I break AI agents before attackers do.</p>
+</section>
+
+<section class="section" style="background: var(--bg-surface);">
+  <div class="section-inner">
+    <div class="content-grid">
+      <div class="content-text">
+        <p class="lead">I spent 14 years running enterprise IT for some of the most regulated environments in the country — financial services, healthcare, retail, and higher education. The same security disciplines I used there apply directly to AI agents today.</p>
+        <p>At <strong>Wells Fargo</strong>, I led a 40-person engineering organization, governed an $80M+ technology portfolio, and directed a multi-year SD-WAN transformation across 5,000+ locations. I integrated Splunk, AppDynamics, and SevOne into operations — driving a 40% reduction in mean time to resolution. I negotiated $2M+ in carrier savings and established roadmaps for Zero Trust, hybrid cloud, and network modernization.</p>
+        <p>At <strong>The Tile Shop</strong>, I held full responsibility for enterprise infrastructure across 370+ retail locations. I led a Juniper-to-Meraki SD-WAN migration that cut WAN costs by 20%, redesigned store connectivity with LTE failover, and delivered SOX-compliant security controls.</p>
+        <p>At <strong>MidHudson Regional Hospital</strong>, I ran network engineering for 24x7 clinical operations — EMR, PACS, life-safety systems — under HIPAA. I cut patient-impacting network events from over two hours to under 30 minutes and achieved 99.99% availability for critical hospital systems.</p>
+        <p>Now I apply that same discipline to AI security. Prompt injection, tool misuse, data leakage — these are the same attack surface problems I've been solving for 14 years, just with a new protocol layer on top.</p>
+      </div>
+      <div>
+        <div class="stats-grid" style="margin-top:0;">
+          <div class="stat-card">
+            <div class="num">14+</div>
+            <div class="desc">Years Enterprise IT Leadership</div>
+          </div>
+          <div class="stat-card">
+            <div class="num">$80M+</div>
+            <div class="desc">Technology Portfolio Managed</div>
+          </div>
+          <div class="stat-card">
+            <div class="num">5,000+</div>
+            <div class="desc">Locations Across SD-WAN Programs</div>
+          </div>
+          <div class="stat-card">
+            <div class="num">40</div>
+            <div class="desc">Engineers Led at Wells Fargo</div>
+          </div>
+          <div class="stat-card">
+            <div class="num">$2M+</div>
+            <div class="desc">Negotiated Carrier Savings</div>
+          </div>
+          <div class="stat-card">
+            <div class="num">40%</div>
+            <div class="desc">MTTR Reduction via Observability</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Career Timeline</div>
+    <h2 class="section-title">Where I've led</h2>
+    <div class="role-timeline">
+      <div class="role-item">
+        <div class="role-meta">
+          <div class="company">Wells Fargo</div>
+          <div class="title">Executive Associate Vice President of Technology</div>
+          <div class="dates">Aug 2022 – Apr 2026</div>
+        </div>
+        <div class="role-details">
+          <ul>
+            <li>Directed SD-WAN transformation supporting 5,000+ locations, improving branch resiliency and application performance while contributing to ~$12M in annual carrier savings</li>
+            <li>Led integration of Splunk, AppDynamics, and SevOne into operations workflows, contributing to a 40% reduction in mean time to resolution</li>
+            <li>Established strategic roadmaps for Zero Trust, hybrid cloud connectivity, network modernization, automation, and vendor consolidation</li>
+            <li>Governed an $80M+ technology portfolio and relationships with 20+ telecom and technology vendors, generating $2M+ in negotiated savings</li>
+            <li>Partnered across network, cloud, cybersecurity, architecture, and compliance teams to support secure Azure and AWS adoption</li>
+            <li>Provided leadership for a 40-person multidisciplinary engineering organization</li>
+          </ul>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="role-meta">
+          <div class="company">The Tile Shop</div>
+          <div class="title">Director of Information Technology</div>
+          <div class="dates">Aug 2020 – Aug 2022</div>
+        </div>
+        <div class="role-details">
+          <ul>
+            <li>Directed migration from Juniper to Cisco Meraki SD-WAN across 370+ sites, reducing WAN operating costs by 20%</li>
+            <li>Redesigned store connectivity with LTE failover and resilient WAN architecture, reducing business-impacting downtime</li>
+            <li>Led enterprise wireless modernization across the retail estate</li>
+            <li>Standardized segmentation, security policies, and operational controls, supporting successful SOX audits</li>
+            <li>Developed and validated an enterprise disaster recovery strategy with defined recovery objectives</li>
+          </ul>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="role-meta">
+          <div class="company">MidHudson Regional Hospital</div>
+          <div class="title">Director of Networking</div>
+          <div class="dates">Mar 2019 – Aug 2020</div>
+        </div>
+        <div class="role-details">
+          <ul>
+            <li>Modernized core, wireless, and clinical network services to achieve 99.99% availability for critical hospital systems</li>
+            <li>Directed hospital-wide wireless improvements that reduced clinical device connectivity failures</li>
+            <li>Reworked incident response and escalation practices, reducing patient-impacting network events from 2+ hours to under 30 minutes</li>
+            <li>Upgraded legacy telecom and network infrastructure while strengthening high availability and change-control practices</li>
+          </ul>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="role-meta">
+          <div class="company">The Culinary Institute of America</div>
+          <div class="title">Network Administrator</div>
+          <div class="dates">Jul 2017 – Mar 2019</div>
+        </div>
+        <div class="role-details">
+          <ul>
+            <li>Supported campus network and infrastructure operations across academic, administrative, hospitality, and enterprise environments</li>
+            <li>Led upgrades involving routing, switching, wireless, security, monitoring, and service reliability</li>
+          </ul>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="role-meta">
+          <div class="company">Pinnacle Network Solutions</div>
+          <div class="title">Senior Network Engineer</div>
+          <div class="dates">Apr 2014 – Jul 2017</div>
+        </div>
+        <div class="role-details">
+          <ul>
+            <li>Engineered and supported enterprise data center, WAN, LAN, routing, switching, firewall, and global connectivity services</li>
+            <li>Delivered complex client environments including work supporting IBM operations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: var(--bg-surface);">
+  <div class="section-inner">
+    <div class="section-label">Education & Certifications</div>
+    <h2 class="section-title">Credentials that back the work</h2>
+    <div style="margin-top: 32px;">
+      <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">Education</h3>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: var(--bg-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);">
+          <div style="font-size: 24px;">🎓</div>
+          <div>
+            <div style="font-weight: 600; color: var(--text-primary);">MS Information Technology</div>
+            <div style="font-size: 14px; color: var(--text-tertiary);">Western Governors University — Expected Oct 2026</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: var(--bg-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);">
+          <div style="font-size: 24px;">🎓</div>
+          <div>
+            <div style="font-weight: 600; color: var(--text-primary);">BS Information Technology</div>
+            <div style="font-size: 14px; color: var(--text-tertiary);">Western Governors University — Dec 2022</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: var(--bg-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);">
+          <div style="font-size: 24px;">🎓</div>
+          <div>
+            <div style="font-weight: 600; color: var(--text-primary);">AS Computer & Information Sciences</div>
+            <div style="font-size: 14px; color: var(--text-tertiary);">Dutchess Community College</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top: 40px;">
+      <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">Certifications</h3>
+      <div class="cert-grid">
+        <div class="cert-pill">📜 CAPM (PMI)</div>
+        <div class="cert-pill">☁️ AWS Certified Cloud Practitioner</div>
+        <div class="cert-pill">🔷 Microsoft Azure Fundamentals</div>
+        <div class="cert-pill">🛡️ CompTIA Security+ ce</div>
+        <div class="cert-pill">🌐 CompTIA Network+ ce</div>
+        <div class="cert-pill">💻 CompTIA A+ ce</div>
+        <div class="cert-pill">📋 CompTIA Project+</div>
+        <div class="cert-pill">🔄 ITIL Foundation</div>
+        <div class="cert-pill">🔒 Fortinet NSE 4</div>
+      </div>
+    </div>
+    <div style="margin-top: 40px;">
+      <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">Recognition</h3>
+      <div class="cert-grid">
+        <div class="cert-pill">🏆 Wells Fargo Technology Excellence Award (2024)</div>
+        <div class="cert-pill">🏆 Wells Fargo Innovation Leadership Award (2023)</div>
+        <div class="cert-pill">🏆 IT Leadership Excellence Award — CIA (2018)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Why AI Security</div>
+    <h2 class="section-title">Same discipline, new attack surface</h2>
+    <div class="content-text" style="max-width: 720px;">
+      <p>Enterprise IT security and AI security share the same fundamentals: identity, access control, data boundaries, and monitoring. The difference is speed — AI agents can be exploited in milliseconds through prompt injection, and the attack surface changes every time you update a system prompt or add a tool.</p>
+      <p>I bring 14 years of enterprise-grade security discipline — Zero Trust architecture, network segmentation, incident response, vendor risk management — to a field where most practitioners have never run a production environment at scale. That's the GaleOps difference.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2>Want to work with someone who's <span>been on both sides</span> of the table?</h2>
+    <p>Book a free 15-minute fit call. We'll map your AI surface, your deployment context, and which engagement tier matches your exposure.</p>
+    <a href="https://calendly.com/galeops/15min" class="btn btn-primary" target="_blank" rel="noopener">Book a Free 15-Min Fit Call →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="/" class="logo">Gale<em>Ops</em></a>
+      <p>AI automation and AI security for businesses that want to move faster, work smarter, and stay secure. Created by the team behind <a href="https://www.youtube.com/@GaleTech" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">GaleTech</a>.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="/ai-security">AI Security</a></li>
+        <li><a href="/ai-security-audit/">AI Security Audit</a></li>
+        <li><a href="/ai-guardrail-setup/">Guardrail Setup</a></li>
+        <li><a href="/ai-red-team/">Red Team & Compliance</a></li>
+        <li><a href="/mcp-security-assessment">MCP Assessment</a></li>
+        <li><a href="/iso-42001-gap">ISO 42001 Gap</a></li>
+        <li><a href="/guardrail-retainer">Guardrail Retainer</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/about">About</a></li>
+        <li><a href="/services">All Services</a></li>
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/case-studies">Case Studies</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/privacy">Privacy & Terms</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:mattgale87@gmail.com">mattgale87@gmail.com</a></li>
+        <li><a href="https://calendly.com/galeops/15min" target="_blank" rel="noopener">Free 15-Min Audit</a></li>
+      </ul>
+      <div style="margin-top: 20px;">
+        <h4>Follow</h4>
+        <div style="display: flex; gap: 8px; margin-top: 12px;">
+          <a href="https://www.youtube.com/@GaleTech" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: var(--radius-sm); border: 1px solid var(--border-default); background: var(--bg-elevated); color: var(--text-tertiary); text-decoration: none; font-size: 15px;" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
+          <a href="https://x.com/Mattjgale87" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: var(--radius-sm); border: 1px solid var(--border-default); background: var(--bg-elevated); color: var(--text-tertiary); text-decoration: none; font-size: 15px;" target="_blank" rel="noopener" aria-label="X / Twitter">𝕏</a>
+          <a href="https://www.linkedin.com/in/mattgale87" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: var(--radius-sm); border: 1px solid var(--border-default); background: var(--bg-elevated); color: var(--text-tertiary); text-decoration: none; font-size: 15px;" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 GaleOps — AI Automation & Security Consulting</p>
+    <div class="footer-bottom-links">
+      <a href="/privacy">Privacy & Terms</a>
+      <a href="mailto:mattgale87@gmail.com">mattgale87@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.mobile-nav a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      document.getElementById('mobileNav').classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>

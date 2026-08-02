@@ -237,3 +237,52 @@
   for = "/count"
   [headers.values]
     Cache-Control = "no-store"
+
+# New pages (Aug 2026)
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/pricing"
+  to = "/pricing.html"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/case-studies"
+  to = "/case-studies.html"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/services"
+  to = "/services.html"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy.html"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/enterprise-it-trust"
+  to = "/enterprise-it-trust.html"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/resources"
+  to = "/resources.html"
+  status = 302
+  force = true
