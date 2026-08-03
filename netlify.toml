@@ -286,3 +286,9 @@
   to = "/resources.html"
   status = 302
   force = true
+
+[[redirects]]
+  from = "/agentic-ops"
+  to = "/agentic-ops.html"
+  status = 302
+  force = true

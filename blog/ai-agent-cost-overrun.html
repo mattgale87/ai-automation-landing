@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why 73% of Enterprises Blew Their AI Budget (And How to Stop It) | GaleOps</title>
+<meta name="description" content="73% of enterprises went over their AI budget in 2026. See the three cost multipliers, the real blow-ups, and the controls that actually cap agent spend.">
+<link rel="canonical" href="https://galeops.xyz/blog/ai-agent-cost-overrun.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://galeops.xyz/blog/ai-agent-cost-overrun.html">
+<meta property="og:title" content="Why 73% of Enterprises Blew Their AI Budget (And How to Stop It)">
+<meta property="og:description" content="73% of enterprises went over their AI budget in 2026. See the three cost multipliers, the real blow-ups, and the controls that actually cap agent spend.">
+<meta property="og:image" content="https://galeops.xyz/og-image.svg">
+<meta property="article:section" content="Agentic Ops">
+<meta property="article:published_time" content="2026-08-03">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #08090a; --surface: #101012; --text: #f7f8f8; --muted: #8a8f98; --accent: #6366f1; --green: #10b981; --red: #ef4444; --gold: #f59e0b; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 720px; margin: 0 auto; padding: 60px 24px; }
+  .breadcrumb { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px; font-weight: 600; }
+  .meta { font-size: 14px; color: var(--muted); margin-bottom: 40px; }
+  .lead { font-size: 19px; color: #d0d6e0; line-height: 1.6; margin-bottom: 40px; }
+  h2 { font-size: 26px; font-weight: 600; margin: 48px 0 16px; letter-spacing: -0.5px; }
+  h3 { font-size: 20px; font-weight: 600; margin: 32px 0 12px; }
+  p { margin-bottom: 18px; color: #d0d6e0; }
+  ul, ol { margin: 20px 0 20px 24px; color: #d0d6e0; }
+  li { margin-bottom: 10px; }
+  .highlight-box { background: var(--surface); border-left: 3px solid var(--red); padding: 24px 28px; margin: 32px 0; border-radius: 0 10px 10px 0; }
+  .highlight-box.green { border-color: var(--green); }
+  .code { background: #0d0e10; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 18px 20px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #d0d6e0; margin: 24px 0; overflow-x: auto; }
+  .cta-bar { background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 32px; text-align: center; margin: 48px 0; }
+  .cta-bar h3 { margin-top: 0; }
+  .btn { display: inline-block; background: var(--green); color: #fff; padding: 14px 28px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  code { background: var(--surface); padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Why 73% of Enterprises Blew Their AI Budget (And How to Stop It)",
+  "author": { "@type": "Person", "name": "Mathew Gale", "sameAs": ["https://www.youtube.com/@GaleTech", "https://www.linkedin.com/in/mattgale", "https://x.com/Mattjgale87"] },
+  "datePublished": "2026-08-03",
+  "dateModified": "2026-08-03",
+  "publisher": { "@type": "Organization", "name": "GaleOps" }
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb"><a href="/blog/">Blog</a> → Agentic Ops</div>
+  <h1>Why 73% of Enterprises Blew Their AI Budget (And How to Stop It)</h1>
+  <div class="meta">By Mathew Gale · Agentic Ops · Updated 2026-08-03</div>
+  <p class="lead">Seventy-three percent of enterprises went over their AI budget this year. That number isn't a forecast. It's a post-mortem. The FinOps Foundation found it in their 2026 State of FinOps survey, and if you run anything agentic, you're probably in that group and don't know it yet.</p>
+
+  <h2>The number that should scare you</h2>
+  <p>Seventy-three percent. That's the share of enterprises in the FinOps Foundation's 2026 State of FinOps report whose AI costs ran past what they planned. Not 73% who saw a surprise spike. Seventy-three percent who blew the budget outright.</p>
+  <div class="highlight-box">
+    <strong>73% over budget.</strong> Enterprise AI inference is now 85% of total AI spend. The meter that used to tick on a chatbot now runs all day, every day.
+  </div>
+  <p>Why now? Two years ago most enterprise AI was a chat box on an intranet. A question went in, an answer came out, the meter barely moved. 2026 is different. The same companies now run agents that plan, call tools, read documents, and decide what to do next. The bill follows the agent, not the chat box.</p>
+
+  <h2>The three cost multipliers nobody budgeted for</h2>
+  <p>Three things hit at once, and almost no budget accounts for any of them.</p>
+  <p>First, token count per task. A plain chatbot query moves maybe a few hundred tokens. An agentic workflow runs 5 to 30 times that per task, according to Stanford's Agentic AI Cost Attribution study from 2025. The model isn't answering one question. It's holding a working session, with notes, retries, and self-talk.</p>
+  <p>Second, re-sent context. This is the quiet killer. Stanford's lab found that 62% of an agent's inference bill is the model re-reading information it already has. The agent pastes its whole memory back into the prompt on every step, so the model pays to read the same facts twenty times. That isn't a model problem. It's a plumbing problem.</p>
+  <div class="highlight-box">
+    <strong>62% of the bill is the model re-reading what it knows.</strong> Every step re-sends the full memory. Cut that, and the biggest line item drops.
+  </div>
+  <p>Third, runaway loops. An agent that can't tell it's done will retry until something stops it. I've watched a single stuck task burn a day's token budget in an hour because nothing killed the loop. No ceiling, no kill-switch, no alarm. The meter just ran.</p>
+
+  <h2>Why the unit-price drop doesn't save you</h2>
+  <p>Here's the part that throws people. Token prices dropped. Ramp's data shows the average cost per million tokens fell from about $10 to $2.50 in a single year. So you'd think bills would fall too.</p>
+  <p>They didn't. The median enterprise LLM bill grew 7.2x year over year, per Gartner. Cheaper per token, but you're buying a thousand times more of them. The unit economics improved and the total bill exploded anyway. Falling prices are not a cost strategy.</p>
+  <div class="highlight-box">
+    <strong>Price per token: down 75%. Total bill: up 7.2x.</strong> The discount means nothing when volume runs away from you.
+  </div>
+
+  <h2>Real stories, not warnings</h2>
+  <p>A few stories made the rounds, and they aren't edge cases.</p>
+  <p>Uber's CTO said in April 2026 that the budget he thought he'd need for the whole year was already gone. By April. The annual AI number, spent in four months.</p>
+  <p>Axios reported a client that spent $500M in one month after handing out Claude licenses with no usage limits. A CTO there said employees were using the models to check the weather. Not to write code. The weather.</p>
+  <div class="highlight-box">
+    <strong>$500M in one month.</strong> The entire blow-up came from Claude licenses with no usage caps. One team, no ceiling, the weather app replaced by a frontier model.
+  </div>
+  <p>Sam Altman said the AI cost ROI question is "the most fair criticism right now of AI." He noted customers had already burned through their entire 2026 AI budget, and that cost went from a topic that never came up to the second most common concern in a short stretch. When the person selling the compute says the bill is the problem, the bill is the problem.</p>
+
+  <h2>The model-routing premium, and the team that owns it</h2>
+  <p>Defaulting every request to one model is expensive in a way most teams never measure. Routing the right task to the right model cuts cost hard. Teams that route instead of defaulting report an 87% premium from staying single-model. That's money left on the table by habit, not by need.</p>
+  <div class="highlight-box green">
+    <strong>87% premium from single-model default.</strong> Route cheap tasks to cheap models and hard tasks to strong ones. The savings show up the first week.
+  </div>
+  <p>And the people who own this number aren't ready. FinOps data shows 98% of cloud teams now carry AI cost responsibility. Almost none of them had a playbook for inference before this year. You handed the biggest new line item to the team that was budgeting storage and compute, and gave them no tools built for it.</p>
+
+  <h2>What actually works</h2>
+  <p>OK, here's what stops it. None of this is exotic.</p>
+  <ul>
+    <li><strong>Set budget ceilings.</strong> Hard caps per agent, per team, per day. The $500M bill happened because nobody set a cap.</li>
+    <li><strong>Put kill-switches on loops.</strong> An agent that retries more than N times gets shut down. Not warned. Shut down.</li>
+    <li><strong>Cut re-sent context.</strong> Stop stuffing the full memory into every prompt. Send only what the step needs. That 62% line drops fast.</li>
+    <li><strong>Route models.</strong> Cheap model for cheap tasks, strong model for hard ones. Stop paying premium rates for weather checks.</li>
+    <li><strong>Watch it.</strong> You can't cap what you can't see. Per-agent token counts, per-task cost, loop frequency. If the number moves, you should know before finance does.</li>
+  </ul>
+
+  <h2>A practical note from someone who runs agents</h2>
+  <p>I run a multi-agent production fleet. Not a demo, not a blog diagram. Real agents doing real work, and I've watched the bill do every stupid thing in this post.</p>
+  <p>The fix isn't a better model. It's discipline. Ceilings, kill-switches, less context, routing, and a dashboard someone actually looks at. I treat agent cost like I treated uptime at Wells Fargo: a thing you measure every day, or it breaks you.</p>
+  <p>So we built Agentic Ops around exactly this. Same instinct that ran security scans on AI systems, now pointed at the spend. If your agents are costing more than they should, that's the service.</p>
+
+  <div class="cta-bar">
+    <h3>Want your agent cost under control?</h3>
+    <p style="margin-bottom:20px;">Book a free 15-minute audit. We'll look at where your tokens actually go and where the ceilings should sit.</p>
+    <a href="https://calendly.com/galeops/15min" class="btn">Book Free Agent Cost Audit →</a>
+    <p style="margin-top:14px;font-size:13px;color:var(--muted);">Or read more about the service: <a href="/agentic-ops" style="color:var(--accent);text-decoration:none;">Agentic Ops by GaleOps →</a></p>
+  </div>
+
+  <p style="font-size:14px;color:var(--muted);">Related: <a href="/blog/prompt-injection-llm-vulnerability.html">Prompt Injection: LLM's #1 Risk (2026)</a> · <a href="/agentic-ops">Agentic Ops</a></p>
+</div>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

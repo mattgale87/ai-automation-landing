@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 62% Tax: Re-Sent Context Is Quietly Eating Your Agent Bill | GaleOps</title>
+<meta name="description" content="Re-sent context accounts for 62% of agent inference bills, per Stanford. See why agents multiply the cost, where it compounds overnight, and the techniques that actually cut it.">
+<link rel="canonical" href="https://galeops.xyz/blog/resend-context-token-tax.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://galeops.xyz/blog/resend-context-token-tax.html">
+<meta property="og:title" content="The 62% Tax: Re-Sent Context Is Quietly Eating Your Agent Bill">
+<meta property="og:description" content="Re-sent context is 62% of agent inference bills. Here's why agents multiply it, and how to cut it.">
+<meta property="og:image" content="https://galeops.xyz/og-image.svg">
+<meta property="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #08090a; --surface: #101012; --text: #f7f8f8; --muted: #8a8f98; --accent: #6366f1; --green: #10b981; --red: #ef4444; --gold: #f59e0b; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 720px; margin: 0 auto; padding: 60px 24px; }
+  .breadcrumb { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px; font-weight: 600; }
+  .meta { font-size: 14px; color: var(--muted); margin-bottom: 40px; }
+  .lead { font-size: 19px; color: #d0d6e0; line-height: 1.6; margin-bottom: 40px; }
+  h2 { font-size: 26px; font-weight: 600; margin: 48px 0 16px; letter-spacing: -0.5px; }
+  h3 { font-size: 20px; font-weight: 600; margin: 32px 0 12px; }
+  p { margin-bottom: 18px; color: #d0d6e0; }
+  ul, ol { margin: 20px 0 20px 24px; color: #d0d6e0; }
+  li { margin-bottom: 10px; }
+  .highlight-box { background: var(--surface); border-left: 3px solid var(--red); padding: 24px 28px; margin: 32px 0; border-radius: 0 10px 10px 0; }
+  .highlight-box.green { border-color: var(--green); }
+  .code { background: #0d0e10; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 18px 20px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #d0d6e0; margin: 24px 0; overflow-x: auto; }
+  .cta-bar { background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 32px; text-align: center; margin: 48px 0; }
+  .cta-bar h3 { margin-top: 0; }
+  .btn { display: inline-block; background: var(--green); color: #fff; padding: 14px 28px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  code { background: var(--surface); padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The 62% Tax: Re-Sent Context Is Quietly Eating Your Agent Bill",
+  "author": { "@type": "Person", "name": "Mathew Gale", "sameAs": ["https://www.youtube.com/@GaleTech", "https://www.linkedin.com/in/mattgale", "https://x.com/Mattjgale87"] },
+  "datePublished": "2026-08-03",
+  "dateModified": "2026-08-03",
+  "publisher": { "@type": "Organization", "name": "GaleOps" }
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb"><a href="/blog/">Blog</a> → Agentic Ops</div>
+  <h1>The 62% Tax: Re-Sent Context Is Quietly Eating Your Agent Bill</h1>
+  <div class="meta">By Mathew Gale · AI security + Agentic Ops · Updated 2026-08-03</div>
+  <p class="lead">Here's the number that should annoy you: 62% of what you pay for agent inference is the model being told things it already knows. You're buying the same context over, and over, and over.</p>
+
+  <h2>The invisible tax</h2>
+  <p>The model doesn't remember the last call. So every time an agent loops, it gets the whole story again. The system prompt, the task, the steps it already took, the data it pulled. None of that is new. It's a resend.</p>
+  <p>Stanford's Digital Economy Lab measured this in their 2025 Agentic AI Cost Attribution work. Re-sent context is 62% of the total agent inference bill. Not 6%, and not a rounding error you can ignore. Six of every ten dollars you spend on the agent goes to repetition.</p>
+  <div class="highlight-box">
+    <strong>62%.</strong> That's the share of a typical agent inference bill spent re-sending context the model already saw. The rest is the actual work.
+  </div>
+  <p>An agentic workflow isn't a chatbot that answers once and quits. The model forgets what it just did, so you hand it everything again on the next turn. The tax is invisible because the invoice just says "tokens."</p>
+
+  <h2>Why agents multiply it</h2>
+  <p>A chatbot answers once. The user asks a question, the model replies, done. An agent doesn't stop. It plans, calls a tool, reads the result, decides, calls again. Fifteen model calls per task is normal, and each one ships the full context back to the model because the model has no memory of the call before.</p>
+  <p>The context also grows. Every tool result, every retrieved document, every intermediate step gets appended and resent on the next turn. A task that started at a few thousand tokens ends at a few hundred thousand. Agentic workflows burn 5 to 30 times more tokens per task than a single chatbot query, and most of that spend is the model re-reading itself.</p>
+
+  <h2>The 62% math</h2>
+  <p>A support agent handles one ticket. It reads the policy doc, the customer history, and the prior messages, then calls a tool, reads the result, and calls again. By call 15, the model has been handed that policy doc 15 times. It read it the first time. The other 14 reads are paid re-reads.</p>
+  <p>A research agent is worse. It retrieves 30 documents, summarizes them, retrieves more, summarizes again. Each turn resends every prior summary plus every source it might still need. The useful new text per call shrinks to a trickle while the bill grows with the loop. That gap is where the 62% lives.</p>
+
+  <h2>Why the falling token price doesn't fix it</h2>
+  <p>Token prices dropped. Ramp's data shows cost per million tokens fell from about $10 to $2.50 in a single year. Cheaper per token. Good news, right?</p>
+  <p>No. Volume blew up faster. A lower unit price just made it painless to send more of them, and agents send a lot. Your bill still balloons because you're shipping 10 times the units at a quarter of the price. Lower unit cost is not the same as lower total cost, and agents are a total-cost problem.</p>
+  <p>The wider market agrees this hurts. Gartner has median enterprise LLM bills growing 7.2 times year over year, and the FinOps Foundation found 73% of enterprises watched AI costs blow past projections. Enterprise AI inference is 85% of total AI budgets. Uber's CTO said in April 2026 that the budget he thought he would need was already blown away.</p>
+
+  <h2>Where it compounds</h2>
+  <p>The ugly version runs at 3am. A loop spins out of control. A retry storm fires. A sub-agent spawns three more sub-agents, each carrying its own copy of the context, each resending the same payload. Nobody authorized that spend. Nobody is even awake. Finout tracks exactly this: agents burn tokens overnight with no single human signing off.</p>
+  <p>That's the scariest face of the 62% tax. It isn't just waste you can see on a dashboard. It's waste that runs while you sleep, and the bill shows up the next morning.</p>
+
+  <h2>How to actually cut it</h2>
+  <p>Some of this is plumbing, not magic.</p>
+  <ul>
+    <li><strong>Prompt and context caching.</strong> Send the static stuff once. Most providers cache repeated prefixes and charge less for them. Your system prompt and that policy doc should never be billed full price twice.</li>
+    <li><strong>Prune retrieved context.</strong> Drop documents the agent no longer needs before the next call. RAG pipelines love to hoard.</li>
+    <li><strong>Stop resending static data.</strong> Reference tables, schemas, and configs get pinned in cache instead of reattached every turn.</li>
+    <li><strong>Summarization checkpoints.</strong> Every few turns, compress the running history into a short summary. The next call reads the summary, not the full log.</li>
+    <li><strong>Budget ceilings.</strong> Cap spend per task and per agent. Hard stop at the line.</li>
+    <li><strong>Loop kill-switches.</strong> Detect a runaway by call count or identical output, then cut it.</li>
+    <li><strong>Observability.</strong> You can't cut what you can't see. Tag every call by agent, tool, and task, then read the report.</li>
+  </ul>
+  <p>The first three are usually most of the win, and most teams never open the dashboard to check.</p>
+
+  <h2>A note from someone who runs agents</h2>
+  <p>I run a real multi-agent fleet in production, not a demo. The first time I broke out token spend by call type, I expected the model's answers to be the cost. They weren't. The resends were. I was paying my agents to re-read the same policy doc hundreds of times a day.</p>
+  <p>I spent 14 years in enterprise IT ops at Wells Fargo, and the lesson transfers: you can't govern what you can't see. We cut MTTR 40% with observability there. Same idea here. Put meters on the agents, find the re-read, stop paying for it.</p>
+  <p>The model forgetting between calls isn't a bug you patch in the model. That's how transformers work. So the fix is in how you build the loop. Cache the static, summarize the running, cap the spend. That's the whole job.</p>
+
+  <div class="cta-bar">
+    <h3>Want to see what's actually eating your agent bill?</h3>
+    <p style="margin-bottom:20px;">Book a free Agent Cost Audit. We'll trace your spend by call type and show you the resend tax in your own numbers, not a benchmark.</p>
+    <a href="https://calendly.com/galeops/15min" class="btn">Book Free Agent Cost Audit →</a>
+    <p style="margin-top:14px;font-size:13px;color:var(--muted);">Or read how we run the fleet: <a href="/agentic-ops/" style="color:var(--accent);text-decoration:none;">Agentic Ops service →</a></p>
+  </div>
+
+  <p style="font-size:14px;color:var(--muted);">Related: <a href="/agentic-ops/">Agentic Ops Service</a> · <a href="/blog/prompt-injection-llm-vulnerability.html">Prompt Injection: LLM's #1 Risk (2026)</a></p>
+</div>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

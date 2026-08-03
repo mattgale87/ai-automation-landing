@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agentic Ops — Run Your AI Agent Fleet: Cost, Reliability, Incidents | GaleOps</title>
+  <meta name="description" content="Your AI agents are costing you 5-30x more than planned and failing 88% of the time. GaleOps Agentic Ops runs your agent fleet — cost governance, reliability, incident response — like $80M of Fortune-50 infrastructure.">
+  <link rel="canonical" href="https://galeops.xyz/agentic-ops">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://galeops.xyz/agentic-ops">
+  <meta property="og:title" content="Agentic Ops — Run Your AI Agent Fleet: Cost, Reliability, Incidents | GaleOps">
+  <meta property="og:description" content="Take over running your AI agent fleet. Cost governance, reliability, and incident response — from a 14-year Fortune-50 operations leader who runs agents today.">
+  <meta property="og:image" content="https://galeops.xyz/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Bitcount+Grid+Single:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-abyss: #08090a; --bg-surface: #101012; --bg-elevated: #191a1b; --bg-hover: #222324;
+      --border-subtle: rgba(255,255,255,0.06); --border-default: rgba(255,255,255,0.09); --border-active: rgba(99,102,241,0.5);
+      --text-primary: #f7f8f8; --text-secondary: #d0d6e0; --text-tertiary: #8a8f98; --text-muted: #5a5f66;
+      --accent: #6366f1; --accent-hover: #818cf8; --accent-glow: rgba(99,102,241,0.15);
+      --green: #10b981; --green-text: #34d399; --gold: #f59e0b; --gold-accent: #c89a45; --gold-glow: rgba(200,154,69,0.18);
+      --font-display: 'DM Sans', 'Inter', system-ui, sans-serif; --font-numeral: 'Bitcount Grid Single', 'DM Sans', system-ui, sans-serif;
+      --radius-sm: 6px; --radius-md: 8px; --radius-lg: 12px; --radius-xl: 16px; --max-w: 1120px;
+    }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--bg-abyss); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    .noise-overlay { position: fixed; inset: 0; z-index: 9998; pointer-events: none; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 256px 256px; }
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(8,9,10,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-subtle); }
+    nav .inner { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; display: flex; justify-content: space-between; align-items: center; height: 64px; }
+    nav .logo { font-size: 19px; font-weight: 700; color: var(--text-primary); text-decoration: none; letter-spacing: -0.3px; }
+    nav .logo em { color: var(--accent); font-style: normal; font-weight: 500; }
+    .nav-links { display: flex; gap: 6px; align-items: center; }
+    .nav-links a { color: var(--text-tertiary); text-decoration: none; font-size: 13.5px; font-weight: 500; padding: 6px 12px; border-radius: var(--radius-sm); transition: color 0.15s; position: relative; }
+    .nav-links a:not(.btn-cta)::after { content: ''; position: absolute; left: 12px; right: 12px; bottom: 1px; height: 1px; background: var(--gold-accent); transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease; }
+    .nav-links a:not(.btn-cta):hover { color: var(--text-primary); }
+    .nav-links a:not(.btn-cta):hover::after { transform: scaleX(1); }
+    .btn-cta { background: var(--accent); color: #fff !important; padding: 7px 16px; border-radius: var(--radius-sm); font-weight: 600; font-size: 13px; box-shadow: 0 0 0 1px rgba(200,154,69,0.4), 0 0 18px var(--gold-glow); transition: background 0.15s, box-shadow 0.2s; text-decoration: none; }
+    .btn-cta:hover { background: var(--accent-hover); box-shadow: 0 0 0 1px rgba(200,154,69,0.7), 0 0 28px rgba(200,154,69,0.4); }
+    .mobile-toggle { display: none; background: none; border: none; color: var(--text-primary); font-size: 22px; cursor: pointer; padding: 4px; }
+    .mobile-nav { display: none; position: fixed; inset: 60px 0 0; z-index: 99; background: rgba(8,9,10,0.97); backdrop-filter: blur(12px); padding: 24px; }
+    .mobile-nav.open { display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav a { color: var(--text-secondary); text-decoration: none; font-size: 16px; font-weight: 500; padding: 12px 16px; border-radius: var(--radius-sm); }
+    .mobile-nav a:hover { background: var(--bg-hover); }
+    .mobile-nav .btn-cta { margin-top: 12px; text-align: center; display: block; }
+
+    .hero { padding: 150px 24px 80px; text-align: center; position: relative; overflow: hidden; background: var(--bg-abyss); }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 25%, rgba(99,102,241,0.22) 0%, transparent 60%), radial-gradient(ellipse 45% 40% at 75% 65%, rgba(200,154,69,0.14) 0%, transparent 60%); }
+    .hero > * { position: relative; z-index: 1; }
+    .hero .badge { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-glow); border: 1px solid var(--border-active); border-radius: 100px; padding: 5px 14px; font-size: 12.5px; color: var(--accent-hover); font-weight: 500; margin-bottom: 28px; }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(38px, 7vw, 70px); font-weight: 700; letter-spacing: -2.5px; line-height: 1.04; max-width: 900px; margin: 0 auto 24px; }
+    .hero h1 .highlight { background: linear-gradient(135deg, var(--gold-accent) 0%, var(--accent-hover) 55%, var(--green-text) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero p { font-size: clamp(17px, 2.2vw, 20px); color: var(--text-tertiary); max-width: 620px; margin: 0 auto 40px; line-height: 1.55; }
+    .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .hero-microcopy { font-size: 12.5px; color: var(--text-muted); margin-top: 12px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 30px; border-radius: var(--radius-sm); font-weight: 600; font-size: 15px; text-decoration: none; transition: all 0.15s; border: none; cursor: pointer; }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 0 0 1px rgba(200,154,69,0.4), 0 0 20px var(--gold-glow); }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 0 0 1px rgba(200,154,69,0.75), 0 4px 24px rgba(99,102,241,0.35), 0 0 32px rgba(200,154,69,0.4); }
+    .btn-ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--border-default); }
+    .btn-ghost:hover { background: var(--bg-hover); color: var(--text-primary); border-color: var(--text-muted); }
+
+    .stat-bar { padding: 20px 24px; border-bottom: 1px solid var(--border-subtle); background: var(--bg-surface); }
+    .stat-bar-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .stat-item { text-align: center; flex: 1; min-width: 140px; }
+    .stat-item .num { font-family: var(--font-numeral); font-size: 30px; font-weight: 700; color: var(--gold-accent); letter-spacing: -1px; }
+    .stat-item .label { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+    .section { padding: 88px 24px; }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 16px; }
+    .section-title { font-family: var(--font-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 16px; }
+    .section-subtitle { color: var(--text-tertiary); font-size: 17px; max-width: 600px; line-height: 1.5; }
+    .section-center { text-align: center; }
+    .section-center .section-subtitle { margin: 0 auto; }
+
+    .content-text p { color: var(--text-secondary); font-size: 16px; line-height: 1.7; margin-bottom: 18px; }
+    .content-text p.lead { font-size: 18px; color: var(--text-primary); font-weight: 500; }
+
+    .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 48px; }
+    .pillar-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 36px 32px; transition: border-color 0.2s, transform 0.2s; }
+    .pillar-card:hover { border-color: var(--border-active); transform: translateY(-2px); }
+    .pillar-card .icon { font-size: 32px; margin-bottom: 16px; display: block; }
+    .pillar-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.3px; }
+    .pillar-card p { font-size: 15px; color: var(--text-tertiary); line-height: 1.6; margin-bottom: 16px; }
+    .pillar-card ul { list-style: none; }
+    .pillar-card ul li { font-size: 14px; color: var(--text-secondary); padding: 7px 0; display: flex; align-items: flex-start; gap: 10px; border-bottom: 1px solid var(--border-subtle); }
+    .pillar-card ul li:last-child { border-bottom: none; }
+    .pillar-card ul li::before { content: '✓'; color: var(--green-text); font-weight: 700; flex-shrink: 0; }
+
+    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 48px; }
+    .benefit-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 28px 24px; transition: border-color 0.2s; }
+    .benefit-card:hover { border-color: var(--border-active); }
+    .benefit-card h4 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+    .benefit-card p { font-size: 14.5px; color: var(--text-tertiary); line-height: 1.6; }
+
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 56px; }
+    .step { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 36px 28px; position: relative; }
+    .step-num { width: 36px; height: 36px; border-radius: var(--radius-sm); background: var(--accent-glow); display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: var(--accent); margin-bottom: 20px; }
+    .step h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+    .step p { color: var(--text-tertiary); font-size: 14px; line-height: 1.55; }
+
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 56px; max-width: 1100px; margin-left: auto; margin-right: auto; }
+    .price-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 40px 32px; text-align: center; transition: border-color 0.2s, transform 0.2s; position: relative; }
+    .price-card:hover { transform: translateY(-3px); }
+    .price-card.featured { border-color: var(--accent); }
+    .price-card.featured::before { content: 'Most Popular'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .price-tier { font-size: 13px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+    .price-amount { font-family: var(--font-display); font-size: 40px; font-weight: 700; letter-spacing: -1.5px; line-height: 1; }
+    .price-period { font-size: 15px; color: var(--text-muted); font-weight: 400; display: inline; }
+    .price-desc { font-size: 14px; color: var(--text-tertiary); margin: 12px 0 24px; min-height: 42px; }
+    .price-features { list-style: none; text-align: left; margin-bottom: 28px; }
+    .price-features li { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; font-size: 14px; color: var(--text-secondary); border-bottom: 1px solid var(--border-subtle); }
+    .price-features li:last-child { border-bottom: none; }
+    .price-features li .check { color: var(--green-text); font-weight: 700; flex-shrink: 0; }
+    .price-card .btn { width: 100%; justify-content: center; }
+
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 48px; }
+    .why-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 32px 28px; transition: border-color 0.2s, transform 0.2s; }
+    .why-card:hover { border-color: var(--border-active); transform: translateY(-2px); }
+    .why-card .icon { font-size: 30px; margin-bottom: 16px; display: block; }
+    .why-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+    .why-card p { font-size: 14.5px; color: var(--text-tertiary); line-height: 1.6; }
+
+    .faq-css { max-width: 720px; margin: 56px auto 0; }
+    .faq-css details { border-bottom: 1px solid var(--border-subtle); }
+    .faq-css summary { font-size: 16px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--text-primary); padding: 20px 0; list-style: none; gap: 16px; transition: color 0.15s; }
+    .faq-css summary::-webkit-details-marker { display: none; }
+    .faq-css summary:hover { color: var(--accent-hover); }
+    .faq-css summary::after { content: '+'; font-size: 22px; color: var(--text-muted); flex-shrink: 0; display: block; width: 22px; text-align: center; transition: transform 0.25s; line-height: 1; }
+    .faq-css details[open] summary::after { transform: rotate(45deg); }
+    .faq-css .faq-answer { color: var(--text-tertiary); font-size: 14.5px; line-height: 1.6; padding-bottom: 20px; padding-right: 38px; }
+
+    .final-cta { padding: 100px 24px; text-align: center; position: relative; overflow: hidden; background: var(--bg-surface); }
+    .final-cta::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(99,102,241,0.14) 0%, rgba(167,139,250,0.07) 50%, rgba(52,211,153,0.04) 100%); }
+    .final-cta-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .final-cta h2 { font-family: var(--font-display); font-size: clamp(28px, 4.5vw, 52px); font-weight: 700; letter-spacing: -2px; line-height: 1.08; margin-bottom: 20px; }
+    .final-cta h2 span { background: linear-gradient(135deg, var(--gold-accent) 0%, var(--accent-hover) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .final-cta p { font-size: 17px; color: var(--text-tertiary); margin-bottom: 36px; line-height: 1.5; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+    footer { border-top: 1px solid var(--border-subtle); padding: 60px 24px 32px; background: var(--bg-surface); }
+    .footer-grid { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--border-subtle); }
+    .footer-brand .logo { font-size: 17px; font-weight: 700; color: var(--text-primary); text-decoration: none; letter-spacing: -0.3px; display: inline-block; margin-bottom: 12px; }
+    .footer-brand .logo em { color: var(--accent); font-style: normal; font-weight: 500; }
+    .footer-brand p { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; max-width: 260px; margin-bottom: 20px; }
+    .footer-col h4 { font-size: 11.5px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { color: var(--text-tertiary); text-decoration: none; font-size: 13.5px; transition: color 0.15s; }
+    .footer-col ul li a:hover { color: var(--text-primary); }
+    .footer-bottom { max-width: var(--max-w); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 24px; }
+    .footer-bottom p { color: var(--text-muted); font-size: 13px; }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-links a { color: var(--text-tertiary); text-decoration: none; font-size: 13px; transition: color 0.15s; }
+    .footer-bottom-links a:hover { color: var(--text-primary); }
+
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; } .footer-brand { grid-column: 1 / -1; } }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .hero { padding: 120px 20px 60px; }
+      .section { padding: 60px 20px; }
+      .stat-bar-inner { gap: 8px; }
+      .stat-item { min-width: 100px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Agentic Ops by GaleOps",
+    "description": "Fractional service that runs an enterprise's AI agent fleet: cost governance (FinOps for AI agents), reliability and observability, and incident response.",
+    "url": "https://galeops.xyz/agentic-ops",
+    "provider": {
+      "@type": "Organization",
+      "name": "GaleOps",
+      "url": "https://galeops.xyz",
+      "founder": { "@type": "Person", "name": "Mathew Gale" }
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "2500",
+      "highPrice": "10000",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"What is Agentic Ops?","acceptedAnswer":{"@type":"Answer","text":"Agentic Ops is the operational layer that keeps AI agents running in production: cost governance, reliability and observability, and incident response. It is the 'how you run the fleet' that platform vendors don't provide."}},
+      {"@type":"Question","name":"How is this different from buying Langfuse or LangSmith?","acceptedAnswer":{"@type":"Answer","text":"Those are observability tools. We operate them for you and deliver the outcome — lower cost, higher reliability, faster incident response. The software is an input, not the deliverable."}},
+      {"@type":"Question","name":"Do you replace our existing agent platform?","acceptedAnswer":{"@type":"Answer","text":"No. We work with whatever you've built — LangChain, CrewAI, OpenAI Agents SDK, or a custom stack. We operate on top of your existing tools."}},
+      {"@type":"Question","name":"What does the free Agent Cost Audit give me?","acceptedAnswer":{"@type":"Answer","text":"A 15-minute call where we look at your agent fleet and LLM bill, then a one-page report on where your tokens actually go, what's wasting spend, and where ceilings should sit."}},
+      {"@type":"Question","name":"How fast do I see cost savings?","acceptedAnswer":{"@type":"Answer","text":"Most clients see a measurable reduction in the first billing cycle after we put ceilings, caching, and routing in place. The re-sent-context and loop fixes show up within a week."}},
+      {"@type":"Question","name":"Do you need access to our systems?","acceptedAnswer":{"@type":"Answer","text":"For the audit, a read-only view of your token/cost usage is enough. For a retainer, we need the access level required to monitor and respond to your agents — scoped to least privilege."}},
+      {"@type":"Question","name":"What if my agents are already broken?","acceptedAnswer":{"@type":"Answer","text":"That's exactly what incident response is for. We diagnose what went wrong, contain it, and put controls in place so it doesn't recur."}},
+      {"@type":"Question","name":"Can you do this for a company my size?","acceptedAnswer":{"@type":"Answer","text":"Yes. The audit and Starter retainer are built for teams running a handful of agents. Scale is for larger fleets. We scale the engagement to what you actually run."}},
+      {"@type":"Question","name":"Do you build agents or run them?","acceptedAnswer":{"@type":"Answer","text":"We run them. If you need agents built, we can point you to the right platform or builder, but our job is the operations layer — keeping what you have reliable and affordable."}},
+      {"@type":"Question","name":"What happens after the audit?","acceptedAnswer":{"@type":"Answer","text":"You get the report either way. If you want us to implement the fixes and keep running the fleet, we move to a retainer. No pressure, no lock-in."}}
+    ]
+  }
+  </script>
+</head>
+<body>
+<div class="noise-overlay" aria-hidden="true"></div>
+<nav>
+  <div class="inner">
+    <a href="/" class="logo">Gale<em>Ops</em></a>
+    <div class="nav-links">
+      <a href="/agentic-ops">Agentic Ops</a>
+      <a href="/ai-security">AI Security</a>
+      <a href="/services">Services</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/blog/">Blog</a>
+      <a href="/contact">Contact</a>
+      <a href="https://calendly.com/galeops/15min" class="btn-cta" target="_blank" rel="noopener">Book Free Audit →</a>
+    </div>
+    <button class="mobile-toggle" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="/agentic-ops">Agentic Ops</a>
+  <a href="/ai-security">AI Security</a>
+  <a href="/services">Services</a>
+  <a href="/pricing">Pricing</a>
+  <a href="/blog/">Blog</a>
+  <a href="/contact">Contact</a>
+  <a href="https://calendly.com/galeops/15min" class="btn-cta" target="_blank" rel="noopener">Book Free Audit →</a>
+</div>
+
+<section class="hero">
+  <div class="badge">New: Agentic Ops — Run your AI agent fleet</div>
+  <h1>Your AI agents are costing you <span class="highlight">5-30x more than you planned.</span> We run them like $80M of Fortune-50 infrastructure.</h1>
+  <p>Most companies buy agents and pray. We take over running your agent fleet — cost governance, reliability, and incident response — so it stops bleeding money and starts shipping.</p>
+  <div class="hero-buttons">
+    <a href="https://calendly.com/galeops/15min" class="btn btn-primary" target="_blank" rel="noopener">Book Free Agent Cost Audit →</a>
+    <a href="#pricing" class="btn btn-ghost">See Pricing</a>
+  </div>
+  <p class="hero-microcopy">15 minutes · No commitment · See what you're wasting before you buy</p>
+</section>
+
+<div class="stat-bar">
+  <div class="stat-bar-inner">
+    <div class="stat-item"><div class="num">73%</div><div class="label">of enterprises blew their AI budget</div></div>
+    <div class="stat-item"><div class="num">5-30x</div><div class="label">more tokens per agent task</div></div>
+    <div class="stat-item"><div class="num">62%</div><div class="label">of the bill is re-sent context</div></div>
+    <div class="stat-item"><div class="num">88%</div><div class="label">of agent pilots never reach production</div></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-center">
+      <div class="section-label">The Problem</div>
+      <h2 class="section-title">You bought the agents. Nobody sold you how to run them.</h2>
+      <p class="section-subtitle">The platform market is flooded. The operations layer is empty — and it's where the money is being lost.</p>
+    </div>
+    <div class="content-text" style="max-width:720px;margin:40px auto 0;">
+      <p class="lead">Agents don't behave like software you switch on. They run all day, call tools, retry, loop, and burn tokens in ways nobody budgeted for.</p>
+      <p>73% of enterprises went over their AI budget this year. Agentic workflows consume 5-30x more tokens than a chatbot. And when a loop spins out of control at 3am, the bill shows up the next morning with no one having authorized it.</p>
+      <p>Worse, they fail quietly. An agent doesn't crash — it just does the wrong thing and moves on. Nobody notices until it's been wrong for three weeks.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: var(--bg-surface);">
+  <div class="section-inner">
+    <div class="section-center">
+      <div class="section-label">The Solution</div>
+      <h2 class="section-title">Agentic Ops — two pillars, one job</h2>
+      <p class="section-subtitle">We run the operations layer your agent fleet is missing.</p>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="icon">💰</div>
+        <h3>Agent Cost Governance</h3>
+        <p>FinOps for AI agents. Stop the token bleed before it reaches your invoice.</p>
+        <ul>
+          <li>Budget ceilings per agent, per team, per day</li>
+          <li>Kill runaway loops and retry storms</li>
+          <li>Cut the 62% re-sent-context tax</li>
+          <li>Model routing — stop paying premium rates for weather checks</li>
+          <li>Cost dashboards your finance team can read</li>
+        </ul>
+      </div>
+      <div class="pillar-card">
+        <div class="icon">🛠️</div>
+        <h3>Reliability & Incident Response</h3>
+        <p>The SRE playbook, applied to agents. Fail loud, not quiet.</p>
+        <ul>
+          <li>Observability (we deploy Langfuse, Helicone, or LangSmith for you)</li>
+          <li>MTTR discipline — the same playbook that cut Wells Fargo MTTR 40%</li>
+          <li>2AM incident response when an agent does something wrong</li>
+          <li>Root-cause analysis and prevention</li>
+          <li>Monthly reliability report</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Benefits</div>
+    <h2 class="section-title">What running the fleet gets you</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <h4>Stop the bleed</h4>
+        <p>Most clients cut agent spend 30%+ in the first month by killing loops, caching context, and routing models. Measurable, not aspirational.</p>
+      </div>
+      <div class="benefit-card">
+        <h4>Fail loud, not quiet</h4>
+        <p>Agents fail silently. We wire alerting so you know in minutes when one does the wrong thing, not weeks later when it's compounded.</p>
+      </div>
+      <div class="benefit-card">
+        <h4>Know what's running</h4>
+        <p>See per-agent cost, per-task reliability, and loop frequency in one dashboard. You can't govern what you can't see.</p>
+      </div>
+      <div class="benefit-card">
+        <h4>2AM coverage</h4>
+        <p>When an agent breaks at midnight, someone's on it. Not a ticket that waits till Monday.</p>
+      </div>
+      <div class="benefit-card">
+        <h4>Board-ready reporting</h4>
+        <p>Monthly cost and reliability reports your CFO and board actually understand. AI spend becomes a governed line item, not a surprise.</p>
+      </div>
+      <div class="benefit-card">
+        <h4>Run by someone who does it</h4>
+        <p>This isn't theory. I run a multi-agent production fleet every day. I'm one of the 12% that got agents past the pilot.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: var(--bg-surface);">
+  <div class="section-inner">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">From audit to running fleet in three steps</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Free Agent Cost Audit</h3>
+        <p>15-minute call. We look at your agent fleet and LLM bill, then give you a one-page report on what's wasting spend and where ceilings should sit.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Fleet baseline</h3>
+        <p>We map your agents, cost structure, and reliability. This becomes the baseline every future improvement is measured against.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Ongoing retainer</h3>
+        <p>We run the operations layer. Cost governance, observability, incident response, monthly reports. Your agents run like infrastructure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pricing">
+  <div class="section-inner">
+    <div class="section-center">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Fixed fees. No surprises.</h2>
+      <p class="section-subtitle">Start with the audit, then scale the retainer to your fleet.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">Agent Ops Audit</div>
+        <div class="price-amount">$5,000</div>
+        <div class="price-period">one-time</div>
+        <div class="price-desc">Fleet discovery, cost baseline, reliability score, 30-day roadmap</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Agent + MCP inventory</li>
+          <li><span class="check">✓</span> Cost baseline by agent/task</li>
+          <li><span class="check">✓</span> Reliability score</li>
+          <li><span class="check">✓</span> 30-day cost-reduction roadmap</li>
+          <li><span class="check">✓</span> Written report</li>
+        </ul>
+        <a href="https://calendly.com/galeops/15min?subject=Agent+Ops+Audit" class="btn btn-ghost" target="_blank" rel="noopener">Book the Audit →</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tier">Retainer — Growth</div>
+        <div class="price-amount">$5,000</div>
+        <div class="price-period">/mo</div>
+        <div class="price-desc">Up to 20 agents + incident response + quarterly deep review</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Cost governance as a service</li>
+          <li><span class="check">✓</span> Observability + alerting</li>
+          <li><span class="check">✓</span> Incident response included</li>
+          <li><span class="check">✓</span> Quarterly deep review</li>
+          <li><span class="check">✓</span> Monthly reliability report</li>
+        </ul>
+        <a href="https://calendly.com/galeops/15min?subject=Agent+Ops+Retainer" class="btn btn-primary" target="_blank" rel="noopener">Book a Fit Call →</a>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Retainer — Starter</div>
+        <div class="price-amount">$2,500</div>
+        <div class="price-period">/mo</div>
+        <div class="price-desc">Up to 5 agents: monitoring, cost guardrails, monthly report</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Up to 5 agents</li>
+          <li><span class="check">✓</span> Monitoring + cost guardrails</li>
+          <li><span class="check">✓</span> Loop kill-switches</li>
+          <li><span class="check">✓</span> Monthly reliability report</li>
+          <li><span class="check">✓</span> Email alerting</li>
+        </ul>
+        <a href="https://calendly.com/galeops/15min?subject=Agent+Ops+Starter" class="btn btn-ghost" target="_blank" rel="noopener">Book a Fit Call →</a>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Retainer — Scale</div>
+        <div class="price-amount">$10,000</div>
+        <div class="price-period">/mo</div>
+        <div class="price-desc">Unlimited agents, 24/7 IR, cost governance + board reporting</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Unlimited agents</li>
+          <li><span class="check">✓</span> 24/7 incident response</li>
+          <li><span class="check">✓</span> Cost governance as a service</li>
+          <li><span class="check">✓</span> Board-ready reporting</li>
+          <li><span class="check">✓</span> Priority escalation</li>
+        </ul>
+        <a href="https://calendly.com/galeops/15min?subject=Agent+Ops+Scale" class="btn btn-ghost" target="_blank" rel="noopener">Book a Fit Call →</a>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Emergency IR</div>
+        <div class="price-amount">$1,500</div>
+        <div class="price-period">/incident</div>
+        <div class="price-desc">When an agent breaks and nobody knows why</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Diagnose the failure</li>
+          <li><span class="check">✓</span> Contain the damage</li>
+          <li><span class="check">✓</span> Root-cause analysis</li>
+          <li><span class="check">✓</span> Prevention controls</li>
+          <li><span class="check">✓</span> Rapid response</li>
+        </ul>
+        <a href="mailto:mattgale87@gmail.com?subject=Emergency+IR" class="btn btn-ghost" target="_blank" rel="noopener">Request IR →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: var(--bg-surface);">
+  <div class="section-inner">
+    <div class="section-label">Why Mathew Gale</div>
+    <h2 class="section-title">The 12% who crossed the line</h2>
+    <p class="section-subtitle">Most people selling AI services have never run production at scale. I've done both.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="icon">🏢</div>
+        <h3>14 years at Fortune-50 scale</h3>
+        <p>Wells Fargo Executive AVP of Technology. Governed an $80M portfolio and led a 40-person engineering org.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">📊</div>
+        <h3>Observability muscle</h3>
+        <p>Integrated Splunk, AppDynamics, and SevOne into operations — drove a 40% MTTR reduction. That playbook now runs your agents.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">🤖</div>
+        <h3>Runs agents today</h3>
+        <p>I run a real multi-agent production fleet every day. Not a demo. I'm one of the 12% that got agents past the pilot.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">🔍</div>
+        <h3>Operator, not a vendor</h3>
+        <p>I'm not selling you a tool. I'm selling the operational outcome — the thing no software platform provides.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Common questions</h2>
+    <div class="faq-css">
+      <details>
+        <summary>What is Agentic Ops?</summary>
+        <div class="faq-answer">Agentic Ops is the operational layer that keeps AI agents running in production: cost governance, reliability and observability, and incident response. It's the "how you run the fleet" that platform vendors don't provide.</div>
+      </details>
+      <details>
+        <summary>How is this different from buying Langfuse or LangSmith?</summary>
+        <div class="faq-answer">Those are observability tools. We operate them for you and deliver the outcome — lower cost, higher reliability, faster incident response. The software is an input, not the deliverable.</div>
+      </details>
+      <details>
+        <summary>Do you replace our existing agent platform?</summary>
+        <div class="faq-answer">No. We work with whatever you've built — LangChain, CrewAI, OpenAI Agents SDK, or a custom stack. We operate on top of your existing tools.</div>
+      </details>
+      <details>
+        <summary>What does the free Agent Cost Audit give me?</summary>
+        <div class="faq-answer">A 15-minute call where we look at your agent fleet and LLM bill, then a one-page report on where your tokens actually go, what's wasting spend, and where ceilings should sit.</div>
+      </details>
+      <details>
+        <summary>How fast do I see cost savings?</summary>
+        <div class="faq-answer">Most clients see a measurable reduction in the first billing cycle after we put ceilings, caching, and routing in place. The re-sent-context and loop fixes show up within a week.</div>
+      </details>
+      <details>
+        <summary>Do you need access to our systems?</summary>
+        <div class="faq-answer">For the audit, a read-only view of your token/cost usage is enough. For a retainer, we need the access level required to monitor and respond to your agents — scoped to least privilege.</div>
+      </details>
+      <details>
+        <summary>What if my agents are already broken?</summary>
+        <div class="faq-answer">That's exactly what incident response is for. We diagnose what went wrong, contain it, and put controls in place so it doesn't recur.</div>
+      </details>
+      <details>
+        <summary>Can you do this for a company my size?</summary>
+        <div class="faq-answer">Yes. The audit and Starter retainer are built for teams running a handful of agents. Scale is for larger fleets. We scale the engagement to what you actually run.</div>
+      </details>
+      <details>
+        <summary>Do you build agents or run them?</summary>
+        <div class="faq-answer">We run them. If you need agents built, we can point you to the right platform or builder, but our job is the operations layer — keeping what you have reliable and affordable.</div>
+      </details>
+      <details>
+        <summary>What happens after the audit?</summary>
+        <div class="faq-answer">You get the report either way. If you want us to implement the fixes and keep running the fleet, we move to a retainer. No pressure, no lock-in.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <div class="section-label" style="justify-content:center;margin-bottom:20px;">Get Started Today</div>
+    <h2>Your agents are costing more than they should. <span>Let's find out how much.</span></h2>
+    <p>Book a free Agent Cost Audit. 15 minutes, no commitment. We'll show you what you're wasting — and how to stop it.</p>
+    <a href="https://calendly.com/galeops/15min" class="btn btn-primary" target="_blank" rel="noopener">Book Free Agent Cost Audit →</a>
+    <p style="margin-top:12px;font-size:13px;color:var(--text-muted);">Read why it matters: <a href="/blog/ai-agent-cost-overrun.html" style="color:var(--accent);text-decoration:none;">Why 73% blew their AI budget</a> · <a href="/blog/resend-context-token-tax.html" style="color:var(--accent);text-decoration:none;">The 62% re-sent context tax</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="/" class="logo">Gale<em>Ops</em></a>
+      <p>AI security, automation, and Agentic Ops for businesses that want their AI to actually work — reliably, affordably, and without surprises.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="/agentic-ops">Agentic Ops</a></li>
+        <li><a href="/ai-security">AI Security</a></li>
+        <li><a href="/ai-security-audit/">AI Security Audit</a></li>
+        <li><a href="/ai-guardrail-setup/">Guardrail Setup</a></li>
+        <li><a href="/mcp-security-assessment">MCP Assessment</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/about">About</a></li>
+        <li><a href="/services">All Services</a></li>
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/case-studies">Case Studies</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/privacy">Privacy & Terms</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:mattgale87@gmail.com">mattgale87@gmail.com</a></li>
+        <li><a href="https://calendly.com/galeops/15min" target="_blank" rel="noopener">Free 15-Min Audit</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 GaleOps — AI Automation, Security & Agentic Ops</p>
+    <div class="footer-bottom-links">
+      <a href="/privacy">Privacy & Terms</a>
+      <a href="mailto:mattgale87@gmail.com">mattgale87@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.mobile-nav a').forEach(function(a) {
+    a.addEventListener('click', function() { document.getElementById('mobileNav').classList.remove('open'); });
+  });
+</script>
+<!-- GaleOps first-party counter -->
+<script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>
