@@ -41,4 +41,4 @@ All prices are in USD. Engagements are fixed-price. Updated 2026-07-28.
 ## Start Here
 
 Book a 15-minute fit call for the Founding AI Agent Risk Review:
-https://calendly.com/galeops/15min?subject=Founding+AI+Agent+Risk+Review
+https://cal.com/mathew-gale-u2vn11/15min
