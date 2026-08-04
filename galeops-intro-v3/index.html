@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #08090a; }
+      body { font-family: 'Inter', sans-serif; color: #f7f8f8; }
+
+      /* ── Grid background ── */
+      .grid-bg {
+        position: absolute; inset: 0; pointer-events: none;
+        background-image:
+          linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+        background-size: 60px 60px;
+      }
+
+      /* ── Glow ── */
+      .glow {
+        position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+        width: 1000px; height: 700px; pointer-events: none;
+        background: radial-gradient(ellipse at center, rgba(99,102,241,0.2) 0%, rgba(99,102,241,0.05) 45%, transparent 70%);
+      }
+
+      /* ── Scene base ── */
+      .scene {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column;
+        justify-content: center; align-items: center;
+        padding: 80px;
+      }
+
+      /* ── Terminal cursor ── */
+      .cursor {
+        display: inline-block; width: 3px; height: 1em;
+        background: #6366f1; margin-left: 4px;
+        animation: blink 0.8s step-end infinite;
+        vertical-align: text-bottom;
+      }
+      @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
+
+      /* ── Brand logo ── */
+      .brand-logo { font-size: 96px; font-weight: 700; letter-spacing: -3px; }
+      .brand-logo em { color: #c89a45; font-style: normal; }
+      .brand-sub { font-size: 24px; color: #8a8f98; font-weight: 400; letter-spacing: 4px; margin-top: 16px; text-transform: uppercase; }
+
+      /* ── Section headers ── */
+      .section-label {
+        font-size: 14px; font-weight: 600; color: #818cf8;
+        text-transform: uppercase; letter-spacing: 3px; margin-bottom: 24px;
+      }
+
+      /* ── Body text ── */
+      .body-text { font-size: 32px; line-height: 1.5; color: #d0d6e0; text-align: center; max-width: 1400px; }
+      .body-text strong { color: #f7f8f8; font-weight: 600; }
+      .body-text .accent { color: #818cf8; }
+
+      /* ── Bullet list ── */
+      .bullet-list { text-align: left; max-width: 1000px; }
+      .bullet-item {
+        font-size: 28px; line-height: 1.6; color: #d0d6e0;
+        padding: 10px 0; display: flex; align-items: center; gap: 16px;
+      }
+      .bullet-item::before { content: '→'; color: #6366f1; font-weight: 600; font-size: 24px; flex-shrink: 0; }
+      .bullet-item .tag {
+        display: inline-block; font-size: 14px; font-weight: 600; color: #34d399;
+        background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3);
+        padding: 3px 12px; border-radius: 100px; margin-left: 12px;
+        text-transform: uppercase; letter-spacing: 0.5px;
+      }
+
+      /* ── CTA card ── */
+      .cta-card {
+        background: #121416; border: 1px solid rgba(99,102,241,0.4);
+        border-radius: 16px; padding: 48px 64px; text-align: center;
+        box-shadow: 0 0 48px rgba(99,102,241,0.15);
+      }
+      .cta-card .url { font-family: 'JetBrains Mono', monospace; font-size: 48px; font-weight: 500; color: #818cf8; letter-spacing: -1px; }
+      .cta-card .cta-sub { font-size: 22px; color: #f0f2f6; margin-top: 16px; }
+      .cta-card .cta-btn {
+        display: inline-block; margin-top: 28px; padding: 16px 40px;
+        background: #5558e6; color: #fff; border-radius: 8px;
+        font-size: 20px; font-weight: 600; text-decoration: none;
+      }
+
+      /* ── Name reveal ── */
+      .name-line { font-size: 40px; color: #8a8f98; font-weight: 300; }
+      .name-line strong { color: #f7f8f8; font-weight: 600; }
+
+      /* ── Stat highlight ── */
+      .stat-highlight {
+        display: inline-block; background: rgba(99,102,241,0.1);
+        border: 1px solid rgba(99,102,241,0.3); border-radius: 8px;
+        padding: 4px 16px; font-weight: 600; color: #818cf8;
+      }
+
+      /* ── Two-column layout ── */
+      .two-col {
+        display: flex; gap: 60px; max-width: 1400px; width: 100%;
+        justify-content: center;
+      }
+      .col { flex: 1; max-width: 600px; }
+      .col .col-header { font-size: 22px; font-weight: 600; color: #f7f8f8; margin-bottom: 20px; text-align: center; }
+      .col .col-header .hl { color: #6366f1; }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="90"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div class="grid-bg" aria-hidden="true"></div>
+      <div class="glow" aria-hidden="true"></div>
+
+      <!-- ════════════════════════════════════════════════════════════════
+           SCENE 1 — Brand Open (0-8s)
+           ════════════════════════════════════════════════════════════════ -->
+      <div id="scene1" class="scene clip" data-start="0" data-duration="8" data-track-index="1">
+        <div id="s1-logo" style="opacity:0;">
+          <div class="brand-logo">Gale<span style="color:#c89a45;">Ops</span></div>
+        </div>
+        <div id="s1-sub" style="opacity:0;">
+          <div class="brand-sub">AI Security &amp; Agentic Operations</div>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════════════════════════════════
+           SCENE 2 — Introduction (8-22s)
+           ════════════════════════════════════════════════════════════════ -->
+      <div id="scene2" class="scene clip" data-start="8" data-duration="14" data-track-index="2">
+        <div id="s2-line1" style="opacity:0;" class="body-text" style="max-width:1200px;">
+          I'm <strong>Matthew Gale.</strong>
+        </div>
+        <div id="s2-line2" style="opacity:0;margin-top:24px;" class="body-text">
+          I spent <span class="stat-highlight">14 years</span> running enterprise IT —
+          <strong>Wells Fargo</strong>, an <strong>$80M portfolio</strong>,
+          a <strong>40-person engineering org</strong>.
+        </div>
+        <div id="s2-line3" style="opacity:0;margin-top:24px;" class="body-text">
+          Now I do the same thing for <span class="accent">AI</span>.
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════════════════════════════════
+           SCENE 3 — AI Security (22-45s)
+           ════════════════════════════════════════════════════════════════ -->
+      <div id="scene3" class="scene clip" data-start="22" data-duration="23" data-track-index="3">
+        <div id="s3-label" style="opacity:0;" class="section-label">AI Security</div>
+        <div id="s3-list" style="opacity:0;" class="bullet-list">
+          <div id="s3-b1" style="opacity:0;" class="bullet-item">Prompt injection testing <span class="tag">OWASP LLM01</span></div>
+          <div id="s3-b2" style="opacity:0;" class="bullet-item">MCP server security assessments <span class="tag">CVE-2025-6515</span></div>
+          <div id="s3-b3" style="opacity:0;" class="bullet-item">AI guardrail design &amp; implementation</div>
+          <div id="s3-b4" style="opacity:0;" class="bullet-item">Full red team engagements <span class="tag">12+ yrs</span></div>
+          <div id="s3-b5" style="opacity:0;" class="bullet-item">OWASP LLM Top 10 + Agentic Security coverage</div>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════════════════════════════════
+           SCENE 4 — Agentic Ops (45-65s)
+           ════════════════════════════════════════════════════════════════ -->
+      <div id="scene4" class="scene clip" data-start="45" data-duration="20" data-track-index="4">
+        <div id="s4-label" style="opacity:0;" class="section-label">Agentic Operations</div>
+        <div id="s4-list" style="opacity:0;" class="bullet-list">
+          <div id="s4-b1" style="opacity:0;" class="bullet-item">Multi-agent fleet management</div>
+          <div id="s4-b2" style="opacity:0;" class="bullet-item">Cost governance &amp; observability <span class="tag">5-30x</span></div>
+          <div id="s4-b3" style="opacity:0;" class="bullet-item">Reliability &amp; incident response</div>
+          <div id="s4-b4" style="opacity:0;" class="bullet-item">Least-privilege agent scoping</div>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════════════════════════════════
+           SCENE 5 — Close (65-80s)
+           ════════════════════════════════════════════════════════════════ -->
+      <div id="scene5" class="scene clip" data-start="65" data-duration="15" data-track-index="5">
+        <div id="s5-line1" style="opacity:0;" class="body-text" style="max-width:1300px;">
+          Whether you're shipping your <strong>first AI agent</strong>
+          or running a <strong>fleet in production</strong> —
+        </div>
+        <div id="s5-line2" style="opacity:0;margin-top:24px;" class="body-text">
+          GaleOps keeps it <span class="accent">secure</span> and
+          running like <strong>infrastructure</strong>.
+        </div>
+        <div id="s5-line3" style="opacity:0;margin-top:40px;" class="name-line">
+          I'm <strong>Matthew Gale</strong>. Thanks for watching.
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════════════════════════════════
+           SCENE 6 — CTA Card (80-90s)
+           ════════════════════════════════════════════════════════════════ -->
+      <div id="scene6" class="scene clip" data-start="80" data-duration="10" data-track-index="6">
+        <div id="s6-card" style="opacity:0;" class="cta-card">
+          <div class="url">galeops.xyz</div>
+          <div class="cta-sub">Book a fit call → galeops.xyz/ai-security</div>
+          <div class="cta-btn">Book a 15-Min Fit Call</div>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // ── Scene 1: Brand Open (0-8s) ──
+      tl.fromTo("#s1-logo",   { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 0.5);
+      tl.fromTo("#s1-sub",    { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 2.0);
+
+      // ── Scene 2: Introduction (8-22s) ──
+      tl.fromTo("#s2-line1",  { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 8.5);
+      tl.fromTo("#s2-line2",  { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 10.5);
+      tl.fromTo("#s2-line3",  { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 14.5);
+
+      // ── Scene 3: AI Security (22-45s) ──
+      tl.fromTo("#s3-label",  { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 22.5);
+      tl.fromTo("#s3-list",   { opacity: 0 },         { opacity: 1, duration: 0.3 }, 23.5);
+      tl.fromTo("#s3-b1",     { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 24.0);
+      tl.fromTo("#s3-b2",     { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 26.0);
+      tl.fromTo("#s3-b3",     { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 28.5);
+      tl.fromTo("#s3-b4",     { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 31.0);
+      tl.fromTo("#s3-b5",     { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 33.5);
+
+      // ── Scene 4: Agentic Ops (45-65s) ──
+      tl.fromTo("#s4-label",  { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 45.5);
+      tl.fromTo("#s4-list",   { opacity: 0 },         { opacity: 1, duration: 0.3 }, 46.5);
+      tl.fromTo("#s4-b1",     { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 47.0);
+      tl.fromTo("#s4-b2",     { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 49.5);
+      tl.fromTo("#s4-b3",     { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 52.0);
+      tl.fromTo("#s4-b4",     { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 54.5);
+
+      // ── Scene 5: Close (65-80s) ──
+      tl.fromTo("#s5-line1",  { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 65.5);
+      tl.fromTo("#s5-line2",  { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 68.5);
+      tl.fromTo("#s5-line3",  { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 72.0);
+
+      // ── Scene 6: CTA Card (80-90s) ──
+      tl.fromTo("#s6-card",   { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, 80.5);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
