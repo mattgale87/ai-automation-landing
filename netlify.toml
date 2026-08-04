@@ -3,17 +3,7 @@
   command = "node ./scripts/inject-counter.js && echo 'counter injected, build done'"
   publish = "."
 
-[[redirects]]
-  from = "/"
-  to = "/ai-security"
-  status = 302
-  force = true
-
-[[redirects]]
-  from = "/index.html"
-  to = "/ai-security"
-  status = 302
-  force = true
+# NOTE: `/` now serves index.html directly (the company hub) — no redirect to /ai-security.
 
 [[redirects]]
   from = "/leads"
