@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI System Prompt Security Scanner — Free & Deep Scan | GaleOps</title>
+<meta name="description" content="Scan your AI agent's system prompt for OWASP LLM Top 10 vulnerabilities. Free instant grade (A-F) or $49 Deep Scan with full findings, evidence, and remediation. No signup required for free tier.">
+<meta property="og:title" content="AI System Prompt Security Scanner — GaleOps">
+<meta property="og:description" content="Free AI prompt injection scanner. Paste your system prompt, get a grade and top findings in seconds. Deep Scan ($49) unlocks all findings + remediation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://galeops.xyz/tools/scanner/">
+<link rel="canonical" href="https://galeops.xyz/tools/scanner/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg-abyss: #08090a;
+    --bg-surface: #101012;
+    --bg-elevated: #191a1b;
+    --bg-hover: #222324;
+    --border-subtle: rgba(255,255,255,0.06);
+    --border-default: rgba(255,255,255,0.09);
+    --border-active: rgba(99,102,241,0.5);
+    --text-primary: #f7f8f8;
+    --text-secondary: #d0d6e0;
+    --text-tertiary: #8a8f98;
+    --text-muted: #5a5f66;
+    --accent: #6366f1;
+    --accent-hover: #818cf8;
+    --accent-glow: rgba(99,102,241,0.15);
+    --green: #10b981;
+    --green-text: #34d399;
+    --gold: #f59e0b;
+    --gold-accent: #c89a45;
+    --gold-hover: #d9b768;
+    --gold-glow: rgba(200,154,69,0.18);
+    --red: #ef4444;
+    --orange: #fb923c;
+    --lime: #84cc16;
+    --font-display: 'DM Sans', 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --max-w: 880px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg-abyss); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+  .noise-overlay { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 256px 256px; }
+  .page-curtain { position: fixed; inset: 0; z-index: -1; background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(99,102,241,0.06) 0%, transparent 70%); }
+  nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(8,9,10,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-subtle); }
+  nav .inner { max-width: 1120px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 60px; }
+  nav .logo { font-size: 17px; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+  nav .logo em { color: var(--accent); font-style: normal; }
+  .nav-links { display: flex; gap: 8px; align-items: center; }
+  .nav-links a { color: var(--text-tertiary); text-decoration: none; font-size: 13.5px; font-weight: 500; padding: 6px 12px; border-radius: 6px; }
+  .nav-links a:hover { color: var(--text-primary); }
+  .btn-cta { background: var(--accent); color: #fff !important; padding: 8px 18px !important; border-radius: 8px !important; font-weight: 600 !important; }
+  .btn-cta:hover { background: var(--accent-hover) !important; }
+  .mobile-toggle { display: none; background: none; border: none; color: var(--text-primary); font-size: 24px; cursor: pointer; padding: 8px; }
+  .mobile-nav { display: none; position: fixed; top: 60px; left: 0; right: 0; background: var(--bg-surface); border-bottom: 1px solid var(--border-default); padding: 16px; z-index: 99; flex-direction: column; gap: 8px; }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { color: var(--text-secondary); text-decoration: none; padding: 10px 12px; border-radius: 8px; font-size: 15px; }
+  .mobile-nav a:hover { background: var(--bg-hover); }
+  @media (max-width: 768px) { .nav-links { display: none; } .mobile-toggle { display: block; } }
+
+  .container { max-width: var(--max-w); margin: 0 auto; padding: 100px 24px 60px; position: relative; z-index: 1; }
+  .breadcrumb { font-size: 13px; color: var(--text-tertiary); margin-bottom: 20px; }
+  .breadcrumb a { color: var(--text-tertiary); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent-hover); }
+
+  header { text-align: center; margin-bottom: 40px; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.3); border-radius: 100px; padding: 4px 12px; font-size: 12px; color: var(--accent); font-weight: 600; letter-spacing: 1px; margin-bottom: 20px; }
+  h1 { font-size: 44px; line-height: 1.15; font-weight: 700; letter-spacing: -1.5px; margin-bottom: 16px; background: linear-gradient(180deg, #fff 0%, #a8a8b3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .subtitle { font-size: 18px; color: var(--text-secondary); max-width: 640px; margin: 0 auto 24px; }
+  .pill-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+  .pill { background: var(--bg-elevated); padding: 6px 14px; border-radius: 20px; font-size: 13px; color: var(--text-tertiary); border: 1px solid var(--border-default); }
+
+  .card { background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-xl); padding: 32px; margin-bottom: 24px; }
+  .card h2 { font-size: 20px; margin-bottom: 20px; }
+
+  .input-group { margin-bottom: 20px; }
+  .input-group label { display: block; font-size: 13px; color: var(--text-secondary); font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+  textarea, input[type="text"], input[type="email"], select { width: 100%; background: var(--bg-elevated); color: var(--text-primary); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 14px 16px; font-size: 14px; font-family: var(--font-mono); }
+  textarea:focus, input:focus, select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+  textarea { min-height: 180px; resize: vertical; line-height: 1.5; }
+  select { font-family: 'Inter', system-ui, sans-serif; cursor: pointer; }
+  .hint { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+
+  .checkbox-group { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px; }
+  .checkbox-group input[type="checkbox"] { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--accent); cursor: pointer; }
+  .checkbox-group label { font-size: 14px; color: var(--text-secondary); cursor: pointer; }
+  .checkbox-group label strong { color: var(--text-primary); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 16px 32px; border-radius: var(--radius-md); font-size: 16px; font-weight: 600; border: none; cursor: pointer; width: 100%; transition: all 0.15s; }
+  .btn-primary { background: linear-gradient(135deg, var(--accent), #818cf8); color: #fff; }
+  .btn-primary:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 8px 24px var(--accent-glow); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-gold { background: linear-gradient(135deg, var(--gold), #d97706); color: #000; }
+  .btn-gold:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 8px 24px var(--gold-glow); }
+  .btn-gold:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .loading { display: none; text-align: center; padding: 40px; }
+  .loading.active { display: block; }
+  .spinner { width: 40px; height: 40px; border: 3px solid var(--bg-elevated); border-top: 3px solid var(--accent); border-radius: 50%; margin: 0 auto 16px; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading p { color: var(--text-tertiary); font-size: 14px; }
+
+  .results { display: none; }
+  .results.active { display: block; }
+
+  .grade-banner { padding: 24px; border-radius: var(--radius-lg); margin-bottom: 24px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .grade-banner.grade-A { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.3); }
+  .grade-banner.grade-B { background: rgba(132,204,22,0.08); border: 1px solid rgba(132,204,22,0.3); }
+  .grade-banner.grade-C { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.3); }
+  .grade-banner.grade-D { background: rgba(251,146,60,0.08); border: 1px solid rgba(251,146,60,0.3); }
+  .grade-banner.grade-F { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); }
+  .grade-letter { font-size: 56px; font-weight: 700; font-family: var(--font-mono); line-height: 1; }
+  .grade-A .grade-letter { color: var(--green-text); }
+  .grade-B .grade-letter { color: var(--lime); }
+  .grade-C .grade-letter { color: var(--gold); }
+  .grade-D .grade-letter { color: var(--orange); }
+  .grade-F .grade-letter { color: var(--red); }
+  .grade-info { flex: 1; min-width: 200px; }
+  .grade-info h3 { font-size: 20px; margin-bottom: 4px; }
+  .grade-info p { color: var(--text-tertiary); font-size: 14px; }
+  .grade-score { font-size: 14px; color: var(--text-muted); font-family: var(--font-mono); }
+
+  .finding { padding: 16px; background: var(--bg-elevated); border-radius: var(--radius-md); margin-bottom: 12px; border-left: 4px solid var(--text-muted); }
+  .finding.critical { border-left-color: var(--red); }
+  .finding.high { border-left-color: var(--orange); }
+  .finding.medium { border-left-color: var(--gold); }
+  .finding.low { border-left-color: var(--lime); }
+  .finding-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .finding-name { font-weight: 600; font-size: 15px; }
+  .finding-severity { font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 3px 8px; border-radius: 4px; text-transform: uppercase; }
+  .finding-severity.critical { background: rgba(239,68,68,0.15); color: var(--red); }
+  .finding-severity.high { background: rgba(251,146,60,0.15); color: var(--orange); }
+  .finding-severity.medium { background: rgba(245,158,11,0.15); color: var(--gold); }
+  .finding-severity.low { background: rgba(132,204,22,0.15); color: var(--lime); }
+  .finding-evidence { font-size: 13px; color: var(--text-tertiary); line-height: 1.5; }
+  .finding-evidence code { background: rgba(0,0,0,0.3); padding: 1px 5px; border-radius: 3px; font-family: var(--font-mono); font-size: 12px; color: var(--accent-hover); }
+  .finding-owasp { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+
+  .upgrade-cta { margin-top: 24px; padding: 24px; background: linear-gradient(135deg, rgba(245,158,11,0.05), rgba(245,158,11,0.02)); border: 1px solid rgba(245,158,11,0.2); border-radius: var(--radius-lg); text-align: center; }
+  .upgrade-cta h3 { font-size: 18px; margin-bottom: 8px; }
+  .upgrade-cta p { color: var(--text-tertiary); font-size: 14px; margin-bottom: 16px; }
+  .upgrade-cta .btn { display: inline-flex; width: auto; padding: 12px 24px; }
+
+  .tier-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
+  .tier-card { background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: 24px; text-align: center; }
+  .tier-card.featured { border-color: var(--gold); background: linear-gradient(180deg, rgba(245,158,11,0.04), rgba(245,158,11,0.01)); }
+  .tier-card h3 { font-size: 16px; margin-bottom: 4px; }
+  .tier-card .price { font-size: 28px; font-weight: 700; font-family: var(--font-mono); margin-bottom: 12px; }
+  .tier-card .price small { font-size: 14px; color: var(--text-tertiary); font-weight: 400; }
+  .tier-card ul { list-style: none; text-align: left; margin-bottom: 16px; }
+  .tier-card ul li { padding: 6px 0; font-size: 13px; color: var(--text-secondary); }
+  .tier-card ul li::before { content: "✓ "; color: var(--green-text); font-weight: 700; }
+  .tier-card .btn { font-size: 14px; padding: 12px 20px; }
+
+  .error-box { padding: 16px; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: var(--radius-md); color: var(--red); font-size: 14px; margin-bottom: 16px; display: none; }
+  .error-box.active { display: block; }
+
+  .faq { margin-top: 48px; }
+  .faq h2 { font-size: 24px; margin-bottom: 24px; text-align: center; }
+  .faq-item { padding: 16px 0; border-bottom: 1px solid var(--border-subtle); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q { font-weight: 600; font-size: 15px; margin-bottom: 6px; }
+  .faq-a { font-size: 14px; color: var(--text-tertiary); line-height: 1.6; }
+
+  .model-badge { display: inline-block; background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); border-radius: 6px; padding: 2px 8px; font-size: 11px; color: var(--accent); font-family: var(--font-mono); margin-top: 8px; }
+
+  @media (max-width: 768px) {
+    h1 { font-size: 32px; }
+    .tier-cards { grid-template-columns: 1fr; }
+    .grade-banner { flex-direction: column; text-align: center; }
+    .card { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-curtain" aria-hidden="true"></div>
+<div class="noise-overlay" aria-hidden="true"></div>
+
+<nav>
+  <div class="inner">
+    <a href="/" class="logo">Gale<em>Ops</em></a>
+    <div class="nav-links">
+      <a href="/about">About</a>
+      <a href="/services">Services</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/case-studies">Case Studies</a>
+      <a href="/blog/">Blog</a>
+      <a href="/contact">Contact</a>
+      <a href="https://cal.com/mathew-gale-u2vn11/15min" class="btn-cta" target="_blank" rel="noopener">Book Free Audit →</a>
+    </div>
+    <button class="mobile-toggle" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="/about">About</a>
+  <a href="/services">Services</a>
+  <a href="/pricing">Pricing</a>
+  <a href="/case-studies">Case Studies</a>
+  <a href="/blog/">Blog</a>
+  <a href="/contact">Contact</a>
+  <a href="https://cal.com/mathew-gale-u2vn11/15min" class="btn-cta" target="_blank" rel="noopener">Book Free Audit →</a>
+</div>
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">Home</a> / <a href="/tools/">Tools</a> / AI System Prompt Scanner
+  </div>
+
+  <header>
+    <div class="badge">🛡️ FREE TOOL</div>
+    <h1>AI System Prompt Security Scanner</h1>
+    <p class="subtitle">Paste your AI agent's system prompt. We'll analyze it against the OWASP LLM Top 10 and give you a grade, findings, and remediation — in seconds.</p>
+    <div class="pill-row">
+      <span class="pill">🔒 No signup for free scan</span>
+      <span class="pill">⚡ Results in 5–15 seconds</span>
+      <span class="pill">🎯 OWASP LLM Top 10 coverage</span>
+      <span class="pill">🤖 AI-powered analysis (glm-5.2)</span>
+    </div>
+  </header>
+
+  <!-- Tier comparison -->
+  <div class="tier-cards">
+    <div class="tier-card">
+      <h3>Free Scan</h3>
+      <div class="price">$0</div>
+      <ul>
+        <li>Grade A–F with score</li>
+        <li>Top 3 findings</li>
+        <li>OWASP reference per finding</li>
+        <li>No email required</li>
+      </ul>
+      <button class="btn btn-primary" onclick="document.getElementById('scan-form').scrollIntoView({behavior:'smooth'})">Try Free →</button>
+    </div>
+    <div class="tier-card featured">
+      <h3>Deep Scan</h3>
+      <div class="price">$49 <small>one-time</small></div>
+      <ul>
+        <li>All findings (unlimited)</li>
+        <li>Full evidence & remediation</li>
+        <li>Persisted intake record</li>
+        <li>Stripe checkout</li>
+      </ul>
+      <button class="btn btn-gold" onclick="document.getElementById('scan-form').scrollIntoView({behavior:'smooth'})">Scan Deep →</button>
+    </div>
+    <div class="tier-card">
+      <h3>Unlimited</h3>
+      <div class="price">$99 <small>/mo</small></div>
+      <ul>
+        <li>Unlimited Deep Scans</li>
+        <li>Priority analysis</li>
+        <li>API access (coming soon)</li>
+        <li>CI/CD integration</li>
+      </ul>
+      <a href="https://buy.stripe.com/8x27sM6T07OCfIBfuFa3u01" class="btn btn-primary" target="_blank" rel="noopener">Subscribe →</a>
+    </div>
+  </div>
+
+  <!-- Scan form -->
+  <div class="card" id="scan-form">
+    <h2>Scan Your System Prompt</h2>
+
+    <div class="error-box" id="error-box"></div>
+
+    <div class="input-group">
+      <label for="system-prompt">System Prompt</label>
+      <textarea id="system-prompt" placeholder="Paste your AI agent's system prompt here...&#10;&#10;Example:&#10;'You are a customer support agent for Acme Corp. Use the search tool to find answers. Read documents the user attaches. Be helpful and concise.'" autofocus></textarea>
+      <div class="hint">Min 20 characters. Your prompt is sent to our analysis engine — never stored unless you purchase a Deep Scan.</div>
+    </div>
+
+    <div class="input-group">
+      <label for="ai-model">AI Model (optional)</label>
+      <select id="ai-model">
+        <option value="">— Not sure / Other —</option>
+        <option value="gpt-4o">GPT-4o</option>
+        <option value="gpt-4o-mini">GPT-4o-mini</option>
+        <option value="claude-3.5-sonnet">Claude 3.5 Sonnet</option>
+        <option value="claude-3-opus">Claude 3 Opus</option>
+        <option value="gemini-2.0-flash">Gemini 2.0 Flash</option>
+        <option value="deepseek-v4">DeepSeek V4</option>
+        <option value="llama-3.3-70b">Llama 3.3 70B</option>
+        <option value="custom">Custom / Self-hosted</option>
+      </select>
+    </div>
+
+    <div class="input-group" id="email-group" style="display:none;">
+      <label for="email">Work Email <span style="color:var(--red);">*</span></label>
+      <input type="email" id="email" placeholder="you@company.com">
+      <div class="hint">Required for Deep Scan — we'll send your full report and a Stripe checkout link.</div>
+    </div>
+
+    <div class="input-group" id="company-group" style="display:none;">
+      <label for="company">Company (optional)</label>
+      <input type="text" id="company" placeholder="Acme Corp">
+    </div>
+
+    <div class="checkbox-group">
+      <input type="checkbox" id="attestation">
+      <label for="attestation"><strong>I attest that I own or have authorization to test this AI agent's system prompt.</strong> (Required — legal safeguard)</label>
+    </div>
+
+    <div class="checkbox-group">
+      <input type="checkbox" id="deep-scan" onchange="toggleDeepScan()">
+      <label for="deep-scan"><strong>Deep Scan ($49)</strong> — Unlock all findings, full evidence, and remediation. Your prompt is persisted for our team to review.</label>
+    </div>
+
+    <button class="btn btn-primary" id="scan-btn" onclick="runScan()" disabled>🔍 Run Scan →</button>
+    <div class="model-badge">Powered by glm-5.2 via Ollama Cloud</div>
+  </div>
+
+  <!-- Loading -->
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p>Analyzing your system prompt against OWASP LLM Top 10...</p>
+  </div>
+
+  <!-- Results -->
+  <div class="results" id="results"></div>
+
+  <!-- FAQ -->
+  <div class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What does the scanner check?</div>
+      <div class="faq-a">Your system prompt is analyzed against 4 OWASP LLM Top 10 vulnerability classes: LLM01 (Prompt Injection), LLM02 (Sensitive Information Disclosure), LLM06 (Excessive Agency), and LLM07 (System Prompt Leakage). Each finding includes severity, evidence from your prompt, and an OWASP reference.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is my prompt stored?</div>
+      <div class="faq-a"><strong>Free Scan:</strong> No. Your prompt is sent to the analysis engine and the result is returned — nothing is persisted. <strong>Deep Scan ($49):</strong> Yes, your prompt is saved as an intake record so our security team can review it and provide a full remediation report. You'll receive a Stripe checkout link before payment is collected.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How accurate is the scan?</div>
+      <div class="faq-a">The scanner uses glm-5.2 (Ollama Cloud) with a structured analysis prompt targeting specific OWASP classes. It's a strong automated baseline — not a substitute for a human-led red team. For production systems handling sensitive data, we recommend the <a href="/mcp-security-assessment" style="color:var(--accent);">$3,500 MCP Security Assessment</a> or a <a href="/guardrail-retainer" style="color:var(--accent);">$2K/mo retainer</a>.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What's the difference between Free and Deep Scan?</div>
+      <div class="faq-a">Free Scan returns a grade (A–F), a score (0–100), and your top 3 findings. Deep Scan ($49) returns all findings with full evidence, persists the intake for our team to review, and includes a Stripe checkout link. The Unlimited plan ($99/mo) gives you unlimited Deep Scans plus API access.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if I need a full security audit?</div>
+      <div class="faq-a">The scanner is a quick baseline. For a comprehensive assessment covering MCP tool security, RAG poisoning, data exfiltration, and compliance (ISO 42001, SOC 2), book a <a href="https://cal.com/mathew-gale-u2vn11/15min" style="color:var(--accent);">free 15-minute audit call</a>.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SCAN_URL = '/.netlify/functions/galescan-grade';
+
+// Enable scan button when attestation is checked
+document.getElementById('attestation').addEventListener('change', function() {
+  document.getElementById('scan-btn').disabled = !this.checked;
+});
+
+function toggleDeepScan() {
+  const isDeep = document.getElementById('deep-scan').checked;
+  document.getElementById('email-group').style.display = isDeep ? 'block' : 'none';
+  document.getElementById('company-group').style.display = isDeep ? 'block' : 'none';
+}
+
+function showError(msg) {
+  const el = document.getElementById('error-box');
+  el.textContent = msg;
+  el.classList.add('active');
+}
+
+function hideError() {
+  document.getElementById('error-box').classList.remove('active');
+}
+
+async function runScan() {
+  hideError();
+
+  const prompt = document.getElementById('system-prompt').value.trim();
+  const model = document.getElementById('ai-model').value;
+  const isDeep = document.getElementById('deep-scan').checked;
+  const email = document.getElementById('email').value.trim();
+  const company = document.getElementById('company').value.trim();
+  const attestation = document.getElementById('attestation').checked;
+
+  // Validation
+  if (!prompt || prompt.length < 20) {
+    showError('Please paste a system prompt (at least 20 characters).');
+    return;
+  }
+  if (!attestation) {
+    showError('You must attest that you own or have authorization to test this prompt.');
+    return;
+  }
+  if (isDeep && !email) {
+    showError('Email is required for Deep Scan.');
+    return;
+  }
+  if (isDeep && email && !email.includes('@')) {
+    showError('Please enter a valid email address.');
+    return;
+  }
+
+  // Build payload
+  const payload = {
+    system_prompt: prompt,
+    bot_owner_attestation: true
+  };
+  if (model) payload.ai_model = model;
+  if (isDeep) {
+    payload.deep_scan = true;
+    payload.email = email;
+    if (company) payload.company = company;
+  }
+
+  // UI state
+  document.getElementById('scan-btn').disabled = true;
+  document.getElementById('scan-btn').textContent = 'Scanning...';
+  document.getElementById('loading').classList.add('active');
+  document.getElementById('results').classList.remove('active');
+
+  try {
+    const res = await fetch(SCAN_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+
+    if (!res.ok || !data.ok) {
+      showError(data.message || data.error || 'Scan failed. Please try again.');
+      return;
+    }
+
+    renderResults(data, isDeep);
+  } catch (e) {
+    showError('Network error: ' + (e.message || 'Could not reach the scanner.'));
+  } finally {
+    document.getElementById('scan-btn').disabled = false;
+    document.getElementById('scan-btn').textContent = '🔍 Run Scan →';
+    document.getElementById('loading').classList.remove('active');
+  }
+}
+
+function renderResults(data, isDeep) {
+  const grade = data.grade || '?';
+  const label = data.grade_label || '';
+  const score = data.score ?? 0;
+  const findings = data.findings || [];
+  const top3 = data.top_3 || findings.slice(0, 3);
+  const modelUsed = data.model_used || 'glm-5.2';
+
+  // Grade banner
+  const gradeClass = 'grade-' + grade;
+  let gradeDesc = '';
+  if (grade === 'A') gradeDesc = 'Solid baseline. Your prompt has strong security posture.';
+  else if (grade === 'B') gradeDesc = 'Acceptable. A few areas worth reviewing before scaling.';
+  else if (grade === 'C') gradeDesc = 'Moderate risk. Several gaps that should be addressed.';
+  else if (grade === 'D') gradeDesc = 'High risk. Critical vulnerabilities present.';
+  else if (grade === 'F') gradeDesc = 'Critical risk. Your agent is vulnerable to multiple attack classes.';
+
+  let html = `
+    <div class="grade-banner ${gradeClass}">
+      <div class="grade-letter">${grade}</div>
+      <div class="grade-info">
+        <h3>${label}</h3>
+        <p>${gradeDesc}</p>
+        <div class="grade-score">Score: ${score}/100 · ${findings.length} finding${findings.length !== 1 ? 's' : ''} · Model: ${modelUsed}</div>
+      </div>
+    </div>
+  `;
+
+  // Findings
+  const displayFindings = isDeep ? findings : top3;
+  if (displayFindings.length > 0) {
+    html += `<h3 style="margin-bottom:16px;">${isDeep ? 'All Findings' : 'Top Findings'}</h3>`;
+    displayFindings.forEach(f => {
+      const sev = (f.severity || 'None').toLowerCase();
+      html += `
+        <div class="finding ${sev}">
+          <div class="finding-header">
+            <div class="finding-name">${escapeHtml(f.name || 'Unnamed finding')}</div>
+            <div class="finding-severity ${sev}">${f.severity || 'None'}</div>
+          </div>
+          <div class="finding-evidence">${escapeHtml(f.evidence || 'No evidence provided.')}</div>
+          <div class="finding-owasp">${f.owasp_ref || 'OWASP LLM (unspecified)'}</div>
+        </div>
+      `;
+    });
+  } else {
+    html += `<p style="color:var(--text-tertiary);">No findings returned. Your prompt may be well-defended, or the analysis couldn't identify specific issues.</p>`;
+  }
+
+  // Upgrade CTA for free tier
+  if (!isDeep) {
+    html += `
+      <div class="upgrade-cta">
+        <h3>Want the full picture?</h3>
+        <p>Deep Scan ($49) unlocks all findings with full evidence, OWASP references, and a persisted intake record for our team to review.</p>
+        <button class="btn btn-gold" onclick="document.getElementById('deep-scan').checked = true; toggleDeepScan(); document.getElementById('scan-form').scrollIntoView({behavior:'smooth'});">Upgrade to Deep Scan →</button>
+      </div>
+    `;
+  }
+
+  // Deep Scan: show Stripe link
+  if (isDeep && data.deep_scan_link) {
+    html += `
+      <div class="upgrade-cta" style="border-color:var(--accent); background:linear-gradient(135deg, rgba(99,102,241,0.05), rgba(99,102,241,0.02));">
+        <h3>✅ Deep Scan Complete</h3>
+        <p>Your full findings are above. To receive the persisted report and remediation guide, complete checkout below.</p>
+        <a href="${data.deep_scan_link}" class="btn btn-gold" target="_blank" rel="noopener">Complete Checkout ($49) →</a>
+        ${data.deep_scan_id ? `<p style="font-size:11px; color:var(--text-muted); margin-top:8px;">Scan ID: ${data.deep_scan_id}</p>` : ''}
+      </div>
+    `;
+  }
+
+  // Next steps
+  html += `
+    <div style="margin-top:32px; padding:24px; background:var(--bg-elevated); border-radius:var(--radius-lg); text-align:center;">
+      <h3 style="margin-bottom:8px;">Need a deeper review?</h3>
+      <p style="color:var(--text-tertiary); font-size:14px; margin-bottom:16px;">The scanner is an automated baseline. For production systems, book a free 15-minute audit call with Matthew Gale.</p>
+      <a href="https://cal.com/mathew-gale-u2vn11/15min" class="btn btn-primary" style="display:inline-flex; width:auto; padding:12px 24px; text-decoration:none;" target="_blank" rel="noopener">Book Free Audit →</a>
+    </div>
+  `;
+
+  document.getElementById('results').innerHTML = html;
+  document.getElementById('results').classList.add('active');
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+</script>
+</body>
+</html>

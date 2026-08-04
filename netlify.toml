@@ -42,6 +42,18 @@
   force = true
 
 [[redirects]]
+  from = "/tools/prompt-test/*"
+  to = "/tools/scanner/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tools/prompt-test"
+  to = "/tools/scanner/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/blog"
   to = "/blog/index.html"
   status = 200
