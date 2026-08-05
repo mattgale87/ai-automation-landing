@@ -165,10 +165,10 @@
 
   <!-- Key stats -->
   <div class="stat-grid">
-    <div class="stat-card"><div class="num" id="stat-total">709</div><div class="label">AI/Agent CVEs (14-day)</div></div>
+    <div class="stat-card"><div class="num" id="stat-total">851</div><div class="label">AI/Agent CVEs (30-day)</div></div>
     <div class="stat-card"><div class="num" id="stat-kev">1,660</div><div class="label">CISA KEV total</div></div>
-    <div class="stat-card"><div class="num" id="stat-kev-ai">51</div><div class="label">KEV AI-relevant</div></div>
-    <div class="stat-card"><div class="num" id="stat-nvd">3,742</div><div class="label">NVD CVEs (window)</div></div>
+    <div class="stat-card"><div class="num" id="stat-kev-ai">38</div><div class="label">KEV AI-relevant</div></div>
+    <div class="stat-card"><div class="num" id="stat-nvd">9,757</div><div class="label">NVD CVEs (window)</div></div>
   </div>
 
   <!-- Category breakdown -->
@@ -177,28 +177,33 @@
     <p style="color:var(--text-secondary); margin-bottom:24px; font-size:15px;">AI/agent-relevant CVEs broken down by category over the tracking window.</p>
     <div class="bar-row">
       <div class="bar-label">RAG / Retrieval</div>
-      <div class="bar-track"><div class="bar-fill" style="width:100%; background:linear-gradient(90deg,#10b981,#059669);">171</div></div>
-      <div class="bar-val">171</div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%; background:linear-gradient(90deg,#10b981,#059669);">363</div></div>
+      <div class="bar-val">363</div>
     </div>
     <div class="bar-row">
       <div class="bar-label">MCP / Tool / Agent</div>
-      <div class="bar-track"><div class="bar-fill" style="width:43%; background:linear-gradient(90deg,#6366f1,#818cf8);">73</div></div>
-      <div class="bar-val">73</div>
+      <div class="bar-track"><div class="bar-fill" style="width:62%; background:linear-gradient(90deg,#6366f1,#818cf8);">226</div></div>
+      <div class="bar-val">226</div>
     </div>
     <div class="bar-row">
       <div class="bar-label">LLM / Foundation Model</div>
-      <div class="bar-track"><div class="bar-fill" style="width:15%; background:linear-gradient(90deg,#f59e0b,#d97706);">26</div></div>
-      <div class="bar-val">26</div>
-    </div>
-    <div class="bar-row">
-      <div class="bar-label">Prompt Injection</div>
-      <div class="bar-track"><div class="bar-fill" style="width:4%; background:linear-gradient(90deg,#ef4444,#dc2626);">6</div></div>
-      <div class="bar-val">6</div>
+      <div class="bar-track"><div class="bar-fill" style="width:27%; background:linear-gradient(90deg,#f59e0b,#d97706);">99</div></div>
+      <div class="bar-val">99</div>
     </div>
     <div class="bar-row">
       <div class="bar-label">Generative AI / Chatbot</div>
-      <div class="bar-track"><div class="bar-fill" style="width:6%; background:linear-gradient(90deg,#84cc16,#65a30d);">10</div></div>
-      <div class="bar-val">10</div>
+      <div class="bar-track"><div class="bar-fill" style="width:7%; background:linear-gradient(90deg,#84cc16,#65a30d);">24</div></div>
+      <div class="bar-val">24</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">ML Framework</div>
+      <div class="bar-track"><div class="bar-fill" style="width:4%; background:linear-gradient(90deg,#0ea5e9,#0284c7);">15</div></div>
+      <div class="bar-val">15</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Prompt Injection</div>
+      <div class="bar-track"><div class="bar-fill" style="width:4%; background:linear-gradient(90deg,#ef4444,#dc2626);">14</div></div>
+      <div class="bar-val">14</div>
     </div>
   </div>
 
@@ -207,15 +212,15 @@
     <h2>What the Data Says</h2>
     <div class="insight warn">
       <h3>RAG is the new front line.</h3>
-      <p>Retrieval-augmented generation vulnerabilities now dwarf every other agent-security category in our feed. If you connect an agent to a vector database or knowledge base, that retrieval layer is the most likely place an injection lands.</p>
+      <p>Retrieval-augmented generation vulnerabilities dominate our feed — 363 of 851 tracked CVEs. If you connect an agent to a vector database or knowledge base, that retrieval layer is the most likely place an injection lands.</p>
     </div>
     <div class="insight">
-      <h3>MCP is an emerging, under-reported surface.</h3>
-      <p>Model Context Protocol — the standard connecting agents to tools — is showing up as a distinct CVE category. Every tool your agent can call is a potential privilege boundary, and MCP tool-abuse vectors are the ones teams most often miss.</p>
+      <h3>MCP / agent tooling is now the #2 surface.</h3>
+      <p>Model Context Protocol and agent tooling account for 226 CVEs — the fastest-growing category. Every tool your agent can call is a potential privilege boundary, and MCP tool-abuse vectors are the ones teams most often miss.</p>
     </div>
     <div class="insight">
       <h3>Known-exploited counts are the canary.</h3>
-      <p>51 AI/agent-relevant entries sit in CISA's known-exploited catalog. When a vulnerability is in KEV, it's being actively exploited in the wild — not theoretical. That's the number to watch for urgency.</p>
+      <p>38 AI/agent-relevant entries sit in CISA's known-exploited catalog. When a vulnerability is in KEV, it's being actively exploited in the wild — not theoretical. That's the number to watch for urgency.</p>
     </div>
   </div>
 
