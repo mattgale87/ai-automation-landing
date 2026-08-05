@@ -1,6 +1,7 @@
 [build]
-  # Auto-inject the first-party counter snippet into every HTML page, then publish
-  command = "node ./scripts/inject-counter.js && echo 'counter injected, build done'"
+  # Install Netlify Functions deps (node_modules is gitignored; must be built here),
+  # auto-inject the first-party counter snippet into every HTML page, then publish
+  command = "cd netlify/functions && npm ci --omit=dev && cd ../.. && node ./scripts/inject-counter.js && echo 'counter injected, build done'"
   publish = "."
 
 # NOTE: `/` now serves index.html directly (the company hub) — no redirect to /ai-security.
