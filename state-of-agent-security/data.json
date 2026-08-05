@@ -1,10 +1,10 @@
 {
   "updatedAt": "2026-08-05",
-  "count": 709,
+  "count": 129,
   "kevTotal": 1660,
   "kevAI": 51,
-  "nvdTotal": 3742,
-  "nvdAI": 658,
+  "nvdTotal": 636,
+  "nvdAI": 78,
   "recent": [
     {
       "cve": "CVE-2026-70619",
