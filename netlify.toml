@@ -54,6 +54,11 @@
   force = true
 
 [[redirects]]
+  from = "/state-of-agent-security"
+  to = "/state-of-agent-security/index.html"
+  status = 200
+
+[[redirects]]
   from = "/blog"
   to = "/blog/index.html"
   status = 200
