@@ -288,6 +288,25 @@ async function persistDeepScan({ body, findings, grade, score }) {
   return { id, fileName };
 }
 
+// ---- Anonymized grade capture for industry report (fire-and-forget) ----
+// POSTs {grade, score} to the scan-stats blob store so the State of Agent
+// Security report can aggregate the grade distribution. Never blocks/returns
+// on this — it's best-effort telemetry, not load-bearing.
+async function captureScanStats({ grade, score }) {
+  try {
+    const SCAN_STATS_URL = process.env.URL
+      ? `${process.env.URL}/scan-stats`
+      : 'http://localhost:8888/.netlify/functions/scan-stats';
+    await fetch(SCAN_STATS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ grade: grade.grade, score }),
+    });
+  } catch (e) {
+    console.error('GALESCAN: scan-stats capture failed (non-fatal):', e.message);
+  }
+}
+
 // ---- Handler ----
 exports.handler = async (event) => {
   // 1) CORS preflight
@@ -444,6 +463,9 @@ Be specific. Reference actual content from the system prompt. If the prompt is s
 
     grade = computeGrade(findings);
     score = computeScore(findings);
+
+    // Record anonymized grade for the industry report (fire-and-forget)
+    await captureScanStats({ grade, score });
 
     // 10) Deep Scan persistence (if requested + email present)
     if (deepScan && isNonEmptyString(email)) {

@@ -171,6 +171,20 @@
     <div class="stat-card"><div class="num" id="stat-nvd">9,757</div><div class="label">NVD CVEs (window)</div></div>
   </div>
 
+  <!-- Scanner grade distribution -->
+  <div class="card" id="scan-card" style="display:none;">
+    <h2>From the Scanner: Real System Prompts, Graded</h2>
+    <p style="color:var(--text-secondary); margin-bottom:24px; font-size:15px;">Anonymized grades from the <a href="/tools/scanner/" style="color:var(--accent-hover);">AI System Prompt Scanner</a>. This is the actual state of production system prompts, not theory.</p>
+    <div class="stat-grid" style="grid-template-columns:repeat(5,1fr); margin-bottom:8px;">
+      <div class="stat-card"><div class="num" id="scan-A" style="font-size:28px;">0</div><div class="label" style="color:var(--green-text);">A (Ship It)</div></div>
+      <div class="stat-card"><div class="num" id="scan-B" style="font-size:28px; color:var(--green);">0</div><div class="label" style="color:var(--green-text);">B</div></div>
+      <div class="stat-card"><div class="num" id="scan-C" style="font-size:28px; color:var(--gold);">0</div><div class="label" style="color:var(--gold);">C</div></div>
+      <div class="stat-card"><div class="num" id="scan-D" style="font-size:28px; color:var(--orange);">0</div><div class="label" style="color:var(--orange);">D</div></div>
+      <div class="stat-card"><div class="num" id="scan-F" style="font-size:28px; color:var(--red);">0</div><div class="label" style="color:var(--red);">F (Critical)</div></div>
+    </div>
+    <p style="margin-top:16px; font-size:13px; color:var(--text-tertiary);" id="scan-note">Total scans tracked: 0. The scanner grades system prompts against OWASP LLM Top 10.</p>
+  </div>
+
   <!-- Category breakdown -->
   <div class="card">
     <h2>Where the Risk Is Concentrating</h2>
@@ -303,6 +317,25 @@
     }
   }
   refreshLive();
+
+  // Populate the scanner grade-distribution card from the live scan-stats store.
+  // Hidden until there's real data to show.
+  async function refreshScanGrades() {
+    try {
+      const res = await fetch('/scan-stats', { headers: { 'Accept': 'application/json' } });
+      if (!res.ok) throw new Error('unreachable');
+      const d = await res.json();
+      if (!d || !d.ok || !d.total) return; // keep hidden until we have scans
+      const card = document.getElementById('scan-card');
+      const dist = d.grade_distribution || {};
+      const setG = (g, elId) => { const el = document.getElementById(elId); if (el) el.textContent = (dist[g]||0).toLocaleString(); };
+      setG('A','scan-A'); setG('B','scan-B'); setG('C','scan-C'); setG('D','scan-D'); setG('F','scan-F');
+      const note = document.getElementById('scan-note');
+      if (note) note.textContent = `Total scans tracked: ${d.total.toLocaleString()}. The scanner grades system prompts against OWASP LLM Top 10.`;
+      if (card) card.style.display = '';
+    } catch (e) { /* keep hidden */ }
+  }
+  refreshScanGrades();
 </script>
 </body>
 </html>
