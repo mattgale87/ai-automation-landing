@@ -32,6 +32,7 @@
 ## Public Proof and Resources
 - Public HackerOne research: https://galeops.xyz/blog/khan-academy-vdp-report/
 - State of Agent Security (live industry benchmark): https://galeops.xyz/state-of-agent-security/
+- Agent security CVE analysis: https://galeops.xyz/blog/state-of-agent-security-cve-analysis.html
 - Free AI System Prompt Scanner: https://galeops.xyz/tools/scanner/
 - Sample report: https://galeops.xyz/sample-security-report.html
 - Agent cost research: https://galeops.xyz/blog/ai-agent-cost-overrun.html
