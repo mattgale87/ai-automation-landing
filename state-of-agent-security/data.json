@@ -106,5 +106,16 @@
       "date": "2026-08-04",
       "category": "RAG / Retrieval"
     }
-  ]
+  ],
+  "scanStats": {
+    "total": 1,
+    "avgScore": 72,
+    "grades": {
+      "A": 0,
+      "B": 1,
+      "C": 0,
+      "D": 0,
+      "F": 0
+    }
+  }
 }
