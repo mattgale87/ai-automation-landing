@@ -9,6 +9,12 @@
 - $5,000 Agent Ops Audit · $2,500-$10,000/mo retainers · $1,500 emergency incident response.
 - URL: https://galeops.xyz/agentic-ops
 
+### Agent Memory Layer — Persistent, Private AI Memory
+- Persistent, private, searchable operating context for AI agents, with scoped memory, source provenance, explicit promotion, and safe idempotent refreshes.
+- Memory Readiness Audit: $1,500 one-time · Memory Foundation: $4,500+ implementation · Managed MemoryOps: $1,500+/month.
+- URL: https://galeops.xyz/agent-memory/
+- Interactive walkthrough: https://galeops.xyz/demo/agent-memory/
+
 ### Founding AI Agent Risk Review — $750
 - Focused review of one deployed customer-facing AI agent with real data access or tool permissions.
 - Includes attack-surface mapping, targeted prompt-injection and unsafe-action testing, three prioritised attack paths, written remediation guidance, and a 30-minute debrief.
