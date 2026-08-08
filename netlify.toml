@@ -95,6 +95,16 @@
   status = 200
 
 [[redirects]]
+  from = "/agent-memory"
+  to = "/agent-memory/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/demo/agent-memory"
+  to = "/demo/agent-memory/index.html"
+  status = 200
+
+[[redirects]]
   from = "/products/quiz-report"
   to = "/products/quiz-report/index.html"
   status = 200
@@ -204,6 +214,13 @@
 [[redirects]]
   from = "/lead-capture"
   to = "/.netlify/functions/lead-capture"
+  status = 200
+  force = true
+
+# Clean URL for ebook-deliver function (ebook landing page form posts here)
+[[redirects]]
+  from = "/ebook-deliver"
+  to = "/.netlify/functions/ebook-deliver"
   status = 200
   force = true
 
