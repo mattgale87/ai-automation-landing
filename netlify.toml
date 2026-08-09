@@ -105,6 +105,11 @@
   status = 200
 
 [[redirects]]
+  from = "/agent-security-quick-check"
+  to = "/agent-security-quick-check/index.html"
+  status = 200
+
+[[redirects]]
   from = "/products/quiz-report"
   to = "/products/quiz-report/index.html"
   status = 200
