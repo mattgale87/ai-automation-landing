@@ -354,6 +354,21 @@
 <script>
 const SCAN_URL = '/.netlify/functions/galescan-grade';
 
+// Source attribution for demand-probe tracking (Test 3)
+// Reads ?source=reddit, ?source=linkedin, ?source=blog, etc. from the URL.
+const SOURCE_PARAM = new URLSearchParams(window.location.search).get('source') || 'direct';
+
+// Page-view counter (fire-and-forget) — lets us see landing vs. scanning conversion.
+(function recordPageView() {
+  try {
+    fetch('/.netlify/functions/scan-stats', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pageview: true, source: SOURCE_PARAM }),
+    }).catch(() => {});
+  } catch (_) {}
+})();
+
 // Enable scan button when attestation is checked
 document.getElementById('attestation').addEventListener('change', function() {
   document.getElementById('scan-btn').disabled = !this.checked;
@@ -406,7 +421,8 @@ async function runScan() {
   // Build payload
   const payload = {
     system_prompt: prompt,
-    bot_owner_attestation: true
+    bot_owner_attestation: true,
+    source: SOURCE_PARAM
   };
   if (model) payload.ai_model = model;
   if (isDeep) {
@@ -520,8 +536,11 @@ function renderResults(data, isDeep) {
   html += `
     <div style="margin-top:32px; padding:24px; background:var(--bg-elevated); border-radius:var(--radius-lg); text-align:center;">
       <h3 style="margin-bottom:8px;">Need a deeper review?</h3>
-      <p style="color:var(--text-tertiary); font-size:14px; margin-bottom:16px;">The scanner is an automated baseline. For production systems, book a free 15-minute audit call with Matthew Gale.</p>
-      <a href="https://cal.com/mathew-gale-u2vn11/15min" class="btn btn-primary" style="display:inline-flex; width:auto; padding:12px 24px; text-decoration:none;" target="_blank" rel="noopener">Book Free Audit →</a>
+      <p style="color:var(--text-tertiary); font-size:14px; margin-bottom:16px;">The scanner is an automated baseline. For production systems, book a free 15-minute audit call with Matthew Gale, or grab the instant self-serve quick-check.</p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <a href="https://cal.com/mathew-gale-u2vn11/15min" class="btn btn-primary" style="display:inline-flex; width:auto; padding:12px 24px; text-decoration:none;" target="_blank" rel="noopener">Book Free Audit →</a>
+        <a href="https://buy.stripe.com/6oU6oIfpw3ymgMF0zLa3u06" class="btn btn-gold" style="display:inline-flex; width:auto; padding:12px 24px; text-decoration:none;" target="_blank" rel="noopener">AI Agent Security Quick-Check — $39 →</a>
+      </div>
     </div>
   `;
 
@@ -536,5 +555,7 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 </script>
+  <!-- GaleOps first-party counter -->
+  <script src="/assets/galeops-counter.js" defer></script>
 </body>
 </html>
