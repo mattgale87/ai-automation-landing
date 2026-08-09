@@ -50,6 +50,15 @@
   "publisher": { "@type": "Organization", "name": "GaleOps" }
 }
 </script>
+<!-- Google Analytics 4 + funnel event tracking (matches site-wide setup) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SPMK00RCZP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SPMK00RCZP');
+</script>
+<script src="/assets/galeops-funnel-events.js" defer></script>
 </head>
 <body>
 <div class="container">
@@ -126,8 +135,8 @@
   <div class="cta-bar">
     <h3>Test your AI agent's security posture</h3>
     <p style="margin-bottom:20px;">Paste your system prompt into the free scanner and see what an attacker sees in 3 minutes.</p>
-    <a href="/tools/scanner/" class="btn">Try the Free Scanner →</a>
-    <p style="margin-top:14px;font-size:13px;color:var(--muted);">Or book a free audit: <a href="https://cal.com/mathew-gale-u2vn11/15min" style="color:var(--accent);text-decoration:none;">15-min fit call →</a></p>
+    <a href="/tools/scanner/" class="btn" data-funnel-event="prompt_test_started">Try the Free Scanner →</a>
+    <p style="margin-top:14px;font-size:13px;color:var(--muted);">Or book a free audit: <a href="https://cal.com/mathew-gale-u2vn11/15min" style="color:var(--accent);text-decoration:none;" data-funnel-event="consultation_booking_clicked" target="_blank" rel="noopener">15-min fit call →</a></p>
   </div>
 
   <p style="font-size:14px;color:var(--muted);">Related: <a href="/blog/prompt-injection-llm-vulnerability.html">Prompt Injection: LLM's #1 Risk (2026)</a> · <a href="/blog/state-of-agent-security-cve-analysis.html">851 Agent CVEs in 30 Days</a> · <a href="/ai-security/">AI Security Audit</a></p>
