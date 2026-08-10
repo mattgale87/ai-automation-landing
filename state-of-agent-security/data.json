@@ -1,11 +1,81 @@
 {
-  "updatedAt": "2026-08-09",
-  "count": 281,
+  "updatedAt": "2026-08-10",
+  "count": 289,
   "kevTotal": 1662,
   "kevAI": 38,
-  "nvdTotal": 1905,
-  "nvdAI": 243,
+  "nvdTotal": 1988,
+  "nvdAI": 251,
   "recent": [
+    {
+      "cve": "CVE-2026-66405",
+      "date": "2026-08-10",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-21080",
+      "date": "2026-08-10",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-12570",
+      "date": "2026-08-10",
+      "category": "Other / Unclassified"
+    },
+    {
+      "cve": "CVE-2026-19375",
+      "date": "2026-08-10",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-19374",
+      "date": "2026-08-09",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-19373",
+      "date": "2026-08-09",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-19372",
+      "date": "2026-08-09",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-19371",
+      "date": "2026-08-09",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-19370",
+      "date": "2026-08-09",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-19369",
+      "date": "2026-08-09",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-19368",
+      "date": "2026-08-09",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-19367",
+      "date": "2026-08-09",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-19366",
+      "date": "2026-08-09",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-19365",
+      "date": "2026-08-09",
+      "category": "MCP / Tool / Agent"
+    },
     {
       "cve": "CVE-2026-19340",
       "date": "2026-08-09",
@@ -35,76 +105,6 @@
       "cve": "CVE-2026-19334",
       "date": "2026-08-09",
       "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-19333",
-      "date": "2026-08-09",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-19332",
-      "date": "2026-08-09",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-19331",
-      "date": "2026-08-09",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-19330",
-      "date": "2026-08-09",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-19329",
-      "date": "2026-08-09",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-10595",
-      "date": "2026-08-09",
-      "category": "LLM / Foundation Model"
-    },
-    {
-      "cve": "CVE-2026-19328",
-      "date": "2026-08-09",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-19327",
-      "date": "2026-08-09",
-      "category": "LLM / Foundation Model"
-    },
-    {
-      "cve": "CVE-2026-19325",
-      "date": "2026-08-09",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-19324",
-      "date": "2026-08-09",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-19323",
-      "date": "2026-08-09",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-19288",
-      "date": "2026-08-08",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-19287",
-      "date": "2026-08-08",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-19285",
-      "date": "2026-08-08",
-      "category": "RAG / Retrieval"
     }
   ],
   "scanStats": {
