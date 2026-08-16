@@ -116,31 +116,13 @@
 
 [[redirects]]
   from = "/products/snapshot"
-  to = "/ai-security#risk-review"
+  to = "/snapshot/index.html"
   status = 302
   force = true
 
 [[redirects]]
   from = "/products/snapshot/index.html"
-  to = "/ai-security#risk-review"
-  status = 302
-  force = true
-
-[[redirects]]
-  from = "/snapshot"
-  to = "/ai-security#risk-review"
-  status = 302
-  force = true
-
-[[redirects]]
-  from = "/snapshot/"
-  to = "/ai-security#risk-review"
-  status = 302
-  force = true
-
-[[redirects]]
-  from = "/snapshot/index.html"
-  to = "/ai-security#risk-review"
+  to = "/snapshot/index.html"
   status = 302
   force = true
 
@@ -320,5 +302,19 @@
 [[redirects]]
   from = "/agentic-ops"
   to = "/agentic-ops.html"
+  status = 302
+  force = true
+
+# Custom 404 page (Netlify serves 404.html for any unmatched route)
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+# Thank-you page clean URL
+[[redirects]]
+  from = "/thank-you"
+  to = "/thank-you.html"
   status = 302
   force = true

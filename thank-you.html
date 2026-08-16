@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thanks — You're on the list | GaleOps</title>
+  <meta name="description" content="Thanks for reaching out to GaleOps. Your message is in — check your inbox for the next step, or book a call to get started.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://galeops.xyz/thank-you.html">
+  <meta property="og:title" content="Thanks — You're on the list | GaleOps">
+  <meta property="og:description" content="Your message is in. Check your inbox for the next step, or book a call.">
+  <meta property="og:image" content="https://galeops.xyz/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Thanks — You're on the list | GaleOps">
+  <meta name="twitter:description" content="Your message is in. Check your inbox for the next step, or book a call.">
+  <link rel="canonical" href="https://galeops.xyz/thank-you.html">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-abyss: #08090a;
+      --bg-surface: #101012;
+      --bg-elevated: #191a1b;
+      --bg-hover: #222324;
+      --accent: #6366f1;
+      --accent-hover: #818cf8;
+      --accent-glow: rgba(99,102,241,0.15);
+      --gold: #f59e0b;
+      --text: #e7e7e7;
+      --text-dim: #9ca3af;
+      --border: #26272b;
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'DM Sans', 'Inter', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg-abyss);
+      color: var(--text);
+      font-family: var(--sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, var(--accent-glow), transparent 60%);
+      pointer-events: none;
+    }
+    .check {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--accent-glow);
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+      color: var(--accent-hover);
+    }
+    h1 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    p {
+      color: var(--text-dim);
+      max-width: 34rem;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+    .actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-ghost {
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .btn-ghost:hover { background: var(--bg-hover); }
+    .note {
+      margin-top: 2.5rem;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      max-width: 30rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="check">✓</div>
+  <h1>Thanks — you're on the list.</h1>
+  <p>Your message is in. Check your inbox for the next step. If you'd rather talk it through now, book a quick call and we'll get you sorted.</p>
+  <div class="actions">
+    <a class="btn btn-primary" href="https://cal.com/mathew-gale-u2vn11/15min" data-funnel-event="consultation_booking_clicked">Book a Free 15-Min Call</a>
+    <a class="btn btn-ghost" href="/">Back to Home</a>
+  </div>
+  <p class="note">Prefer email? Reach out directly at mattgale87@gmail.com — I respond within 24 hours.</p>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SPMK00RCZP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SPMK00RCZP');
+  </script>
+  <script src="/assets/galeops-funnel-events.js" defer></script>
+  <script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>
