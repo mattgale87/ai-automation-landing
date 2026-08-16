@@ -306,11 +306,11 @@
   force = true
 
 # Custom 404 page (Netlify serves 404.html for any unmatched route)
+# NOTE: no force=true — static files (thank-you.html etc.) must be served first
 [[redirects]]
   from = "/*"
   to = "/404.html"
   status = 404
-  force = true
 
 # Thank-you page clean URL
 [[redirects]]
