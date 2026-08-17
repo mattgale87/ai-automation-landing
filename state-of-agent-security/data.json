@@ -1,11 +1,46 @@
 {
-  "updatedAt": "2026-08-16",
-  "count": 333,
+  "updatedAt": "2026-08-17",
+  "count": 312,
   "kevTotal": 1665,
   "kevAI": 38,
-  "nvdTotal": 4039,
-  "nvdAI": 295,
+  "nvdTotal": 4041,
+  "nvdAI": 274,
   "recent": [
+    {
+      "cve": "CVE-2026-19984",
+      "date": "2026-08-17",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-19978",
+      "date": "2026-08-17",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-19964",
+      "date": "2026-08-17",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-19958",
+      "date": "2026-08-16",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-19957",
+      "date": "2026-08-16",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-19956",
+      "date": "2026-08-16",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-19349",
+      "date": "2026-08-16",
+      "category": "RAG / Retrieval"
+    },
     {
       "cve": "CVE-2026-74578",
       "date": "2026-08-16",
@@ -68,41 +103,6 @@
     },
     {
       "cve": "CVE-2026-74474",
-      "date": "2026-08-15",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-74473",
-      "date": "2026-08-15",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-74472",
-      "date": "2026-08-15",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-74469",
-      "date": "2026-08-15",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-74452",
-      "date": "2026-08-15",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-74450",
-      "date": "2026-08-15",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-15826",
-      "date": "2026-08-15",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-74434",
       "date": "2026-08-15",
       "category": "RAG / Retrieval"
     }
