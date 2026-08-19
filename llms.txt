@@ -1,12 +1,12 @@
 # GaleOps
 
-> GaleOps is an AI security and Agentic Ops consultancy led by Mathew Gale. It helps B2B SaaS teams test customer-facing AI agents, run their agent fleets reliably and affordably, and keep production AI systems secure.
+> GaleOps builds custom AI agents that run your business's busywork. Automation Sprints to build agents, Managed AI to keep them running, and AI Safety Checks — built safe from day one. Led by Mathew Gale.
 
 ## Core Services
 
-### Agentic Ops — Run Your AI Agent Fleet
-- Fractional service that takes over running an enterprise AI agent fleet: cost governance (FinOps for AI agents), reliability and observability, and incident response.
-- $5,000 Agent Ops Audit · $2,500-$10,000/mo retainers · $1,500 emergency incident response.
+### Managed AI — Run Your AI Agent Fleet
+- Fractional service that keeps your AI agents running: cost governance (FinOps for AI agents), reliability and observability, and incident response.
+- $500-$2,500/mo retainers · $500 Automation Sprint to build your first agent.
 - URL: https://galeops.xyz/agentic-ops
 
 ### Agent Memory Layer — Persistent, Private AI Memory
