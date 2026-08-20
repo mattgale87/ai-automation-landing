@@ -1,109 +1,109 @@
 {
-  "updatedAt": "2026-08-19",
-  "count": 273,
-  "kevTotal": 1670,
+  "updatedAt": "2026-08-20",
+  "count": 269,
+  "kevTotal": 1671,
   "kevAI": 38,
-  "nvdTotal": 4158,
-  "nvdAI": 235,
+  "nvdTotal": 4350,
+  "nvdAI": 231,
   "recent": [
     {
-      "cve": "CVE-2026-11565",
+      "cve": "CVE-2026-75860",
+      "date": "2026-08-20",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-17153",
+      "date": "2026-08-20",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-76795",
+      "date": "2026-08-20",
+      "category": "LLM / Foundation Model"
+    },
+    {
+      "cve": "CVE-2026-76850",
+      "date": "2026-08-19",
+      "category": "LLM / Foundation Model"
+    },
+    {
+      "cve": "CVE-2026-76832",
+      "date": "2026-08-19",
+      "category": "Prompt Injection"
+    },
+    {
+      "cve": "CVE-2026-76404",
+      "date": "2026-08-19",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-76395",
+      "date": "2026-08-19",
+      "category": "Other / Unclassified"
+    },
+    {
+      "cve": "CVE-2026-76394",
+      "date": "2026-08-19",
+      "category": "Other / Unclassified"
+    },
+    {
+      "cve": "CVE-2026-76393",
+      "date": "2026-08-19",
+      "category": "Other / Unclassified"
+    },
+    {
+      "cve": "CVE-2026-76260",
       "date": "2026-08-19",
       "category": "RAG / Retrieval"
     },
     {
-      "cve": "CVE-2026-62292",
-      "date": "2026-08-18",
+      "cve": "CVE-2026-76257",
+      "date": "2026-08-19",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-59992",
+      "date": "2026-08-19",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2025-36398",
+      "date": "2026-08-19",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2025-36255",
+      "date": "2026-08-19",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2025-36254",
+      "date": "2026-08-19",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-4936",
+      "date": "2026-08-19",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-76572",
+      "date": "2026-08-19",
+      "category": "LLM / Foundation Model"
+    },
+    {
+      "cve": "CVE-2026-75149",
+      "date": "2026-08-19",
       "category": "MCP / Tool / Agent"
     },
     {
-      "cve": "CVE-2026-52875",
-      "date": "2026-08-18",
+      "cve": "CVE-2026-55564",
+      "date": "2026-08-19",
       "category": "RAG / Retrieval"
     },
     {
-      "cve": "CVE-2026-52873",
-      "date": "2026-08-18",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-76040",
-      "date": "2026-08-18",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-76039",
-      "date": "2026-08-18",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-70786",
-      "date": "2026-08-18",
-      "category": "LLM / Foundation Model"
-    },
-    {
-      "cve": "CVE-2026-70737",
-      "date": "2026-08-18",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-67442",
-      "date": "2026-08-18",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-60591",
-      "date": "2026-08-18",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-60590",
-      "date": "2026-08-18",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-53454",
-      "date": "2026-08-18",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-47720",
-      "date": "2026-08-18",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-12520",
-      "date": "2026-08-18",
-      "category": "LLM / Foundation Model"
-    },
-    {
-      "cve": "CVE-2026-75130",
-      "date": "2026-08-18",
-      "category": "Prompt Injection"
-    },
-    {
-      "cve": "CVE-2026-74038",
-      "date": "2026-08-18",
-      "category": "LLM / Foundation Model"
-    },
-    {
-      "cve": "CVE-2026-69160",
-      "date": "2026-08-18",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-50167",
-      "date": "2026-08-18",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-50143",
-      "date": "2026-08-18",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-50576",
-      "date": "2026-08-18",
+      "cve": "CVE-2026-55194",
+      "date": "2026-08-19",
       "category": "RAG / Retrieval"
     }
   ],
