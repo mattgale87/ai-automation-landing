@@ -10,6 +10,14 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://galeops.xyz/blog/">
 <link rel="canonical" href="https://galeops.xyz/blog/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SPMK00RCZP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SPMK00RCZP');
+</script>
+<script src="/assets/galeops-funnel-events.js" defer></script>
 <style>
   :root{--bg-primary:#08090a;--bg-secondary:#101012;--bg-card:#191a1b;--accent-cyan:#6366f1;--accent-green:#34d399;--accent-yellow:#c89a45;--accent-red:#ff3366;--text-primary:#f7f8f8;--text-secondary:#8a8f98;--border:rgba(255,255,255,0.09)}
   *{box-sizing:border-box;margin:0;padding:0}
@@ -50,9 +58,35 @@
   .newsletter-inline button{padding:12px 20px;border-radius:6px;background:var(--accent-cyan);color:#000;border:none;font-weight:700;cursor:pointer;font-size:14px}
 
   @media(max-width:600px){h1{font-size:32px}.post-card{padding:24px}}
+  nav{position:sticky;top:0;z-index:100;background:rgba(8,9,10,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+  nav .inner{max-width:920px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;height:60px}
+  nav .logo{font-size:18px;font-weight:700;letter-spacing:-0.3px;color:var(--text-primary);text-decoration:none}
+  nav .logo em{font-style:normal;color:var(--accent-cyan)}
+  nav .nav-links{display:flex;gap:6px;align-items:center}
+  nav .nav-links a{color:var(--text-secondary);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;transition:color 0.15s}
+  nav .nav-links a:hover{color:var(--text-primary)}
+  nav .nav-links .btn-cta{background:var(--accent-cyan);color:#fff;padding:8px 16px;border-radius:6px;font-weight:600}
+  .blog-footer{border-top:1px solid var(--border);padding:32px 24px;text-align:center;color:var(--text-secondary);font-size:13px;margin-top:48px}
+  .blog-footer a{color:var(--accent-cyan);text-decoration:none}
+  .blog-footer .footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:12px}
 </style>
 </head>
 <body>
+<nav>
+  <div class="inner">
+    <a class="logo" href="/">Gale<em>Ops</em></a>
+    <div class="nav-links">
+      <a href="/services">Services</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/ai-security">AI Security</a>
+      <a href="/agentic-ops">Managed AI</a>
+      <a href="/case-studies">Case Studies</a>
+      <a href="/contact">Contact</a>
+      <a href="/blog/" style="color:var(--accent-cyan)">Blog</a>
+      <a href="https://cal.com/mathew-gale-u2vn11/15min" class="btn-cta" target="_blank" rel="noopener">Book Free Audit →</a>
+    </div>
+  </div>
+</nav>
 <div class="container">
   <header>
     <div class="logo">⚡ GALEOPS AI SECURITY BLOG</div>
@@ -335,6 +369,24 @@
   </div>
 
 </div>
+
+<div class="blog-footer">
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/services">Services</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/ai-security">AI Security</a>
+    <a href="/agentic-ops">Managed AI</a>
+    <a href="/agent-memory/">Agent Memory</a>
+    <a href="/case-studies">Case Studies</a>
+    <a href="/contact">Contact</a>
+    <a href="/blog/">Blog</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/sitemap.xml">Sitemap</a>
+  </div>
+  <p>&copy; 2026 GaleOps &mdash; AI Automation &amp; Security</p>
+</div>
+
   <!-- GaleOps first-party counter -->
   <script src="/assets/galeops-counter.js" defer></script>
 </body>
