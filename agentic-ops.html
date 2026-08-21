@@ -47,20 +47,38 @@
     .mobile-nav a:hover { background: var(--bg-hover); }
     .mobile-nav .btn-cta { margin-top: 12px; text-align: center; display: block; }
 
-    .hero { padding: 150px 24px 80px; text-align: center; position: relative; overflow: hidden; background: var(--bg-abyss); }
-    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 25%, rgba(99,102,241,0.22) 0%, transparent 60%), radial-gradient(ellipse 45% 40% at 75% 65%, rgba(200,154,69,0.14) 0%, transparent 60%); }
+    /* ── HERO (MotionSites style: transparent section over fixed bg video) ── */
+    .hero {
+      position: relative;
+      display: flex; flex-direction: column; justify-content: center;
+      min-height: 100vh;
+      padding: 90px 32px 32px;
+      box-sizing: border-box;
+      overflow: hidden;
+      text-align: left;
+    }
+    .hero-bg-video {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100vh; object-fit: cover;
+      z-index: 0; pointer-events: none;
+    }
     .hero > * { position: relative; z-index: 1; }
-    .hero .badge { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-glow); border: 1px solid var(--border-active); border-radius: 100px; padding: 5px 14px; font-size: 12.5px; color: var(--accent-hover); font-weight: 500; margin-bottom: 28px; }
-    .hero h1 { font-family: var(--font-display); font-size: clamp(38px, 7vw, 70px); font-weight: 700; letter-spacing: -2.5px; line-height: 1.04; max-width: 900px; margin: 0 auto 24px; }
-    .hero h1 .highlight { background: linear-gradient(135deg, var(--gold-accent) 0%, var(--accent-hover) 55%, var(--green-text) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero p { font-size: clamp(17px, 2.2vw, 20px); color: var(--text-tertiary); max-width: 620px; margin: 0 auto 40px; line-height: 1.55; }
-    .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .hero-microcopy { font-size: 12.5px; color: var(--text-muted); margin-top: 12px; }
+    .hero .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(8,9,10,0.5); border: 1px solid rgba(255,255,255,0.15); border-radius: 100px; padding: 6px 14px; font-size: 12.5px; color: rgba(255,255,255,0.9); font-weight: 500; margin-bottom: 28px; backdrop-filter: blur(6px); }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(34px, 5.2vw, 58px); font-weight: 700; letter-spacing: -0.01em; text-transform: uppercase; line-height: 1.08; max-width: 760px; color: #fff; margin: 0 0 24px; }
+    .hero h1 .words { display: flex; flex-wrap: wrap; gap: 0.25em; }
+    .hero h1 .word { display: inline-block; opacity: 0; transform: translateY(32px); will-change: transform, opacity; }
+    .hero h1 .word.in { opacity: 1; transform: translateY(0); }
+    .hero h1 .word.highlight { background: linear-gradient(135deg, var(--gold-accent) 0%, var(--accent-hover) 55%, var(--green-text) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero p.hero-sub { font-size: clamp(16px, 2vw, 19px); color: rgba(255,255,255,0.85); max-width: 520px; margin: 0 0 32px; line-height: 1.6; }
+    .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-microcopy { font-size: 12.5px; color: rgba(255,255,255,0.6); margin-top: 12px; }
     .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 30px; border-radius: var(--radius-sm); font-weight: 600; font-size: 15px; text-decoration: none; transition: all 0.15s; border: none; cursor: pointer; }
     .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 0 0 1px rgba(200,154,69,0.4), 0 0 20px var(--gold-glow); }
     .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 0 0 1px rgba(200,154,69,0.75), 0 4px 24px rgba(99,102,241,0.35), 0 0 32px rgba(200,154,69,0.4); }
-    .btn-ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--border-default); }
-    .btn-ghost:hover { background: var(--bg-hover); color: var(--text-primary); border-color: var(--text-muted); }
+    .btn-ghost { background: rgba(0,0,0,0.35); color: #fff; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(4px); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.12); color: var(--text-primary); border-color: rgba(255,255,255,0.5); }
+    @media (prefers-reduced-motion: reduce) { .hero h1 .word { opacity: 1 !important; transform: none !important; } }
+    @media (max-width: 900px) { .hero { padding: 120px 18px 32px; } }
 
     .stat-bar { padding: 20px 24px; border-bottom: 1px solid var(--border-subtle); background: var(--bg-surface); }
     .stat-bar-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
@@ -237,10 +255,12 @@
 
 <div class="breadcrumb" style="max-width:1200px;margin:0 auto;padding:18px 24px 0;font-size:13px;color:#9ca3af;"><a href="/" style="color:#6366f1;text-decoration:none;">Home</a> → <a href="/agentic-ops" style="color:#6366f1;text-decoration:none;">Managed AI</a></div>
 
+<video class="hero-bg-video" autoplay muted loop playsinline
+  src="/assets/videos/hero-bg.mp4" aria-hidden="true"></video>
 <section class="hero">
   <div class="badge">New: Managed AI — Run your AI agent fleet</div>
-  <h1>Your AI agents are costing you <span class="highlight">5-30x more than you planned.</span> We run them like $80M of Fortune-50 infrastructure.</h1>
-  <p>Most companies buy agents and pray. We take over running your agent fleet — cost governance, reliability, and incident response — so it stops bleeding money and starts shipping.</p>
+  <h1 id="hero-headline"><span class="words" id="hero-words"></span></h1>
+  <p class="hero-sub">Most companies buy agents and pray. We take over running your agent fleet — cost governance, reliability, and incident response — so it stops bleeding money and starts shipping.</p>
   <div class="hero-buttons">
     <a href="https://cal.com/mathew-gale-u2vn11/15min" class="btn btn-primary" target="_blank" rel="noopener">Book Free Agent Cost Audit →</a>
     <a href="#pricing" class="btn btn-ghost">See Pricing</a>
@@ -586,6 +606,40 @@
   document.querySelectorAll('.mobile-nav a').forEach(function(a) {
     a.addEventListener('click', function() { document.getElementById('mobileNav').classList.remove('open'); });
   });
+</script>
+
+<!-- Hero word-stagger: build per-word spans + animate on view (MotionSites treatment) -->
+<script>
+  (function () {
+    var wrap = document.getElementById('hero-words');
+    if (!wrap) return;
+    var HEADLINE = "Your AI agents are costing you 5-30x more than you planned. We run them like $80M of Fortune-50 infrastructure.";
+    var HIGHLIGHT = ["5-30x", "more", "than", "you", "planned."];
+    var words = HEADLINE.split(' ').map(function (w) {
+      var s = document.createElement('span');
+      s.className = 'word' + (HIGHLIGHT.indexOf(w) !== -1 ? ' highlight' : '');
+      s.textContent = w;
+      wrap.appendChild(s);
+      return s;
+    });
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      words.forEach(function (w) { w.classList.add('in'); });
+      return;
+    }
+    // IntersectionObserver replicates whileInView { once:true, amount:0.2 }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        words.forEach(function (w, i) {
+          var delay = 0.15 + i * 0.08;
+          w.style.transition = 'opacity 0.7s cubic-bezier(0.22,1,0.36,1) ' + delay + 's, transform 0.7s cubic-bezier(0.22,1,0.36,1) ' + delay + 's';
+          w.classList.add('in');
+        });
+        io.disconnect();
+      });
+    }, { threshold: 0.2 });
+    io.observe(document.querySelector('.hero') || wrap);
+  })();
 </script>
 <!-- GaleOps first-party counter -->
 <script src="/assets/galeops-counter.js" defer></script>
