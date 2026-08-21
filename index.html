@@ -92,6 +92,31 @@
     }
     .nav-links a:not(.btn-cta):hover { color: var(--text-primary); }
     .nav-links a:not(.btn-cta):hover::after { transform: scaleX(1); }
+    /* Products dropdown */
+    .nav-item { position: relative; }
+    .nav-item > a { display: inline-flex; align-items: center; gap: 5px; }
+    .nav-item > a::after { content: ''; position: absolute; left: 12px; right: 12px; bottom: 1px; height: 1px; background: var(--gold-accent); transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease; }
+    .nav-item > a:hover { color: var(--text-primary); }
+    .nav-item > a:hover::after { transform: scaleX(1); }
+    .nav-item .caret { font-size: 9px; opacity: 0.6; transition: transform 0.2s; }
+    .nav-item:hover .caret { transform: rotate(180deg); }
+    .nav-dropdown {
+      position: absolute; top: 100%; left: 0; min-width: 220px;
+      background: rgba(16,16,18,0.96); backdrop-filter: blur(16px);
+      border: 1px solid var(--border-default); border-radius: var(--radius-md);
+      padding: 8px; box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+      opacity: 0; visibility: hidden; transform: translateY(-6px);
+      transition: opacity 0.18s, transform 0.18s, visibility 0.18s; z-index: 200;
+    }
+    .nav-item:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown a {
+      display: block; color: var(--text-secondary); text-decoration: none;
+      font-size: 13px; font-weight: 500; padding: 8px 12px; border-radius: var(--radius-sm);
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav-dropdown a:hover { color: var(--text-primary); background: var(--bg-hover); }
+    .nav-dropdown a::after { display: none; }
+    .nav-dropdown .dd-desc { display: block; font-size: 11px; color: var(--text-muted); margin-top: 1px; font-weight: 400; }
     .btn-cta {
       background: var(--accent); color: #fff !important;
       padding: 7px 16px; border-radius: var(--radius-sm); font-weight: 600; font-size: 13px;
@@ -730,10 +755,22 @@
     <a href="/" class="logo">Gale<em>Ops</em></a>
     <div class="nav-links">
       <a href="/about">About</a>
-      <a href="/agent-memory/">Agent Memory</a>
-      <a href="/services">Services</a>
-      <a href="/pricing">Pricing</a>
-      <a href="/products/">Digital Kits</a>
+      <div class="nav-item">
+        <a href="/services">Services <span class="caret">▼</span></a>
+        <div class="nav-dropdown">
+          <a href="/services">Automation Sprint <span class="dd-desc">Build it — one-time</span></a>
+          <a href="/agentic-ops">Managed AI <span class="dd-desc">Run it — monthly retainer</span></a>
+          <a href="/ai-security">AI Safety &amp; Security <span class="dd-desc">Safe it — audits &amp; checks</span></a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="/pricing">Pricing <span class="caret">▼</span></a>
+        <div class="nav-dropdown">
+          <a href="/pricing">See all pricing</a>
+          <a href="/agent-memory/">Agent Memory <span class="dd-desc">Advanced memory layer</span></a>
+          <a href="/products/">Digital Kits <span class="dd-desc">Self-serve resources</span></a>
+        </div>
+      </div>
       <a href="/case-studies">Case Studies</a>
       <a href="/blog/">Blog</a>
       <a href="/contact">Contact</a>
