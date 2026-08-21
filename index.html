@@ -102,67 +102,52 @@
     .mobile-toggle { display: none; background: none; border: none; color: var(--text-primary); font-size: 22px; cursor: pointer; padding: 4px; }
 
     /* ── HERO ── */
+    /* ── HERO (MotionSites style: transparent section over fixed bg video) ── */
     .hero {
-      padding: 160px 24px 100px; text-align: center;
-      position: relative; overflow: hidden; background: var(--bg-abyss);
+      position: relative;
+      display: flex; flex-direction: column; justify-content: center;
+      min-height: 100vh;
+      padding: 90px 32px 32px;
+      box-sizing: border-box;
+      overflow: hidden;
+      text-align: left;
     }
-    .hero .hero-grid-bg {
-      position: absolute; inset: 0; pointer-events: none;
-      background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-      background-size: 60px 60px;
+    .hero-bg-video {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100vh; object-fit: cover;
+      z-index: 0; pointer-events: none;
     }
-    .hero .hero-glow {
-      position: absolute; top: -180px; left: 50%; transform: translateX(-50%);
-      width: 1000px; height: 750px; pointer-events: none;
-      background: radial-gradient(ellipse at center, rgba(99,102,241,0.25) 0%, rgba(99,102,241,0.07) 45%, transparent 70%);
-      animation: glow-pulse 5s ease-in-out infinite;
-    }
-    .hero .hero-glow-2 {
-      position: absolute; top: 40px; left: 50%; transform: translateX(-50%);
-      width: 480px; height: 380px; pointer-events: none;
-      background: radial-gradient(ellipse at center, rgba(167,139,250,0.12) 0%, transparent 65%);
-      animation: glow-pulse 5s ease-in-out infinite reverse;
-    }
-    @keyframes glow-pulse {
-      0%, 100% { opacity: 0.65; transform: translateX(-50%) scale(1); }
-      50% { opacity: 1; transform: translateX(-50%) scale(1.07); }
-    }
-    .hero > * { position: relative; z-index: 1; }
-    .hero .hero-canvas {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      display: block; opacity: 0; pointer-events: none;
-    }
-    .hero-content { position: relative; z-index: 1; }
-    .hero.hero-static-fallback::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
-      background: radial-gradient(ellipse 60% 50% at 32% 22%, rgba(99,102,241,0.24) 0%, transparent 60%),
-                  radial-gradient(ellipse 55% 45% at 72% 62%, rgba(200,154,69,0.17) 0%, transparent 62%);
+    .hero .hero-content {
+      position: relative; z-index: 1; max-width: 720px;
+      display: flex; flex-direction: column; align-items: flex-start;
     }
     .hero .badge {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--accent-glow); border: 1px solid var(--border-active);
-      border-radius: 100px; padding: 5px 14px; font-size: 12.5px;
-      color: var(--accent-hover); font-weight: 500; margin-bottom: 28px;
+      background: rgba(8,9,10,0.5); border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 100px; padding: 6px 14px; font-size: 12.5px;
+      color: rgba(255,255,255,0.9); font-weight: 500; margin-bottom: 28px;
+      backdrop-filter: blur(6px);
     }
     .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
     .hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(40px, 8vw, 80px); font-weight: 700;
-      line-height: 1.0; letter-spacing: -2.8px; margin-bottom: 28px;
-      max-width: 880px; margin-left: auto; margin-right: auto;
+      font-size: clamp(32px, 5.2vw, 58px); font-weight: 700;
+      line-height: 1.08; letter-spacing: -0.01em; text-transform: uppercase;
+      color: #fff; margin: 0 0 28px; max-width: 720px;
     }
-    .hero h1 .highlight {
+    .hero h1 .words { display: flex; flex-wrap: wrap; gap: 0.25em; }
+    .hero h1 .word { display: inline-block; will-change: transform, opacity; }
+    .hero h1 .word.highlight {
       background: linear-gradient(135deg, var(--gold-accent) 0%, var(--accent-hover) 55%, var(--green-text) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-    .hero p {
-      font-size: clamp(16px, 2vw, 19px); color: var(--text-tertiary);
-      max-width: 560px; margin: 0 auto 40px; line-height: 1.55;
+    .hero p.hero-sub {
+      font-size: clamp(15px, 1.8vw, 18px); color: rgba(255,255,255,0.85);
+      line-height: 1.65; max-width: 420px; margin: 0 0 32px;
     }
-    .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .hero-microcopy { font-size: 12.5px; color: var(--text-muted); margin-top: 10px; }
+    .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-microcopy { font-size: 12.5px; color: rgba(255,255,255,0.6); margin-top: 14px; }
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 12px 28px; border-radius: var(--radius-sm); font-weight: 600;
@@ -181,23 +166,13 @@
     .hero .btn-primary { animation: cta-glow-pulse 2.5s ease-in-out infinite; }
     @media (prefers-reduced-motion: reduce) {
       .hero .btn-primary { animation: none; }
+      .hero h1 .word { opacity: 1 !important; transform: none !important; }
     }
-    .btn-ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--border-default); }
-    .btn-ghost:hover { background: var(--bg-hover); color: var(--text-primary); border-color: var(--text-muted); }
-    .hero-stat-bar {
-      display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
-      gap: 6px 16px; margin-top: 48px; font-size: 13px;
-      color: var(--text-tertiary); font-weight: 500;
+    .btn-ghost { background: transparent; color: var(--text-secondary); border: 1px solid rgba(255,255,255,0.3); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.08); color: var(--text-primary); border-color: rgba(255,255,255,0.5); }
+    @media (max-width: 900px) {
+      .hero { padding: 120px 18px 32px; }
     }
-    .hero-stat-bar .sep { color: var(--text-muted); }
-    .stats {
-      display: flex; justify-content: center; gap: 48px; margin-top: 28px;
-      padding: 24px 32px; background: var(--bg-surface); border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg); max-width: 720px; margin-left: auto; margin-right: auto;
-    }
-    .stat { text-align: center; }
-    .stat-num { font-family: var(--font-numeral); font-size: 24px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.5px; }
-    .stat-label { font-size: 12px; color: var(--text-muted); font-weight: 500; margin-top: 2px; }
 
     /* ── 3D FLY-IN SHOWCASE (glassmorphism service tier cards, tilted in 3D, scroll-driven) ── */
     .fly-showcase { position: relative; padding: 20px 24px 120px; perspective: 1600px; display: flex; justify-content: center; overflow: visible; }
@@ -608,8 +583,6 @@
       .mobile-toggle { display: block; }
       .hero { padding: 120px 20px 72px; }
       .case-study-grid { grid-template-columns: 1fr; gap: 32px; }
-      .stats { gap: 24px; padding: 18px 20px; flex-wrap: wrap; }
-      .stat-num { font-size: 20px; }
       .section { padding: 72px 20px; }
       .services-grid, .pricing-grid { grid-template-columns: 1fr; }
       .pricing-grid { max-width: 420px; }
@@ -617,8 +590,6 @@
       .process-connector { display: none; }
       .security-features-grid { grid-template-columns: 1fr; }
       .trust-signals { flex-direction: column; align-items: center; }
-      .hero-stat-bar { flex-direction: column; gap: 4px; }
-      .hero-stat-bar .sep { display: none; }
       .testimonials-grid { grid-template-columns: 1fr; }
       .comparison-table { font-size: 12px; }
       .comparison-table th, .comparison-table td { padding: 12px 10px; }
@@ -783,33 +754,19 @@
   <a href="https://cal.com/mathew-gale-u2vn11/15min" class="btn-cta" target="_blank" rel="noopener">Book Free Audit →</a>
 </div>
 
-<!-- ── HERO ── -->
+<!-- ── HERO (MotionSites style) ── -->
+<video class="hero-bg-video" autoplay muted loop playsinline
+  src="/assets/videos/hero-bg.mp4" aria-hidden="true"></video>
 <section class="hero">
-  <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
-  <div class="hero-grid-bg" aria-hidden="true"></div>
-  <div class="hero-glow" aria-hidden="true"></div>
-  <div class="hero-glow-2" aria-hidden="true"></div>
   <div class="hero-content">
   <div class="badge"><span class="badge-dot"></span> Custom AI agents that run your busywork — built, run, and safe.</div>
-  <h1>Put your <span class="highlight">busywork on autopilot.</span></h1>
-  <p>I build custom AI agents that handle the work your team doesn't have time for. Done-for-you automations, built in days — kept running, and built safe from day one.</p>
+  <h1 id="hero-headline"><span class="words" id="hero-words"></span></h1>
+  <p class="hero-sub">I build custom AI agents that handle the work your team doesn't have time for. Done-for-you automations, built in days — kept running, and built safe from day one.</p>
   <div class="hero-buttons">
     <a href="#services" class="btn btn-primary">See what I build →</a>
     <a href="https://cal.com/mathew-gale-u2vn11/15min" class="btn btn-ghost" target="_blank" rel="noopener">Free 15-min audit →</a>
   </div>
   <p class="hero-microcopy">14+ years enterprise IT · Wells Fargo, Tile Shop, Hospital · Free 15-min fit call</p>
-  <div class="hero-stat-bar">
-    <span>14+ years enterprise IT</span>
-    <span class="sep">|</span>
-    <span>$80M+ managed portfolio</span>
-    <span class="sep">|</span>
-    <span>Agents in production today</span>
-  </div>
-  <div class="stats">
-    <div class="stat"><div class="stat-num">2</div><div class="stat-label">Business lines</div></div>
-    <div class="stat"><div class="stat-num">14+</div><div class="stat-label">Years enterprise IT</div></div>
-    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">In-house, human-run</div></div>
-  </div>
   </div>
 </section>
 
@@ -1434,12 +1391,26 @@
   if (typeof gsap === 'undefined') return;
   gsap.registerPlugin(ScrollTrigger);
 
+  // ── Build hero headline as staggered word spans (MotionSites treatment) ──
+  // "Put your busywork on autopilot." → per-word spans; highlight the final phrase.
+  var heroWordsWrap = document.getElementById('hero-words');
+  if (heroWordsWrap) {
+    var HEADLINE = "Put your busywork on autopilot.";
+    var HIGHLIGHT = ["busywork", "on", "autopilot."];
+    HEADLINE.split(' ').forEach(function(w){
+      var s = document.createElement('span');
+      s.className = 'word' + (HIGHLIGHT.indexOf(w) !== -1 ? ' highlight' : '');
+      s.textContent = w;
+      heroWordsWrap.appendChild(s);
+    });
+  }
+
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reducedMotion) {
     // Leave the page fully visible: no curtain, no shimmer, no hidden-then-animated states.
     gsap.set('.page-curtain', { display: 'none' });
     gsap.set('#introShimmer', { display: 'none' });
-    gsap.set('#hero-canvas', { opacity: 0 });
+    // Show all hero words fully (reduced-motion CSS already forces them visible).
     return;
   }
 
@@ -1454,10 +1425,14 @@
   // Curtain page-load reveal (quick dark curtain lift → hero fades in)
   var tl = gsap.timeline({ delay: 0.15 });
   tl.to('.page-curtain', { yPercent: 100, duration: 0.8, ease: 'power4.inOut' })
-    .from('.hero .badge, .hero h1, .hero p, .hero-buttons, .hero-microcopy, .hero-stat-bar, .hero .stats', {
-      opacity: 0, y: 24, duration: 0.7, stagger: 0.07, ease: 'power3.out'
+    // Headline words stagger in individually (MotionSites word-stagger treatment)
+    .from('#hero-words .word', {
+      opacity: 0, y: 32, duration: 0.7, stagger: 0.08, ease: 'power3.out'
     }, '-=0.4')
-    .to('#hero-canvas', { opacity: 1, duration: 1.2, ease: 'power2.out' }, '<');
+    // Everything else fades up after the headline
+    .from('.hero .badge, .hero .hero-sub, .hero-buttons, .hero-microcopy', {
+      opacity: 0, y: 24, duration: 0.7, stagger: 0.07, ease: 'power3.out'
+    }, '<');
 
   // 3D fly-in showcase: entrance + continued rotation driven by scroll (scrubbed)
   gsap.set('#card1', { opacity: 0, x: -120, y: 70, z: -220, rotationY: 28, rotationX: 8, scale: 0.72 });
