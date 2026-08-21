@@ -10,10 +10,10 @@ All prices are in USD. Engagements are fixed-price. Updated 2026-07-28.
 - Tests targeted prompt-injection, data-exposure, and unsafe-action paths
 - Delivers three prioritised attack paths, written remediation guidance, and a 30-minute findings debrief
 - Delivery: within 5 business days after agreed scope and test access
-- The full $750 is credited toward a $5,000 AI Security Audit
+- The full $750 is credited toward a $6,000 AI Security Audit
 - Best for: B2B SaaS teams that need a concrete security baseline before a broader engagement
 
-### AI Security Audit — $5,000 (fixed)
+### AI Security Audit — $6,000 (fixed)
 - Comprehensive adversarial assessment of a deployed LLM or AI agent
 - Direct, indirect, and multi-turn prompt-injection testing
 - Agent tool-permission and data-flow review

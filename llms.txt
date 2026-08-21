@@ -22,7 +22,7 @@
 - The $750 fee is credited toward a full AI Security Audit.
 - URL: https://galeops.xyz/ai-security#risk-review
 
-### AI Security Audit — $5,000
+### AI Security Audit — $6,000
 - Comprehensive adversarial assessment of deployed LLMs and AI agents.
 - Covers prompt injection, retrieved-content attacks, data exposure, and unsafe tool access.
 - URL: https://galeops.xyz/ai-security
