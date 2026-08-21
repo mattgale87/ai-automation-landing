@@ -137,15 +137,49 @@
   <div class="hero-content">
   <div class="badge"><span class="badge-dot"></span> Case Studies</div>
   <h1 id="hero-headline"><span class="words" id="hero-words"></span></h1>
-  <p class="hero-sub">Actual security findings from deployed AI agent audits, public HackerOne research, and dogfooding our own managed AI fleet.</p>
+  <p class="hero-sub">Real systems I've built and run — and the security discipline that keeps them safe. Dogfooding first, then what I find when I test agents.</p>
+  </div>
+</section>
+
+<section class="section" style="background: var(--bg-surface);">
+  <div class="section-inner">
+    <div class="section-label">Built &amp; Running — Proof from my own systems</div>
+    <h2 class="section-title">The agents I build run my own business first</h2>
+    <p class="section-subtitle">Before I tell you how to build and run agents, I run them myself. This is the same discipline I apply to client systems — measurable, in production, unattended.</p>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="severity severity-high">Live</div>
+        <h3>Autonomous Content Fleet — Instagram, Pinterest, X</h3>
+        <div class="meta">GaleOps · Running 24/7 · @Mattjgale87: 55→57 followers</div>
+        <p>A fleet of AI agents that drafts, schedules, and publishes content across Instagram, Pinterest, X, and Bluesky — with guardrails, cost tracking, and incident handling on every run. <strong>37 posts published across the fleet, scheduled and sent unattended.</strong></p>
+        <div class="tags">
+          <span>Automation</span>
+          <span>Managed AI</span>
+          <span>Cost Governance</span>
+        </div>
+        <a href="/agentic-ops" class="read-more">See how I run it →</a>
+      </div>
+      <div class="case-card">
+        <div class="severity severity-medium">Proof</div>
+        <h3>Gross Check — Pay Reconciliation App</h3>
+        <div class="meta">GaleOps · Production</div>
+        <p>A full-stack app with an AI help agent that reconciles pay stubs against hours worked — built, deployed, and kept running with the same discipline I apply to client systems.</p>
+        <div class="tags">
+          <span>Build</span>
+          <span>AI Agent</span>
+          <span>Production</span>
+        </div>
+        <a href="https://grosscheck.galeops.xyz" class="read-more" target="_blank" rel="noopener">See it live →</a>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="section">
   <div class="section-inner">
-    <div class="section-label">Security Findings</div>
-    <h2 class="section-title">What we find when we test AI agents</h2>
-    <p class="section-subtitle" style="margin-bottom: 0;">Anonymized findings from real GaleOps engagements. Names, industries, and identifying details removed.</p>
+    <div class="section-label">Security — the credibility layer</div>
+    <h2 class="section-title">And when I test agents, I find what breaks</h2>
+    <p class="section-subtitle" style="margin-bottom: 0;">The same discipline I build with, applied defensively. Anonymized findings from real engagements — every agent I ship is held to this bar too.</p>
     <div class="case-grid">
       <div class="case-card">
         <div class="severity severity-critical">Critical</div>
@@ -223,7 +257,7 @@
   <div class="section-inner">
     <div class="section-label">Public Research</div>
     <h2 class="section-title">Published findings & methodology</h2>
-    <p class="section-subtitle">Detailed writeups from bug bounty research and public vulnerability disclosures.</p>
+    <p class="section-subtitle">Published research and methodology from public vulnerability disclosures and bug bounty programs.</p>
     <div class="case-grid">
       <div class="case-card">
         <div class="severity severity-high">HIGH</div>
@@ -260,40 +294,6 @@
           <span>Prompt Injection</span>
         </div>
         <a href="/blog/mcp-server-broken-in-10-minutes/" class="read-more">Read the teardown →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" style="background: var(--bg-surface);">
-  <div class="section-inner">
-    <div class="section-label">Dogfooding — Managed AI in practice</div>
-    <h2 class="section-title">I run a fleet of AI agents in production every day</h2>
-    <p class="section-subtitle">Before I tell you how to build and run agents, I run them myself. This is one live system — a fleet that creates, schedules, and publishes content across platforms with no human hand-holding.</p>
-    <div class="case-grid">
-      <div class="case-card">
-        <div class="severity severity-high">Live</div>
-        <h3>Autonomous Content Fleet — Instagram, Pinterest, X</h3>
-        <div class="meta">GaleOps · Running 24/7</div>
-        <p>A fleet of AI agents that drafts, schedules, and publishes content across Instagram, Pinterest, and X — with guardrails, cost tracking, and incident handling on every run. No human hand-holding between posts.</p>
-        <div class="tags">
-          <span>Automation</span>
-          <span>Managed AI</span>
-          <span>Cost Governance</span>
-        </div>
-        <a href="/agentic-ops" class="read-more">See how I run it →</a>
-      </div>
-      <div class="case-card">
-        <div class="severity severity-medium">Proof</div>
-        <h3>Gross Check — Pay Reconciliation App</h3>
-        <div class="meta">GaleOps · Production</div>
-        <p>A full-stack app with an AI help agent that reconciles pay stubs against hours worked — built, deployed, and kept running with the same discipline I apply to client systems.</p>
-        <div class="tags">
-          <span>Build</span>
-          <span>AI Agent</span>
-          <span>Production</span>
-        </div>
-        <a href="https://grosscheck.galeops.xyz" class="read-more" target="_blank" rel="noopener">See it live →</a>
       </div>
     </div>
   </div>
@@ -366,8 +366,8 @@
   (function () {
     var wrap = document.getElementById('hero-words');
     if (!wrap) return;
-    var HEADLINE = "Real findings from production AI agents";
-    var HIGHLIGHT = ["production", "AI", "agents"];
+    var HEADLINE = "Built, running, and proven in production";
+    var HIGHLIGHT = ["Built,", "running,", "proven"];
     HEADLINE.split(' ').forEach(function (w) {
       var s = document.createElement('span');
       s.className = 'word' + (HIGHLIGHT.indexOf(w) !== -1 ? ' highlight' : '');
