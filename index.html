@@ -157,6 +157,9 @@
       background: linear-gradient(135deg, var(--gold-accent) 0%, var(--accent-hover) 55%, var(--green-text) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
+    /* Word-stagger hero (2026-08-21): each word is inline-block so GSAP can
+       translateY it independently without breaking wrap/spacing */
+    .hero h1 .hl-word { display: inline-block; }
     .hero p {
       font-size: clamp(16px, 2vw, 19px); color: var(--text-tertiary);
       max-width: 560px; margin: 0 auto 40px; line-height: 1.55;
@@ -791,7 +794,7 @@
   <div class="hero-glow-2" aria-hidden="true"></div>
   <div class="hero-content">
   <div class="badge"><span class="badge-dot"></span> Custom AI agents that run your busywork — built, run, and safe.</div>
-  <h1>Put your <span class="highlight">busywork on autopilot.</span></h1>
+  <h1><span class="hl-word">Put</span> <span class="hl-word">your</span> <span class="hl-word highlight">busywork</span> <span class="hl-word highlight">on</span> <span class="hl-word highlight">autopilot.</span></h1>
   <p>I build custom AI agents that handle the work your team doesn't have time for. Done-for-you automations, built in days — kept running, and built safe from day one.</p>
   <div class="hero-buttons">
     <a href="#services" class="btn btn-primary">See what I build →</a>
@@ -1454,9 +1457,14 @@
   // Curtain page-load reveal (quick dark curtain lift → hero fades in)
   var tl = gsap.timeline({ delay: 0.15 });
   tl.to('.page-curtain', { yPercent: 100, duration: 0.8, ease: 'power4.inOut' })
-    .from('.hero .badge, .hero h1, .hero p, .hero-buttons, .hero-microcopy, .hero-stat-bar, .hero .stats', {
-      opacity: 0, y: 24, duration: 0.7, stagger: 0.07, ease: 'power3.out'
+    // Headline words stagger in individually (MotionSites word-stagger treatment)
+    .from('.hero h1 .hl-word', {
+      opacity: 0, y: 32, duration: 0.7, stagger: 0.08, ease: 'power3.out'
     }, '-=0.4')
+    // Everything else fades up after the headline
+    .from('.hero .badge, .hero p, .hero-buttons, .hero-microcopy, .hero-stat-bar, .hero .stats', {
+      opacity: 0, y: 24, duration: 0.7, stagger: 0.07, ease: 'power3.out'
+    }, '<')
     .to('#hero-canvas', { opacity: 1, duration: 1.2, ease: 'power2.out' }, '<');
 
   // 3D fly-in showcase: entrance + continued rotation driven by scroll (scrubbed)
