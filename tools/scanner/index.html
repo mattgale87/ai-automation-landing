@@ -249,7 +249,7 @@
         <li>Persisted intake record</li>
         <li>Stripe checkout</li>
       </ul>
-      <button class="btn btn-gold" onclick="document.getElementById('scan-form').scrollIntoView({behavior:'smooth'})">Scan Deep →</button>
+      <button class="btn btn-primary" onclick="document.getElementById('scan-form').scrollIntoView({behavior:'smooth'})">Scan Deep →</button>
     </div>
     <div class="tier-card">
       <h3>Unlimited</h3>
@@ -515,7 +515,7 @@ function renderResults(data, isDeep) {
       <div class="upgrade-cta">
         <h3>Want the full picture?</h3>
         <p>Deep Scan ($49) unlocks all findings with full evidence, OWASP references, and a persisted intake record for our team to review.</p>
-        <button class="btn btn-gold" onclick="document.getElementById('deep-scan').checked = true; toggleDeepScan(); document.getElementById('scan-form').scrollIntoView({behavior:'smooth'});">Upgrade to Deep Scan →</button>
+        <button class="btn btn-primary" onclick="document.getElementById('deep-scan').checked = true; toggleDeepScan(); document.getElementById('scan-form').scrollIntoView({behavior:'smooth'});">Upgrade to Deep Scan →</button>
       </div>
     `;
   }
@@ -526,7 +526,7 @@ function renderResults(data, isDeep) {
       <div class="upgrade-cta" style="border-color:var(--accent); background:linear-gradient(135deg, rgba(99,102,241,0.05), rgba(99,102,241,0.02));">
         <h3>✅ Deep Scan Complete</h3>
         <p>Your full findings are above. To receive the persisted report and remediation guide, complete checkout below.</p>
-        <a href="${data.deep_scan_link}" class="btn btn-gold" target="_blank" rel="noopener">Complete Checkout ($49) →</a>
+        <a href="${data.deep_scan_link}" class="btn btn-primary" target="_blank" rel="noopener">Complete Checkout ($49) →</a>
         ${data.deep_scan_id ? `<p style="font-size:11px; color:var(--text-muted); margin-top:8px;">Scan ID: ${data.deep_scan_id}</p>` : ''}
       </div>
     `;
@@ -539,7 +539,7 @@ function renderResults(data, isDeep) {
       <p style="color:var(--text-tertiary); font-size:14px; margin-bottom:16px;">The scanner is an automated baseline. For production systems, book a free 15-minute audit call with Matthew Gale, or grab the instant self-serve quick-check.</p>
       <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
         <a href="https://cal.com/mathew-gale-u2vn11/15min" class="btn btn-primary" style="display:inline-flex; width:auto; padding:12px 24px; text-decoration:none;" target="_blank" rel="noopener">Book Free Audit →</a>
-        <a href="https://buy.stripe.com/6oU6oIfpw3ymgMF0zLa3u06" class="btn btn-gold" style="display:inline-flex; width:auto; padding:12px 24px; text-decoration:none;" target="_blank" rel="noopener">AI Agent Security Quick-Check — $39 →</a>
+        <a href="https://buy.stripe.com/6oU6oIfpw3ymgMF0zLa3u06" class="btn btn-primary" style="display:inline-flex; width:auto; padding:12px 24px; text-decoration:none;" target="_blank" rel="noopener">AI Agent Security Quick-Check — $39 →</a>
       </div>
     </div>
   `;
