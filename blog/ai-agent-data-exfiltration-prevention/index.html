@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preventing AI Agent Data Exfiltration: Tool Boundaries Done Right | GaleOps</title>
+<meta name="description" content="How AI agent data exfiltration works via chained tool calls, and 5 enforcement boundaries (prompt, code, network, human, monitoring) that break the chain.">
+<link rel="canonical" href="https://galeops.xyz/blog/ai-agent-data-exfiltration-prevention/">
+<style>
+
+:root{--bg-primary:#0a0e1a;--bg-secondary:#131826;--bg-card:#1a2030;--accent-cyan:#00e5ff;--accent-green:#00ff88;--accent-yellow:#ffd700;--accent-red:#ff3366;--text-primary:#e8ecf4;--text-secondary:#8b94a8;--border:#2a3045}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.75}
+.container{max-width:760px;margin:0 auto;padding:32px 24px}
+.back-link{color:var(--text-secondary);text-decoration:none;font-size:14px;margin-bottom:32px;display:inline-block}
+.tag{display:inline-block;padding:4px 12px;border-radius:12px;font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:600;background:var(--bg-card);color:var(--accent-cyan);border:1px solid var(--accent-cyan);margin-right:8px;margin-bottom:16px}
+.tag.mcp{color:var(--accent-green);border-color:var(--accent-green)}
+.tag.cve{color:var(--accent-red);border-color:var(--accent-red)}
+h1{font-size:40px;line-height:1.15;margin-bottom:16px;letter-spacing:-1px;background:linear-gradient(135deg,#fff,var(--accent-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.subtitle{font-size:19px;color:var(--text-secondary);margin-bottom:32px;font-style:italic}
+.meta{display:flex;gap:16px;color:var(--text-secondary);font-size:14px;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+h2{font-size:26px;margin:48px 0 16px;letter-spacing:-0.5px;color:var(--accent-cyan)}
+h3{font-size:20px;margin:32px 0 12px;color:var(--text-primary)}
+p{margin-bottom:20px;font-size:17px}
+ul,ol{margin-bottom:24px;padding-left:28px}
+li{margin-bottom:10px;font-size:17px}
+blockquote{border-left:4px solid var(--accent-cyan);padding:16px 24px;margin:24px 0;background:var(--bg-secondary);border-radius:0 8px 8px 0}
+code{background:var(--bg-secondary);padding:3px 7px;border-radius:4px;font-family:monospace;color:var(--accent-cyan);font-size:14px}
+pre{background:var(--bg-secondary);padding:20px;border-radius:8px;overflow-x:auto;margin:20px 0;border:1px solid var(--border)}
+pre code{background:none;padding:0;font-size:14px;line-height:1.6;color:var(--text-primary)}
+.attack{border-left:4px solid var(--accent-red);padding:24px;background:var(--bg-card);border-radius:0 8px 8px 0;margin:24px 0}
+.attack.severity-critical{border-left-color:var(--accent-red)}
+.attack.severity-high{border-left-color:var(--accent-yellow)}
+.severity-badge{padding:3px 10px;border-radius:8px;font-size:12px;background:rgba(255,51,102,0.2);color:var(--accent-red);font-weight:600;letter-spacing:0.5px}
+.severity-badge.critical{background:rgba(255,51,102,0.2);color:var(--accent-red)}
+.severity-badge.high{background:rgba(255,215,0,0.2);color:var(--accent-yellow)}
+.cta-box{background:linear-gradient(135deg,var(--bg-card),var(--bg-secondary));border:2px solid var(--accent-cyan);border-radius:16px;padding:32px;margin:48px 0;text-align:center}
+.cta-box h3{font-size:24px;margin-bottom:12px}
+.cta-box a.btn{display:inline-block;padding:16px 32px;background:var(--accent-cyan);color:#000;text-decoration:none;border-radius:8px;font-weight:700;margin:8px}
+.cta-box a.btn.ghost{background:transparent;border:1px solid var(--accent-cyan);color:var(--accent-cyan)}
+.stat-box{background:var(--bg-card);padding:24px;border-radius:12px;margin:24px 0;border:1px solid var(--border);text-align:center}
+.stat-num{font-size:48px;font-weight:700;color:var(--accent-red);line-height:1}
+.stat-label{font-size:14px;color:var(--text-secondary);margin-top:8px;letter-spacing:1px;text-transform:uppercase}
+.timeline{list-style:none;padding:0}
+.timeline li{padding:12px 0 12px 24px;border-left:2px solid var(--border);position:relative;margin:0}
+.timeline li::before{content:'';position:absolute;left:-6px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--accent-cyan)}
+.timeline li .time{font-size:12px;color:var(--text-muted);font-weight:600;letter-spacing:1px;text-transform:uppercase}
+@media(max-width:600px){h1{font-size:28px}}
+
+</style>
+</head>
+<body>
+<div class="container">
+<a href="../../blog/" class="back-link">&#8592; Back to all posts</a>
+<div class="tag">Security Guide</div>
+<h1>Preventing AI Agent Data Exfiltration: Tool Boundaries Done Right</h1>
+<p style="color:var(--text-secondary);font-size:14px">August 2026 &middot; GaleOps</p>
+<p>When an AI agent has tool access - file readers, email senders, API callers - prompt injection stops being a curiosity and becomes a data breach vector. Here's how to structure tool boundaries so that even a fully injected agent can't exfiltrate data.</p>
+
+<h2>The exfiltration pattern</h2>
+<p>Nearly every real-world agent exfiltration follows the same chain:</p>
+<ol>
+<li><strong>Inject</strong> — attacker gets instruction-like text into the agent's context (via a document, web page, database row, or even the user's own input)</li>
+<li><strong>Chain</strong> — the agent calls a read tool to fetch sensitive data, then a send tool to move it out</li>
+<li><strong>Exfiltrate</strong> — data crosses the boundary, and neither the model nor the monitoring catches it because each individual tool call looked legitimate</li>
+</ol>
+
+<h2>Boundary 1: Data/Instructions separation (prompt layer)</h2>
+<p>Your system prompt must define an explicit hierarchy: content retrieved by tools is DATA. It is never instructions, regardless of formatting, labels, or urgency markers. This blocks the injection at step 1 for most attacks.</p>
+<p>Limitation: prompting is probabilistic. Sophisticated injections can still slip through, which is why the next two layers matter.</p>
+
+<h2>Boundary 2: Tool-level allowlists (code layer)</h2>
+<p>Enforce restrictions in the tool wrapper code, not the prompt:</p>
+<pre><code># BAD: relies on the model behaving
+def read_file(path):
+    return open(path).read()
+
+# GOOD: enforced in code
+ALLOWED_DIRS = ["/data/public/", "/data/reports/"]
+
+def read_file(path):
+    resolved = os.path.realpath(path)
+    if not any(resolved.startswith(d) for d in ALLOWED_DIRS):
+        raise PermissionError(f"Access denied: {path}")
+    return open(resolved).read()</code></pre>
+
+<h2>Boundary 3: Destination validation (network layer)</h2>
+<pre><code>APPROVED_RECIPIENTS = {"team@company.com", "alerts@company.com"}
+
+def send_email(to, subject, body):
+    if to not in APPROVED_RECIPIENTS:
+        raise PermissionError(f"Recipient not approved: {to}")
+    # proceed with send
+...</code></pre>
+<p>This breaks step 2 of the chain: even if the agent decides to exfiltrate, the send fails because the destination isn't approved.</p>
+
+<h2>Boundary 4: Confirmation gates (human layer)</h2>
+<p>For high-stakes actions (sending data externally, deleting records, financial operations), require human approval before execution. The agent prepares the action; a human approves or denies it.</p>
+
+<h2>Boundary 5: Monitoring and alerting (detection layer)</h2>
+<p>If all else fails, detect the exfiltration:</p>
+<ul>
+<li>Alert on unusual tool-call sequences (read followed by send)</li>
+<li>Alert on volume anomalies (a file-read tool suddenly reading hundreds of files)</li>
+<li>Ship logs off-box so a compromised agent can't erase its tracks</li>
+</ul>
+
+<h2>The minimum viable defense</h2>
+<p>If you only do three things: explicit data/instructions separation in the system prompt, code-enforced path/recipient allowlists, and confirmation gates on external sends. Those three break every exfiltration chain I've tested.</p>
+
+<h2>Test your boundaries</h2>
+<p>The <a href="https://galeops.xyz/tools/scanner/" style="color:var(--accent-cyan)">free GaleOps scanner</a> includes exfiltration-chain attack patterns among its 5 vectors. Run it against your agent's system prompt to see if your boundaries hold. ~3 minutes, no signup.</p>
+
+<div class="cta-box">
+<h3>Need a Real Assessment?</h3>
+<p>GaleOps tests AI agents against production-grade attack chains and delivers prioritised remediation. Fixed price, no retainer.</p>
+<a href="https://galeops.xyz/mcp-security-assessment" class="btn">See Assessments &#8594;</a>
+</div>
+
+<div class="cta-box">
+<h3>Test Your Agent Right Now</h3>
+<p>The <a href="https://galeops.xyz/tools/scanner/" style="color:var(--accent-cyan)">free prompt-injection scanner</a> runs 5 real attack patterns against your system prompt in about 3 minutes. No signup.</p>
+<a href="https://galeops.xyz/tools/scanner/" class="btn">Run the Free Scanner &#8594;</a>
+</div>
+<p style="text-align:center;margin-top:48px"><a href="../../blog/" style="color:var(--accent-cyan);text-decoration:none">&#8592; Back to all posts</a></p>
+</div>
+<script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>

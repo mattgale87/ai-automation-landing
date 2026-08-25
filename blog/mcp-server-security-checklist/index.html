@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCP Server Security Checklist: 12 Things to Verify Before Production | GaleOps</title>
+<meta name="description" content="A practical 12-point security checklist for MCP servers before production deployment: instruction hierarchy, least-privilege tools, injection testing, and exfiltration prevention.">
+<link rel="canonical" href="https://galeops.xyz/blog/mcp-server-security-checklist/">
+<style>
+
+:root{--bg-primary:#0a0e1a;--bg-secondary:#131826;--bg-card:#1a2030;--accent-cyan:#00e5ff;--accent-green:#00ff88;--accent-yellow:#ffd700;--accent-red:#ff3366;--text-primary:#e8ecf4;--text-secondary:#8b94a8;--border:#2a3045}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.75}
+.container{max-width:760px;margin:0 auto;padding:32px 24px}
+.back-link{color:var(--text-secondary);text-decoration:none;font-size:14px;margin-bottom:32px;display:inline-block}
+.tag{display:inline-block;padding:4px 12px;border-radius:12px;font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:600;background:var(--bg-card);color:var(--accent-cyan);border:1px solid var(--accent-cyan);margin-right:8px;margin-bottom:16px}
+.tag.mcp{color:var(--accent-green);border-color:var(--accent-green)}
+.tag.cve{color:var(--accent-red);border-color:var(--accent-red)}
+h1{font-size:40px;line-height:1.15;margin-bottom:16px;letter-spacing:-1px;background:linear-gradient(135deg,#fff,var(--accent-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.subtitle{font-size:19px;color:var(--text-secondary);margin-bottom:32px;font-style:italic}
+.meta{display:flex;gap:16px;color:var(--text-secondary);font-size:14px;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+h2{font-size:26px;margin:48px 0 16px;letter-spacing:-0.5px;color:var(--accent-cyan)}
+h3{font-size:20px;margin:32px 0 12px;color:var(--text-primary)}
+p{margin-bottom:20px;font-size:17px}
+ul,ol{margin-bottom:24px;padding-left:28px}
+li{margin-bottom:10px;font-size:17px}
+blockquote{border-left:4px solid var(--accent-cyan);padding:16px 24px;margin:24px 0;background:var(--bg-secondary);border-radius:0 8px 8px 0}
+code{background:var(--bg-secondary);padding:3px 7px;border-radius:4px;font-family:monospace;color:var(--accent-cyan);font-size:14px}
+pre{background:var(--bg-secondary);padding:20px;border-radius:8px;overflow-x:auto;margin:20px 0;border:1px solid var(--border)}
+pre code{background:none;padding:0;font-size:14px;line-height:1.6;color:var(--text-primary)}
+.attack{border-left:4px solid var(--accent-red);padding:24px;background:var(--bg-card);border-radius:0 8px 8px 0;margin:24px 0}
+.attack.severity-critical{border-left-color:var(--accent-red)}
+.attack.severity-high{border-left-color:var(--accent-yellow)}
+.severity-badge{padding:3px 10px;border-radius:8px;font-size:12px;background:rgba(255,51,102,0.2);color:var(--accent-red);font-weight:600;letter-spacing:0.5px}
+.severity-badge.critical{background:rgba(255,51,102,0.2);color:var(--accent-red)}
+.severity-badge.high{background:rgba(255,215,0,0.2);color:var(--accent-yellow)}
+.cta-box{background:linear-gradient(135deg,var(--bg-card),var(--bg-secondary));border:2px solid var(--accent-cyan);border-radius:16px;padding:32px;margin:48px 0;text-align:center}
+.cta-box h3{font-size:24px;margin-bottom:12px}
+.cta-box a.btn{display:inline-block;padding:16px 32px;background:var(--accent-cyan);color:#000;text-decoration:none;border-radius:8px;font-weight:700;margin:8px}
+.cta-box a.btn.ghost{background:transparent;border:1px solid var(--accent-cyan);color:var(--accent-cyan)}
+.stat-box{background:var(--bg-card);padding:24px;border-radius:12px;margin:24px 0;border:1px solid var(--border);text-align:center}
+.stat-num{font-size:48px;font-weight:700;color:var(--accent-red);line-height:1}
+.stat-label{font-size:14px;color:var(--text-secondary);margin-top:8px;letter-spacing:1px;text-transform:uppercase}
+.timeline{list-style:none;padding:0}
+.timeline li{padding:12px 0 12px 24px;border-left:2px solid var(--border);position:relative;margin:0}
+.timeline li::before{content:'';position:absolute;left:-6px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--accent-cyan)}
+.timeline li .time{font-size:12px;color:var(--text-muted);font-weight:600;letter-spacing:1px;text-transform:uppercase}
+@media(max-width:600px){h1{font-size:28px}}
+
+</style>
+</head>
+<body>
+<div class="container">
+<a href="../../blog/" class="back-link">&#8592; Back to all posts</a>
+<div class="tag">Security Guide</div>
+<h1>MCP Server Security Checklist: 12 Things to Verify Before Production</h1>
+<p style="color:var(--text-secondary);font-size:14px">August 2026 &middot; GaleOps</p>
+<p>Model Context Protocol (MCP) servers give AI agents direct access to files, APIs, and external systems. That access is the whole point - and the whole risk. Here's a concrete checklist to run through before any MCP server touches production.</p>
+
+<h2>1. Instruction hierarchy is explicit</h2>
+<p>The system prompt must state that content retrieved via tools is DATA, never instructions. If your server relies on the model "knowing better," you don't have a security model.</p>
+
+<h2>2. Tool permissions are least-privilege</h2>
+<p>Each tool should have the narrowest possible scope. A read_file tool doesn't need write. An email tool doesn't need arbitrary recipients. Audit each tool's actual parameters against what it's granted at the process level.</p>
+
+<h2>3. External-sending tools require confirmation</h2>
+<p>Any tool that sends data outside the system (email, webhooks, API calls with side effects) must trigger a human confirmation gate before execution. This single control breaks most exfiltration chains.</p>
+
+<h2>4. Tool descriptions are injection-free</h2>
+<p>Tool poisoning works by hiding instructions inside tool descriptions, which the model reads as context. Review every description: if it contains imperative language directed at the model ("always do X first"), that's a red flag.</p>
+
+<h2>5. Session isolation between users</h2>
+<p>If multiple users hit the same MCP server, verify that User A's conversation context can never influence User B's session. Shared state across sessions enables cross-user injection.</p>
+
+<h2>6. File path restrictions are enforced in code</h2>
+<p>Not just prompted - enforced. A read_file tool should reject paths outside its sandbox at the code level, independent of whatever the model requests.</p>
+
+<h2>7. No credentials in tool descriptions or prompts</h2>
+<p>API keys, tokens, and connection strings must live in environment variables or a secrets manager - never in the system prompt where they become readable via prompt extraction attacks.</p>
+
+<h2>8. Logging covers every tool invocation</h2>
+<p>You can't detect exfiltration you can't see. Log: which tool was called, with what arguments, by whom, and what data moved. Ship logs somewhere agents can't modify.</p>
+
+<h2>9. Rate limits exist per-tool</h2>
+<p>A compromised agent shouldn't be able to dump an entire database in one burst. Rate-limit each tool's invocations to a sane ceiling for legitimate use.</p>
+
+<h2>10. The server runs with minimum OS privileges</h2>
+<p>Dedicated service account, no shell access, filesystem scoped to what's needed. If the agent gets fully compromised via prompt injection, the blast radius is capped by the OS permissions of the MCP server process.</p>
+
+<h2>11. Dependencies are pinned and audited</h2>
+<p>MCP SDKs and tool libraries are supply-chain targets. Pin versions, audit for known CVEs, and review new dependency updates before pulling them in.</p>
+
+<h2>12. You've actually attacked it</h2>
+<p>Every item above is theory until tested. Run prompt-injection attacks against your own server: indirect injection through tool output, instruction override via user input, cross-session poisoning, and exfiltration chaining. The <a href="https://galeops.xyz/tools/scanner/" style="color:var(--accent-cyan)">free GaleOps scanner</a> automates 5 attack patterns against your agent's system prompt in ~3 minutes.</p>
+
+<h2>Bonus: What "good" looks like</h2>
+<p>A hardened MCP server has: explicit instruction hierarchy, allowlisted tools with validated parameters, confirmation gates on external sends, full invocation logging shipped off-box, and a record of real attack testing - not just a code review.</p>
+
+<div class="cta-box">
+<h3>Want a Second Pair of Eyes?</h3>
+<p>GaleOps runs fixed-price MCP security assessments: config audit, injection surface mapping, tool permission review, and exfiltration path analysis, delivered as a prioritised report in 5 business days.</p>
+<a href="https://galeops.xyz/mcp-security-assessment" class="btn">See the $3,500 Assessment &#8594;</a>
+</div>
+
+<div class="cta-box">
+<h3>Test Your Agent Right Now</h3>
+<p>The <a href="https://galeops.xyz/tools/scanner/" style="color:var(--accent-cyan)">free prompt-injection scanner</a> runs 5 real attack patterns against your system prompt in about 3 minutes. No signup.</p>
+<a href="https://galeops.xyz/tools/scanner/" class="btn">Run the Free Scanner &#8594;</a>
+</div>
+<p style="text-align:center;margin-top:48px"><a href="../../blog/" style="color:var(--accent-cyan);text-decoration:none">&#8592; Back to all posts</a></p>
+</div>
+<script src="/assets/galeops-counter.js" defer></script>
+</body>
+</html>
