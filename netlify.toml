@@ -305,6 +305,13 @@
   status = 302
   force = true
 
+# Bot Mesh proof file (dot-directories don't publish on this site config; redirect instead)
+[[redirects]]
+  from = "/botmesh/.well-known/bot-mesh.json"
+  to = "/botmesh/well-known/bot-mesh.json"
+  status = 200
+  force = true
+
 # Custom 404 page (Netlify serves 404.html for any unmatched route)
 # NOTE: no force=true — static files (thank-you.html etc.) must be served first
 [[redirects]]
