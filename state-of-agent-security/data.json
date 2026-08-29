@@ -1,110 +1,110 @@
 {
-  "updatedAt": "2026-08-28",
-  "count": 343,
+  "updatedAt": "2026-08-29",
+  "count": 324,
   "kevTotal": 1685,
   "kevAI": 38,
-  "nvdTotal": 2866,
-  "nvdAI": 305,
+  "nvdTotal": 2922,
+  "nvdAI": 286,
   "recent": [
     {
-      "cve": "CVE-2026-80700",
-      "date": "2026-08-28",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-80682",
+      "cve": "CVE-2026-81517",
       "date": "2026-08-28",
       "category": "RAG / Retrieval"
     },
     {
-      "cve": "CVE-2026-80674",
-      "date": "2026-08-28",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-80662",
-      "date": "2026-08-28",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-80640",
-      "date": "2026-08-28",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-80639",
-      "date": "2026-08-28",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-80630",
+      "cve": "CVE-2026-77037",
       "date": "2026-08-28",
       "category": "RAG / Retrieval"
     },
     {
-      "cve": "CVE-2026-80615",
-      "date": "2026-08-28",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-80603",
+      "cve": "CVE-2026-55696",
       "date": "2026-08-28",
       "category": "RAG / Retrieval"
     },
     {
-      "cve": "CVE-2026-80591",
+      "cve": "CVE-2026-22056",
       "date": "2026-08-28",
       "category": "RAG / Retrieval"
     },
     {
-      "cve": "CVE-2026-80590",
-      "date": "2026-08-28",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-81848",
-      "date": "2026-08-28",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-81847",
-      "date": "2026-08-28",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-81845",
-      "date": "2026-08-28",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-81837",
-      "date": "2026-08-28",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-81836",
+      "cve": "CVE-2026-82286",
       "date": "2026-08-28",
       "category": "LLM / Foundation Model"
     },
     {
-      "cve": "CVE-2026-81835",
+      "cve": "CVE-2026-82285",
+      "date": "2026-08-28",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-82265",
+      "date": "2026-08-28",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-82021",
       "date": "2026-08-28",
       "category": "MCP / Tool / Agent"
     },
     {
-      "cve": "CVE-2026-75339",
+      "cve": "CVE-2026-77939",
       "date": "2026-08-28",
       "category": "RAG / Retrieval"
     },
     {
-      "cve": "CVE-2026-68929",
+      "cve": "CVE-2026-70331",
       "date": "2026-08-28",
       "category": "LLM / Foundation Model"
     },
     {
-      "cve": "CVE-2026-54330",
+      "cve": "CVE-2026-58616",
+      "date": "2026-08-28",
+      "category": "Generative AI / Chatbot"
+    },
+    {
+      "cve": "CVE-2026-56100",
       "date": "2026-08-28",
       "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-54746",
+      "date": "2026-08-28",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-54745",
+      "date": "2026-08-28",
+      "category": "Other / Unclassified"
+    },
+    {
+      "cve": "CVE-2026-51653",
+      "date": "2026-08-28",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-38093",
+      "date": "2026-08-28",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-37237",
+      "date": "2026-08-28",
+      "category": "LLM / Foundation Model"
+    },
+    {
+      "cve": "CVE-2026-15603",
+      "date": "2026-08-28",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-82233",
+      "date": "2026-08-28",
+      "category": "Prompt Injection"
+    },
+    {
+      "cve": "CVE-2026-82111",
+      "date": "2026-08-28",
+      "category": "MCP / Tool / Agent"
     }
   ],
   "scanStats": {
