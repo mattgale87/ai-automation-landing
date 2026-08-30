@@ -1,11 +1,31 @@
 {
-  "updatedAt": "2026-08-29",
-  "count": 324,
+  "updatedAt": "2026-08-30",
+  "count": 305,
   "kevTotal": 1685,
   "kevAI": 38,
-  "nvdTotal": 2922,
-  "nvdAI": 286,
+  "nvdTotal": 2741,
+  "nvdAI": 267,
   "recent": [
+    {
+      "cve": "CVE-2026-77970",
+      "date": "2026-08-30",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-75847",
+      "date": "2026-08-30",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-82472",
+      "date": "2026-08-29",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-82456",
+      "date": "2026-08-29",
+      "category": "MCP / Tool / Agent"
+    },
     {
       "cve": "CVE-2026-81517",
       "date": "2026-08-28",
@@ -85,26 +105,6 @@
       "cve": "CVE-2026-38093",
       "date": "2026-08-28",
       "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-37237",
-      "date": "2026-08-28",
-      "category": "LLM / Foundation Model"
-    },
-    {
-      "cve": "CVE-2026-15603",
-      "date": "2026-08-28",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-82233",
-      "date": "2026-08-28",
-      "category": "Prompt Injection"
-    },
-    {
-      "cve": "CVE-2026-82111",
-      "date": "2026-08-28",
-      "category": "MCP / Tool / Agent"
     }
   ],
   "scanStats": {
