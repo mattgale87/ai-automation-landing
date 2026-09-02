@@ -346,7 +346,7 @@
     </div>
     <div class="faq-item">
       <div class="faq-q">What if I need a full security audit?</div>
-      <div class="faq-a">The scanner is a quick baseline. For a comprehensive assessment covering MCP tool security, RAG poisoning, data exfiltration, and compliance (ISO 42001, SOC 2), book a <a href="https://cal.com/mathew-gale-u2vn11/15min" style="color:var(--accent);">free 15-minute audit call</a>.</div>
+      <div class="faq-a">The scanner is a quick baseline. For a comprehensive assessment covering MCP tool security, RAG poisoning, data exfiltration, and compliance (ISO 42001, SOC 2), book a <a href="https://cal.com/mathew-gale-u2vn11/15min" style="color:var(--accent);">free 15-minute audit call</a> — or get the <a href="/agent-risk-review/" style="color:var(--accent);">AI Agent Risk Review ($750, fixed scope)</a>.</div>
     </div>
   </div>
 </div>
@@ -532,14 +532,33 @@ function renderResults(data, isDeep) {
     `;
   }
 
-  // Next steps
+  // Next steps — the paid ladder: the free scan proved the filter; these are the paid rungs
   html += `
-    <div style="margin-top:32px; padding:24px; background:var(--bg-elevated); border-radius:var(--radius-lg); text-align:center;">
-      <h3 style="margin-bottom:8px;">Need a deeper review?</h3>
-      <p style="color:var(--text-tertiary); font-size:14px; margin-bottom:16px;">The scanner is an automated baseline. For production systems, book a free 15-minute audit call with Matthew Gale, or grab the instant self-serve quick-check.</p>
-      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-        <a href="https://cal.com/mathew-gale-u2vn11/15min" class="btn btn-primary" style="display:inline-flex; width:auto; padding:12px 24px; text-decoration:none;" target="_blank" rel="noopener">Book Free Audit →</a>
-        <a href="https://buy.stripe.com/6oU6oIfpw3ymgMF0zLa3u06" class="btn btn-primary" style="display:inline-flex; width:auto; padding:12px 24px; text-decoration:none;" target="_blank" rel="noopener">AI Agent Security Quick-Check — $39 →</a>
+    <div style="margin-top:32px; padding:24px; background:var(--bg-elevated); border-radius:var(--radius-lg);">
+      <h3 style="margin-bottom:4px;">Found something worth fixing?</h3>
+      <p style="color:var(--text-tertiary); font-size:14px; margin-bottom:16px;">This scan is an automated baseline — a filter, not a full assessment. Three ways to go deeper:</p>
+      <div style="display:flex; flex-direction:column; gap:12px; max-width:680px; margin:0 auto;">
+        <div style="border:1px solid var(--accent); border-radius:var(--radius-md,8px); padding:14px 16px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+          <div style="flex:1; min-width:260px;">
+            <strong>Agent Risk Review — $750 fixed scope</strong>
+            <div style="color:var(--text-tertiary); font-size:13px; margin-top:2px;">I review one deployed or near-production agent the way an attacker would — findings ranked by what would actually hurt, each with a fix. The findings are yours outright: hand them to any developer, or have me do the remediation.</div>
+          </div>
+          <a href="/agent-risk-review/" class="btn btn-primary" style="display:inline-flex; width:auto; padding:12px 24px; text-decoration:none; white-space:nowrap;" target="_blank" rel="noopener">See what's reviewed →</a>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,0.1); border-radius:var(--radius-md,8px); padding:14px 16px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+          <div style="flex:1; min-width:260px;">
+            <strong>AI Agent Security Quick-Check — $39 self-serve</strong>
+            <div style="color:var(--text-tertiary); font-size:13px; margin-top:2px;">Instant written check against the top injection vectors. No call, no intake.</div>
+          </div>
+          <a href="https://buy.stripe.com/6oU6oIfpw3ymgMF0zLa3u06" class="btn btn-primary" style="display:inline-flex; width:auto; padding:12px 24px; text-decoration:none; white-space:nowrap;" target="_blank" rel="noopener">Buy the Quick-Check →</a>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,0.1); border-radius:var(--radius-md,8px); padding:14px 16px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+          <div style="flex:1; min-width:260px;">
+            <strong>Not sure yet?</strong>
+            <div style="color:var(--text-tertiary); font-size:13px; margin-top:2px;">Book a free 15-minute call and bring your scan results.</div>
+          </div>
+          <a href="https://cal.com/mathew-gale-u2vn11/15min" class="btn btn-primary" style="display:inline-flex; width:auto; padding:12px 24px; text-decoration:none; white-space:nowrap;" target="_blank" rel="noopener">Book Free Audit →</a>
+        </div>
       </div>
     </div>
   `;
