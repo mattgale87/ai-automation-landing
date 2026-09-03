@@ -1,11 +1,91 @@
 {
-  "updatedAt": "2026-09-02",
-  "count": 223,
-  "kevTotal": 1687,
-  "kevAI": 38,
-  "nvdTotal": 2610,
-  "nvdAI": 185,
+  "updatedAt": "2026-09-03",
+  "count": 244,
+  "kevTotal": 1694,
+  "kevAI": 39,
+  "nvdTotal": 2454,
+  "nvdAI": 205,
   "recent": [
+    {
+      "cve": "CVE-2026-84887",
+      "date": "2026-09-03",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-84886",
+      "date": "2026-09-03",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-84885",
+      "date": "2026-09-03",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-82524",
+      "date": "2026-09-02",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-75136",
+      "date": "2026-09-02",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-84377",
+      "date": "2026-09-02",
+      "category": "LLM / Foundation Model"
+    },
+    {
+      "cve": "CVE-2026-53671",
+      "date": "2026-09-02",
+      "category": "LLM / Foundation Model"
+    },
+    {
+      "cve": "CVE-2026-53670",
+      "date": "2026-09-02",
+      "category": "LLM / Foundation Model"
+    },
+    {
+      "cve": "CVE-2026-84810",
+      "date": "2026-09-02",
+      "category": "LLM / Foundation Model"
+    },
+    {
+      "cve": "CVE-2026-82404",
+      "date": "2026-09-02",
+      "category": "LLM / Foundation Model"
+    },
+    {
+      "cve": "CVE-2026-84666",
+      "date": "2026-09-02",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-82293",
+      "date": "2026-09-02",
+      "category": "Other / Unclassified"
+    },
+    {
+      "cve": "CVE-2026-78598",
+      "date": "2026-09-02",
+      "category": "Other / Unclassified"
+    },
+    {
+      "cve": "CVE-2026-14255",
+      "date": "2026-09-02",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-84802",
+      "date": "2026-09-02",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-32773",
+      "date": "2026-09-02",
+      "category": "RAG / Retrieval"
+    },
     {
       "cve": "CVE-2026-81195",
       "date": "2026-09-02",
@@ -25,86 +105,6 @@
       "cve": "CVE-2026-84353",
       "date": "2026-09-02",
       "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-84350",
-      "date": "2026-09-02",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-84335",
-      "date": "2026-09-02",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-84327",
-      "date": "2026-09-02",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-84325",
-      "date": "2026-09-02",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-84323",
-      "date": "2026-09-02",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-84289",
-      "date": "2026-09-01",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-84371",
-      "date": "2026-09-01",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-84363",
-      "date": "2026-09-01",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-72654",
-      "date": "2026-09-01",
-      "category": "Other / Unclassified"
-    },
-    {
-      "cve": "CVE-2026-72649",
-      "date": "2026-09-01",
-      "category": "Other / Unclassified"
-    },
-    {
-      "cve": "CVE-2026-84304",
-      "date": "2026-09-01",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-83551",
-      "date": "2026-09-01",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-81846",
-      "date": "2026-09-01",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-52132",
-      "date": "2026-09-01",
-      "category": "LLM / Foundation Model"
-    },
-    {
-      "cve": "CVE-2026-52131",
-      "date": "2026-09-01",
-      "category": "LLM / Foundation Model"
-    },
-    {
-      "cve": "CVE-2026-52130",
-      "date": "2026-09-01",
-      "category": "LLM / Foundation Model"
     }
   ],
   "scanStats": {
