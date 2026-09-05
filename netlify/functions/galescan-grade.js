@@ -289,10 +289,13 @@ async function persistDeepScan({ body, findings, grade, score }) {
 }
 
 // ---- Anonymized grade capture for industry report (fire-and-forget) ----
-// POSTs {grade, score} to the scan-stats blob store so the State of Agent
-// Security report can aggregate the grade distribution. Never blocks/returns
-// on this — it's best-effort telemetry, not load-bearing.
-async function captureScanStats({ grade, score }) {
+// POSTs anonymized telemetry to the scan-stats blob store: grade distribution
+// aggregate + a per-scan event record so scans are followable in aggregate.
+// PRIVACY: sends grade/score/counters and at most severity NAMES. Never the
+// system prompt, sample interactions, email value, or finding names/evidence.
+// Set TEST_SCAN=1 env to mark the ping event:"test" (logged, excluded from
+// the public aggregate) — used for pipeline verification.
+async function captureScanStats({ grade, score, findings, body, email }) {
   try {
     const SCAN_STATS_URL = process.env.URL
       ? `${process.env.URL}/scan-stats`
@@ -300,7 +303,24 @@ async function captureScanStats({ grade, score }) {
     await fetch(SCAN_STATS_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ grade: grade.grade, score }),
+      body: JSON.stringify({
+        grade: grade.grade,
+        score,
+        event: process.env.TEST_SCAN === '1' ? 'test' : 'scan',
+        deep: body.deep_scan === true,
+        emailProvided: isNonEmptyString(email),
+        findingCount: Array.isArray(findings) ? findings.length : null,
+        topSeverities: Array.isArray(findings)
+          ? findings.slice(0, 3).map(f => f.severity)
+          : [],
+        findingsBySeverity: Array.isArray(findings)
+          ? findings.reduce((acc, f) => {
+              acc[f.severity] = (acc[f.severity] || 0) + 1;
+              return acc;
+            }, {})
+          : {},
+        aiModel: (body.ai_model || '').toString().slice(0, 40) || undefined
+      }),
     });
   } catch (e) {
     console.error('GALESCAN: scan-stats capture failed (non-fatal):', e.message);
@@ -465,7 +485,7 @@ Be specific. Reference actual content from the system prompt. If the prompt is s
     score = computeScore(findings);
 
     // Record anonymized grade for the industry report (fire-and-forget)
-    await captureScanStats({ grade, score });
+    await captureScanStats({ grade, score, findings, body, email });
 
     // 10) Deep Scan persistence (if requested + email present)
     if (deepScan && isNonEmptyString(email)) {
