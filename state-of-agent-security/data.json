@@ -1,120 +1,120 @@
 {
-  "updatedAt": "2026-09-10",
-  "count": 289,
-  "kevTotal": 1703,
+  "updatedAt": "2026-09-11",
+  "count": 301,
+  "kevTotal": 1705,
   "kevAI": 39,
-  "nvdTotal": 3731,
-  "nvdAI": 250,
+  "nvdTotal": 3751,
+  "nvdAI": 262,
   "recent": [
     {
-      "cve": "CVE-2026-88268",
+      "cve": "CVE-2026-19486",
+      "date": "2026-09-11",
+      "category": "LLM / Foundation Model"
+    },
+    {
+      "cve": "CVE-2026-19991",
+      "date": "2026-09-11",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-81941",
+      "date": "2026-09-10",
+      "category": "MCP / Tool / Agent"
+    },
+    {
+      "cve": "CVE-2026-81551",
       "date": "2026-09-10",
       "category": "RAG / Retrieval"
     },
     {
-      "cve": "CVE-2026-42808",
+      "cve": "CVE-2026-81210",
+      "date": "2026-09-10",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-78575",
       "date": "2026-09-10",
       "category": "MCP / Tool / Agent"
     },
     {
-      "cve": "CVE-2026-42807",
+      "cve": "CVE-2026-78573",
       "date": "2026-09-10",
       "category": "MCP / Tool / Agent"
     },
     {
-      "cve": "CVE-2026-42805",
+      "cve": "CVE-2026-45762",
+      "date": "2026-09-10",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-9225",
+      "date": "2026-09-10",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-85025",
       "date": "2026-09-10",
       "category": "MCP / Tool / Agent"
     },
     {
-      "cve": "CVE-2026-42804",
+      "cve": "CVE-2026-19136",
       "date": "2026-09-10",
       "category": "MCP / Tool / Agent"
     },
     {
-      "cve": "CVE-2026-13745",
+      "cve": "CVE-2022-26962",
+      "date": "2026-09-10",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-88060",
+      "date": "2026-09-10",
+      "category": "RAG / Retrieval"
+    },
+    {
+      "cve": "CVE-2026-88056",
       "date": "2026-09-10",
       "category": "LLM / Foundation Model"
     },
     {
-      "cve": "CVE-2026-85645",
+      "cve": "CVE-2026-88055",
+      "date": "2026-09-10",
+      "category": "LLM / Foundation Model"
+    },
+    {
+      "cve": "CVE-2026-88046",
       "date": "2026-09-10",
       "category": "RAG / Retrieval"
     },
     {
-      "cve": "CVE-2026-84939",
+      "cve": "CVE-2026-88045",
       "date": "2026-09-10",
       "category": "RAG / Retrieval"
     },
     {
-      "cve": "CVE-2026-49364",
+      "cve": "CVE-2026-88044",
       "date": "2026-09-10",
       "category": "RAG / Retrieval"
     },
     {
-      "cve": "CVE-2026-14873",
+      "cve": "CVE-2026-88938",
       "date": "2026-09-10",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-18351",
-      "date": "2026-09-10",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-71805",
-      "date": "2026-09-09",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-87015",
-      "date": "2026-09-09",
       "category": "MCP / Tool / Agent"
     },
     {
-      "cve": "CVE-2026-87911",
-      "date": "2026-09-09",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-54694",
-      "date": "2026-09-09",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-87872",
-      "date": "2026-09-09",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-85788",
-      "date": "2026-09-09",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-80916",
-      "date": "2026-09-09",
-      "category": "RAG / Retrieval"
-    },
-    {
-      "cve": "CVE-2026-22590",
-      "date": "2026-09-09",
-      "category": "MCP / Tool / Agent"
-    },
-    {
-      "cve": "CVE-2026-86775",
-      "date": "2026-09-09",
+      "cve": "CVE-2026-88018",
+      "date": "2026-09-10",
       "category": "RAG / Retrieval"
     }
   ],
   "scanStats": {
-    "total": 3,
-    "avgScore": 55.7,
+    "total": 4,
+    "avgScore": 50.5,
     "grades": {
       "A": 0,
       "B": 2,
       "C": 0,
-      "D": 1,
+      "D": 2,
       "F": 0
     }
   }
