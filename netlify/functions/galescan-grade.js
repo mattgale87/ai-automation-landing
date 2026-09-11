@@ -11,7 +11,7 @@
 //   bot-field?:            string  (honeypot, MUST be empty)
 //   email?:                string  (required only if deep_scan=true) — for Deep Scan capture
 //   company?:              string  (optional)               — used in storage filename
-//   deep_scan?:            boolean (optional)               — if true, persist + return all findings
+//   deep_scan?:            boolean (optional)               — if true, persist pending intake + return preview
 //
 // Behaviour:
 //   1. Handles OPTIONS preflight with CORS headers.
@@ -25,7 +25,8 @@
 //   8. Parses JSON from response (strips markdown code fences).
 //   9. Computes grade A-F + score 0-100 + top 3 findings.
 //  10. If deep_scan=true: persists intake file + appends to deliveries.json,
-//      returns ALL findings + deep_scan_link (Stripe URL).
+//      returns at most 3 findings + a dedicated checkout link when configured.
+//      This public endpoint does not verify payment or release paid remediation.
 //  11. Returns JSON: { grade, grade_label, grade_color, score, findings, top_3, model_used }.
 //
 // Notes:
@@ -56,7 +57,9 @@ const DELIVERIES_LOG = IS_NETLIFY
   : path.join(SNAPSHOTS_DIR, 'deliveries.json');
 
 // ---- Stripe (Deep Scan tripwire) ----
-const DEEP_SCAN_STRIPE_LINK = 'https://buy.stripe.com/8x27sM6T07OCfIBfuFa3u01';
+// Configure the dedicated one-time Deep Scan link, never the subscription link.
+// No fallback: omit checkout until the correct product link is configured.
+const DEEP_SCAN_STRIPE_LINK = process.env.DEEP_SCAN_STRIPE_LINK || null;
 
 // ---- Color map (hex values) ----
 const COLOR_MAP = {
@@ -214,9 +217,7 @@ async function callOllama(prompt) {
     })
   });
   if (!r.ok) {
-    let detail = '';
-    try { detail = await r.text(); } catch (_) {}
-    throw new Error(`Ollama ${r.status}${detail ? `: ${detail.slice(0, 200)}` : ''}`);
+    throw new Error(`Ollama request failed (${r.status})`);
   }
   return r.json();
 }
@@ -256,7 +257,7 @@ async function persistDeepScan({ body, findings, grade, score }) {
     await ensureDir(INTAKE_DIR);
     await writeJsonAtomic(intakePath, record);
   } catch (e) {
-    console.error('GALESCAN: failed to write deep scan intake file:', e.message);
+    console.error('GALESCAN: failed to write deep scan intake file');
     // Continue to log; don't fail the request entirely.
   }
 
@@ -265,9 +266,6 @@ async function persistDeepScan({ body, findings, grade, score }) {
     id,
     tier: 'scan-deep',
     status: 'pending',
-    company: record.company,
-    email: record.email,
-    ai_model: record.ai_model,
     grade: grade.grade,
     score,
     intake_file: path.relative(SNAPSHOTS_DIR, intakePath),
@@ -281,7 +279,7 @@ async function persistDeepScan({ body, findings, grade, score }) {
     await ensureDir(path.dirname(DELIVERIES_LOG));
     await writeJsonAtomic(DELIVERIES_LOG, log);
   } catch (e) {
-    console.error('GALESCAN: failed to update deliveries log:', e.message);
+    console.error('GALESCAN: failed to update deliveries log');
     // Don't fail the request — intake file was saved (best-effort).
   }
 
@@ -318,12 +316,11 @@ async function captureScanStats({ grade, score, findings, body, email }) {
               acc[f.severity] = (acc[f.severity] || 0) + 1;
               return acc;
             }, {})
-          : {},
-        aiModel: (body.ai_model || '').toString().slice(0, 40) || undefined
+          : {}
       }),
     });
   } catch (e) {
-    console.error('GALESCAN: scan-stats capture failed (non-fatal):', e.message);
+    console.error('GALESCAN: scan-stats capture failed (non-fatal)');
   }
 }
 
@@ -348,7 +345,7 @@ exports.handler = async (event) => {
   try {
     body = parseBody(event);
   } catch (e) {
-    return respond(400, { ok: false, error: 'invalid_body', message: e.message });
+    return respond(400, { ok: false, error: 'invalid_body' });
   }
 
   // 4) Honeypot — bots fill every field; real users never see this input.
@@ -462,11 +459,11 @@ Be specific. Reference actual content from the system prompt. If the prompt is s
         if (end > start) {
           try { parsed = JSON.parse(fenced.slice(start, end + 1)); }
           catch (e) {
-            console.error('GALESCAN: failed to parse Ollama JSON:', e.message, 'raw:', text.slice(0, 200));
+            console.error('GALESCAN: failed to parse Ollama JSON');
             parsed = { findings: [] };
           }
         } else {
-          console.error('GALESCAN: unbalanced JSON braces, finish_reason=', result.choices?.[0]?.finish_reason);
+          console.error('GALESCAN: unbalanced JSON braces');
           parsed = { findings: [] };
         }
       }
@@ -492,36 +489,34 @@ Be specific. Reference actual content from the system prompt. If the prompt is s
       deepScanSaved = await persistDeepScan({ body, findings, grade, score });
     }
   } catch (e) {
-    console.error('GALESCAN: Ollama call failed:', e.message);
+    console.error('GALESCAN: grading failed');
     return respond(500, {
       ok: false,
       error: 'grading_failed',
-      message: e.message
+      message: 'Unable to complete the scan. Please try again.'
     });
   }
 
-  // 11) Build response
+  // 11) Public preview only. A request flag is not proof of payment.
+  // Paid reports/remediation must be delivered separately after verified payment.
+  const preview = topN(findings, 3);
   const responseBody = {
     ok: true,
     grade: grade.grade,
     grade_label: grade.label,
     grade_color: COLOR_MAP[grade.color] || COLOR_MAP.yellow,
     score,
-    findings,
-    top_3: topN(findings, 3),
+    findings: preview,
+    top_3: preview,
     model_used: MODEL
   };
 
   if (deepScan) {
-    // For Deep Scan: return ALL findings + checkout link
-    responseBody.findings = findings;
-    responseBody.deep_scan_link = DEEP_SCAN_STRIPE_LINK;
+    responseBody.payment_required = true;
+    if (DEEP_SCAN_STRIPE_LINK) responseBody.deep_scan_link = DEEP_SCAN_STRIPE_LINK;
     if (deepScanSaved) {
       responseBody.deep_scan_id = deepScanSaved.id;
     }
-  } else {
-    // For free tier: return only top_3 to gate full list
-    responseBody.findings = topN(findings, 3);
   }
 
   return respond(200, responseBody);
